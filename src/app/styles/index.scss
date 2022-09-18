@@ -3,9 +3,13 @@
 @import 'themes/light';
 @import 'themes/dark';
 
-.app {
-  padding: 20px;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 
+.app {
   min-height: 100vh;
 
   font: var(--font-m);

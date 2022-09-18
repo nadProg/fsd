@@ -7,18 +7,15 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { MainPage } from 'pages/MainPage';
 import { AboutPage } from 'pages/AboutPage';
 
-
 import { AppRouter } from './providers/router';
+import { NavBar } from 'widgets/NavBar';
 
 export const App = () => {
   const { theme, toggleTheme } = useTheme();
 
   return (
     <div className={classNames('app', {}, [theme])}>
-      <Link to="/">Главная</Link>
-      <br /> <br />
-      <Link to="/about">О нас</Link>
-      <br /> <br />
+      <NavBar></NavBar>
       <button onClick={toggleTheme}>Сменить тему</button>
       <AppRouter />
     </div>
