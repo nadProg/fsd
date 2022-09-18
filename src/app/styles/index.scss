@@ -24,18 +24,4 @@
   h6 {
     color: var(--primary-color);
   }
-
-  button {
-    padding: 5px 10px;
-
-    color: var(--secondary-color);
-    background-color: transparent;
-    border: 2px solid var(--primary-color);
-
-    cursor: pointer;
-
-    &:disabled {
-      cursor: initial;
-    }
-  }
 }
