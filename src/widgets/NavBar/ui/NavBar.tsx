@@ -1,5 +1,4 @@
-import { Link } from 'react-router-dom';
-
+import { AppLink } from 'shared/ui/AppLink';
 import { classNames } from 'shared/lib/classNames/classNames';
 
 import styles from './NavBar.module.scss';
@@ -11,8 +10,8 @@ type NavBarProps = {
 export const NavBar = ({ className }: NavBarProps) => (
   <div className={classNames(styles.Navbar, {}, [className])}>
     <div className={classNames(styles.links)}>
-      <Link to="/">Главная</Link>
-      <Link to="/about">О нас</Link>
+      <AppLink to="/">Главная</AppLink>
+      <AppLink to="/about">О нас</AppLink>
     </div>
   </div>
 );
