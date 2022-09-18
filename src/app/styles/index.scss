@@ -1,0 +1,37 @@
+@import 'normalize';
+@import 'variables/global';
+@import 'themes/light';
+@import 'themes/dark';
+
+.app {
+  padding: 20px;
+
+  min-height: 100vh;
+
+  font: var(--font-m);
+  color: var(--secondary-color);
+  background-color: var(--bg-color);
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: var(--primary-color);
+  }
+
+  button {
+    padding: 5px 10px;
+
+    color: var(--secondary-color);
+    background-color: transparent;
+    border: 2px solid var(--primary-color);
+
+    cursor: pointer;
+
+    &:disabled {
+      cursor: initial;
+    }
+  }
+}
