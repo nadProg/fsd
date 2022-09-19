@@ -7,11 +7,11 @@
   //   background-color: transparent;
   //   border: 2px solid var(--primary-color);
 
-  //   cursor: pointer;
+  cursor: pointer;
 
-  //   &:disabled {
-  //     cursor: initial;
-  //   }
+  &:disabled {
+    cursor: initial;
+  }
 }
 
 .clear {
