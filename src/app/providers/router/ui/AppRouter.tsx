@@ -7,17 +7,19 @@ import { MainPage } from 'pages/MainPage';
 import { AboutPage } from 'pages/AboutPage';
 
 export const AppRouter = () => (
-  <Suspense
-    fallback={
-      <div>
-        <p>Loading...</p>
-      </div>
-    }
-  >
-    <Routes>
-      {Object.values(routerConfig).map((props) => (
-        <Route key={props.path} {...props}></Route>
-      ))}
-    </Routes>
-  </Suspense>
+  <div className="page-wrapper">
+    <Suspense
+      fallback={
+        <div>
+          <p>Loading...</p>
+        </div>
+      }
+    >
+      <Routes>
+        {Object.values(routerConfig).map((props) => (
+          <Route key={props.path} {...props}></Route>
+        ))}
+      </Routes>
+    </Suspense>
+  </div>
 );
