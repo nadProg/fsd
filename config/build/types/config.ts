@@ -1,5 +1,3 @@
-import { Configuration } from 'webpack';
-
 export type BuildPaths = {
   entry: string;
   build: string;
@@ -13,7 +11,7 @@ export type BuildEnv = {
 };
 
 export type BuildOptions = {
-  isDev?: boolean;
+  isDev: boolean;
   paths: BuildPaths;
   port: number;
 };
