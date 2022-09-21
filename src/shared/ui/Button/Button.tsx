@@ -1,4 +1,3 @@
-import { dirxml } from 'console';
 import { ButtonHTMLAttributes, FC } from 'react';
 import { classNames } from 'shared/lib/classNames';
 import { ValuesOf } from 'shared/types';
@@ -19,13 +18,12 @@ export const Button: FC<ButtonProps> = ({
   children,
   theme,
   ...restProps
-}) => {
-  return (
-    <button
-      className={classNames(styles.Button, {}, [className, styles[theme]])}
-      {...restProps}
-    >
-      {children}
-    </button>
-  );
-};
+}) => (
+  <button
+    type="button"
+    className={classNames(styles.Button, {}, [className, styles[theme]])}
+    {...restProps}
+  >
+    {children}
+  </button>
+);

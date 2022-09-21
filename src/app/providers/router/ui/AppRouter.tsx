@@ -3,23 +3,22 @@ import { Routes, Route } from 'react-router-dom';
 
 import { routerConfig } from 'shared/config/router/routeConfig/routeConfig';
 
-import { MainPage } from 'pages/MainPage';
-import { AboutPage } from 'pages/AboutPage';
-
-export const AppRouter = () => (
-  <div className="page-wrapper">
-    <Suspense
-      fallback={
-        <div>
-          <p>Loading...</p>
-        </div>
-      }
-    >
-      <Routes>
-        {Object.values(routerConfig).map((props) => (
-          <Route key={props.path} {...props}></Route>
-        ))}
-      </Routes>
-    </Suspense>
-  </div>
-);
+export function AppRouter() {
+  return (
+    <div className="page-wrapper">
+      <Suspense
+        fallback={(
+          <div>
+            <p>Loading...</p>
+          </div>
+        )}
+      >
+        <Routes>
+          {Object.values(routerConfig).map(({ path, ...restProps }) => (
+            <Route key={path} path={path} {...restProps} />
+          ))}
+        </Routes>
+      </Suspense>
+    </div>
+  );
+}

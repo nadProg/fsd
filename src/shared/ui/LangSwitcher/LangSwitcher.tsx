@@ -9,12 +9,11 @@ type LangSwitcherProps = {
   className?: string;
 };
 
-export const LangSwitcher = ({ className }: LangSwitcherProps) => {
+export function LangSwitcher({ className }: LangSwitcherProps) {
   const { t, i18n } = useTranslation();
 
-  const toggle = () =>
-    // todo: fix ru != ru-RU
-    i18n.changeLanguage(i18n.language === 'ru' ? 'en' : 'ru');
+  // todo: fix ru != ru-RU
+  const toggle = () => i18n.changeLanguage(i18n.language === 'ru' ? 'en' : 'ru');
 
   return (
     <Button
@@ -25,4 +24,4 @@ export const LangSwitcher = ({ className }: LangSwitcherProps) => {
       {t('Язык')}
     </Button>
   );
-};
+}

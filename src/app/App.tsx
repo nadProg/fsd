@@ -1,5 +1,4 @@
 import { Suspense } from 'react';
-import { Link, Route, Routes } from 'react-router-dom';
 
 import { useTheme } from 'shared/providers/ThemeProvider';
 import { classNames } from 'shared/lib/classNames/classNames';
@@ -8,9 +7,8 @@ import { NavBar } from 'widgets/NavBar';
 import { SideBar } from 'widgets/SideBar';
 
 import { AppRouter } from './providers/router';
-import { useTranslation } from 'react-i18next';
 
-export const App = () => {
+export function App() {
   const { theme } = useTheme();
 
   return (
@@ -24,4 +22,4 @@ export const App = () => {
       </Suspense>
     </div>
   );
-};
+}

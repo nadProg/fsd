@@ -8,17 +8,16 @@ import { BuildOptions } from './types/config';
 export const buildPlugins = ({
   paths,
   isDev,
-}: BuildOptions): WebpackPluginInstance[] =>
-  [
-    new HTMLWebpackPlugin({
-      template: paths.html,
-    }),
-    isDev && new ReactRefreshWebpackPlugin(),
-    new MiniCssExtractPlugin({
-      filename: 'css/[name].[contenthash:8].css',
-    }),
-    new ProgressPlugin(),
-    new DefinePlugin({
-      __IS_DEV__: Boolean(isDev),
-    }),
-  ].filter(Boolean);
+}: BuildOptions): WebpackPluginInstance[] => [
+  new HTMLWebpackPlugin({
+    template: paths.html,
+  }),
+  isDev && new ReactRefreshWebpackPlugin(),
+  new MiniCssExtractPlugin({
+    filename: 'css/[name].[contenthash:8].css',
+  }),
+  new ProgressPlugin(),
+  new DefinePlugin({
+    __IS_DEV__: Boolean(isDev),
+  }),
+].filter(Boolean);

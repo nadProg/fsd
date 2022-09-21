@@ -10,7 +10,7 @@ type ThemeSwitcherProps = {
   className?: string;
 };
 
-export const ThemeSwitcher = ({ className }: ThemeSwitcherProps) => {
+export function ThemeSwitcher({ className }: ThemeSwitcherProps) {
   const { toggleTheme } = useTheme();
 
   return (
@@ -19,7 +19,7 @@ export const ThemeSwitcher = ({ className }: ThemeSwitcherProps) => {
       className={classNames(styles.ThemeSwitcher, {}, [className])}
       onClick={toggleTheme}
     >
-      <ThemeIcon className={styles.icon}></ThemeIcon>
+      <ThemeIcon className={styles.icon} />
     </Button>
   );
-};
+}

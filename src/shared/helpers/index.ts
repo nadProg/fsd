@@ -1,10 +1,11 @@
 type DefaultExport<Module> = { default: Module };
 
 export const makeModuleDefault = <Module>(
-  mod: Module
+  mod: Module,
 ): DefaultExport<Module> => ({
-  default: mod,
-});
+    default: mod,
+  });
 
-export const asyncDelay = (time = 1000) =>
-  new Promise((resolve) => setTimeout(resolve, time));
+export const asyncDelay = (time = 1000) => new Promise((resolve) => {
+  setTimeout(resolve, time);
+});

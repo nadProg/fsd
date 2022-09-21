@@ -7,7 +7,7 @@ type NavBarProps = {
   className?: string;
 };
 
-export const NavBar = ({ className }: NavBarProps) => {
+export function NavBar({ className }: NavBarProps) {
   return (
     <div className={classNames(styles.Navbar, {}, [className])}>
       <div className={classNames(styles.links)}>
@@ -16,4 +16,4 @@ export const NavBar = ({ className }: NavBarProps) => {
       </div>
     </div>
   );
-};
+}
