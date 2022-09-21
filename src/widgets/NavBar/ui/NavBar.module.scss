@@ -2,20 +2,17 @@
   width: 100%;
   height: var(--navbar-height);
   padding: 20px;
-
   display: flex;
   align-items: center;
   gap: 1rem;
-
   background-color: var(--inverted-bg-color);
 }
 
-.switcher {
-}
+// .switcher {
+// }
 
 .links {
   margin-left: auto;
-
   display: flex;
   align-items: center;
   gap: 1rem;
