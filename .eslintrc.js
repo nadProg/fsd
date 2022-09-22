@@ -40,7 +40,7 @@ module.exports = {
     'no-underscore-dangle': ['error', { allow: ['__IS_DEV__'] }],
     'react/jsx-props-no-spreading': 'warn',
     'import/no-extraneous-dependencies': 'warn',
-    'i18next/no-literal-string': ['error', { markupOnly: true }],
+    'i18next/no-literal-string': ['error', { markupOnly: true, onlyAttribute: [''] }],
   },
   globals: {
     __IS_DEV__: true,
