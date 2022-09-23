@@ -1,12 +1,12 @@
-export function MainPage() {
+import { useTranslation } from 'react-i18next';
+
+export const MainPage = () => {
+  const { t } = useTranslation();
+
   return (
     <div>
-      <h1>Main</h1>
-      <p>Main page content</p>
+      <h1>{t('main.title')}</h1>
+      <p>{t('main.content')}</p>
     </div>
   );
-}
-
-export const object = {
-  gh: 1,
 };

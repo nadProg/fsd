@@ -21,7 +21,7 @@ export function LangSwitcher({ className }: LangSwitcherProps) {
       className={classNames(styles.LangSwitcher, {}, [className])}
       onClick={toggle}
     >
-      {t('Язык')}
+      {t('sidebar.language')}
     </Button>
   );
 }

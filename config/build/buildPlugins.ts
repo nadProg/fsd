@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import { WebpackPluginInstance, ProgressPlugin, DefinePlugin } from 'webpack';
 import HTMLWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';

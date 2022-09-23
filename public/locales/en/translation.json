@@ -1,4 +1,21 @@
 {
-  "Язык": "Language",
-  "Заголовок": "Title"
+  "sidebar": {
+    "toggle": "Toggle",
+    "language": "Language"
+  },
+  "navbar": {
+    "main": "Main",
+    "about": "About us"
+  },
+  "main": {
+    "title": "Main",
+    "content": "Main page content"
+  },
+  "about": {
+    "title": "About us",
+    "content": "About us page content"
+  },
+  "not_found": {
+    "title": "Page not found"
+  }
 }
