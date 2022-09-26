@@ -2,6 +2,7 @@
 import { WebpackPluginInstance, ProgressPlugin, DefinePlugin } from 'webpack';
 import HTMLWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 
 import { BuildOptions } from './types/config';
@@ -21,4 +22,5 @@ export const buildPlugins = ({
   new DefinePlugin({
     __IS_DEV__: Boolean(isDev),
   }),
+  new BundleAnalyzerPlugin(),
 ].filter(Boolean);
