@@ -17,5 +17,9 @@
   },
   "not_found": {
     "title": "Page not found"
+  },
+  "page_error": {
+    "title": "An error has occurred",
+    "refresh": "Refresh page"
   }
 }
