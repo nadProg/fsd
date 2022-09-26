@@ -2,6 +2,7 @@ module.exports = {
   env: {
     browser: true,
     es2021: true,
+    jest: true
   },
   extends: [
     'eslint:recommended',
@@ -38,6 +39,7 @@ module.exports = {
       { extensions: ['.js', '.jsx', 'tsx'] },
     ],
     'no-underscore-dangle': ['error', { allow: ['__IS_DEV__'] }],
+    'max-len': ["error", { "code": 120, "ignoreComments": true }],
     'react/jsx-props-no-spreading': 'warn',
     'import/no-extraneous-dependencies': 'warn',
     'i18next/no-literal-string': ['error', { markupOnly: true, onlyAttribute: [''] }],
