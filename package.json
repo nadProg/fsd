@@ -1,5 +1,5 @@
 {
-  "name": "FSD",
+  "name": "fsd",
   "version": "1.0.0",
   "description": "feature-sliced design",
   "main": "index.js",
