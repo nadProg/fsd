@@ -21,11 +21,12 @@ export function SideBar({ className }: SideBarProps) {
 
   return (
     <div
+      data-testid="sidebar"
       className={classNames(styles.SideBar, { [styles.collapsed]: collapsed }, [
         className,
       ])}
     >
-      <Button theme={ButtonTheme.Clear} onClick={onToggle}>
+      <Button data-testid="sidebar-toggle" theme={ButtonTheme.Clear} onClick={onToggle}>
         {t('sidebar.toggle')}
       </Button>
 
