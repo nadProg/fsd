@@ -70,6 +70,10 @@ export default {
     'node_modules',
   ],
 
+  modulePaths: [
+    '<rootDir>src',
+  ],
+
   // An array of file extensions your modules use
   moduleFileExtensions: [
     'js',
