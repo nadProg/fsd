@@ -33,6 +33,9 @@ module.exports = {
     'react/react-in-jsx-scope': 'off',
     'react/require-default-props': 'off',
     'react/function-component-definition': 'off',
+    'no-param-reassign': 'off',
+    'jsx-a11y/no-static-element-interactions': 'off',
+    'jsx-a11y/click-events-have-key-events': 'off',
     'react/jsx-filename-extension': [
       'error',
       { extensions: ['.js', '.jsx', 'tsx'] },
