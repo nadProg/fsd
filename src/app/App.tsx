@@ -1,7 +1,6 @@
-import { Suspense } from 'react';
+import { Suspense, useState } from 'react';
 
-import { useTheme } from 'shared/providers/ThemeProvider';
-import { classNames } from 'shared/lib/classNames/classNames';
+import { Modal } from 'shared/ui/Modal';
 
 import { NavBar } from 'widgets/NavBar';
 import { SideBar } from 'widgets/SideBar';
@@ -9,12 +8,14 @@ import { SideBar } from 'widgets/SideBar';
 import { AppRouter } from './providers/router';
 
 export function App() {
-  const { theme } = useTheme();
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className={classNames('app', {}, [theme])}>
+    <div className="app">
       <Suspense fallback="App Suspense">
         <NavBar />
+        <button type="button" onClick={() => setIsOpen(true)}>Modal</button>
+        <Modal isOpen={isOpen} onClose={() => setIsOpen(false)}>Content</Modal>
         <div className="content-page">
           <SideBar />
           <AppRouter />
