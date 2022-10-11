@@ -6,6 +6,7 @@ import styles from './Button.module.scss';
 
 export const ButtonTheme = {
   Clear: 'clear',
+  Outlined: 'outlined',
 } as const;
 
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {

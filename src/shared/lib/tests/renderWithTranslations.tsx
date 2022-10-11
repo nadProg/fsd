@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import { ReactNode } from 'react';
 import { I18nextProvider } from 'react-i18next';
 import { render } from '@testing-library/react';
