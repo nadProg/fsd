@@ -9,8 +9,6 @@ import { counterActions } from 'entities/Counter';
 
 import { getCounterValue } from '../model/selectors/getCounterValue/getCounterValue';
 
-import styles from './Counter.module.scss';
-
 type CounterProps = PropsWithClassName;
 
 export const Counter: FC<CounterProps> = ({ className }) => {
@@ -27,14 +25,17 @@ export const Counter: FC<CounterProps> = ({ className }) => {
 
   return (
     <div
-      className={classNames(className, styles.Counter)}
+      className={classNames(className, '')}
     >
+      {/* eslint-disable-next-line i18next/no-literal-string */}
       <h1>
         Value:
         {counterValue}
       </h1>
 
+      {/* eslint-disable-next-line i18next/no-literal-string */}
       <button type="button" onClick={increase} data-testid="increment-button">increment</button>
+      {/* eslint-disable-next-line i18next/no-literal-string */}
       <button type="button" onClick={decrease} data-testid="decrement-button">decrement</button>
     </div>
   );
