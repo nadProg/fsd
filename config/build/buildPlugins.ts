@@ -22,5 +22,6 @@ export const buildPlugins = ({
   new DefinePlugin({
     __IS_DEV__: Boolean(isDev),
   }),
-  !isDev && new BundleAnalyzerPlugin(),
+  // todo: create script to run analyzer
+  // new BundleAnalyzerPlugin(),
 ].filter(Boolean);
