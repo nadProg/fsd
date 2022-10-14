@@ -1,7 +1,8 @@
 {
   "sidebar": {
     "toggle": "Toggle",
-    "language": "Language"
+    "language": "Русский",
+    "short-language": "Ru"
   },
   "navbar": {
     "main": "Main",

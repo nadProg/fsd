@@ -7,9 +7,10 @@ import styles from './LangSwitcher.module.scss';
 
 type LangSwitcherProps = {
   className?: string;
+  short?: boolean;
 };
 
-export function LangSwitcher({ className }: LangSwitcherProps) {
+export function LangSwitcher({ className, short }: LangSwitcherProps) {
   const { t, i18n } = useTranslation();
 
   // todo: fix ru != ru-RU
@@ -17,11 +18,11 @@ export function LangSwitcher({ className }: LangSwitcherProps) {
 
   return (
     <Button
-      theme={ButtonTheme.Clear}
+      theme={ButtonTheme.Background}
       className={classNames(styles.LangSwitcher, {}, [className])}
       onClick={toggle}
     >
-      {t('sidebar.language')}
+      {t(short ? 'sidebar.short-language' : 'sidebar.language')}
     </Button>
   );
 }

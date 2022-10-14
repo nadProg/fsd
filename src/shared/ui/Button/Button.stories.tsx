@@ -2,7 +2,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { Theme } from 'shared/providers/ThemeProvider';
-import { Button, ButtonTheme } from './Button';
+import { Button, ButtonSize, ButtonTheme } from './Button';
 
 export default {
   title: 'shared/Button',
@@ -31,6 +31,41 @@ Outlined.args = {
   theme: ButtonTheme.Outlined,
 };
 
+export const Background = Template.bind({});
+Background.args = {
+  children: 'Text',
+  theme: ButtonTheme.Background,
+};
+
+export const BackgroundInverted = Template.bind({});
+BackgroundInverted.args = {
+  children: 'Text',
+  theme: ButtonTheme.BackgroundInverted,
+};
+
+export const SquareSizeM = Template.bind({});
+SquareSizeM.args = {
+  children: '>',
+  theme: ButtonTheme.BackgroundInverted,
+  square: true,
+};
+
+export const SquareSizeL = Template.bind({});
+SquareSizeL.args = {
+  children: '>',
+  theme: ButtonTheme.BackgroundInverted,
+  square: true,
+  size: ButtonSize.Large,
+};
+
+export const SquareSizeXL = Template.bind({});
+SquareSizeXL.args = {
+  children: '>',
+  theme: ButtonTheme.BackgroundInverted,
+  square: true,
+  size: ButtonSize.XLarge,
+};
+
 export const PrimaryDark = Template.bind({});
 PrimaryDark.args = {
   children: 'Text',
@@ -50,3 +85,43 @@ OutlinedDark.args = {
   theme: ButtonTheme.Outlined,
 };
 OutlinedDark.decorators = [ThemeDecorator(Theme.Dark)];
+
+export const BackgroundDark = Template.bind({});
+BackgroundDark.args = {
+  children: 'Text',
+  theme: ButtonTheme.Background,
+};
+BackgroundDark.decorators = [ThemeDecorator(Theme.Dark)];
+
+export const BackgroundInvertedDark = Template.bind({});
+BackgroundInvertedDark.args = {
+  children: 'Text',
+  theme: ButtonTheme.BackgroundInverted,
+};
+BackgroundInvertedDark.decorators = [ThemeDecorator(Theme.Dark)];
+
+export const SquareSizeMDark = Template.bind({});
+SquareSizeMDark.args = {
+  children: '>',
+  theme: ButtonTheme.BackgroundInverted,
+  square: true,
+};
+SquareSizeMDark.decorators = [ThemeDecorator(Theme.Dark)];
+
+export const SquareSizeLDark = Template.bind({});
+SquareSizeLDark.args = {
+  children: '>',
+  theme: ButtonTheme.BackgroundInverted,
+  square: true,
+  size: ButtonSize.Large,
+};
+SquareSizeLDark.decorators = [ThemeDecorator(Theme.Dark)];
+
+export const SquareSizeXLDark = Template.bind({});
+SquareSizeXLDark.args = {
+  children: '>',
+  theme: ButtonTheme.BackgroundInverted,
+  square: true,
+  size: ButtonSize.XLarge,
+};
+SquareSizeXLDark.decorators = [ThemeDecorator(Theme.Dark)];
