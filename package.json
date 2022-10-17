@@ -12,6 +12,7 @@
     "lint-scss": "stylelint \"**/*.scss\"",
     "lint-scss:fix": "npm run lint-scss -- --fix",
     "test-unit": "jest --config ./config/jest/jest.config.ts",
+    "test-unit:coverage": "npm run test-unit -- --coverage",
     "test-ui": "npx loki test",
     "test-ui:json": "node scripts/generate-visual-json-report.js",
     "test-ui:html": "reg-cli --from .loki/report.json --report .loki/report.html",
