@@ -28,7 +28,7 @@ export const Counter: FC<CounterProps> = ({ className }) => {
       className={classNames(className, '')}
     >
       {/* eslint-disable-next-line i18next/no-literal-string */}
-      <h1>
+      <h1 data-testid="counter-value">
         Value:
         {counterValue}
       </h1>
