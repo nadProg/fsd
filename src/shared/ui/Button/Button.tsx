@@ -20,7 +20,7 @@ export const ButtonSize = {
 
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   className?: string;
-  theme: ValuesOf<typeof ButtonTheme>;
+  theme?: ValuesOf<typeof ButtonTheme>;
   square?: boolean;
   size?: ValuesOf<typeof ButtonSize>
 };
@@ -28,7 +28,7 @@ type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
 export const Button: FC<ButtonProps> = ({
   className,
   children,
-  theme,
+  theme = ButtonTheme.Clear,
   square,
   size = ButtonSize.Medium,
   ...restProps

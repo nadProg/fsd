@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 
+import { PropsWithClassName } from 'shared/types';
+
 import { Button } from 'shared/ui/Button';
 
-type BugButtonProps = {
-  className?: string;
-};
+type BugButtonProps = PropsWithClassName;
 
 // Component for ErrorBoundary testing
 export const BugButton = ({ className }: BugButtonProps) => {
@@ -20,7 +20,7 @@ export const BugButton = ({ className }: BugButtonProps) => {
 
   return (
     // eslint-disable-next-line i18next/no-literal-string
-    <Button theme="clear" onClick={throwError}>
+    <Button theme="clear" className={className} onClick={throwError}>
       throw error
     </Button>
   );

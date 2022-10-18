@@ -6,7 +6,17 @@
   },
   "navbar": {
     "main": "Главная",
-    "about": "О нас"
+    "about": "О нас",
+    "sign-in": "Войти"
+  },
+  "login-form": {
+    "name": {
+      "placeholder": "Введите имя"
+    },
+    "password": {
+      "placeholder": "Введите пароль"
+    },
+    "submit": "Войти"
   },
   "main": {
     "title": "Главная",

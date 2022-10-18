@@ -6,7 +6,17 @@
   },
   "navbar": {
     "main": "Main",
-    "about": "About us"
+    "about": "About us",
+    "sign-in": "Sign In"
+  },
+  "login-form": {
+    "name": {
+      "placeholder": "Enter name"
+    },
+    "password": {
+      "placeholder": "Enter password"
+    },
+    "submit": "Sign In"
   },
   "main": {
     "title": "Main",
