@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import classNames from 'classnames';
 
 import { Button, ButtonSize, ButtonTheme } from 'shared/ui/Button';
-import { LangSwitcher } from 'shared/ui/LangSwitcher';
+import { LangSwitcher } from 'widgets/LangSwitcher';
 import { ThemeSwitcher } from 'shared/ui/ThemeSwitcher';
 
 import { AppLink } from 'shared/ui/AppLink';
