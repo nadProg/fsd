@@ -1,9 +1,11 @@
 import { useCallback, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import classNames from 'classnames';
 
 import { LoginModal } from 'features/AuthByUsernam';
 
-import { useTranslation } from 'react-i18next';
+import { Button, ButtonTheme } from 'shared/ui/Button';
+
 import styles from './NavBar.module.scss';
 
 type NavBarProps = {
@@ -21,7 +23,13 @@ export const NavBar = ({ className }: NavBarProps) => {
 
   return (
     <div className={classNames(styles.Navbar, className)}>
-      <button type="button" onClick={onOpenModal}>{t('navbar.sign-in')}</button>
+      <Button
+        theme={ButtonTheme.Background}
+        type="button"
+        onClick={onOpenModal}
+      >
+        {t('navbar.sign-in')}
+      </Button>
 
       <LoginModal isOpen={isAuthOpen} onClose={onCloseModal} />
     </div>

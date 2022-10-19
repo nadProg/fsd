@@ -4,16 +4,7 @@
   padding: 20px;
   display: flex;
   align-items: center;
+  justify-content: flex-end;
   gap: 1rem;
   background-color: var(--inverted-bg-color);
-}
-
-// .switcher {
-// }
-
-.links {
-  margin-left: auto;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
 }
