@@ -4,6 +4,7 @@ import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDeco
 
 import { Theme } from 'shared/providers/ThemeProvider';
 
+import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
 import { NavBar } from './NavBar';
 
 export default {
@@ -18,7 +19,8 @@ const Template: ComponentStory<typeof NavBar> = (args) => <NavBar {...args} />;
 
 export const Light = Template.bind({});
 Light.args = {};
+Light.decorators = [StoreDecorator({})];
 
 export const Dark = Template.bind({});
 Dark.args = {};
-Dark.decorators = [ThemeDecorator(Theme.Dark)];
+Dark.decorators = [StoreDecorator({}), ThemeDecorator(Theme.Dark)];
