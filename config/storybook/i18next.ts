@@ -20,7 +20,6 @@ i18n.use(initReactI18next)
     resources: {
       ru: {
         translation: russianLocale,
-
       },
       en: {
         translation: englishLocale,

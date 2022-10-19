@@ -1,5 +1,5 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import { ReactNode, Suspense } from 'react';
+import { ReactNode } from 'react';
 import { MemoryRouter } from 'react-router-dom';
 import { render } from '@testing-library/react';
 import i18nForTests from 'shared/config/i18n/i18nForTests';
@@ -16,13 +16,11 @@ export const renderComponent = (component: ReactNode, {
   route = '/',
   initialState,
 }: RenderWithRouterOptions = {}) => render(
-  <Suspense fallback="">
-    <StoreProvider initialState={initialState as StateSchema}>
-      <MemoryRouter initialEntries={[route]}>
-        <I18nextProvider i18n={i18nForTests}>
-          {component}
-        </I18nextProvider>
-      </MemoryRouter>
-    </StoreProvider>
-  </Suspense>,
+  <StoreProvider initialState={initialState as StateSchema}>
+    <MemoryRouter initialEntries={[route]}>
+      <I18nextProvider i18n={i18nForTests}>
+        {component}
+      </I18nextProvider>
+    </MemoryRouter>
+  </StoreProvider>,
 );
