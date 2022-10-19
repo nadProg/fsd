@@ -2,7 +2,7 @@ import { useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import classNames from 'classnames';
 
-import { LoginModal } from 'features/AuthByUsernam';
+import { LoginModal } from 'features/AuthByUsername';
 
 import { Button, ButtonTheme } from 'shared/ui/Button';
 
