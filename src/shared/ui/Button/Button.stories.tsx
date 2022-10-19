@@ -17,30 +17,35 @@ const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   children: 'Text',
+  disabled: false,
 };
 
 export const Clear = Template.bind({});
 Clear.args = {
   children: 'Text',
   theme: ButtonTheme.Clear,
+  disabled: false,
 };
 
 export const Outlined = Template.bind({});
 Outlined.args = {
   children: 'Text',
   theme: ButtonTheme.Outlined,
+  disabled: false,
 };
 
 export const Background = Template.bind({});
 Background.args = {
   children: 'Text',
   theme: ButtonTheme.Background,
+  disabled: false,
 };
 
 export const BackgroundInverted = Template.bind({});
 BackgroundInverted.args = {
   children: 'Text',
   theme: ButtonTheme.BackgroundInverted,
+  disabled: false,
 };
 
 export const SquareSizeM = Template.bind({});
@@ -48,6 +53,7 @@ SquareSizeM.args = {
   children: '>',
   theme: ButtonTheme.BackgroundInverted,
   square: true,
+  disabled: false,
 };
 
 export const SquareSizeL = Template.bind({});
@@ -56,6 +62,7 @@ SquareSizeL.args = {
   theme: ButtonTheme.BackgroundInverted,
   square: true,
   size: ButtonSize.Large,
+  disabled: false,
 };
 
 export const SquareSizeXL = Template.bind({});
@@ -64,11 +71,13 @@ SquareSizeXL.args = {
   theme: ButtonTheme.BackgroundInverted,
   square: true,
   size: ButtonSize.XLarge,
+  disabled: false,
 };
 
 export const DefaultDark = Template.bind({});
 DefaultDark.args = {
   children: 'Text',
+  disabled: false,
 };
 DefaultDark.decorators = [ThemeDecorator(Theme.Dark)];
 
@@ -76,6 +85,7 @@ export const ClearDark = Template.bind({});
 ClearDark.args = {
   children: 'Text',
   theme: ButtonTheme.Clear,
+  disabled: false,
 };
 ClearDark.decorators = [ThemeDecorator(Theme.Dark)];
 
@@ -83,6 +93,7 @@ export const OutlinedDark = Template.bind({});
 OutlinedDark.args = {
   children: 'Text',
   theme: ButtonTheme.Outlined,
+  disabled: false,
 };
 OutlinedDark.decorators = [ThemeDecorator(Theme.Dark)];
 
@@ -90,6 +101,7 @@ export const BackgroundDark = Template.bind({});
 BackgroundDark.args = {
   children: 'Text',
   theme: ButtonTheme.Background,
+  disabled: false,
 };
 BackgroundDark.decorators = [ThemeDecorator(Theme.Dark)];
 
@@ -97,6 +109,7 @@ export const BackgroundInvertedDark = Template.bind({});
 BackgroundInvertedDark.args = {
   children: 'Text',
   theme: ButtonTheme.BackgroundInverted,
+  disabled: false,
 };
 BackgroundInvertedDark.decorators = [ThemeDecorator(Theme.Dark)];
 
@@ -105,6 +118,7 @@ SquareSizeMDark.args = {
   children: '>',
   theme: ButtonTheme.BackgroundInverted,
   square: true,
+  disabled: false,
 };
 SquareSizeMDark.decorators = [ThemeDecorator(Theme.Dark)];
 
@@ -114,6 +128,7 @@ SquareSizeLDark.args = {
   theme: ButtonTheme.BackgroundInverted,
   square: true,
   size: ButtonSize.Large,
+  disabled: false,
 };
 SquareSizeLDark.decorators = [ThemeDecorator(Theme.Dark)];
 
@@ -123,5 +138,6 @@ SquareSizeXLDark.args = {
   theme: ButtonTheme.BackgroundInverted,
   square: true,
   size: ButtonSize.XLarge,
+  disabled: false,
 };
 SquareSizeXLDark.decorators = [ThemeDecorator(Theme.Dark)];

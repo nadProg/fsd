@@ -2,9 +2,11 @@
   margin: 0;
   padding: 10px 15px;
   cursor: pointer;
+  transition: opacity 300ms;
 
   &:disabled {
     cursor: initial;
+    opacity: 0.75;
   }
 }
 

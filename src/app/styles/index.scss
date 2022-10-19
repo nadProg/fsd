@@ -9,20 +9,20 @@
   box-sizing: border-box;
 }
 
-.app {
+body {
   min-height: 100vh;
   font: var(--font-m);
   color: var(--secondary-color);
   background-color: var(--bg-color);
+}
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    color: var(--primary-color);
-  }
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--primary-color);
 }
 
 .content-page {

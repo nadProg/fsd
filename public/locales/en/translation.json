@@ -7,7 +7,8 @@
   "navbar": {
     "main": "Main",
     "about": "About us",
-    "sign-in": "Sign In"
+    "sign-in": "Sign In",
+    "logout": "Logout"
   },
   "login-form": {
     "name": {
@@ -16,6 +17,7 @@
     "password": {
       "placeholder": "Enter password"
     },
+    "error": "Incorrect username or password",
     "submit": "Sign In"
   },
   "main": {
