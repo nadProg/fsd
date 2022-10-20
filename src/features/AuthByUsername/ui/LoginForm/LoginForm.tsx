@@ -55,7 +55,7 @@ export const LoginForm: FC<LoginFormProps> = ({ className }) => {
     <div
       className={classNames(className, styles.LoginForm)}
     >
-      {error && <Text theme={TextTheme.Error}>{error}</Text>}
+      {error && <Text theme={TextTheme.Error}>{t(`login-form.error.${error}`)}</Text>}
 
       <Input
         className={styles.input}
