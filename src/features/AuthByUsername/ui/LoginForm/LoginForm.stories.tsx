@@ -36,7 +36,7 @@ const submittingState: DeepPartial<StateSchema> = {
 const errorState: DeepPartial<StateSchema> = {
   loginForm: {
     ...state.loginForm,
-    error: 'Описание ошибки',
+    error: '403',
   },
 };
 
