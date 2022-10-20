@@ -15,6 +15,6 @@ describe('getLoginUsername', () => {
   });
 
   test('should handle empty state', () => {
-    expect(getLoginUsername({} as StateSchema)).toBeUndefined();
+    expect(getLoginUsername({} as StateSchema)).toBe('');
   });
 });

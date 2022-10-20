@@ -15,6 +15,6 @@ describe('getLoginPassword', () => {
   });
 
   test('should handle empty state', () => {
-    expect(getLoginPassword({} as StateSchema)).toBeUndefined();
+    expect(getLoginPassword({} as StateSchema)).toBe('');
   });
 });

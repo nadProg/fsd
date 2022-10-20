@@ -15,6 +15,6 @@ describe('getLoginIsSubmitting', () => {
   });
 
   test('should handle empty state', () => {
-    expect(getLoginIsSubmitting({} as StateSchema)).toBeUndefined();
+    expect(getLoginIsSubmitting({} as StateSchema)).toBe(false);
   });
 });

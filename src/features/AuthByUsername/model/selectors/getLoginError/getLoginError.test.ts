@@ -15,6 +15,6 @@ describe('getLoginError', () => {
   });
 
   test('should handle empty state', () => {
-    expect(getLoginError({} as StateSchema)).toBeUndefined();
+    expect(getLoginError({} as StateSchema)).toBe('');
   });
 });
