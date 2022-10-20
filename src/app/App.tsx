@@ -1,4 +1,4 @@
-import { Suspense, useEffect } from 'react';
+import { Suspense } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { NavBar } from 'widgets/NavBar';
@@ -6,14 +6,15 @@ import { SideBar } from 'widgets/SideBar';
 
 import { userActions } from 'entities/User';
 
+import { useMountEffect } from 'shared/hooks/useMountEffect';
 import { AppRouter } from './providers/router';
 
 export const App = () => {
   const dispatch = useDispatch();
 
-  useEffect(() => {
+  useMountEffect(() => {
     dispatch(userActions.initAuthData());
-  }, []);
+  });
 
   return (
     <div className="app">

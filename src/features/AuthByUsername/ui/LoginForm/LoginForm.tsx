@@ -7,10 +7,19 @@ import { Input } from 'shared/ui/Input';
 import { Button, ButtonTheme } from 'shared/ui/Button';
 
 import { TextTheme, Text } from 'shared/ui/Text';
-import { loginActions } from '../../model/slice/loginSlice';
-import { getLoginState } from '../../model/selectors/getLoginState';
+import { useDynamicReducers } from 'shared/hooks/useDynamicReducers';
+import { getLoginError } from '../../model/selectors/getLoginError/getLoginError';
+import { getLoginUsername } from '../../model/selectors/getLoginUsername/getLoginUsername';
+import { getLoginPassword } from '../../model/selectors/getLoginPassword/getLoginPassword';
+import { getLoginIsSubmitting } from '../../model/selectors/getLoginIsSbumitting/getLoginIsSubmitting';
+import { loginActions, loginReducer } from '../../model/slice/loginSlice';
+
 import { loginByUsername } from '../../model/services/loginByUsername/loginByUsername';
 import styles from './LoginForm.module.scss';
+
+const dynamicReducers = {
+  loginForm: loginReducer,
+};
 
 type LoginFormProps = {
   className?: string;
@@ -19,12 +28,13 @@ type LoginFormProps = {
 export const LoginForm: FC<LoginFormProps> = ({ className }) => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
-  const {
-    username,
-    password,
-    isSubmitting,
-    error,
-  } = useSelector(getLoginState);
+
+  const username = useSelector(getLoginUsername);
+  const password = useSelector(getLoginPassword);
+  const isSubmitting = useSelector(getLoginIsSubmitting);
+  const error = useSelector(getLoginError);
+
+  useDynamicReducers(dynamicReducers);
 
   const onChangeUsername = useCallback((value: string) => {
     dispatch(loginActions.setUsername(value));
