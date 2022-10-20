@@ -30,6 +30,8 @@ export const NavBar = ({ className }: NavBarProps) => {
     dispatch(userActions.logout());
   }, [dispatch]);
 
+  const onLoginSuccess = useCallback(() => setIsAuthOpen(false), [setIsAuthOpen]);
+
   if (authData) {
     return (
       <div className={classNames(styles.Navbar, className)}>
@@ -55,7 +57,7 @@ export const NavBar = ({ className }: NavBarProps) => {
         {t('navbar.sign-in')}
       </Button>
 
-      <LoginModal isOpen={isAuthOpen} onClose={onCloseModal} />
+      <LoginModal isOpen={isAuthOpen} onClose={onCloseModal} onSuccess={onLoginSuccess} />
     </div>
   );
 };
