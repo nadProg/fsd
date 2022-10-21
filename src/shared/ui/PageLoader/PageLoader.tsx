@@ -1,4 +1,4 @@
-import { classNames } from 'shared/lib/classNames';
+import classNames from 'classnames';
 
 import './PageLoader.scss';
 
@@ -7,7 +7,7 @@ type PageLoaderProps = {
 };
 
 export const PageLoader = ({ className }: PageLoaderProps) => (
-  <div className={classNames('page-loader', {}, [className])}>
+  <div className={classNames(className, 'page-loader')}>
     <div className="example">
       <div className="block">
         <div className="item" />

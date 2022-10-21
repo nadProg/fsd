@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { classNames } from 'shared/lib/classNames';
+import classNames from 'classnames';
 
 import styles from './NotFoundPage.module.scss';
 
@@ -11,7 +11,7 @@ export const NotFoundPage = ({ className }: NotFoundPageProps) => {
   const { t } = useTranslation();
 
   return (
-    <div className={classNames(styles.NotFoundPage, {}, [className])}>
+    <div className={classNames(className, styles.NotFoundPage)}>
       {t('not_found.title')}
     </div>
   );

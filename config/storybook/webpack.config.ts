@@ -1,5 +1,5 @@
 import path from 'path';
-import { Configuration, DefinePlugin, RuleSetRule } from 'webpack';
+import { Configuration, DefinePlugin } from 'webpack';
 
 import { BuildPaths } from '../build/types/config';
 import { buildSassLoader } from '../build/loaders/buildSassLoader';
@@ -12,31 +12,36 @@ export default ({ config }: { config: Configuration }) => {
     src: path.resolve(__dirname, '..', '..', 'src'),
   };
 
-  config.resolve.modules.push(paths.src);
-  config.resolve.extensions.push('.ts', '.tsx');
+  if (config.resolve) {
+    config.resolve.modules?.push(paths.src);
+    config.resolve.extensions?.push('.ts', '.tsx');
+  }
 
-  // eslint-disable-next-line array-callback-return,consistent-return
-  config.module.rules = config.module.rules.map((rule: RuleSetRule) => {
-    if (/svg/.test(rule.test as string)) {
-      return ({
-        ...rule, exclude: /\.svg$/i,
-      });
-    }
+  if (config.module && config.module.rules) {
+    config.module.rules = config.module.rules.map((rule) => {
+      if (typeof rule === 'object' && /svg/.test(rule.test as string)) {
+        return ({
+          ...rule, exclude: /\.svg$/i,
+        });
+      }
 
-    return rule;
-  });
+      return rule;
+    });
 
-  config.module.rules.push({
-    test: /\.svg$/,
-    use: ['@svgr/webpack'],
-  });
+    config.module.rules.push({
+      test: /\.svg$/,
+      use: ['@svgr/webpack'],
+    });
 
-  config.module.rules.push(buildSassLoader(true));
+    config.module.rules.push(buildSassLoader(true));
+  }
 
-  config.plugins.push(new DefinePlugin({
-    __IS_DEV__: true,
-    __API_URL__: JSON.stringify(''),
-  }));
+  if (config.plugins) {
+    config.plugins.push(new DefinePlugin({
+      __IS_DEV__: true,
+      __API_URL__: JSON.stringify(''),
+    }));
+  }
 
   return config;
 };

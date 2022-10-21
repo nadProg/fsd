@@ -1,4 +1,4 @@
-import { classNames } from 'shared/lib/classNames';
+import classNames from 'classnames';
 import { Button, ButtonTheme } from 'shared/ui/Button';
 import { useTheme } from 'shared/providers/ThemeProvider';
 
@@ -16,7 +16,7 @@ export function ThemeSwitcher({ className }: ThemeSwitcherProps) {
   return (
     <Button
       theme={ButtonTheme.Clear}
-      className={classNames(styles.ThemeSwitcher, {}, [className])}
+      className={classNames(className, styles.ThemeSwitcher)}
       onClick={toggleTheme}
     >
       <ThemeIcon className={styles.icon} />

@@ -14,7 +14,7 @@ export const AppRoute = {
   NotFound: 'not_found',
 } as const;
 
-type ValuesOfAppRoute = ValuesOf<Partial<typeof AppRoute>>;
+type ValuesOfAppRoute = ValuesOf<typeof AppRoute>;
 
 export const RoutePath: Record<ValuesOfAppRoute, string> = {
   [AppRoute.Main]: '/',

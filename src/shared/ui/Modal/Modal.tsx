@@ -1,9 +1,9 @@
 import {
   ReactNode, useEffect, useCallback, useState,
 } from 'react';
+import classNames from 'classnames';
 
 import { Portal } from 'shared/ui/Portal';
-import { classNames } from 'shared/lib/classNames';
 
 import styles from './Modal.module.scss';
 
@@ -50,10 +50,7 @@ export const Modal = ({
 
   return (
     <Portal>
-      <div className={classNames(styles.Modal, {
-        [styles.opened]: isOpen,
-      }, [className])}
-      >
+      <div className={classNames(className, styles.Modal, { [styles.opened]: isOpen })}>
         <div className={styles.overlay} onClick={onClose} />
 
         <div className={styles.content}>

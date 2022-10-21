@@ -1,7 +1,7 @@
 import { FC } from 'react';
+import classNames from 'classnames';
 import { Link, LinkProps } from 'react-router-dom';
 
-import { classNames } from 'shared/lib/classNames';
 import { ValuesOf } from 'shared/types';
 
 import styles from './AppLink.module.scss';
@@ -23,7 +23,7 @@ export const AppLink: FC<AppLinkProps> = ({
   ...restProps
 }) => (
   <Link
-    className={classNames(styles.AppLink, {}, [className, styles[theme]])}
+    className={classNames(className, styles.AppLink, styles[theme])}
     {...restProps}
   >
     {children}
