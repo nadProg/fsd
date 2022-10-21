@@ -1,5 +1,5 @@
 import { createSelector } from '@reduxjs/toolkit';
 
-import { getProfileData } from '../getProfileData/getProfileData';
+import { getProfile } from '../getProfile/getProfile';
 
-export const getProfileReadonly = createSelector(getProfileData, (profile) => profile?.firstname || '');
+export const getProfileReadonly = createSelector(getProfile, (profile) => profile?.readonly ?? true);
