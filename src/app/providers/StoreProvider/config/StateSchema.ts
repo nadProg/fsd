@@ -5,6 +5,8 @@ import { UserSchema } from 'entities/User';
 import { CounterSchema } from 'entities/Counter';
 import { ProfileSchema } from 'entities/Profile';
 import { LoginSchema } from 'features/AuthByUsername';
+import { AxiosInstance } from 'axios';
+import { NavigateFunction } from 'react-router-dom';
 
 export type StateSchema = {
   counter: CounterSchema;
@@ -23,5 +25,15 @@ export type ReducerManager = {
 };
 
 export type ReduxStoreWithManager = EnhancedStore<StateSchema> & {
-  reducerManager: ReducerManager
+  reducerManager: ReducerManager;
+};
+
+export type ThunkExtraArgs = {
+  api: AxiosInstance;
+  navigate: NavigateFunction;
+};
+
+export type ThunkConfig<T> = {
+  rejectValue: T;
+  extra: ThunkExtraArgs;
 };
