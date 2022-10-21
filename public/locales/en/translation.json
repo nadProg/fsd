@@ -7,6 +7,7 @@
   "navbar": {
     "main": "Main",
     "about": "About us",
+    "profile": "Profile",
     "sign-in": "Sign In",
     "logout": "Logout"
   },
@@ -30,6 +31,10 @@
   "about": {
     "title": "About us",
     "content": "About us page content"
+  },
+  "profile": {
+    "title": "Profile",
+    "content": "Profile page content"
   },
   "not_found": {
     "title": "Page not found"

@@ -7,10 +7,8 @@ import { LangSwitcher } from 'widgets/LangSwitcher';
 import { ThemeSwitcher } from 'shared/ui/ThemeSwitcher';
 
 import { AppLink } from 'shared/ui/AppLink';
-import { RoutePath } from 'shared/config/router/routeConfig/routeConfig';
 
-import HomeIcon from 'shared/assets/icons/home.svg';
-import AboutIcon from 'shared/assets/icons/about.svg';
+import { SideBarItems } from '../../model/items';
 
 import styles from './SideBar.module.scss';
 
@@ -41,22 +39,17 @@ export function SideBar({ className }: SideBarProps) {
       </Button>
 
       <div className={styles.links}>
-        <AppLink
-          className={styles.link}
-          to={RoutePath.main}
-        >
-          <HomeIcon className={styles.linkIcon} />
-          <span>{t('navbar.main')}</span>
-        </AppLink>
-        <AppLink
-          className={styles.link}
-          to={RoutePath.about}
-        >
-          <AboutIcon className={styles.linkIcon} />
-          <span>
-            {t('navbar.about')}
-          </span>
-        </AppLink>
+        {SideBarItems.map(({ key, icon: Icon, path }) => (
+          <AppLink
+            key={key}
+            className={styles.link}
+            to={path}
+          >
+            <Icon className={styles.linkIcon} />
+            <span>{t(`navbar.${key}`)}</span>
+          </AppLink>
+        ))}
+
       </div>
 
       <div className={styles.switchers}>
