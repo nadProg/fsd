@@ -8,10 +8,12 @@ export type BuildPaths = {
 export type BuildEnv = {
   port?: number;
   prod?: true;
+  apiUrl?: string;
 };
 
 export type BuildOptions = {
   isDev: boolean;
   paths: BuildPaths;
   port: number;
+  apiUrl: string;
 };

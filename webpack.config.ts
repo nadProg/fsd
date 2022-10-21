@@ -3,6 +3,7 @@ import { Configuration } from 'webpack';
 import { buildWebpackConfig, BuildEnv, BuildPaths } from './config/build';
 
 const DEFAULT_PORT = 3000;
+const DEFAULT_API_URL = 'http://localhost:8000';
 
 const paths: BuildPaths = {
   entry: path.resolve(__dirname, 'src', 'index.tsx'),
@@ -16,6 +17,7 @@ export default (env: BuildEnv) => {
     paths,
     isDev: !env.prod,
     port: env.port || DEFAULT_PORT,
+    apiUrl: env.apiUrl || DEFAULT_API_URL,
   });
 
   return config;

@@ -10,6 +10,7 @@ import { BuildOptions } from './types/config';
 export const buildPlugins = ({
   paths,
   isDev,
+  apiUrl,
 }: BuildOptions): WebpackPluginInstance[] => [
   new HTMLWebpackPlugin({
     template: paths.html,
@@ -21,6 +22,7 @@ export const buildPlugins = ({
   new ProgressPlugin(),
   new DefinePlugin({
     __IS_DEV__: Boolean(isDev),
+    __API_URL__: JSON.stringify(apiUrl),
   }),
   // todo: create script to run analyzer
   // new BundleAnalyzerPlugin(),
