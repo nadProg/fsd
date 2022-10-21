@@ -15,12 +15,10 @@ export default {
   },
 } as ComponentMeta<typeof MainPage>;
 
-const Template: ComponentStory<typeof MainPage> = (args) => <MainPage {...args} />;
+const Template: ComponentStory<typeof MainPage> = () => <MainPage />;
 
 export const Light = Template.bind({});
-Light.args = {};
 Light.decorators = [StoreDecorator({})];
 
 export const Dark = Template.bind({});
-Dark.args = {};
 Dark.decorators = [StoreDecorator({}), ThemeDecorator(Theme.Dark)];

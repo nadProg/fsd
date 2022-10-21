@@ -19,7 +19,7 @@ export const fetchProfileData = createAsyncThunk<Profile, void, ThunkConfig<stri
 
       return response.data;
     } catch (error) {
-      const code = isAxiosError(error) ? `${error.response.status}` : 'unknown';
+      const code = isAxiosError(error) && error.response ? `${error.response.status}` : 'unknown';
 
       return rejectWithValue(code);
     }

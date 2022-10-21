@@ -27,7 +27,7 @@ export const loginByUsername = createAsyncThunk<User, LoginByUsernameParams, Thu
 
       return response.data;
     } catch (error) {
-      const code = isAxiosError(error) ? `${error.response.status}` : 'unknown';
+      const code = isAxiosError(error) && error.response ? `${error.response.status}` : 'unknown';
 
       return rejectWithValue(code);
     }
