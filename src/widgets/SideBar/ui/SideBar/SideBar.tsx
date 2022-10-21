@@ -4,7 +4,7 @@ import classNames from 'classnames';
 
 import { Button, ButtonSize, ButtonTheme } from 'shared/ui/Button';
 import { LangSwitcher } from 'widgets/LangSwitcher';
-import { ThemeSwitcher } from 'shared/ui/ThemeSwitcher';
+import { ThemeSwitcher } from 'widgets/ThemeSwitcher';
 
 import { AppLink } from 'shared/ui/AppLink';
 
