@@ -12,13 +12,10 @@ const paths: BuildPaths = {
   src: path.resolve(__dirname, 'src'),
 };
 
-export default (env: BuildEnv) => {
-  const config: Configuration = buildWebpackConfig({
-    paths,
-    isDev: !env.prod,
-    port: env.port || DEFAULT_PORT,
-    apiUrl: env.apiUrl || DEFAULT_API_URL,
-  });
-
-  return config;
-};
+export default (env: BuildEnv): Configuration => buildWebpackConfig({
+  paths,
+  isDev: !env.prod,
+  analyze: !!env.analyze,
+  port: env.port || DEFAULT_PORT,
+  apiUrl: env.apiUrl || DEFAULT_API_URL,
+});

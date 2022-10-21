@@ -8,6 +8,7 @@
     "start-server:dev": "node ./json-server/index.js",
     "build": "webpack",
     "build:prod": "webpack --env prod",
+    "analyze:prod": "webpack --env prod analyze",
     "lint-ts": "eslint \"**/*.{ts,tsx}\"",
     "lint-ts:fix": "npm run lint-ts -- --fix",
     "lint-scss": "stylelint \"**/*.scss\"",

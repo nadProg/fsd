@@ -10,6 +10,7 @@ import { BuildOptions } from './types/config';
 export const buildPlugins = ({
   paths,
   isDev,
+  analyze,
   apiUrl,
 }: BuildOptions): WebpackPluginInstance[] => {
   const plugins = [
@@ -30,8 +31,9 @@ export const buildPlugins = ({
     plugins.push(new ReactRefreshWebpackPlugin());
   }
 
-  // todo: create script to run analyzer
-  // new BundleAnalyzerPlugin(),
+  if (analyze) {
+    plugins.push(new BundleAnalyzerPlugin());
+  }
 
   return plugins;
 };
