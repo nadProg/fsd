@@ -13,7 +13,7 @@ type StoreProviderProps = {
 
 export const StoreProvider: FC<StoreProviderProps> = ({ children, initialState, asyncReducers }) => {
   const navigate = useNavigate();
-  const store = createReduxStore(initialState, asyncReducers, navigate);
+  const store = createReduxStore({ initialState, asyncReducers, navigate });
 
   return <Provider store={store}>{children}</Provider>;
 };
