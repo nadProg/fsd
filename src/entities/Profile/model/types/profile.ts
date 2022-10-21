@@ -9,7 +9,7 @@ export type Profile = {
   country: ValuesOf<typeof Country>;
   city: string;
   username: string;
-  avatar: string;
+  avatar: string | null;
 };
 
 export type ProfileSchema = {

@@ -11,19 +11,27 @@ export const buildPlugins = ({
   paths,
   isDev,
   apiUrl,
-}: BuildOptions): WebpackPluginInstance[] => [
-  new HTMLWebpackPlugin({
-    template: paths.html,
-  }),
-  isDev && new ReactRefreshWebpackPlugin(),
-  new MiniCssExtractPlugin({
-    filename: 'css/[name].[contenthash:8].css',
-  }),
-  new ProgressPlugin(),
-  new DefinePlugin({
-    __IS_DEV__: Boolean(isDev),
-    __API_URL__: JSON.stringify(apiUrl),
-  }),
+}: BuildOptions): WebpackPluginInstance[] => {
+  const plugins = [
+    new HTMLWebpackPlugin({
+      template: paths.html,
+    }),
+    new MiniCssExtractPlugin({
+      filename: 'css/[name].[contenthash:8].css',
+    }),
+    new ProgressPlugin(),
+    new DefinePlugin({
+      __IS_DEV__: Boolean(isDev),
+      __API_URL__: JSON.stringify(apiUrl),
+    }),
+  ];
+
+  if (isDev) {
+    plugins.push(new ReactRefreshWebpackPlugin());
+  }
+
   // todo: create script to run analyzer
   // new BundleAnalyzerPlugin(),
-].filter(Boolean);
+
+  return plugins;
+};
