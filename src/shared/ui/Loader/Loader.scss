@@ -1,25 +1,19 @@
-.page-loader {
-  --duration: 500ms;
-  --size: 2rem;
+.loader {
+  --size: var(--loader-size);
+  --duration: var(--loader-duration);
 
-  min-height: calc(100vh - var(--navbar-height) - 2 * var(--page-padding));
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.example {
   position: relative;
 }
 
-.block {
+.loader__block {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   height: var(--size);
   width: var(--size);
 
-  > .item {
+  > .loader__item {
     position: absolute;
     height: var(--size);
     width: var(--size);

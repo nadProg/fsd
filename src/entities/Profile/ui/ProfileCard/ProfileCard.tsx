@@ -1,31 +1,49 @@
 import { FC } from 'react';
 import classNames from 'classnames';
-import { useSelector } from 'react-redux';
+
 import { useTranslation } from 'react-i18next';
 
-import { PropsWithClassName } from 'shared/types';
-
-import { getProfileError } from 'entities/Profile/model/selectors/getProfileError/getProfileError';
-import { getProfileIsLoading } from 'entities/Profile/model/selectors/getProfileIsLoading/getProfileIsLoading';
+import type { PropsWithClassName } from 'shared/types';
 import { Input } from 'shared/ui/Input';
-import { getProfileData } from '../../model/selectors/getProfileData/getProfileData';
+import { Loader } from 'shared/ui/Loader';
+import type { Profile } from '../../model/types/profile';
 
 import styles from './ProfileCard.module.scss';
 
-type ProfileCardProps = PropsWithClassName;
+type ProfileCardProps = PropsWithClassName & {
+  data?: Profile;
+  isLoading?: boolean;
+  error?: string;
+};
 
-export const ProfileCard: FC<ProfileCardProps> = ({ className }) => {
+export const ProfileCard: FC<ProfileCardProps> = (props) => {
+  const {
+    className, data, isLoading, error,
+  } = props;
+
   const { t } = useTranslation();
 
-  const profileData = useSelector(getProfileData);
-  const profileError = useSelector(getProfileError);
-  const profileIsLoading = useSelector(getProfileIsLoading);
+  if (isLoading) {
+    return (
+      <div className={classNames(className, styles.Profile, styles.loading)}>
+        <Loader />
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className={classNames(className, styles.Profile)}>
+        {error}
+      </div>
+    );
+  }
 
   return (
     <div className={classNames(className, styles.Profile)}>
 
-      <Input value={profileData?.firstname || ''} placeholder="Ваше имя" />
-      <Input value={profileData?.lastname || ''} placeholder="Ваша фамилия" />
+      <Input value={data?.firstname || ''} placeholder="Ваше имя" />
+      <Input value={data?.lastname || ''} placeholder="Ваша фамилия" />
     </div>
   );
 };
