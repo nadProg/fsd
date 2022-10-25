@@ -7,3 +7,10 @@
 .placeholder {
   font: var(--font-m);
 }
+
+.input {
+  &[readonly] {
+    opacity: 0.75;
+    outline: none;
+  }
+}

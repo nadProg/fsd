@@ -1,16 +1,17 @@
 import { ChangeEventHandler, FC, InputHTMLAttributes } from 'react';
 import classNames from 'classnames';
 
+import { ExtendableProps } from 'shared/types';
 import styles from './Input.module.scss';
 
-type ExtendedInputProps = {
-  value?: string;
+type ExtendedInputProps = InputHTMLAttributes<HTMLInputElement>;
+
+type OverrideInputProps = {
+  value?: string | number;
   onChange?: (value: string) => void;
 };
 
-type OverrideInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange'>;
-
-type InputProps = ExtendedInputProps & OverrideInputProps;
+type InputProps = ExtendableProps<ExtendedInputProps, OverrideInputProps>;
 
 export const Input: FC<InputProps> = ({
   className,
@@ -28,7 +29,11 @@ export const Input: FC<InputProps> = ({
           {'>'}
         </span>
       )}
-      <input onChange={onInputChange} {...restProps} />
+      <input
+        onChange={onInputChange}
+        className={styles.input}
+        {...restProps}
+      />
     </label>
   );
 };
