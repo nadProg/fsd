@@ -54,6 +54,14 @@ export const ProfilePage: FC<ProfilePageProps> = (props) => {
     dispatch(profileActions.updateForm({ city: value }));
   }, [dispatch]);
 
+  const onChangeUserName = useCallback((value?: string) => {
+    dispatch(profileActions.updateForm({ username: value }));
+  }, [dispatch]);
+
+  const onChangeAvatar = useCallback((value?: string) => {
+    dispatch(profileActions.updateForm({ avatar: value }));
+  }, [dispatch]);
+
   useEffect(() => {
     dispatch(fetchProfileData());
   }, [dispatch]);
@@ -71,6 +79,8 @@ export const ProfilePage: FC<ProfilePageProps> = (props) => {
         onChangeLastName={onChangeLastName}
         onChangeAge={onChangeAge}
         onChangeCity={onChangeCity}
+        onChangeUserName={onChangeUserName}
+        onChangeAvatar={onChangeAvatar}
       />
     </div>
   );

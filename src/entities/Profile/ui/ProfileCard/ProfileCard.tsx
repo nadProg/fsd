@@ -7,6 +7,7 @@ import type { PropsWithClassName } from 'shared/types';
 import { Input } from 'shared/ui/Input';
 import { Loader } from 'shared/ui/Loader';
 import { Text, TextTheme } from 'shared/ui/Text';
+import { Avatar } from 'shared/ui/Avatar';
 
 import type { Profile } from '../../model/types/profile';
 
@@ -18,10 +19,12 @@ type ProfileCardProps = PropsWithClassName & {
   isLoading?: boolean;
   error?: string;
   readonly?: boolean;
-  onChangeFirstName: (value: string) => void;
-  onChangeLastName: (value: string) => void;
-  onChangeAge: (value: string) => void;
-  onChangeCity: (value: string) => void;
+  onChangeFirstName?: (value: string) => void;
+  onChangeLastName?: (value: string) => void;
+  onChangeAge?: (value: string) => void;
+  onChangeCity?: (value: string) => void;
+  onChangeUserName?: (value: string) => void;
+  onChangeAvatar?: (value: string) => void;
 };
 
 export const ProfileCard: FC<ProfileCardProps> = (props) => {
@@ -36,6 +39,8 @@ export const ProfileCard: FC<ProfileCardProps> = (props) => {
     onChangeLastName,
     onChangeCity,
     onChangeAge,
+    onChangeUserName,
+    onChangeAvatar,
   } = props;
 
   const { t } = useTranslation();
@@ -61,7 +66,18 @@ export const ProfileCard: FC<ProfileCardProps> = (props) => {
   const dataSource = readonly ? data : form;
 
   return (
-    <div className={classNames(className, styles.Profile)}>
+    <div className={classNames(
+      className,
+      styles.Profile,
+      { [styles.editing]: !readonly },
+    )}
+    >
+      { dataSource?.avatar && (
+        <div className={styles.avatarWrapper}>
+          <Avatar src={dataSource?.avatar} alt="" />
+        </div>
+      )}
+
       <Input
         value={dataSource?.firstname || ''}
         placeholder="Ваше имя"
@@ -87,6 +103,20 @@ export const ProfileCard: FC<ProfileCardProps> = (props) => {
         value={dataSource?.city || ''}
         placeholder="Ваш город"
         onChange={onChangeCity}
+        readOnly={readonly}
+      />
+
+      <Input
+        value={dataSource?.username || ''}
+        placeholder="Ваш юзернейм"
+        onChange={onChangeUserName}
+        readOnly={readonly}
+      />
+
+      <Input
+        value={dataSource?.avatar || ''}
+        placeholder="Ваш аватар"
+        onChange={onChangeAvatar}
         readOnly={readonly}
       />
     </div>

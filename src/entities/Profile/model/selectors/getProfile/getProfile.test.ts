@@ -17,7 +17,7 @@ describe('getProfile', () => {
           city: 'city',
           country: Country.Armenia,
           currency: Currency.Eur,
-          avatar: null,
+          avatar: '',
         },
         readonly: false,
       },
@@ -32,7 +32,7 @@ describe('getProfile', () => {
         city: 'city',
         country: Country.Armenia,
         currency: Currency.Eur,
-        avatar: null,
+        avatar: '',
       },
       readonly: false,
     });
