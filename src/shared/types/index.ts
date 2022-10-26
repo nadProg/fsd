@@ -4,6 +4,11 @@ export type PropsWithClassName = {
   className?: string;
 };
 
+export type Option<V = string, L = string> = {
+  label: L;
+  value: V
+};
+
 export type ExtendableProps<
   ExtendedProps = Record<string, unknown>,
   OverrideProps = Record<string, unknown>,
