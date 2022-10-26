@@ -29,8 +29,8 @@
     "firstname": "Админ",
     "lastname": "Админов",
     "age": 25,
-    "currency": "RUB",
-    "country": "Russia",
+    "currency": "EUR",
+    "country": "Kazakhstan",
     "city": "Moscow",
     "username": "admin",
     "avatar": "https://picsum.photos/250"

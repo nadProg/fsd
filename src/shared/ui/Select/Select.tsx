@@ -16,7 +16,7 @@ type OverrideProps = {
 
 type ExtendedProps = SelectHTMLAttributes<HTMLSelectElement>;
 
-type SelectProps = PropsWithClassName & ExtendableProps<ExtendedProps, OverrideProps>;
+export type SelectProps = PropsWithClassName & ExtendableProps<ExtendedProps, OverrideProps>;
 
 export const Select: FC<SelectProps> = (props) => {
   const {

@@ -17,6 +17,8 @@ import { PropsWithClassName } from 'shared/types';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { useDynamicReducers } from 'shared/hooks/useDynamicReducers';
 
+import { ValuesOfCurrency } from 'entities/Currency';
+import { ValuesOfCountry } from 'entities/Country';
 import { ProfilePageHeader } from './ProfilePageHeader/ProfilePageHeader';
 
 const reducers = {
@@ -62,6 +64,14 @@ export const ProfilePage: FC<ProfilePageProps> = (props) => {
     dispatch(profileActions.updateForm({ avatar: value }));
   }, [dispatch]);
 
+  const onChangeCurrency = useCallback((value?: ValuesOfCurrency) => {
+    dispatch(profileActions.updateForm({ currency: value }));
+  }, [dispatch]);
+
+  const onChangeCountry = useCallback((value?: ValuesOfCountry) => {
+    dispatch(profileActions.updateForm({ country: value }));
+  }, [dispatch]);
+
   useEffect(() => {
     dispatch(fetchProfileData());
   }, [dispatch]);
@@ -81,6 +91,8 @@ export const ProfilePage: FC<ProfilePageProps> = (props) => {
         onChangeCity={onChangeCity}
         onChangeUserName={onChangeUserName}
         onChangeAvatar={onChangeAvatar}
+        onChangeCurrency={onChangeCurrency}
+        onChangeCountry={onChangeCountry}
       />
     </div>
   );

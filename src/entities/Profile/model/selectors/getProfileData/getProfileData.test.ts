@@ -2,7 +2,9 @@ import { DeepPartial } from 'shared/types';
 
 import { StateSchema } from 'app/providers/StoreProvider';
 
-import { Country, Currency } from 'shared/constants/common';
+import { Country } from 'entities/Country';
+import { Currency } from 'entities/Currency';
+
 import { getProfileData } from './getProfileData';
 
 describe('getProfileData', () => {

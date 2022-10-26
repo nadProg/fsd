@@ -9,6 +9,9 @@ import { Loader } from 'shared/ui/Loader';
 import { Text, TextTheme } from 'shared/ui/Text';
 import { Avatar } from 'shared/ui/Avatar';
 
+import { CurrencySelect, ValuesOfCurrency } from 'entities/Currency';
+
+import { CountrySelect, ValuesOfCountry } from 'entities/Country';
 import type { Profile } from '../../model/types/profile';
 
 import styles from './ProfileCard.module.scss';
@@ -25,6 +28,8 @@ type ProfileCardProps = PropsWithClassName & {
   onChangeCity?: (value: string) => void;
   onChangeUserName?: (value: string) => void;
   onChangeAvatar?: (value: string) => void;
+  onChangeCurrency?: (value: ValuesOfCurrency) => void;
+  onChangeCountry?: (value: ValuesOfCountry) => void;
 };
 
 export const ProfileCard: FC<ProfileCardProps> = (props) => {
@@ -41,6 +46,8 @@ export const ProfileCard: FC<ProfileCardProps> = (props) => {
     onChangeAge,
     onChangeUserName,
     onChangeAvatar,
+    onChangeCurrency,
+    onChangeCountry,
   } = props;
 
   const { t } = useTranslation();
@@ -104,6 +111,18 @@ export const ProfileCard: FC<ProfileCardProps> = (props) => {
         placeholder="Ваш город"
         onChange={onChangeCity}
         readOnly={readonly}
+      />
+
+      <CurrencySelect
+        value={dataSource?.currency}
+        onChange={onChangeCurrency}
+        disabled={readonly}
+      />
+
+      <CountrySelect
+        value={dataSource?.country}
+        onChange={onChangeCountry}
+        disabled={readonly}
       />
 
       <Input

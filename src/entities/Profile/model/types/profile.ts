@@ -1,12 +1,12 @@
-import { ValuesOf } from 'shared/types';
-import { Country, Currency } from 'shared/constants/common';
+import { ValuesOfCurrency } from 'entities/Currency';
+import { ValuesOfCountry } from 'entities/Country';
 
 export type Profile = {
   firstname?: string;
   lastname?: string
   age?: number;
-  currency?: ValuesOf<typeof Currency>;
-  country?: ValuesOf<typeof Country>;
+  currency?: ValuesOfCurrency;
+  country?: ValuesOfCountry;
   city?: string;
   username?: string;
   avatar?: string;
