@@ -26,9 +26,9 @@
     }
   ],
   "profile": {
-    "firstname": "Админ",
+    "firstname": "Admin",
     "lastname": "Админов",
-    "age": 25,
+    "age": 33,
     "currency": "EUR",
     "country": "Kazakhstan",
     "city": "Moscow",
