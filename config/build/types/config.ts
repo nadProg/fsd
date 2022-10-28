@@ -1,3 +1,9 @@
+export const Project = {
+  Frontend: 'frontend',
+  Storybook: 'storybook',
+  Jest: 'jest',
+} as const;
+
 export type BuildPaths = {
   entry: string;
   build: string;
@@ -18,4 +24,5 @@ export type BuildOptions = {
   paths: BuildPaths;
   port: number;
   apiUrl: string;
+  project: typeof Project[keyof typeof Project];
 };

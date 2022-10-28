@@ -24,3 +24,6 @@ declare const __IS_DEV__: boolean;
 
 // eslint-disable-next-line @typescript-eslint/naming-convention, no-underscore-dangle
 declare const __API_URL__: string;
+
+// eslint-disable-next-line @typescript-eslint/naming-convention, no-underscore-dangle
+declare const __PROJECT__: 'frontend' | 'storybook' | 'jest';

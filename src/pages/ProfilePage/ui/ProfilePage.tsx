@@ -37,8 +37,7 @@ const validateErrorTranslates: Record<ValuesOf<typeof ValidateProfileError>, str
   [ValidateProfileError.ServerError]: 'profile.errors.server_error',
 };
 
-export const ProfilePage: FC<ProfilePageProps> = (props) => {
-  const { className } = props;
+export const ProfilePage: FC<ProfilePageProps> = ({ className }) => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
 
@@ -84,7 +83,9 @@ export const ProfilePage: FC<ProfilePageProps> = (props) => {
   }, [dispatch]);
 
   useEffect(() => {
-    dispatch(fetchProfileData());
+    if (__PROJECT__ !== 'storybook') {
+      dispatch(fetchProfileData());
+    }
   }, [dispatch]);
 
   return (

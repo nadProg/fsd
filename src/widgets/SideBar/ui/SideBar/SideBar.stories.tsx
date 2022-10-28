@@ -4,6 +4,7 @@ import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDeco
 
 import { Theme } from 'shared/providers/ThemeProvider';
 
+import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
 import { SideBar } from './SideBar';
 
 export default {
@@ -12,12 +13,18 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' },
   },
+  decorators: [StoreDecorator({
+    user: {
+      authData: {},
+    },
+  })],
 } as ComponentMeta<typeof SideBar>;
 
 const Template: ComponentStory<typeof SideBar> = (args) => <SideBar {...args} />;
 
 export const Light = Template.bind({});
 Light.args = {};
+Light.decorators = [];
 
 export const Dark = Template.bind({});
 Dark.args = {};

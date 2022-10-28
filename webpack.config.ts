@@ -1,5 +1,6 @@
 import path from 'path';
 import { Configuration } from 'webpack';
+import { Project } from './config/build/types/config';
 import { buildWebpackConfig, BuildEnv, BuildPaths } from './config/build';
 
 const DEFAULT_PORT = 3000;
@@ -18,4 +19,5 @@ export default (env: BuildEnv): Configuration => buildWebpackConfig({
   analyze: !!env.analyze,
   port: env.port || DEFAULT_PORT,
   apiUrl: env.apiUrl || DEFAULT_API_URL,
+  project: Project.Frontend,
 });

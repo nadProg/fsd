@@ -13,6 +13,7 @@ describe('getProfileData', () => {
       profile: {
         data: {
           username: 'username',
+          firstname: 'firstname',
           lastname: 'lastname',
           age: 30,
           city: 'city',
@@ -26,6 +27,7 @@ describe('getProfileData', () => {
     expect(getProfileData(state as StateSchema)).toEqual(
       {
         username: 'username',
+        firstname: 'firstname',
         lastname: 'lastname',
         age: 30,
         city: 'city',
