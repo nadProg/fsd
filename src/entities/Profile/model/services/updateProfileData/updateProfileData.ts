@@ -4,7 +4,7 @@ import { ThunkConfig } from 'app/providers/StoreProvider';
 
 import { validateProfile } from 'entities/Profile/model/services/validateProfile/validateProfile';
 
-import { Profile, ValuesOfValidateProfileError } from '../../types/profile';
+import { Profile, ValidateProfileError, ValuesOfValidateProfileError } from '../../types/profile';
 import { getProfileForm } from '../../selectors/getProfileForm/getProfileForm';
 
 export const updateProfileData = createAsyncThunk<Profile, void, ThunkConfig<ValuesOfValidateProfileError[]>>(
@@ -29,7 +29,7 @@ export const updateProfileData = createAsyncThunk<Profile, void, ThunkConfig<Val
 
       return response.data;
     } catch (error) {
-      return rejectWithValue(validateProfile());
+      return rejectWithValue([ValidateProfileError.ServerError]);
     }
   },
 );
