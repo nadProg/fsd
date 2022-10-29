@@ -112,17 +112,19 @@ describe('ProfileSlice', () => {
       });
   });
 
-  // test.skip('should handle fetch profile data service rejected', () => {
-  //   const state: DeepPartial<ProfileSchema> = {
-  //     isLoading: true,
-  //   };
-  //
-  //   expect(profileReducer(state as ProfileSchema, fetchProfileData.rejected('error', '')))
-  //     .toEqual({
-  //       error: 'error',
-  //       isLoading: false,
-  //     });
-  // });
+  test('should handle fetch profile data service rejected', () => {
+    const state: DeepPartial<ProfileSchema> = {
+      isLoading: true,
+    };
+
+    const action = fetchProfileData.rejected(null, '', undefined, 'error');
+
+    expect(profileReducer(state as ProfileSchema, action))
+      .toEqual({
+        error: 'error',
+        isLoading: false,
+      });
+  });
 
   test('should handle update profile data service pending', () => {
     const state: DeepPartial<ProfileSchema> = {
@@ -149,15 +151,17 @@ describe('ProfileSlice', () => {
       });
   });
 
-  // test.skip('should handle update profile data service rejected', () => {
-  //   const state: DeepPartial<ProfileSchema> = {
-  //     isLoading: true,
-  //   };
-  //
-  //   expect(profileReducer(state as ProfileSchema, updateProfileData.rejected([ValidateProfileError.ServerError], '')))
-  //     .toEqual({
-  //       error: [ValidateProfileError.ServerError],
-  //       isLoading: false,
-  //     });
-  // });
+  test('should handle update profile data service rejected', () => {
+    const state: DeepPartial<ProfileSchema> = {
+      isLoading: true,
+    };
+
+    const action = updateProfileData.rejected(null, '', undefined, [ValidateProfileError.ServerError]);
+
+    expect(profileReducer(state as ProfileSchema, action))
+      .toEqual({
+        validateErrors: [ValidateProfileError.ServerError],
+        isLoading: false,
+      });
+  });
 });
