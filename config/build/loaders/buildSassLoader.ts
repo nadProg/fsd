@@ -1,8 +1,11 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { RuleSetRule, RuleSetUseItem } from 'webpack';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import { BuildOptions } from '../types/config';
 
-export const buildSassLoader = (isDev: boolean) => {
+type BuildSassLoaderOptions = Partial<BuildOptions>;
+
+export const buildSassLoader = ({ isDev }: BuildSassLoaderOptions): RuleSetRule => {
   const styleLoaderItem: RuleSetUseItem = isDev
     ? 'style-loader'
     : MiniCssExtractPlugin.loader;
@@ -19,10 +22,8 @@ export const buildSassLoader = (isDev: boolean) => {
     },
   };
 
-  const sassLoader: RuleSetRule = {
+  return {
     test: /\.s[ac]ss$/i,
     use: [styleLoaderItem, cssLoaderItem, 'sass-loader'],
   };
-
-  return sassLoader;
 };

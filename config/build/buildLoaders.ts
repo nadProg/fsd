@@ -3,8 +3,9 @@ import { RuleSetRule } from 'webpack';
 
 import { BuildOptions } from './types/config';
 import { buildSassLoader } from './loaders/buildSassLoader';
+import { buildBabelLoader } from './loaders/buildBabelLoader';
 
-export const buildLoaders = ({ isDev }: BuildOptions): RuleSetRule[] => {
+export const buildLoaders = (options: BuildOptions): RuleSetRule[] => {
   const svgLoader: RuleSetRule = {
     test: /\.svg$/,
     use: ['@svgr/webpack'],
@@ -19,7 +20,7 @@ export const buildLoaders = ({ isDev }: BuildOptions): RuleSetRule[] => {
     ],
   };
 
-  const sassLoader = buildSassLoader(isDev);
+  const sassLoader = buildSassLoader(options);
 
   const typeScriptLoader: RuleSetRule = {
     test: /\.tsx?$/,
@@ -27,5 +28,7 @@ export const buildLoaders = ({ isDev }: BuildOptions): RuleSetRule[] => {
     exclude: /node_modules/,
   };
 
-  return [fileLoader, svgLoader, typeScriptLoader, sassLoader];
+  const babelLoader = buildBabelLoader(options);
+
+  return [fileLoader, svgLoader, babelLoader, typeScriptLoader, sassLoader];
 };

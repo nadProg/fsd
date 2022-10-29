@@ -33,7 +33,7 @@ export default ({ config }: { config: Configuration }) => {
       use: ['@svgr/webpack'],
     });
 
-    config.module.rules.push(buildSassLoader(true));
+    config.module.rules.push(buildSassLoader({ isDev: true }));
   }
 
   if (config.plugins) {
