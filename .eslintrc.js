@@ -23,7 +23,10 @@ module.exports = {
   },
   plugins: ['react', '@typescript-eslint', 'i18next', 'react-hooks'],
   rules: {
-    indent: ['error', 2],
+    indent: 'off',
+    '@typescript-eslint/indent': ['error', 2, {
+      'SwitchCase': 0
+    }],
     'linebreak-style': ['error', 'unix'],
     quotes: ['error', 'single'],
     semi: ['error', 'always'],
