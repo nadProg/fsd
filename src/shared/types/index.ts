@@ -1,7 +1,13 @@
+import { ReactNode } from 'react';
+
 export type ValuesOf<T> = T[keyof T];
 
 export type PropsWithClassName = {
   className?: string;
+};
+
+export type PropsWithChildren = {
+  children: ReactNode;
 };
 
 export type Option<V = string, L = string> = {

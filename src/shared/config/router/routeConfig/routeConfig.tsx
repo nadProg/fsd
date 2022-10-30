@@ -16,7 +16,7 @@ export const AppRoute = {
 
 type ValuesOfAppRoute = ValuesOf<typeof AppRoute>;
 
-type AppRouteProps = RouteProps & {
+export type AppRouteProps = RouteProps & {
   authOnly?: boolean;
 };
 
