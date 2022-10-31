@@ -6,8 +6,8 @@ import { useTranslation } from 'react-i18next';
 import { Id, PropsWithClassName } from 'shared/types';
 import { ReducersList, useDynamicReducers } from 'shared/hooks/useDynamicReducers';
 import { Text, TextTheme } from 'shared/ui/Text';
+import { Skeleton } from 'shared/ui/Skeleton';
 
-import { PageLoader } from 'widgets/PageLoader';
 import {
   getArticleDetailsIsLoading,
 } from '../../model/selectors/getArticleDetailsIsLoading/getArticleDetailsIsLoading';
@@ -42,7 +42,15 @@ export const ArticleDetails = ({ className, id }: ArticleDetailsProps) => {
 
   if (articleDetailsIsLoading) {
     return (
-      <PageLoader />
+      <div
+        className={classNames(className, styles.ArticleDetails, styles.loading)}
+      >
+        <Skeleton className={styles.loadingImage} width={200} height={200} borderRadius="50%" />
+        <Skeleton width={300} height={24} />
+        <Skeleton width={600} height={24} />
+        <Skeleton height={200} />
+        <Skeleton height={200} />
+      </div>
     );
   }
 

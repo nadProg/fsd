@@ -1,3 +1,13 @@
 .ArticleDetails {
   display: block;
 }
+
+.loading {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.loadingImage {
+  align-self: center;
+}
