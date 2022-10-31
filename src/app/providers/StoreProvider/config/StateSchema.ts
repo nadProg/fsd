@@ -7,12 +7,14 @@ import { ProfileSchema } from 'entities/Profile';
 import { LoginSchema } from 'features/AuthByUsername';
 import { AxiosInstance } from 'axios';
 import { NavigateFunction } from 'react-router-dom';
+import { ArticleDetailsSchema } from 'entities/Article';
 
 export type StateSchema = {
   counter: CounterSchema;
   user: UserSchema;
   loginForm?: LoginSchema;
   profile?: ProfileSchema;
+  articleDetails?: ArticleDetailsSchema;
 };
 
 export type StateSchemaKey = keyof StateSchema;

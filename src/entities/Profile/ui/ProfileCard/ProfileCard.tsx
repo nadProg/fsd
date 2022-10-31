@@ -50,6 +50,7 @@ export const ProfileCard: FC<ProfileCardProps> = (props) => {
     onChangeCountry,
   } = props;
 
+  // todo: add translations
   const { t } = useTranslation();
 
   if (isLoading) {

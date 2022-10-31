@@ -24,6 +24,7 @@ const options = [
 ];
 
 export const CountrySelect: FC<CountrySelectProps> = ({ className, onChange, ...restProps }) => {
+  // todo: add translation to label
   const { t } = useTranslation();
 
   return (

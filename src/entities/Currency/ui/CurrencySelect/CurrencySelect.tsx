@@ -20,6 +20,7 @@ const options = [
 ];
 
 export const CurrencySelect: FC<CurrencySelectProps> = ({ className, onChange, ...restProps }) => {
+  // todo: add translation to label
   const { t } = useTranslation();
 
   return (
