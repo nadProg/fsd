@@ -16,6 +16,8 @@ const mockData = {
   avatar: '',
 };
 
+const mockId = '111';
+
 describe('fetchArticleDetailsData', () => {
   test.skip('should handle success request', async () => {
     const thunk = new TestAsyncThunk(fetchArticleDetailsData);
@@ -26,7 +28,7 @@ describe('fetchArticleDetailsData', () => {
       data: mockData,
     }));
 
-    const result = await thunk.callThunk();
+    const result = await thunk.callThunk(mockId);
 
     expect(result.meta.requestStatus).toBe('fulfilled');
 
@@ -46,7 +48,7 @@ describe('fetchArticleDetailsData', () => {
       status: 403,
     }));
 
-    const result = await thunk.callThunk();
+    const result = await thunk.callThunk(mockId);
 
     expect(api.get).toHaveBeenCalled();
 
