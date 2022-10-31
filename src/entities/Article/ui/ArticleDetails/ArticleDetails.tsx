@@ -37,7 +37,9 @@ export const ArticleDetails = ({ className, id }: ArticleDetailsProps) => {
   const articleDetailsError = useSelector(getArticleDetailsError);
 
   useEffect(() => {
-    dispatch(fetchArticleDetailsData(id));
+    if (__PROJECT__ !== 'storybook') {
+      dispatch(fetchArticleDetailsData(id));
+    }
   }, [dispatch, id]);
 
   if (articleDetailsIsLoading) {
