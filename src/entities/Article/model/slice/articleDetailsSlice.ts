@@ -1,7 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 import { ArticleDetailsSchema } from '../types/articleDetailsSchema';
-import { Article } from '../types/article';
 import { fetchArticleDetailsData } from '../services/fetchArticleDetailsData/fetchArticleDetailsData';
 
 const initialState: ArticleDetailsSchema = {
@@ -13,21 +12,7 @@ const initialState: ArticleDetailsSchema = {
 export const articleDetailsSlice = createSlice({
   name: 'articleDetails',
   initialState,
-  reducers: {
-    // setReadonly: (state, action: PayloadAction<boolean>) => {
-    //   state.readonly = action.payload;
-    // },
-    // updateForm: (state, action: PayloadAction<Profile>) => {
-    //   state.form = {
-    //     ...state.form,
-    //     ...action.payload,
-    //   };
-    // },
-    // resetForm: (state) => {
-    //   state.form = state.data;
-    //   state.validateErrors = undefined;
-    // },
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(fetchArticleDetailsData.pending, (state) => {
