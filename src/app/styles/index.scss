@@ -37,5 +37,6 @@ h6 {
   flex-grow: 1;
   padding: var(--page-padding) var(--page-padding) var(--page-padding) calc(2 * var(--page-padding));
   height: calc(100vh - var(--navbar-height));
+  width: 100%;
   overflow-y: auto;
 }
