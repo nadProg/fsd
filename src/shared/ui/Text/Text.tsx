@@ -15,14 +15,36 @@ export const TextVariant = {
   Text: 'text',
 } as const;
 
+export const TextSize = {
+  Medium: 'mediumSize',
+  Large: 'largeSize',
+};
+
 type TextProps = PropsWithClassName & {
   theme?: ValuesOf<typeof TextTheme>;
   variant?: ValuesOf<typeof TextVariant>;
+  size?: ValuesOf<typeof TextSize>;
 };
 
-export const Text: FC<TextProps> = ({
-  className,
-  children,
-  theme = TextTheme.Primary,
-  variant = TextVariant.Text,
-}) => <div className={classNames(className, styles.Text, styles[theme], styles[variant])}>{children}</div>;
+export const Text: FC<TextProps> = (props) => {
+  const {
+    className,
+    children,
+    theme = TextTheme.Primary,
+    variant = TextVariant.Text,
+    size = TextSize.Medium,
+  } = props;
+
+  return (
+    <div className={classNames(
+      className,
+      styles.Text,
+      styles[theme],
+      styles[variant],
+      styles[size],
+    )}
+    >
+      {children}
+    </div>
+  );
+};

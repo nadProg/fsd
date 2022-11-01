@@ -1,3 +1,7 @@
-import { Text, TextTheme } from './Text';
+import {
+  Text, TextTheme, TextVariant, TextSize,
+} from './Text';
 
-export { Text, TextTheme };
+export {
+  Text, TextTheme, TextVariant, TextSize,
+};

@@ -3,7 +3,9 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { Theme } from 'shared/providers/ThemeProvider';
 
-import { Text as TextComponent, TextTheme, TextVariant } from './Text';
+import {
+  Text as TextComponent, TextSize, TextTheme, TextVariant,
+} from './Text';
 
 export default {
   title: 'shared/Text',
@@ -32,6 +34,22 @@ PrimaryTitle.args = {
   children: 'Text',
   theme: TextTheme.Primary,
   variant: TextVariant.Title,
+};
+
+export const PrimaryTextLarge = Template.bind({});
+PrimaryTextLarge.args = {
+  children: 'Text',
+  theme: TextTheme.Primary,
+  variant: TextVariant.Text,
+  size: TextSize.Large,
+};
+
+export const PrimaryTitleLarge = Template.bind({});
+PrimaryTitleLarge.args = {
+  children: 'Text',
+  theme: TextTheme.Primary,
+  variant: TextVariant.Title,
+  size: TextSize.Large,
 };
 
 export const ErrorText = Template.bind({});
@@ -67,6 +85,24 @@ PrimaryTitleDark.args = {
   children: 'Text',
   theme: TextTheme.Primary,
   variant: TextVariant.Text,
+};
+PrimaryTitleDark.decorators = [ThemeDecorator(Theme.Dark)];
+
+export const PrimaryTextDarkLarge = Template.bind({});
+PrimaryTextDarkLarge.args = {
+  children: 'Text',
+  theme: TextTheme.Primary,
+  variant: TextVariant.Text,
+  size: TextSize.Large,
+};
+PrimaryTextDark.decorators = [ThemeDecorator(Theme.Dark)];
+
+export const PrimaryTitleDarkLarge = Template.bind({});
+PrimaryTitleDarkLarge.args = {
+  children: 'Text',
+  theme: TextTheme.Primary,
+  variant: TextVariant.Text,
+  size: TextSize.Large,
 };
 PrimaryTitleDark.decorators = [ThemeDecorator(Theme.Dark)];
 

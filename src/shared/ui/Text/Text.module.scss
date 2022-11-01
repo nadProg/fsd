@@ -1,11 +1,25 @@
 .title {
-  font: var(--font-l);
   color: var(--primary-color);
+
+  &.mediumSize {
+    font: var(--font-l);
+  }
+
+  &.largeSize {
+    font: var(--font-xl);
+  }
 }
 
 .text {
-  font: var(--font-m);
   color: var(--secondary-color);
+
+  &.mediumSize {
+    font: var(--font-m);
+  }
+
+  &.largeSize {
+    font: var(--font-l);
+  }
 }
 
 .error {
