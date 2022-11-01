@@ -9,9 +9,7 @@ import { DeepPartial } from 'shared/types';
 import { StateSchema } from 'app/providers/StoreProvider';
 import { ArticleDetails } from './ArticleDetails';
 
-const store: DeepPartial<StateSchema> = {
-
-};
+const store: DeepPartial<StateSchema> = {};
 
 export default {
   title: 'entities/ArticleDetails',
@@ -26,8 +24,12 @@ const Template: ComponentStory<typeof ArticleDetails> = (args) => <ArticleDetail
 
 export const Light = Template.bind({});
 Light.args = {};
-Light.decorators = [];
+Light.decorators = [ThemeDecorator(Theme.Light)];
 
 export const Dark = Template.bind({});
 Dark.args = {};
 Dark.decorators = [ThemeDecorator(Theme.Dark)];
+
+export const Orange = Template.bind({});
+Orange.args = {};
+Orange.decorators = [ThemeDecorator(Theme.Orange)];

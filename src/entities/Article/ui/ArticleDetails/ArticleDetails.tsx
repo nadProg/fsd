@@ -4,7 +4,6 @@ import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
 
 import { Id, PropsWithClassName } from 'shared/types';
-import { ReducersList, useDynamicReducers } from 'shared/hooks/useDynamicReducers';
 import {
   Text, TextTheme, TextVariant, TextSize,
 } from 'shared/ui/Text';
@@ -22,7 +21,6 @@ import {
 } from '../../model/selectors/getArticleDetailsIsLoading/getArticleDetailsIsLoading';
 import { getArticleDetailsData } from '../../model/selectors/getArticleDetailsData/getArticleDetailsData';
 import { getArticleDetailsError } from '../../model/selectors/getArticleDetailsError/getArticleDetailsError';
-import { articleDetailsReducer } from '../../model/slice/articleDetailsSlice';
 import { fetchArticleDetailsData } from '../../model/services/fetchArticleDetailsData/fetchArticleDetailsData';
 
 import styles from './ArticleDetails.module.scss';
@@ -31,15 +29,9 @@ type ArticleDetailsProps = PropsWithClassName & {
   id: Id;
 };
 
-const dynamicReducers: ReducersList = {
-  articleDetails: articleDetailsReducer,
-};
-
 export const ArticleDetails = ({ className, id }: ArticleDetailsProps) => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
-
-  useDynamicReducers(dynamicReducers);
 
   const articleDetailsData = useSelector(getArticleDetailsData);
   const articleDetailsIsLoading = useSelector(getArticleDetailsIsLoading);
