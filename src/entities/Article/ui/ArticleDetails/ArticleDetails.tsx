@@ -5,9 +5,18 @@ import { useTranslation } from 'react-i18next';
 
 import { Id, PropsWithClassName } from 'shared/types';
 import { ReducersList, useDynamicReducers } from 'shared/hooks/useDynamicReducers';
-import { Text, TextTheme } from 'shared/ui/Text';
+import {
+  Text, TextTheme, TextVariant, TextSize,
+} from 'shared/ui/Text';
 import { Skeleton } from 'shared/ui/Skeleton';
 
+import { Avatar } from 'shared/ui/Avatar';
+
+import EyeIcon from 'shared/assets/icons/eye.svg';
+import CalendarIcon from 'shared/assets/icons/calendar.svg';
+
+import { Icon } from 'shared/ui/Icon/Icon';
+import { ArticleBlockComponent } from 'entities/Article/ui/ArticleBlockComponent/ArticleBlockComponent';
 import {
   getArticleDetailsIsLoading,
 } from '../../model/selectors/getArticleDetailsIsLoading/getArticleDetailsIsLoading';
@@ -68,12 +77,37 @@ export const ArticleDetails = ({ className, id }: ArticleDetailsProps) => {
 
   return (
     <div
-      className={classNames(className, styles.ArticleDetails)}
+      className={classNames(className, styles.ArticleDetails, styles.article)}
     >
-      <div style={{ maxWidth: '500px' }}>
-        <pre>
-          {JSON.stringify(articleDetailsData, null, 2)}
-        </pre>
+
+      <div className={styles.avatarWrapper}>
+        <Avatar size={200} src={articleDetailsData?.img} alt="" className={styles.avatar} />
+      </div>
+
+      <div className={styles.header}>
+        <Text
+          variant={TextVariant.Title}
+          size={TextSize.Large}
+        >
+          {articleDetailsData?.title}
+        </Text>
+        <Text size={TextSize.Large}>{articleDetailsData?.subtitle}</Text>
+      </div>
+
+      <div className={styles.meta}>
+        <div className={styles.metaItem}>
+          <Icon icon={EyeIcon} className={styles.metaIcon} />
+          <Text>{articleDetailsData?.views}</Text>
+        </div>
+
+        <div className={styles.metaItem}>
+          <Icon icon={CalendarIcon} className={styles.metaIcon} />
+          <Text>{articleDetailsData?.createdAt}</Text>
+        </div>
+      </div>
+
+      <div className={styles.content}>
+        {articleDetailsData?.blocks.map((block) => <ArticleBlockComponent key={block.id} block={block} />)}
       </div>
     </div>
   );
