@@ -6,10 +6,12 @@ import { loginReducer } from 'features/AuthByUsername';
 import { profileReducer } from 'entities/Profile';
 import { ReducersList } from 'shared/hooks/useDynamicReducers';
 import { DeepPartial } from 'shared/types';
+import { articleDetailsReducer } from 'entities/Article';
 
 const defaultAsyncReducers: ReducersList = {
   loginForm: loginReducer,
   profile: profileReducer,
+  articleDetails: articleDetailsReducer,
 };
 
 export const StoreDecorator = (

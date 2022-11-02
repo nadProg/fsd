@@ -8,28 +8,34 @@ import {
   Text, TextTheme, TextVariant, TextSize,
 } from 'shared/ui/Text';
 import { Skeleton } from 'shared/ui/Skeleton';
-
 import { Avatar } from 'shared/ui/Avatar';
-
 import EyeIcon from 'shared/assets/icons/eye.svg';
 import CalendarIcon from 'shared/assets/icons/calendar.svg';
-
 import { Icon } from 'shared/ui/Icon/Icon';
-import { ArticleBlockComponent } from 'entities/Article/ui/ArticleBlockComponent/ArticleBlockComponent';
+import { ReducersList, useDynamicReducers } from 'shared/hooks/useDynamicReducers';
+
 import {
   getArticleDetailsIsLoading,
 } from '../../model/selectors/getArticleDetailsIsLoading/getArticleDetailsIsLoading';
+import { articleDetailsReducer } from '../../model/slice/articleDetailsSlice';
+import { ArticleBlockComponent } from '../ArticleBlockComponent/ArticleBlockComponent';
 import { getArticleDetailsData } from '../../model/selectors/getArticleDetailsData/getArticleDetailsData';
 import { getArticleDetailsError } from '../../model/selectors/getArticleDetailsError/getArticleDetailsError';
 import { fetchArticleDetailsData } from '../../model/services/fetchArticleDetailsData/fetchArticleDetailsData';
 
 import styles from './ArticleDetails.module.scss';
 
+const dynamicReducers: ReducersList = {
+  articleDetails: articleDetailsReducer,
+};
+
 type ArticleDetailsProps = PropsWithClassName & {
   id: Id;
 };
 
 export const ArticleDetails = ({ className, id }: ArticleDetailsProps) => {
+  useDynamicReducers(dynamicReducers);
+
   const { t } = useTranslation();
   const dispatch = useDispatch();
 
