@@ -1,7 +1,7 @@
 import classNames from 'classnames';
-import { useTranslation } from 'react-i18next';
 
 import { PropsWithClassName } from 'shared/types';
+import { Code } from 'shared/ui/Code';
 
 import { ArticleCodeBlock } from '../../model/types/article';
 
@@ -11,14 +11,16 @@ type ArticleCodeBlockComponentProps = PropsWithClassName & {
   block: ArticleCodeBlock;
 };
 
-export const ArticleCodeBlockComponent = ({ className, block }: ArticleCodeBlockComponentProps) => {
-  const { t } = useTranslation();
+export const ArticleCodeBlockComponent = (props: ArticleCodeBlockComponentProps) => {
+  const { className, block } = props;
 
   return (
     <div
       className={classNames(className, styles.ArticleCodeBlockComponent)}
     >
-      {t('ArticleCodeBlockComponent')}
+      <Code>
+        {block.code}
+      </Code>
     </div>
   );
 };
