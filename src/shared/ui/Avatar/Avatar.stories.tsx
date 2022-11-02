@@ -17,9 +17,7 @@ export default {
 const Template: ComponentStory<typeof Avatar> = (args) => <Avatar {...args} />;
 
 export const Default = Template.bind({});
-Default.args = {
-  src: Image,
-};
+Default.args = {};
 
 export const Size100 = Template.bind({});
 Size100.args = {
@@ -34,9 +32,7 @@ Size200.args = {
 };
 
 export const DefaultDark = Template.bind({});
-DefaultDark.args = {
-  src: Image,
-};
+DefaultDark.args = {};
 DefaultDark.decorators = [ThemeDecorator(Theme.Dark)];
 
 export const Size100Dark = Template.bind({});

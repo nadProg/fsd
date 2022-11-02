@@ -1,8 +1,10 @@
 import {
   CSSProperties, FC, ImgHTMLAttributes, useMemo,
 } from 'react';
-import { ExtendableProps, PropsWithClassName } from 'shared/types';
 import classNames from 'classnames';
+
+import { ExtendableProps, PropsWithClassName } from 'shared/types';
+import Placeholder from 'shared/assets/img/user-avatar-placeholder.jpeg';
 
 import styles from './Avatar.module.scss';
 
@@ -26,7 +28,7 @@ export const Avatar: FC<AvatarProps> = ({
 
   return (
     <img
-      src={src}
+      src={src || Placeholder}
       alt={alt}
       className={classNames(className, styles.Avatar)}
       style={style}
