@@ -1,25 +1,21 @@
 import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunk/TestAsyncThunk';
 
-import { Country } from 'entities/Country';
-import { Currency } from 'entities/Currency';
-
 import { fetchArticleDetailsData } from './fetchArticleDetailsData';
+import { Article, ArticleType } from '../../types/article';
 
-const mockData = {
-  username: 'username',
-  firstname: 'firstname',
-  lastname: 'lastname',
-  age: 30,
-  city: 'city',
-  country: Country.Armenia,
-  currency: Currency.Eur,
-  avatar: '',
+const mockData: Article = {
+  id: '1',
+  title: 'title',
+  subtitle: 'subtitle',
+  img: '',
+  views: 1,
+  type: [ArticleType.It],
+  blocks: [],
+  createdAt: '22.22.2022',
 };
 
-const mockId = '111';
-
 describe('fetchArticleDetailsData', () => {
-  test.skip('should handle success request', async () => {
+  test('should handle success request', async () => {
     const thunk = new TestAsyncThunk(fetchArticleDetailsData);
 
     const { api, dispatch } = thunk;
@@ -28,7 +24,7 @@ describe('fetchArticleDetailsData', () => {
       data: mockData,
     }));
 
-    const result = await thunk.callThunk(mockId);
+    const result = await thunk.callThunk(mockData.id);
 
     expect(result.meta.requestStatus).toBe('fulfilled');
 
@@ -39,7 +35,7 @@ describe('fetchArticleDetailsData', () => {
     expect(dispatch).toHaveBeenCalledTimes(2);
   });
 
-  test.skip('should handle error request', async () => {
+  test('should handle error request', async () => {
     const thunk = new TestAsyncThunk(fetchArticleDetailsData);
 
     const { api, dispatch } = thunk;
@@ -48,7 +44,25 @@ describe('fetchArticleDetailsData', () => {
       status: 403,
     }));
 
-    const result = await thunk.callThunk(mockId);
+    const result = await thunk.callThunk(mockData.id);
+
+    expect(api.get).toHaveBeenCalled();
+
+    expect(result.meta.requestStatus).toBe('rejected');
+
+    expect(dispatch).toHaveBeenCalledTimes(2);
+  });
+
+  test('should return error if no data returned', async () => {
+    const thunk = new TestAsyncThunk(fetchArticleDetailsData);
+
+    const { api, dispatch } = thunk;
+
+    api.get.mockReturnValue(Promise.resolve({
+      data: undefined,
+    }));
+
+    const result = await thunk.callThunk(mockData.id);
 
     expect(api.get).toHaveBeenCalled();
 

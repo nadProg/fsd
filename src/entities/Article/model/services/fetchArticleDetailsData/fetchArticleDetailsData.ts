@@ -14,7 +14,6 @@ export const fetchArticleDetailsData = createAsyncThunk<Article, Id, ThunkConfig
       rejectWithValue,
       extra,
     } = thunkApi;
-    // `/profile?unique="${Math.random()}"`
     try {
       const response = await extra.api.get<Article>(`/articles/${articleId}`);
 
