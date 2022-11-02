@@ -78,9 +78,11 @@ export const ArticleDetails = ({ className, id }: ArticleDetailsProps) => {
       className={classNames(className, styles.ArticleDetails, styles.article)}
     >
 
-      <div className={styles.avatarWrapper}>
-        <Avatar size={200} src={articleDetailsData?.img} alt="" className={styles.avatar} />
-      </div>
+      { articleDetailsData?.img && (
+        <div className={styles.avatarWrapper}>
+          <Avatar size={200} src={articleDetailsData?.img} alt="" className={styles.avatar} />
+        </div>
+      ) }
 
       <div className={styles.header}>
         <Text
