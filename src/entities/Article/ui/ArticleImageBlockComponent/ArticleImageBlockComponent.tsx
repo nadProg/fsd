@@ -1,7 +1,7 @@
 import classNames from 'classnames';
-import { useTranslation } from 'react-i18next';
 
 import { PropsWithClassName } from 'shared/types';
+import { Text } from 'shared/ui/Text';
 
 import { ArticleImageBlock } from '../../model/types/article';
 
@@ -11,14 +11,22 @@ type ArticleImageBlockComponentProps = PropsWithClassName & {
   block: ArticleImageBlock;
 };
 
-export const ArticleImageBlockComponent = ({ className, block }: ArticleImageBlockComponentProps) => {
-  const { t } = useTranslation();
+export const ArticleImageBlockComponent = (props: ArticleImageBlockComponentProps) => {
+  const { className, block } = props;
 
   return (
     <div
       className={classNames(className, styles.ArticleImageBlockComponent)}
     >
-      {t('ArticleImageBlockComponent')}
+      <figure className={styles.figure}>
+        <img className={styles.image} src={block.src} alt={block.title} />
+        {block.title && (
+          <figcaption>
+            <Text>{block.title}</Text>
+          </figcaption>
+        )}
+      </figure>
+
     </div>
   );
 };
