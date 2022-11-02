@@ -4,6 +4,10 @@
   cursor: pointer;
   transition: opacity 300ms;
 
+  &:hover {
+    opacity: 0.75;
+  }
+
   &:disabled {
     cursor: initial;
     opacity: 0.75;
