@@ -1,18 +1,49 @@
+import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 import { Id } from 'shared/types';
 import { Text, TextVariant } from 'shared/ui/Text';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
+import { ReducersList, useDynamicReducers } from 'shared/hooks/useDynamicReducers';
 
-import { ArticleDetails } from 'entities/Article';
 import { CommentList } from 'entities/Comment';
+import { ArticleDetails } from 'entities/Article';
+
+import {
+  fetchArticleDetailsComments,
+} from '../model/services/fetchArticleDetailsComments/fetchArticleDetailsComments';
+import {
+  articleDetailsCommentsReducer, getArticleComments,
+} from '../model/slices/artilceDetailsCommentsSlice/articleDetailsCommentsSlice';
+import {
+  getArticleDetailsCommentsIsLoading,
+} from '../model/selectors/getArticleDetailsCommentsIsLoading/getArticleDetailsCommentsIsLoading';
 
 import styles from './ArticleDetailsPage.module.scss';
 
+const dynamicReducers: ReducersList = {
+  articleDetailsComments: articleDetailsCommentsReducer,
+};
+
 export const ArticleDetailsPage = () => {
+  useDynamicReducers(dynamicReducers);
+
+  const dispatch = useAppDispatch();
+
+  const comments = useSelector(getArticleComments.selectAll);
+  const commentsIsLoading = useSelector(getArticleDetailsCommentsIsLoading);
+
   const { t } = useTranslation();
 
   const { id } = useParams<{ id: Id }>();
+
+  useEffect(() => {
+    if (__PROJECT__ !== 'storybook') {
+      dispatch(fetchArticleDetailsComments(id));
+    }
+  }, [dispatch, id]);
 
   if (!id) {
     return (
@@ -31,8 +62,8 @@ export const ArticleDetailsPage = () => {
       </Text>
 
       <CommentList
-        isLoading
-        comments={[]}
+        isLoading={commentsIsLoading}
+        comments={comments}
       />
     </div>
   );
