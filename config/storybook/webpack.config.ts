@@ -1,8 +1,21 @@
 import path from 'path';
-import { Configuration, DefinePlugin } from 'webpack';
+import { Configuration, DefinePlugin, RuleSetRule } from 'webpack';
 
 import { BuildPaths, Project } from '../build/types/config';
 import { buildSassLoader } from '../build/loaders/buildSassLoader';
+
+const fileLoader: RuleSetRule = {
+  test: /\.(png|jpe?g|gif)$/i,
+  loader: 'file-loader',
+  options: {
+    name: '[path][name].[ext]',
+  },
+};
+
+const svgLoader: RuleSetRule = {
+  test: /\.svg$/,
+  use: ['@svgr/webpack'],
+};
 
 export default ({ config }: { config: Configuration }) => {
   const paths: BuildPaths = {
@@ -21,17 +34,16 @@ export default ({ config }: { config: Configuration }) => {
     config.module.rules = config.module.rules.map((rule) => {
       if (typeof rule === 'object' && /svg/.test(rule.test as string)) {
         return ({
-          ...rule, exclude: /\.svg$/i,
+          ...rule, exclude: /\.(png|svg|jpe?g|gif)$/i,
         });
       }
 
       return rule;
     });
 
-    config.module.rules.push({
-      test: /\.svg$/,
-      use: ['@svgr/webpack'],
-    });
+    config.module.rules.push(svgLoader);
+
+    config.module.rules.push(fileLoader);
 
     config.module.rules.push(buildSassLoader({ isDev: true }));
   }
