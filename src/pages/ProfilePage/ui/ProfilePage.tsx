@@ -1,8 +1,14 @@
 import {
-  FC, useCallback, useEffect,
+  FC, useCallback,
 } from 'react';
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
+
+import { Text, TextTheme } from 'shared/ui/Text';
+import { PropsWithClassName, ValuesOf } from 'shared/types';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
+import { useDynamicReducers } from 'shared/hooks/useDynamicReducers';
+import { useProjectEffect } from 'shared/hooks/useProjectEffect';
 
 import {
   fetchProfileData,
@@ -13,14 +19,9 @@ import {
   profileReducer,
   ValidateProfileError,
 } from 'entities/Profile';
-
-import { PropsWithClassName, ValuesOf } from 'shared/types';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
-import { useDynamicReducers } from 'shared/hooks/useDynamicReducers';
-
-import { ValuesOfCurrency } from 'entities/Currency';
 import { ValuesOfCountry } from 'entities/Country';
-import { Text, TextTheme } from 'shared/ui/Text';
+import { ValuesOfCurrency } from 'entities/Currency';
+
 import { ProfilePageHeader } from './ProfilePageHeader/ProfilePageHeader';
 
 const reducers = {
@@ -82,10 +83,8 @@ export const ProfilePage: FC<ProfilePageProps> = ({ className }) => {
     dispatch(profileActions.updateForm({ country: value }));
   }, [dispatch]);
 
-  useEffect(() => {
-    if (__PROJECT__ !== 'storybook') {
-      dispatch(fetchProfileData());
-    }
+  useProjectEffect(() => {
+    dispatch(fetchProfileData());
   }, [dispatch]);
 
   return (

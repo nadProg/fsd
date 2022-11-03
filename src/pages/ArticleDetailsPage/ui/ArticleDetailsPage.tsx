@@ -1,11 +1,11 @@
 import { useSelector } from 'react-redux';
-import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 import { Id } from 'shared/types';
 import { Text, TextVariant } from 'shared/ui/Text';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
+import { useProjectEffect } from 'shared/hooks/useProjectEffect';
 import { ReducersList, useDynamicReducers } from 'shared/hooks/useDynamicReducers';
 
 import { CommentList } from 'entities/Comment';
@@ -39,10 +39,8 @@ export const ArticleDetailsPage = () => {
 
   const { id } = useParams<{ id: Id }>();
 
-  useEffect(() => {
-    if (__PROJECT__ !== 'storybook') {
-      dispatch(fetchArticleDetailsComments(id));
-    }
+  useProjectEffect(() => {
+    dispatch(fetchArticleDetailsComments(id));
   }, [dispatch, id]);
 
   if (!id) {

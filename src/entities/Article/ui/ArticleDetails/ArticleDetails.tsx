@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
@@ -12,6 +11,7 @@ import { Avatar } from 'shared/ui/Avatar';
 import EyeIcon from 'shared/assets/icons/eye.svg';
 import CalendarIcon from 'shared/assets/icons/calendar.svg';
 import { Icon } from 'shared/ui/Icon/Icon';
+import { useProjectEffect } from 'shared/hooks/useProjectEffect';
 import { ReducersList, useDynamicReducers } from 'shared/hooks/useDynamicReducers';
 
 import {
@@ -43,10 +43,8 @@ export const ArticleDetails = ({ className, id }: ArticleDetailsProps) => {
   const articleDetailsIsLoading = useSelector(getArticleDetailsIsLoading);
   const articleDetailsError = useSelector(getArticleDetailsError);
 
-  useEffect(() => {
-    if (__PROJECT__ !== 'storybook') {
-      dispatch(fetchArticleDetailsData(id));
-    }
+  useProjectEffect(() => {
+    dispatch(fetchArticleDetailsData(id));
   }, [dispatch, id]);
 
   if (articleDetailsIsLoading) {
