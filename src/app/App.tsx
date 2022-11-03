@@ -1,10 +1,12 @@
-import { Suspense, useEffect } from 'react';
+import { Suspense } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+
+import { useMountEffect } from 'shared/hooks/useMountEffect';
+
+import { getUserInitialized, userActions } from 'entities/User';
 
 import { NavBar } from 'widgets/NavBar';
 import { SideBar } from 'widgets/SideBar';
-
-import { getUserInitialized, userActions } from 'entities/User';
 
 import { AppRouter } from './providers/router';
 
@@ -13,9 +15,9 @@ export const App = () => {
 
   const userInitialized = useSelector(getUserInitialized);
 
-  useEffect(() => {
+  useMountEffect(() => {
     dispatch(userActions.initAuthData());
-  }, []);
+  });
 
   return (
     <div className="app">
