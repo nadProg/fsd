@@ -1,4 +1,3 @@
-import { NavigateFunction } from 'react-router-dom';
 import { AxiosInstance } from 'axios';
 import {
   AnyAction, CombinedState, EnhancedStore, Reducer, ReducersMapObject,
@@ -37,7 +36,6 @@ export type ReduxStoreWithManager = EnhancedStore<StateSchema> & {
 
 export type ThunkExtraArgs = {
   api: AxiosInstance;
-  navigate?: NavigateFunction;
 };
 
 export type ThunkConfig<T> = {

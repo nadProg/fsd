@@ -1,4 +1,3 @@
-import { NavigateFunction } from 'react-router-dom';
 import {
   CombinedState, configureStore, Reducer, ReducersMapObject,
 } from '@reduxjs/toolkit';
@@ -13,14 +12,12 @@ import { createReducerManager } from './reducerManager';
 type StoreConfig = {
   initialState?: StateSchema,
   asyncReducers?: ReducersMapObject<StateSchema>,
-  navigate?: NavigateFunction
 };
 
 export const createReduxStore = (
   {
     initialState,
     asyncReducers,
-    navigate,
   }: StoreConfig = {},
 ) => {
   const ensuredAsyncReducers = asyncReducers || {};
@@ -35,7 +32,6 @@ export const createReduxStore = (
 
   const extraArgument: ThunkExtraArgs = {
     api: $api,
-    navigate,
   };
 
   const store = configureStore({
