@@ -4,6 +4,9 @@ import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDeco
 
 import { Theme } from 'shared/providers/ThemeProvider';
 
+import {
+  InvertedBackgroundDecorator,
+} from 'shared/config/storybook/InvertedBackgroundDectorator/InvertedBackgroundColor';
 import { LangSwitcher } from './LangSwitcher';
 
 export default {
@@ -12,6 +15,7 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' },
   },
+  decorators: [InvertedBackgroundDecorator()],
 } as ComponentMeta<typeof LangSwitcher>;
 
 const Template: ComponentStory<typeof LangSwitcher> = (args) => <LangSwitcher {...args} />;

@@ -1,7 +1,11 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
+import {
+  InvertedBackgroundDecorator,
+} from 'shared/config/storybook/InvertedBackgroundDectorator/InvertedBackgroundColor';
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { Theme } from 'shared/providers/ThemeProvider';
+
 import { Button, ButtonSize, ButtonTheme } from './Button';
 
 export default {
@@ -40,6 +44,7 @@ Background.args = {
   theme: ButtonTheme.Background,
   disabled: false,
 };
+Background.decorators = [InvertedBackgroundDecorator()];
 
 export const BackgroundInverted = Template.bind({});
 BackgroundInverted.args = {
@@ -103,7 +108,7 @@ BackgroundDark.args = {
   theme: ButtonTheme.Background,
   disabled: false,
 };
-BackgroundDark.decorators = [ThemeDecorator(Theme.Dark)];
+BackgroundDark.decorators = [InvertedBackgroundDecorator(), ThemeDecorator(Theme.Dark)];
 
 export const BackgroundInvertedDark = Template.bind({});
 BackgroundInvertedDark.args = {
