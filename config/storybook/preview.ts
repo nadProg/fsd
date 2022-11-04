@@ -5,6 +5,9 @@ import i18n from './i18next';
 import { StyledDecorator } from '../../src/shared/config/storybook/StyledDecorator/StyledDecorator';
 import { ThemeDecorator } from '../../src/shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { RouterDecorator } from '../../src/shared/config/storybook/RouterDecorator/RouterDecorator';
+import {
+  InvertedBackgroundDecorator,
+} from '../../src/shared/config/storybook/InvertedBackgroundDectorator/InvertedBackgroundColor';
 import { Theme } from '../../src/shared/providers/ThemeProvider';
 
 export const parameters = {
@@ -25,4 +28,5 @@ export const parameters = {
 
 addDecorator(StyledDecorator);
 addDecorator(ThemeDecorator(Theme.Light));
+addDecorator(InvertedBackgroundDecorator(false));
 addDecorator(RouterDecorator);

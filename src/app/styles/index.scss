@@ -16,6 +16,10 @@ body {
   background-color: var(--bg-color);
 }
 
+body[data-bg-inverted="true"] {
+  background-color: var(--inverted-bg-color);
+}
+
 h1,
 h2,
 h3,
