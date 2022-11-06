@@ -5,6 +5,8 @@ import { Currency } from 'entities/Currency';
 
 import { fetchProfileData } from './fetchProfileData';
 
+const mockId = '1';
+
 const mockData = {
   username: 'username',
   firstname: 'firstname',
@@ -26,7 +28,7 @@ describe('fetchProfileData', () => {
       data: mockData,
     }));
 
-    const result = await thunk.callThunk();
+    const result = await thunk.callThunk(mockId);
 
     expect(result.meta.requestStatus).toBe('fulfilled');
 
@@ -46,7 +48,7 @@ describe('fetchProfileData', () => {
       status: 403,
     }));
 
-    const result = await thunk.callThunk();
+    const result = await thunk.callThunk(mockId);
 
     expect(api.get).toHaveBeenCalled();
 

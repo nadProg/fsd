@@ -6,6 +6,8 @@ import { fetchProfileData } from '../services/fetchProfileData/fetchProfileData'
 import { ProfileSchema, ValidateProfileError } from '../types/profile';
 import { profileReducer, profileActions } from './profileSlice';
 
+const mockId = '1';
+
 const mockData: ProfileSchema['data'] = {
   firstname: 'firstname',
   username: 'username',
@@ -104,7 +106,7 @@ describe('ProfileSlice', () => {
       isLoading: true,
     };
 
-    expect(profileReducer(state as ProfileSchema, fetchProfileData.fulfilled(mockData, '')))
+    expect(profileReducer(state as ProfileSchema, fetchProfileData.fulfilled(mockData, '', mockId)))
       .toEqual({
         data: mockData,
         form: mockData,
@@ -117,7 +119,7 @@ describe('ProfileSlice', () => {
       isLoading: true,
     };
 
-    const action = fetchProfileData.rejected(null, '', undefined, 'error');
+    const action = fetchProfileData.rejected(null, '', mockId, 'error');
 
     expect(profileReducer(state as ProfileSchema, action))
       .toEqual({

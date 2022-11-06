@@ -2,10 +2,11 @@ import {
   FC, useCallback,
 } from 'react';
 import { useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 import { Text, TextTheme } from 'shared/ui/Text';
-import { PropsWithClassName, ValuesOf } from 'shared/types';
+import { Id, PropsWithClassName, ValuesOf } from 'shared/types';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { useDynamicReducers } from 'shared/hooks/useDynamicReducers';
 import { useProjectEffect } from 'shared/hooks/useProjectEffect';
@@ -41,6 +42,7 @@ const validateErrorTranslates: Record<ValuesOf<typeof ValidateProfileError>, str
 export const ProfilePage: FC<ProfilePageProps> = ({ className }) => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
+  const { id } = useParams<{ id: Id }>();
 
   useDynamicReducers(reducers);
 
@@ -84,7 +86,9 @@ export const ProfilePage: FC<ProfilePageProps> = ({ className }) => {
   }, [dispatch]);
 
   useProjectEffect(() => {
-    dispatch(fetchProfileData());
+    if (id) {
+      dispatch(fetchProfileData(id));
+    }
   }, [dispatch]);
 
   return (

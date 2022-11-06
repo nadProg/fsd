@@ -1,17 +1,19 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
+import { Id } from 'shared/types';
 import { isAxiosError } from 'shared/helpers';
+
 import { ThunkConfig } from 'app/providers/StoreProvider';
 
 import { Profile } from '../../types/profile';
 
-export const fetchProfileData = createAsyncThunk<Profile, void, ThunkConfig<string>>(
+export const fetchProfileData = createAsyncThunk<Profile, Id, ThunkConfig<string>>(
   'profile/fetchProfileData',
-  async (_, thunkApi) => {
+  async (profileId, thunkApi) => {
     const { rejectWithValue, extra } = thunkApi;
 
     try {
-      const response = await extra.api.get<Profile>(`/profile?unique="${Math.random()}"`);
+      const response = await extra.api.get<Profile>(`/profile/${profileId}`);
 
       if (!response.data) {
         throw new Error('Profile is undefined');

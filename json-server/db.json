@@ -116,14 +116,28 @@
       "role": "USER"
     }
   ],
-  "profile": {
-    "firstname": "Админ",
-    "lastname": "Админов",
-    "age": 465,
-    "currency": "RUB",
-    "country": "Russia",
-    "city": "Moscow",
-    "username": "admin213",
-    "avatar": "https://yt3.ggpht.com/ytc/AAUvwngFzM_Rf6MNwOnFcuphoj93k7VFjlIrj-kSMxbh=s900-c-k-c0x00ffffff-no-rj"
-  }
+  "profile": [
+    {
+      "id": "1",
+      "firstname": "Админ",
+      "lastname": "Админов",
+      "age": 465,
+      "currency": "RUB",
+      "country": "Russia",
+      "city": "Moscow",
+      "username": "admin",
+      "avatar": "https://yt3.ggpht.com/ytc/AAUvwngFzM_Rf6MNwOnFcuphoj93k7VFjlIrj-kSMxbh=s900-c-k-c0x00ffffff-no-rj"
+    },
+    {
+      "id": "2",
+      "firstname": "Юэер",
+      "lastname": "Юзеров",
+      "age": 46,
+      "currency": "USD",
+      "country": "Armenia",
+      "city": "Erevan",
+      "username": "user",
+      "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiibOngFYog5Ri5UoFKH3CsHMOvomBLf4JAw&usqp=CAU"
+    }
+  ]
 }

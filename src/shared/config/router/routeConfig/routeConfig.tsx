@@ -27,9 +27,9 @@ export type AppRouteProps = RouteProps & {
 export const RoutePath: Record<ValuesOfAppRoute, string> = {
   [AppRoute.Main]: '/',
   [AppRoute.About]: '/about',
-  [AppRoute.Profile]: '/profile',
+  [AppRoute.Profile]: '/profile/',
   [AppRoute.Articles]: '/articles',
-  [AppRoute.ArticleDetails]: '/articles/:id',
+  [AppRoute.ArticleDetails]: '/articles/',
   [AppRoute.NotFound]: '*',
 };
 
@@ -43,7 +43,7 @@ export const routerConfig: Record<ValuesOfAppRoute, AppRouteProps> = {
     element: <AboutPage />,
   },
   [AppRoute.Profile]: {
-    path: RoutePath[AppRoute.Profile],
+    path: `${RoutePath[AppRoute.Profile]}:id`,
     element: <ProfilePage />,
     authOnly: true,
   },
@@ -53,7 +53,7 @@ export const routerConfig: Record<ValuesOfAppRoute, AppRouteProps> = {
     authOnly: true,
   },
   [AppRoute.ArticleDetails]: {
-    path: RoutePath[AppRoute.ArticleDetails],
+    path: `${RoutePath[AppRoute.ArticleDetails]}:id`,
     element: <ArticleDetailsPage />,
     authOnly: true,
   },
