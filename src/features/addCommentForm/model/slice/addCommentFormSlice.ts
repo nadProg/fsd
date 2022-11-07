@@ -17,23 +17,9 @@ export const addCommentFormSlice = createSlice({
       state.text = '';
     },
   },
-  extraReducers: (builder) => {
-    // builder
-    //   .addCase(fetchArticleDetailsData.pending, (state) => {
-    //     state.error = undefined;
-    //     state.isLoading = true;
-    //   })
-    //   .addCase(fetchArticleDetailsData.fulfilled, (state, action) => {
-    //     state.data = action.payload;
-    //     state.isLoading = false;
-    //   })
-    //   .addCase(fetchArticleDetailsData.rejected, (state, action) => {
-    //     state.error = action.payload;
-    //     state.isLoading = false;
-    //   });
-  },
+  extraReducers: {},
 });
 
 export const { actions: addCommentFormActions } = addCommentFormSlice;
 
-export const { reducer: addCommentFormReducers } = addCommentFormSlice;
+export const { reducer: addCommentFormReducer } = addCommentFormSlice;

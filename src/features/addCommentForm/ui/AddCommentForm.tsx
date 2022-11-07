@@ -9,7 +9,7 @@ import { Button, ButtonTheme } from 'shared/ui/Button';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { ReducersList, useDynamicReducers } from 'shared/hooks/useDynamicReducers';
 
-import { addCommentFormActions, addCommentFormReducers } from '../model/slice/addCommentFormSlice';
+import { addCommentFormActions, addCommentFormReducer } from '../model/slice/addCommentFormSlice';
 import { getAddCommentFormText } from '../model/selectors/getAddCommentFormText/getAddCommentFormText';
 import { getAddCommentFormError } from '../model/selectors/getAddCommentFormError/getAddCommentFormError';
 
@@ -20,7 +20,7 @@ type AddCommentFormProps = PropsWithClassName & {
 };
 
 const reducers: ReducersList = {
-  addCommentForm: addCommentFormReducers,
+  addCommentForm: addCommentFormReducer,
 };
 
 export const AddCommentForm: FC<AddCommentFormProps> = ({ className, onSendComment }) => {
