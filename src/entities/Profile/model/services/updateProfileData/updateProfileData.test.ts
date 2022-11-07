@@ -21,6 +21,9 @@ describe('updateProfileData', () => {
   test('should handle success request', async () => {
     const thunk = new TestAsyncThunk(updateProfileData, {
       profile: {
+        data: {
+          id: '1',
+        },
         form: mockData,
       },
     });
@@ -45,6 +48,9 @@ describe('updateProfileData', () => {
   test('should handle error request', async () => {
     const thunk = new TestAsyncThunk(updateProfileData, {
       profile: {
+        data: {
+          id: '1',
+        },
         form: mockData,
       },
     });
@@ -69,6 +75,9 @@ describe('updateProfileData', () => {
   test('should handle undefined form state', async () => {
     const thunk = new TestAsyncThunk(updateProfileData, {
       profile: {
+        data: {
+          id: '1',
+        },
         form: undefined,
       },
     });
@@ -89,6 +98,9 @@ describe('updateProfileData', () => {
   test('should handle empty form state', async () => {
     const thunk = new TestAsyncThunk(updateProfileData, {
       profile: {
+        data: {
+          id: '1',
+        },
         form: {},
       },
     });

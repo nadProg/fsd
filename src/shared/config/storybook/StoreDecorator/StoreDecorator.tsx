@@ -7,11 +7,17 @@ import { profileReducer } from 'entities/Profile';
 import { ReducersList } from 'shared/hooks/useDynamicReducers';
 import { DeepPartial } from 'shared/types';
 import { articleDetailsReducer } from 'entities/Article';
+import {
+  articleDetailsCommentsReducer,
+} from 'pages/ArticleDetailsPage/model/slices/artilceDetailsCommentsSlice/articleDetailsCommentsSlice';
+import { addCommentFormReducers } from 'features/addCommentForm/model/slice/addCommentFormSlice';
 
 const defaultAsyncReducers: ReducersList = {
   loginForm: loginReducer,
   profile: profileReducer,
   articleDetails: articleDetailsReducer,
+  articleDetailsComments: articleDetailsCommentsReducer,
+  addCommentForm: addCommentFormReducers,
 };
 
 export const StoreDecorator = (

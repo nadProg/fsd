@@ -20,40 +20,32 @@ export default {
 const Template: ComponentStory<typeof AddCommentForm> = (args) => <AddCommentForm {...args} />;
 
 const state: DeepPartial<StateSchema> = {
-  loginForm: {
-    username: 'user',
-    password: '123',
-  },
-};
-
-const submittingState: DeepPartial<StateSchema> = {
-  loginForm: {
-    ...state.loginForm,
-    isSubmitting: true,
+  addCommentForm: {
+    text: 'comment',
   },
 };
 
 const errorState: DeepPartial<StateSchema> = {
-  loginForm: {
-    ...state.loginForm,
-    error: '403',
+  addCommentForm: {
+    text: 'comment',
+    error: 'error',
   },
 };
 
-export const Default = Template.bind({});
-Default.decorators = [StoreDecorator(state)];
-
-export const Submitting = Template.bind({});
-Submitting.decorators = [StoreDecorator(submittingState)];
+export const Normal = Template.bind({});
+Normal.decorators = [StoreDecorator(state)];
 
 export const Error = Template.bind({});
 Error.decorators = [StoreDecorator(errorState)];
 
-export const DefaultDark = Template.bind({});
-DefaultDark.decorators = [StoreDecorator(state), ThemeDecorator(Theme.Dark)];
-
-export const SubmittingDark = Template.bind({});
-SubmittingDark.decorators = [StoreDecorator(submittingState), ThemeDecorator(Theme.Dark)];
+export const NormalDark = Template.bind({});
+NormalDark.decorators = [StoreDecorator(state), ThemeDecorator(Theme.Dark)];
 
 export const ErrorDark = Template.bind({});
 ErrorDark.decorators = [StoreDecorator(errorState), ThemeDecorator(Theme.Dark)];
+
+export const NormalOrange = Template.bind({});
+NormalOrange.decorators = [StoreDecorator(state), ThemeDecorator(Theme.Orange)];
+
+export const ErrorOrange = Template.bind({});
+ErrorOrange.decorators = [StoreDecorator(errorState), ThemeDecorator(Theme.Orange)];
