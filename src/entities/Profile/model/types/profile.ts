@@ -1,8 +1,9 @@
 import { ValuesOfCurrency } from 'entities/Currency';
 import { ValuesOfCountry } from 'entities/Country';
-import { ValuesOf } from 'shared/types';
+import { Id, ValuesOf } from 'shared/types';
 
 export type Profile = {
+  id?: Id;
   firstname?: string;
   lastname?: string
   age?: number;

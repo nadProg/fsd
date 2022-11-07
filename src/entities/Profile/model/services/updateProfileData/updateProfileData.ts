@@ -2,8 +2,8 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 import { ThunkConfig } from 'app/providers/StoreProvider';
 
-import { validateProfile } from 'entities/Profile/model/services/validateProfile/validateProfile';
-
+import { getProfileData } from '../../selectors/getProfileData/getProfileData';
+import { validateProfile } from '../validateProfile/validateProfile';
 import { Profile, ValidateProfileError, ValuesOfValidateProfileError } from '../../types/profile';
 import { getProfileForm } from '../../selectors/getProfileForm/getProfileForm';
 
@@ -11,6 +11,12 @@ export const updateProfileData = createAsyncThunk<Profile, void, ThunkConfig<Val
   'profile/updateProfileData',
   async (_, thunkApi) => {
     const { rejectWithValue, extra, getState } = thunkApi;
+
+    const profileId = getProfileData(getState())?.id;
+
+    if (!profileId) {
+      return rejectWithValue([ValidateProfileError.NoData]);
+    }
 
     const form = getProfileForm(getState());
 
@@ -21,7 +27,7 @@ export const updateProfileData = createAsyncThunk<Profile, void, ThunkConfig<Val
     }
 
     try {
-      const response = await extra.api.put<Profile>('/profile', form);
+      const response = await extra.api.put<Profile>(`/profile/${profileId}`, form);
 
       if (!response.data) {
         throw new Error('Profile is undefined');

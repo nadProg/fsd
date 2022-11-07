@@ -3,12 +3,15 @@ import classNames from 'classnames';
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 
-import { getProfileReadonly, profileActions, updateProfileData } from 'entities/Profile';
-
 import { PropsWithClassName } from 'shared/types';
 import { Button, ButtonTheme } from 'shared/ui/Button';
-
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
+
+import { getUserAuthData } from 'entities/User';
+import {
+  getProfileData, getProfileReadonly, profileActions, updateProfileData,
+} from 'entities/Profile';
+
 import styles from './ProfilePageHeader.module.scss';
 
 type ProfilePageHeaderProps = PropsWithClassName;
@@ -21,6 +24,11 @@ export const ProfilePageHeader: FC<ProfilePageHeaderProps> = (props) => {
   const dispatch = useAppDispatch();
 
   const profileReadonly = useSelector(getProfileReadonly);
+
+  const userAuthData = useSelector(getUserAuthData);
+  const profileData = useSelector(getProfileData);
+
+  const isOwnProfile = userAuthData?.id === profileData?.id;
 
   const onEdit = useCallback(() => {
     dispatch(profileActions.setReadonly(false));
@@ -42,34 +50,37 @@ export const ProfilePageHeader: FC<ProfilePageHeaderProps> = (props) => {
         <p>{t('profile.content')}</p>
       </div>
 
-      <div className={styles.actions}>
-        {profileReadonly
-          ? (
-            <Button
-              theme={ButtonTheme.Outlined}
-              onClick={onEdit}
-            >
-              {t('profile.actions.edit')}
-            </Button>
-          )
-          : (
-            <>
-              {/* todo: add red theme */}
+      {isOwnProfile
+      && (
+        <div className={styles.actions}>
+          {profileReadonly
+            ? (
               <Button
                 theme={ButtonTheme.Outlined}
-                onClick={onCancel}
+                onClick={onEdit}
               >
-                {t('profile.actions.cancel')}
+                {t('profile.actions.edit')}
               </Button>
-              <Button
-                theme={ButtonTheme.Outlined}
-                onClick={onSave}
-              >
-                {t('profile.actions.save')}
-              </Button>
-            </>
-          )}
-      </div>
+            )
+            : (
+              <>
+                {/* todo: add red theme */}
+                <Button
+                  theme={ButtonTheme.Outlined}
+                  onClick={onCancel}
+                >
+                  {t('profile.actions.cancel')}
+                </Button>
+                <Button
+                  theme={ButtonTheme.Outlined}
+                  onClick={onSave}
+                >
+                  {t('profile.actions.save')}
+                </Button>
+              </>
+            )}
+        </div>
+      )}
     </div>
   );
 };
