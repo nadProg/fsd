@@ -5,12 +5,13 @@ import {
 
 import { ArticleDetailsCommentsSchema } from 'pages/ArticleDetailsPage';
 
-import { LoginSchema } from 'features/AuthByUsername';
-
 import { UserSchema } from 'entities/User';
 import { CounterSchema } from 'entities/Counter';
 import { ProfileSchema } from 'entities/Profile';
 import { ArticleDetailsSchema } from 'entities/Article';
+
+import { LoginSchema } from 'features/AuthByUsername';
+import { AddCommentFormSchema } from 'features/addCommentForm';
 
 export type StateSchema = {
   counter: CounterSchema;
@@ -19,6 +20,7 @@ export type StateSchema = {
   profile?: ProfileSchema;
   articleDetails?: ArticleDetailsSchema;
   articleDetailsComments?: ArticleDetailsCommentsSchema;
+  addCommentForm?: AddCommentFormSchema;
 };
 
 export type StateSchemaKey = keyof StateSchema;

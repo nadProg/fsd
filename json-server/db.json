@@ -19,7 +19,9 @@
       "img": "https://teknotower.com/wp-content/uploads/2020/11/js.png",
       "views": 1022,
       "createdAt": "26.02.2022",
-      "type": ["IT"],
+      "type": [
+        "IT"
+      ],
       "blocks": [
         {
           "id": "1",
@@ -100,6 +102,54 @@
       "text": "some comment 3",
       "articleId": "1",
       "userId": "1"
+    },
+    {
+      "text": "new comment",
+      "userId": "1",
+      "articleId": "1",
+      "id": "gy2wgS2"
+    },
+    {
+      "text": "from user",
+      "userId": "2",
+      "articleId": "1",
+      "id": "XI-OO1I"
+    },
+    {
+      "text": "another",
+      "userId": "1",
+      "articleId": "1",
+      "id": "sEOn1Uc"
+    },
+    {
+      "text": "another",
+      "userId": "1",
+      "articleId": "1",
+      "id": "fwhxw5B"
+    },
+    {
+      "text": "another",
+      "userId": "1",
+      "articleId": "1",
+      "id": "4LKuFvA"
+    },
+    {
+      "text": "another 333",
+      "userId": "1",
+      "articleId": "1",
+      "id": "nCixS9G"
+    },
+    {
+      "text": "clear test",
+      "userId": "1",
+      "articleId": "1",
+      "id": "xh2QXA-"
+    },
+    {
+      "text": "test clear",
+      "userId": "1",
+      "articleId": "1",
+      "id": "aoybTd-"
     }
   ],
   "users": [

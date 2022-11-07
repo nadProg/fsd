@@ -11,9 +11,13 @@ import { ReducersList, useDynamicReducers } from 'shared/hooks/useDynamicReducer
 import { CommentList } from 'entities/Comment';
 import { ArticleDetails } from 'entities/Article';
 
+import { AddCommentForm } from 'features/addCommentForm';
+
+import { useCallback } from 'react';
 import {
   fetchArticleDetailsComments,
 } from '../model/services/fetchArticleDetailsComments/fetchArticleDetailsComments';
+import { addCommentForArticle } from '../model/services/addCommentForArticle/addCommentForArticle';
 import {
   articleDetailsCommentsReducer, getArticleComments,
 } from '../model/slices/artilceDetailsCommentsSlice/articleDetailsCommentsSlice';
@@ -43,6 +47,10 @@ export const ArticleDetailsPage = () => {
     dispatch(fetchArticleDetailsComments(id));
   }, [dispatch, id]);
 
+  const sendComment = useCallback(async (text: string) => {
+    await dispatch(addCommentForArticle(text));
+  }, [dispatch]);
+
   if (!id) {
     return (
       <div>
@@ -58,6 +66,11 @@ export const ArticleDetailsPage = () => {
       <Text variant={TextVariant.Title} className={styles.commentsTitle}>
         {t('article-details.comments')}
       </Text>
+
+      <AddCommentForm
+        className={styles.commentForm}
+        onSendComment={sendComment}
+      />
 
       <CommentList
         isLoading={commentsIsLoading}
