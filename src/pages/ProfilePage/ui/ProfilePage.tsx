@@ -89,7 +89,7 @@ export const ProfilePage: FC<ProfilePageProps> = ({ className }) => {
     if (id) {
       dispatch(fetchProfileData(id));
     }
-  }, [dispatch]);
+  }, [dispatch, id]);
 
   return (
     <div className={className}>

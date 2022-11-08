@@ -3,14 +3,13 @@ import { useTranslation } from 'react-i18next';
 import classNames from 'classnames';
 import { useSelector } from 'react-redux';
 
+import { AppLink } from 'shared/ui/AppLink';
 import { Button, ButtonSize, ButtonTheme } from 'shared/ui/Button';
+
 import { LangSwitcher } from 'widgets/LangSwitcher';
 import { ThemeSwitcher } from 'widgets/ThemeSwitcher';
 
-import { AppLink } from 'shared/ui/AppLink';
-
-import { getUserAuthData } from 'entities/User';
-import { SideBarItems } from '../../model/items';
+import { getSideBarItems } from '../../model/selectors/getSideBarItems';
 
 import styles from './SideBar.module.scss';
 
@@ -21,7 +20,7 @@ type SideBarProps = {
 export function SideBar({ className }: SideBarProps) {
   const { t } = useTranslation();
   const [collapsed, setCollapsed] = useState(false);
-  const authData = useSelector(getUserAuthData);
+  const sidebarItems = useSelector(getSideBarItems);
 
   const onToggle = () => setCollapsed((prevCollapsed) => !prevCollapsed);
 
@@ -42,19 +41,17 @@ export function SideBar({ className }: SideBarProps) {
       </Button>
 
       <div className={styles.links}>
-        {SideBarItems.map(({
-          key, icon: Icon, path, authOnly,
-        }) => (!(authOnly && !authData)
-          ? (
-            <AppLink
-              key={key}
-              className={styles.link}
-              to={path}
-            >
-              <Icon className={styles.linkIcon} />
-              <span>{t(`navbar.${key}`)}</span>
-            </AppLink>
-          ) : null
+        {sidebarItems.map(({
+          key, icon: Icon, path,
+        }) => (
+          <AppLink
+            key={key}
+            className={styles.link}
+            to={path}
+          >
+            <Icon className={styles.linkIcon} />
+            <span>{t(`navbar.${key}`)}</span>
+          </AppLink>
         ))}
 
       </div>

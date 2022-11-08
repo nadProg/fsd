@@ -1,8 +1,9 @@
 import { FC, Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
-import { PageLoader } from 'widgets/PageLoader';
 import { routerConfig } from 'shared/config/router/routeConfig/routeConfig';
+
+import { PageLoader } from 'widgets/PageLoader';
 
 import { RequireAuth } from 'app/providers/router/ui/RequiredAuth';
 
