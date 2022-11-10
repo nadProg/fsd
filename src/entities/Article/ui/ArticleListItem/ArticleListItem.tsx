@@ -3,8 +3,8 @@ import classNames from 'classnames';
 
 import { Text } from 'shared/ui/Text';
 import { Icon } from 'shared/ui/Icon';
+import { Card } from 'shared/ui/Card/Card';
 import { PropsWithClassName, ValuesOf } from 'shared/types';
-
 import EyeIcon from 'shared/assets/icons/eye.svg';
 
 import { Article, ArticleView } from '../../model/types/article';
@@ -28,7 +28,7 @@ export const ArticleListItem: FC<ArticleListItemProps> = (props) => {
   }
 
   return (
-    <div className={classNames(className, styles.ArticleListItem, styles.grid)}>
+    <Card className={classNames(className, styles.ArticleListItem, styles.grid)}>
       <div className={styles.imageWrapper}>
         <img src={article.img} alt="" className={styles.image} />
         <Text className={styles.date}>{article.createdAt}</Text>
@@ -41,6 +41,6 @@ export const ArticleListItem: FC<ArticleListItemProps> = (props) => {
       <Text className={styles.title}>
         {article.title}
       </Text>
-    </div>
+    </Card>
   );
 };
