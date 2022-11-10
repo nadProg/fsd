@@ -1,10 +1,13 @@
 import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunk/TestAsyncThunk';
 
+import { DeepPartial } from 'shared/types';
 import { fetchArticleDetailsData } from './fetchArticleDetailsData';
 import { Article, ArticleType } from '../../types/article';
 
-const mockData: Article = {
-  id: '1',
+const mockDataId = '1';
+
+const mockData: DeepPartial<Article> = {
+  id: mockDataId,
   title: 'title',
   subtitle: 'subtitle',
   img: '',
@@ -24,7 +27,7 @@ describe('fetchArticleDetailsData', () => {
       data: mockData,
     }));
 
-    const result = await thunk.callThunk(mockData.id);
+    const result = await thunk.callThunk(mockDataId);
 
     expect(result.meta.requestStatus).toBe('fulfilled');
 
@@ -44,7 +47,7 @@ describe('fetchArticleDetailsData', () => {
       status: 403,
     }));
 
-    const result = await thunk.callThunk(mockData.id);
+    const result = await thunk.callThunk(mockDataId);
 
     expect(api.get).toHaveBeenCalled();
 
@@ -62,7 +65,7 @@ describe('fetchArticleDetailsData', () => {
       data: undefined,
     }));
 
-    const result = await thunk.callThunk(mockData.id);
+    const result = await thunk.callThunk(mockDataId);
 
     expect(api.get).toHaveBeenCalled();
 

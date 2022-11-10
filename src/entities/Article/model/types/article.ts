@@ -1,4 +1,5 @@
 import { ValuesOf } from 'shared/types';
+import { User } from 'entities/User';
 
 export const ArticleBlockType = {
   Code: 'CODE',
@@ -44,6 +45,7 @@ export type Article = {
   createdAt: string;
   types: ValuesOfArticleType[];
   blocks: ArticleBlock[];
+  user: User;
 };
 
 export const ArticleView = {

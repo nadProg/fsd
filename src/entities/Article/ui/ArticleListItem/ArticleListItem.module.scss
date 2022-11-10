@@ -1,5 +1,42 @@
 .list {
-  display: block;
+  display: flex;
+  flex-flow: column;
+  gap: 10px;
+
+  .header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .date {
+    margin-left: auto;
+  }
+
+  .imageWrapper {
+    width: 100%;
+    height: 250px;
+    position: relative;
+  }
+
+  .image {
+    position: absolute;
+    top: 0;
+    left: -15px;
+    width: calc(100% + 30px);
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .footer {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .button {
+    margin-right: auto;
+  }
 }
 
 .grid {

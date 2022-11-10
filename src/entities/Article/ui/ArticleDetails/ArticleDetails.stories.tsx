@@ -2,7 +2,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
-
+import MockAvatar from 'shared/assets/test/images/avatar.png';
 import { Theme } from 'shared/providers/ThemeProvider';
 
 import { DeepPartial } from 'shared/types';
@@ -29,7 +29,12 @@ const data: Article = {
   createdAt: '22.10.2022',
   img: '', // todo: add mock image
   types: [ArticleType.It, ArticleType.Economics],
-  blocks: [], // todo: add mock blocks
+  blocks: [], // todo: add mock blocks,
+  user: {
+    id: '1',
+    username: 'Username',
+    avatar: MockAvatar,
+  },
 };
 
 const Template: ComponentStory<typeof ArticleDetails> = (args) => <ArticleDetails {...args} />;

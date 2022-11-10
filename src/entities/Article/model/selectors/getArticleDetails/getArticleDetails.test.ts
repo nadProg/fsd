@@ -4,7 +4,7 @@ import { StateSchema } from 'app/providers/StoreProvider';
 import { Article, ArticleType } from '../../types/article';
 import { getArticleDetails } from './getArticleDetails';
 
-const mockData: Article = {
+const mockData: DeepPartial<Article> = {
   id: '1',
   title: 'title',
   subtitle: 'subtitle',

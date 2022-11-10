@@ -5,8 +5,10 @@ import { articleDetailsReducer } from './articleDetailsSlice';
 import { ArticleDetailsSchema } from '../types/articleDetailsSchema';
 import { Article, ArticleType } from '../types/article';
 
-const mockData: Article = {
-  id: '1',
+const mockId = '1';
+
+const mockData: DeepPartial<Article> = {
+  id: mockId,
   title: 'title',
   subtitle: 'subtitle',
   img: '',
@@ -36,7 +38,7 @@ describe('ArticleDetailsSlice', () => {
       isLoading: true,
     };
 
-    const action = fetchArticleDetailsData.fulfilled(mockData, '', mockData.id);
+    const action = fetchArticleDetailsData.fulfilled(mockData as Article, '', mockId);
 
     expect(articleDetailsReducer(state as ArticleDetailsSchema, action))
       .toEqual({
@@ -50,7 +52,7 @@ describe('ArticleDetailsSlice', () => {
       isLoading: true,
     };
 
-    const action = fetchArticleDetailsData.rejected(null, '', mockData.id, 'error');
+    const action = fetchArticleDetailsData.rejected(null, '', mockId, 'error');
 
     expect(articleDetailsReducer(state as ArticleDetailsSchema, action))
       .toEqual({

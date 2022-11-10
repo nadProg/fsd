@@ -1,3 +1,12 @@
 .ArticleList {
-  display: block;
+  display: flex;
+  gap: 20px;
+}
+
+.grid {
+  flex-flow: row wrap;
+}
+
+.list {
+  flex-flow: column;
 }

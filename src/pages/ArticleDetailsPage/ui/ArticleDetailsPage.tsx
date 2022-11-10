@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 import { Id } from 'shared/types';
@@ -14,6 +14,8 @@ import { ArticleDetails } from 'entities/Article';
 import { AddCommentForm } from 'features/addCommentForm';
 
 import { useCallback } from 'react';
+import { RoutePath } from 'shared/config/router/routeConfig/routeConfig';
+import { Button, ButtonTheme } from 'shared/ui/Button';
 import {
   fetchArticleDetailsComments,
 } from '../model/services/fetchArticleDetailsComments/fetchArticleDetailsComments';
@@ -34,6 +36,8 @@ const dynamicReducers: ReducersList = {
 export const ArticleDetailsPage = () => {
   useDynamicReducers(dynamicReducers);
 
+  const navigate = useNavigate();
+
   const dispatch = useAppDispatch();
 
   const comments = useSelector(getArticleComments.selectAll);
@@ -51,6 +55,10 @@ export const ArticleDetailsPage = () => {
     await dispatch(addCommentForArticle(text));
   }, [dispatch]);
 
+  const onBackToList = useCallback(() => {
+    navigate(RoutePath.articles);
+  }, [navigate]);
+
   if (!id) {
     return (
       <div>
@@ -61,6 +69,14 @@ export const ArticleDetailsPage = () => {
 
   return (
     <div>
+      <Button
+        theme={ButtonTheme.Outlined}
+        className={styles.backButton}
+        onClick={onBackToList}
+      >
+        {t('article-details.back')}
+      </Button>
+
       <ArticleDetails id={id} />
 
       <Text variant={TextVariant.Title} className={styles.commentsTitle}>
