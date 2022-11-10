@@ -7,6 +7,7 @@ import { Card } from 'shared/ui/Card/Card';
 import { PropsWithClassName, ValuesOf } from 'shared/types';
 import EyeIcon from 'shared/assets/icons/eye.svg';
 
+import { useHover } from 'shared/lib/hooks/useHover';
 import { Article, ArticleView } from '../../model/types/article';
 
 import styles from './ArticleListItem.module.scss';
@@ -18,17 +19,25 @@ type ArticleListItemProps = PropsWithClassName & {
 
 export const ArticleListItem: FC<ArticleListItemProps> = (props) => {
   const { className, article, view } = props;
+  const [isHover, hoverProps] = useHover();
 
   if (view === ArticleView.List) {
     return (
-      <div className={classNames(className, styles.ArticleListItem, styles.list)}>
+      <div className={classNames(className, styles.list)}>
         {article.title}
       </div>
     );
   }
 
   return (
-    <Card className={classNames(className, styles.ArticleListItem, styles.grid)}>
+    <Card
+      className={classNames(
+        className,
+        styles.grid,
+        { [styles.hover]: isHover },
+      )}
+      {...hoverProps}
+    >
       <div className={styles.imageWrapper}>
         <img src={article.img} alt="" className={styles.image} />
         <Text className={styles.date}>{article.createdAt}</Text>

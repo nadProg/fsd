@@ -4,6 +4,11 @@
 
 .grid {
   width: 230px;
+  transition: transform 300ms;
+
+  &.hover {
+    transform: scale(1.02);
+  }
 
   .imageWrapper {
     position: relative;

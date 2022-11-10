@@ -7,7 +7,7 @@ import styles from './Card.module.scss';
 type CardProps = PropsWithClassName & PropsWithChildren;
 
 export const Card = (props: CardProps) => {
-  const { className, children } = props;
+  const { className, children, ...restProps } = props;
 
-  return <div className={classNames(className, styles.Card)}>{children}</div>;
+  return <div className={classNames(className, styles.Card)} {...restProps}>{children}</div>;
 };
