@@ -10,7 +10,7 @@ const mockData: Article = {
   subtitle: 'subtitle',
   img: '',
   views: 1,
-  type: [ArticleType.It],
+  types: [ArticleType.It],
   blocks: [],
   createdAt: '22.22.2022',
 };

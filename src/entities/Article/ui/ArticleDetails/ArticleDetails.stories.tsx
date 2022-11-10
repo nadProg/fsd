@@ -28,7 +28,7 @@ const data: Article = {
   views: 100,
   createdAt: '22.10.2022',
   img: '', // todo: add mock image
-  type: [ArticleType.It, ArticleType.Economics],
+  types: [ArticleType.It, ArticleType.Economics],
   blocks: [], // todo: add mock blocks
 };
 

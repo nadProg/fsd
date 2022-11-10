@@ -42,6 +42,11 @@ export type Article = {
   img: string;
   views: number;
   createdAt: string;
-  type: ValuesOfArticleType[];
+  types: ValuesOfArticleType[];
   blocks: ArticleBlock[];
 };
+
+export const ArticleView = {
+  List: 'list',
+  Grid: 'grid',
+} as const;
