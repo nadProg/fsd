@@ -14,13 +14,13 @@ import { getArticlesPageView } from '../model/selectors/getArticlesPageView/getA
 import { getArticlesPageIsLoading } from '../model/selectors/getArticlesPageIsLoading/getArticlesPageIsLoading';
 import { getArticlesPageError } from '../model/selectors/getArticlesPageError/getArticlesPageError';
 import {
-  articlesPageSliceReducer, getArticles, articlesPageSliceActions,
+  articlesPageReducer, getArticles, articlesPageActions,
 } from '../model/slices/articlePageSlice/articlesPageSlice';
 
 import styles from './ArticlesPage.module.scss';
 
 const reducers: ReducersList = {
-  articlesPage: articlesPageSliceReducer,
+  articlesPage: articlesPageReducer,
 };
 
 export const ArticlesPage = () => {
@@ -39,7 +39,7 @@ export const ArticlesPage = () => {
   const { t } = useTranslation();
 
   const onViewSelect = useCallback((newView: ValuesOf<typeof ArticleView>) => {
-    dispatch(articlesPageSliceActions.setView(newView));
+    dispatch(articlesPageActions.setView(newView));
   }, [dispatch]);
 
   return (

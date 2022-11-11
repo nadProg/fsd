@@ -49,6 +49,6 @@ const articlesPageSlice = createSlice({
     }),
 });
 
-export const { reducer: articlesPageSliceReducer } = articlesPageSlice;
+export const { reducer: articlesPageReducer } = articlesPageSlice;
 
-export const { actions: articlesPageSliceActions } = articlesPageSlice;
+export const { actions: articlesPageActions } = articlesPageSlice;
