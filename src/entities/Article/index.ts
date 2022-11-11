@@ -4,9 +4,10 @@ import type { ArticleDetailsSchema } from './model/types/articleDetailsSchema';
 import { getArticleDetailsData } from './model/selectors/getArticleDetailsData/getArticleDetailsData';
 import { ArticleView } from './model/types/article';
 import { ArticleList } from './ui/ArticleList/ArticleList';
+import type { Article } from './model/types/article';
 
 export {
   ArticleDetails, articleDetailsReducer, getArticleDetailsData, ArticleView, ArticleList,
 };
 
-export type { ArticleDetailsSchema };
+export type { ArticleDetailsSchema, Article };
