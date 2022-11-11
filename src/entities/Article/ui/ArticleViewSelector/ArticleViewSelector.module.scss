@@ -1,0 +1,32 @@
+.ArticleViewSelector {
+  display: flex;
+  gap: 4px;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon {
+  [fill] {
+    fill: var(--primary-color);
+  }
+
+  [stroke] {
+    stroke: var(--primary-color);
+  }
+}
+
+.button.active {
+  .icon {
+    [fill] {
+      fill: var(--secondary-color);
+    }
+
+    [stroke] {
+      stroke: var(--secondary-color);
+    }
+  }
+}

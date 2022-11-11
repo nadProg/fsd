@@ -5,9 +5,15 @@ import { getArticleDetailsData } from './model/selectors/getArticleDetailsData/g
 import { ArticleView } from './model/types/article';
 import { ArticleList } from './ui/ArticleList/ArticleList';
 import type { Article } from './model/types/article';
+import { ArticleViewSelector } from './ui/ArticleViewSelector/ArticleViewSelector';
 
 export {
-  ArticleDetails, articleDetailsReducer, getArticleDetailsData, ArticleView, ArticleList,
+  ArticleDetails,
+  articleDetailsReducer,
+  getArticleDetailsData,
+  ArticleView,
+  ArticleList,
+  ArticleViewSelector,
 };
 
 export type { ArticleDetailsSchema, Article };
