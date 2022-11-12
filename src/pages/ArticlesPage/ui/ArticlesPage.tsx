@@ -1,21 +1,22 @@
-import { useTranslation } from 'react-i18next';
+import { useCallback } from 'react';
 import { useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 
+import { ValuesOf } from 'shared/types';
+import { useMountEffect } from 'shared/hooks/useMountEffect';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { useProjectEffect } from 'shared/hooks/useProjectEffect';
 import { ReducersList, useDynamicReducers } from 'shared/hooks/useDynamicReducers';
 
 import { ArticleList, ArticleView, ArticleViewSelector } from 'entities/Article';
 
-import { useCallback } from 'react';
-import { ValuesOf } from 'shared/types';
+import {
+  articlesPageReducer, getArticles, articlesPageActions,
+} from '../model/slices/articlePageSlice/articlesPageSlice';
 import { fetchArticles } from '../model/services/fetchArticles/fetchArticles';
 import { getArticlesPageView } from '../model/selectors/getArticlesPageView/getArticlesPageView';
 import { getArticlesPageIsLoading } from '../model/selectors/getArticlesPageIsLoading/getArticlesPageIsLoading';
 import { getArticlesPageError } from '../model/selectors/getArticlesPageError/getArticlesPageError';
-import {
-  articlesPageReducer, getArticles, articlesPageActions,
-} from '../model/slices/articlePageSlice/articlesPageSlice';
 
 import styles from './ArticlesPage.module.scss';
 
@@ -27,8 +28,12 @@ export const ArticlesPage = () => {
   useDynamicReducers(reducers);
   const dispatch = useAppDispatch();
 
+  useMountEffect(() => {
+    dispatch(articlesPageActions.initState());
+  });
+
   useProjectEffect(() => {
-    dispatch(fetchArticles());
+    dispatch(fetchArticles({}));
   }, []);
 
   const articles = useSelector(getArticles.selectAll);

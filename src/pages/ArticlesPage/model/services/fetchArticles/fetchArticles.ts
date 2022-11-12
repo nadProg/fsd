@@ -5,18 +5,29 @@ import { isAxiosError } from 'shared/helpers';
 import { Article } from 'entities/Article';
 
 import { ThunkConfig } from 'app/providers/StoreProvider';
+import { getArticlesPageLimit } from '../../selectors/getArticlesPageLimit/getArticlesPageLimit';
 
-export const fetchArticles = createAsyncThunk<Article[], void, ThunkConfig<string>>(
+type FetchArticlesParams = {
+  page?: number;
+};
+
+export const fetchArticles = createAsyncThunk<Article[], FetchArticlesParams, ThunkConfig<string>>(
   'articlesPage/fetchArticles',
-  async (_, thunkApi) => {
+  async (params, thunkApi) => {
     const {
-      rejectWithValue,
-      extra,
+      rejectWithValue, extra, getState,
     } = thunkApi;
+
+    const { page = 1 } = params;
+
+    const limit = getArticlesPageLimit(getState());
+
     try {
       const response = await extra.api.get<Article[]>('/articles', {
         params: {
           _expand: 'user',
+          _limit: limit,
+          _page: page,
         },
       });
 

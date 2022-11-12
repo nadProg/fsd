@@ -5,5 +5,8 @@ import { ValuesOf } from 'shared/types';
 export type ArticlesPageSchema = EntityState<Article> & {
   isLoading: boolean;
   error?: string;
-  view: ValuesOf<typeof ArticleView>
+  view: ValuesOf<typeof ArticleView>;
+  page: number;
+  limit?: number;
+  hasMore?: boolean;
 };

@@ -1,11 +1,12 @@
 import { createEntityAdapter, createSlice, PayloadAction } from '@reduxjs/toolkit';
 
+import { ValuesOf } from 'shared/types';
+
 import { Article, ArticleView } from 'entities/Article';
 
 import { StateSchema } from 'app/providers/StoreProvider';
 
-import { ValuesOf } from 'shared/types';
-import { ArticlesPageSchema } from '../../types/articlesPageSchema';
+import { initialArticlesPageState } from './initialArticlePageState';
 import { fetchArticles } from '../../services/fetchArticles/fetchArticles';
 
 const articlesAdapter = createEntityAdapter<Article>({
@@ -13,25 +14,31 @@ const articlesAdapter = createEntityAdapter<Article>({
   sortComparer: (a, b) => a.id.localeCompare(b.id),
 });
 
-const articlesPageState: ArticlesPageSchema = {
-  isLoading: true,
-  ids: [],
-  entities: {},
-  error: undefined,
-  view: ArticleView.List,
-};
+const ARTICLE_VIEW_LOCAL_STORAGE_KEY = 'article_view';
 
 export const getArticles = articlesAdapter.getSelectors<StateSchema>(
   (state) => state.articlesPage
-    || articlesAdapter.getInitialState(articlesPageState),
+    || articlesAdapter.getInitialState(initialArticlesPageState),
 );
 
 const articlesPageSlice = createSlice({
   name: 'articlesPageSlice',
-  initialState: articlesAdapter.getInitialState(articlesPageState),
+  initialState: articlesAdapter.getInitialState(initialArticlesPageState),
   reducers: {
     setView: (state, action: PayloadAction<ValuesOf<typeof ArticleView>>) => {
       state.view = action.payload;
+      localStorage.setItem(ARTICLE_VIEW_LOCAL_STORAGE_KEY, action.payload);
+    },
+    setPage: (state, action: PayloadAction<number>) => {
+      state.page = action.payload;
+    },
+    initState: (state) => {
+      const view = localStorage.getItem(ARTICLE_VIEW_LOCAL_STORAGE_KEY);
+
+      if (view === ArticleView.List || view === ArticleView.Grid) {
+        state.view = view;
+        state.limit = view === ArticleView.List ? 4 : 9;
+      }
     },
   },
   extraReducers: (builder) => builder
