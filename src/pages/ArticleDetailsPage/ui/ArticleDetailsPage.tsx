@@ -16,6 +16,7 @@ import { AddCommentForm } from 'features/addCommentForm';
 import { useCallback } from 'react';
 import { RoutePath } from 'shared/config/router/routeConfig/routeConfig';
 import { Button, ButtonTheme } from 'shared/ui/Button';
+import { Page } from 'shared/ui/Page';
 import {
   fetchArticleDetailsComments,
 } from '../model/services/fetchArticleDetailsComments/fetchArticleDetailsComments';
@@ -61,14 +62,14 @@ export const ArticleDetailsPage = () => {
 
   if (!id) {
     return (
-      <div>
+      <Page>
         {t('article-details.error.not-found')}
-      </div>
+      </Page>
     );
   }
 
   return (
-    <div>
+    <Page>
       <Button
         theme={ButtonTheme.Outlined}
         className={styles.backButton}
@@ -92,6 +93,6 @@ export const ArticleDetailsPage = () => {
         isLoading={commentsIsLoading}
         comments={comments}
       />
-    </div>
+    </Page>
   );
 };

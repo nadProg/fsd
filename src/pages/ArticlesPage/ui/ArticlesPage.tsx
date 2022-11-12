@@ -2,6 +2,7 @@ import { useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 
+import { Page } from 'shared/ui/Page';
 import { ValuesOf } from 'shared/types';
 import { useMountEffect } from 'shared/hooks/useMountEffect';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
@@ -48,7 +49,7 @@ export const ArticlesPage = () => {
   }, [dispatch]);
 
   return (
-    <div>
+    <Page>
       <h1>{t('articles.title')}</h1>
       <p>{t('articles.content')}</p>
 
@@ -63,6 +64,6 @@ export const ArticlesPage = () => {
         articles={articles}
         isLoading={isLoading}
       />
-    </div>
+    </Page>
   );
 };
