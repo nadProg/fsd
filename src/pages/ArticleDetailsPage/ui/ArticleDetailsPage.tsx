@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 
 import { Id } from 'shared/types';
 import { Text, TextVariant } from 'shared/ui/Text';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
+import { useAppDispatch } from 'shared/hooks/useAppDispatch';
 import { useProjectEffect } from 'shared/hooks/useProjectEffect';
 import { ReducersList, useDynamicReducers } from 'shared/hooks/useDynamicReducers';
 

@@ -8,7 +8,7 @@ import { Button, ButtonTheme } from 'shared/ui/Button';
 
 import { TextTheme, Text } from 'shared/ui/Text';
 import { useDynamicReducers } from 'shared/hooks/useDynamicReducers';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
+import { useAppDispatch } from 'shared/hooks/useAppDispatch';
 import { PropsWithClassName } from 'shared/types';
 import { loginActions, loginReducer } from '../../model/slice/LoginSlice';
 import { getLoginError } from '../../model/selectors/getLoginError/getLoginError';

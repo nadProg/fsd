@@ -8,7 +8,7 @@ import { Card } from 'shared/ui/Card/Card';
 import { PropsWithClassName, ValuesOf } from 'shared/types';
 import EyeIcon from 'shared/assets/icons/eye.svg';
 
-import { useHover } from 'shared/lib/hooks/useHover';
+import { useHover } from 'shared/hooks/useHover';
 import { Avatar } from 'shared/ui/Avatar';
 import { Button, ButtonTheme } from 'shared/ui/Button';
 

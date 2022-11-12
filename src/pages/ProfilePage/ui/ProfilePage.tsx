@@ -8,7 +8,7 @@ import { useTranslation } from 'react-i18next';
 import { Text, TextTheme } from 'shared/ui/Text';
 import { Page } from 'shared/ui/Page';
 import { Id, PropsWithClassName, ValuesOf } from 'shared/types';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
+import { useAppDispatch } from 'shared/hooks/useAppDispatch';
 import { useDynamicReducers } from 'shared/hooks/useDynamicReducers';
 import { useProjectEffect } from 'shared/hooks/useProjectEffect';
 

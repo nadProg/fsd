@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 
 import { PropsWithClassName } from 'shared/types';
 import { Button, ButtonTheme } from 'shared/ui/Button';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
+import { useAppDispatch } from 'shared/hooks/useAppDispatch';
 
 import { getUserAuthData } from 'entities/User';
 import {
