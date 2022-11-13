@@ -23,7 +23,7 @@ export const App = () => {
     <div className="app">
       <Suspense fallback="App Suspense">
         <NavBar />
-        <div className="content-page">
+        <div className="app__content">
           <SideBar />
           {userInitialized && <AppRouter />}
         </div>

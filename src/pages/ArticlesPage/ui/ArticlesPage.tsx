@@ -48,8 +48,12 @@ export const ArticlesPage = () => {
     dispatch(articlesPageActions.setView(newView));
   }, [dispatch]);
 
+  const onPageScrollEnd = useCallback(() => {
+    console.log('intersect end');
+  }, []);
+
   return (
-    <Page>
+    <Page onScrollEnd={onPageScrollEnd}>
       <h1>{t('articles.title')}</h1>
       <p>{t('articles.content')}</p>
 

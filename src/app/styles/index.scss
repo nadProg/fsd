@@ -33,14 +33,10 @@ h6 {
   min-height: 100vh;
 }
 
-.content-page {
+.app__content {
   display: flex;
 }
 
-.page-wrapper {
+.app__main {
   flex-grow: 1;
-  padding: var(--page-padding) var(--page-padding) var(--page-padding) calc(2 * var(--page-padding));
-  height: calc(100vh - var(--navbar-height));
-  width: 100%;
-  overflow-y: auto;
 }
