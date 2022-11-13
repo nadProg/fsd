@@ -9,4 +9,5 @@ export type ArticlesPageSchema = EntityState<Article> & {
   page: number;
   limit: number;
   hasMore: boolean;
+  __initialized__?: boolean;
 };

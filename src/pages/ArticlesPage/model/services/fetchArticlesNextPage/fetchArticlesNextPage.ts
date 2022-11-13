@@ -10,7 +10,7 @@ import { getArticlesPageIsLoading } from '../../selectors/getArticlesPageIsLoadi
 
 export const fetchArticlesNextPage = createAsyncThunk<void, void, ThunkConfig<string>>(
   'articlesPage/fetchArticlesNextPage',
-  async (params, thunkApi) => {
+  async (_, thunkApi) => {
     const { getState, dispatch } = thunkApi;
 
     const hasMore = getArticlesPageHasMore(getState());

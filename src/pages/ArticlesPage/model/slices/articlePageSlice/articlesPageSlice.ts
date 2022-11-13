@@ -39,6 +39,9 @@ const articlesPageSlice = createSlice({
         state.view = view;
         state.limit = view === ArticleView.List ? 3 : 9;
       }
+
+      // eslint-disable-next-line no-underscore-dangle
+      state.__initialized__ = true;
     },
   },
   extraReducers: (builder) => builder

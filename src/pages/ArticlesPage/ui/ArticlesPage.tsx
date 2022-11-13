@@ -4,7 +4,6 @@ import { useTranslation } from 'react-i18next';
 
 import { Page } from 'shared/ui/Page';
 import { ValuesOf } from 'shared/types';
-import { useMountEffect } from 'shared/hooks/useMountEffect';
 import { useAppDispatch } from 'shared/hooks/useAppDispatch';
 import { useProjectEffect } from 'shared/hooks/useProjectEffect';
 import { ReducersList, useDynamicReducers } from 'shared/hooks/useDynamicReducers';
@@ -14,10 +13,9 @@ import { ArticleList, ArticleView, ArticleViewSelector } from 'entities/Article'
 import {
   articlesPageReducer, getArticles, articlesPageActions,
 } from '../model/slices/articlePageSlice/articlesPageSlice';
-import { fetchArticles } from '../model/services/fetchArticles/fetchArticles';
+import { initArticlesPage } from '../model/services/initArticlesPage/initArticledPage';
 import { fetchArticlesNextPage } from '../model/services/fetchArticlesNextPage/fetchArticlesNextPage';
 import { getArticlesPageView } from '../model/selectors/getArticlesPageView/getArticlesPageView';
-import { getArticlesPagePage } from '../model/selectors/getArticlesPagePage/getArticlesPagePage';
 import { getArticlesPageError } from '../model/selectors/getArticlesPageError/getArticlesPageError';
 import { getArticlesPageIsLoading } from '../model/selectors/getArticlesPageIsLoading/getArticlesPageIsLoading';
 
@@ -34,20 +32,13 @@ export const ArticlesPage = () => {
 
   const articles = useSelector(getArticles.selectAll);
   const isLoading = useSelector(getArticlesPageIsLoading);
-  const page = useSelector(getArticlesPagePage);
   const view = useSelector(getArticlesPageView);
   const error = useSelector(getArticlesPageError);
 
   const dispatch = useAppDispatch();
 
-  useMountEffect(() => {
-    dispatch(articlesPageActions.initState());
-  });
-
   useProjectEffect(() => {
-    dispatch(fetchArticles({
-      page,
-    }));
+    dispatch(initArticlesPage());
   }, [dispatch]);
 
   const onViewSelect = useCallback((newView: ValuesOf<typeof ArticleView>) => {

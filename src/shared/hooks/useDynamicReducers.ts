@@ -17,9 +17,13 @@ export const useDynamicReducers = (reducers: ReducersList, options: DynamicReduc
   const store = useStore() as ReduxStoreWithManager;
 
   useMountEffect(() => {
+    const reducersMap = store.reducerManager.getReducerMap();
+
     Object.entries(reducers).forEach(([key, reducer]) => {
-      store.reducerManager.add(key as StateSchemaKey, reducer);
-      dispatch({ type: `@INIT ${key} reducer` });
+      if (!reducersMap[key as StateSchemaKey]) {
+        store.reducerManager.add(key as StateSchemaKey, reducer);
+        dispatch({ type: `@INIT ${key} reducer` });
+      }
     });
 
     return () => {
