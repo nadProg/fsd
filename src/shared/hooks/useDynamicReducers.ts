@@ -8,7 +8,11 @@ export type ReducersList = {
   [key in StateSchemaKey]?: Reducer
 };
 
-export const useDynamicReducers = (reducers: ReducersList) => {
+export type DynamicReducersOptions = {
+  keepMounted?: boolean;
+};
+
+export const useDynamicReducers = (reducers: ReducersList, options: DynamicReducersOptions = {}) => {
   const dispatch = useDispatch();
   const store = useStore() as ReduxStoreWithManager;
 
@@ -18,9 +22,13 @@ export const useDynamicReducers = (reducers: ReducersList) => {
       dispatch({ type: `@INIT ${key} reducer` });
     });
 
-    return () => Object.entries(reducers).forEach(([key]) => {
-      store.reducerManager.remove(key as StateSchemaKey);
-      dispatch({ type: `@DESTROY ${key} reducer` });
-    });
+    return () => {
+      if (!options.keepMounted) {
+        Object.entries(reducers).forEach(([key]) => {
+          store.reducerManager.remove(key as StateSchemaKey);
+          dispatch({ type: `@DESTROY ${key} reducer` });
+        });
+      }
+    };
   });
 };

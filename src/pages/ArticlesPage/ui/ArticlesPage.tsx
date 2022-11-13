@@ -28,7 +28,9 @@ const reducers: ReducersList = {
 };
 
 export const ArticlesPage = () => {
-  useDynamicReducers(reducers);
+  useDynamicReducers(reducers, {
+    keepMounted: true,
+  });
 
   const articles = useSelector(getArticles.selectAll);
   const isLoading = useSelector(getArticlesPageIsLoading);
