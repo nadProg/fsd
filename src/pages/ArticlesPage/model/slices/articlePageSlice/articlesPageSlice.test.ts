@@ -95,7 +95,9 @@ describe('articlesPageSlice', () => {
     Storage.prototype.getItem = jest.fn(() => null);
 
     expect(articlesPageReducer(state, initAction))
-      .toEqual({});
+      .toEqual({
+        __initialized__: true,
+      });
 
     expect(Storage.prototype.getItem).toHaveBeenCalledTimes(1);
     expect(Storage.prototype.getItem).toHaveBeenCalledWith('article_view');
@@ -111,6 +113,7 @@ describe('articlesPageSlice', () => {
       .toEqual({
         view: 'list',
         limit: 3,
+        __initialized__: true,
       });
 
     expect(Storage.prototype.getItem).toHaveBeenCalledTimes(1);
@@ -127,6 +130,7 @@ describe('articlesPageSlice', () => {
       .toEqual({
         view: 'grid',
         limit: 9,
+        __initialized__: true,
       });
 
     expect(Storage.prototype.getItem).toHaveBeenCalledTimes(1);
