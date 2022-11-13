@@ -1,16 +1,18 @@
-import { UIEventHandler, useCallback } from 'react';
+import { UIEventHandler } from 'react';
+import { useSelector } from 'react-redux';
+import { useLocation } from 'react-router-dom';
 import classNames from 'classnames';
 
+import type { PropsWithChildren, PropsWithClassName } from 'shared/types';
+import { useMountEffect } from 'shared/hooks/useMountEffect';
 import { useAppDispatch } from 'shared/hooks/useAppDispatch';
 import { useInfiniteScroll } from 'shared/hooks/useInfiniteScroll';
-import { PropsWithChildren, PropsWithClassName } from 'shared/types';
+import { useThrottledCallback } from 'shared/hooks/useThrottledCallback';
 
 import { getScrollPosition, scrollPositionSliceActions } from 'features/keepScrollPosition';
 
-import { useLocation } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 import { StateSchema } from 'app/providers/StoreProvider';
-import { useMountEffect } from 'shared/hooks/useMountEffect';
+
 import styles from './Page.module.scss';
 
 type PageProps = PropsWithChildren & PropsWithClassName & {
@@ -35,12 +37,12 @@ export const Page = ({
     (state: StateSchema) => getScrollPosition(state, pathname),
   );
 
-  const onPageScroll = useCallback<UIEventHandler>((evt) => {
+  const onPageScroll = useThrottledCallback<UIEventHandler>((evt) => {
     dispatch(scrollPositionSliceActions.setScrollPosition({
-      position: evt.currentTarget.scrollTop,
+      position: evt?.currentTarget?.scrollTop,
       path: pathname,
     }));
-  }, [dispatch, pathname]);
+  }, 500, [dispatch, pathname]);
 
   useMountEffect(() => {
     if (wrapperRef.current) {

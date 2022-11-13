@@ -15,6 +15,9 @@ export type Option<V = string, L = string> = {
   value: V
 };
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
+export type Callback = (...args: any[]) => any;
+
 export type ExtendableProps<
   ExtendedProps = Record<string, unknown>,
   OverrideProps = Record<string, unknown>,
