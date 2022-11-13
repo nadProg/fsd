@@ -1,26 +1,16 @@
-import {
-  MutableRefObject, ReactNode, useRef,
-} from 'react';
 import classNames from 'classnames';
 
 import { useInfiniteScroll } from 'shared/hooks/useInfiniteScroll';
+import { PropsWithChildren, PropsWithClassName } from 'shared/types';
 
 import styles from './Page.module.scss';
 
-interface PageProps {
-  className?: string;
-  children: ReactNode;
+type PageProps = PropsWithChildren & PropsWithClassName & {
   onScrollEnd?: () => void;
-}
+};
 
-export const Page = (props: PageProps) => {
-  const { className, children, onScrollEnd } = props;
-  const wrapperRef = useRef() as MutableRefObject<HTMLDivElement>;
-  const triggerRef = useRef() as MutableRefObject<HTMLDivElement>;
-
-  useInfiniteScroll({
-    triggerRef,
-    wrapperRef,
+export const Page = ({ className, children, onScrollEnd }: PageProps) => {
+  const { wrapperRef, triggerRef } = useInfiniteScroll<HTMLDivElement, HTMLDivElement>({
     callback: onScrollEnd,
   });
 

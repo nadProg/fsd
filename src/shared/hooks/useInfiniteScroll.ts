@@ -1,39 +1,51 @@
-import { MutableRefObject, useEffect, useRef } from 'react';
+import { RefObject, useEffect, useRef } from 'react';
 
-export interface UseInfiniteScrollOptions {
+export type UseInfiniteScrollOptions = {
   callback?: () => void;
-  triggerRef: MutableRefObject<HTMLElement>;
-  wrapperRef: MutableRefObject<HTMLElement>;
-}
+};
 
-export function useInfiniteScroll({ callback, wrapperRef, triggerRef }: UseInfiniteScrollOptions) {
-  const observer = useRef<IntersectionObserver | null>(null);
+export type UseInfiniteScrollResult<WrapperElement extends HTMLElement, TriggerElement extends HTMLElement> = {
+  wrapperRef: RefObject<WrapperElement>;
+  triggerRef: RefObject<TriggerElement>;
+};
+
+export const useInfiniteScroll = <WrapperElement extends HTMLElement, TriggerElement extends HTMLElement>({
+  callback,
+}: UseInfiniteScrollOptions): UseInfiniteScrollResult<WrapperElement, TriggerElement> => {
+  const wrapperRef = useRef<WrapperElement>(null);
+  const triggerRef = useRef<TriggerElement>(null);
 
   useEffect(() => {
     const wrapperElement = wrapperRef.current;
     const triggerElement = triggerRef.current;
 
-    if (callback) {
+    let observer: IntersectionObserver | null = null;
+
+    if (callback && triggerElement && wrapperElement) {
       const options = {
         root: wrapperElement,
         rootMargin: '0px',
         threshold: 1.0,
       };
 
-      observer.current = new IntersectionObserver(([entry]) => {
+      observer = new IntersectionObserver(([entry]) => {
         if (entry.isIntersecting) {
           callback();
         }
       }, options);
 
-      observer.current.observe(triggerElement);
+      observer.observe(triggerElement);
     }
 
     return () => {
-      if (observer.current && triggerElement) {
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-        observer.current.unobserve(triggerElement);
+      if (observer && triggerElement) {
+        observer.unobserve(triggerElement);
       }
     };
   }, [callback, triggerRef, wrapperRef]);
-}
+
+  return {
+    triggerRef,
+    wrapperRef,
+  };
+};
