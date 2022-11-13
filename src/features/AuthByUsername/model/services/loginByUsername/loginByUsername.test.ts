@@ -30,6 +30,8 @@ describe('loginByUsername', () => {
       username: 'user',
     }));
 
+    // todo: add storage
+
     expect(dispatch).toHaveBeenCalledTimes(3);
   });
 

@@ -5,7 +5,7 @@ import { USER_LOCALSTORAGE_KEY } from 'shared/constants/localStorage';
 import { isAxiosError } from 'shared/helpers';
 import { ThunkConfig } from 'app/providers/StoreProvider';
 
-type LoginByUsernameParams = {
+export type LoginByUsernameParams = {
   username: string;
   password: string;
 };
