@@ -9,6 +9,8 @@ describe('loginByUsername', () => {
 
     const { api, dispatch } = thunk;
 
+    Storage.prototype.setItem = jest.fn();
+
     api.post.mockReturnValue(Promise.resolve({
       data: {
         id: 'id',
@@ -30,7 +32,11 @@ describe('loginByUsername', () => {
       username: 'user',
     }));
 
-    // todo: add storage
+    expect(Storage.prototype.setItem).toHaveBeenCalledTimes(1);
+    expect(Storage.prototype.setItem).toHaveBeenCalledWith('user', JSON.stringify({
+      id: 'id',
+      username: 'user',
+    }));
 
     expect(dispatch).toHaveBeenCalledTimes(3);
   });
@@ -39,6 +45,8 @@ describe('loginByUsername', () => {
     const thunk = new TestAsyncThunk(loginByUsername);
 
     const { api, dispatch } = thunk;
+
+    Storage.prototype.setItem = jest.fn();
 
     api.post.mockReturnValue(Promise.resolve({
       status: 403,
@@ -52,6 +60,8 @@ describe('loginByUsername', () => {
     expect(api.post).toHaveBeenCalled();
 
     expect(result.meta.requestStatus).toBe('rejected');
+
+    expect(Storage.prototype.setItem).not.toHaveBeenCalled();
 
     expect(dispatch).toHaveBeenCalledTimes(2);
   });
