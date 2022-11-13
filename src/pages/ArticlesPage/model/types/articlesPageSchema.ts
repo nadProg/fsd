@@ -7,6 +7,6 @@ export type ArticlesPageSchema = EntityState<Article> & {
   error?: string;
   view: ValuesOf<typeof ArticleView>;
   page: number;
-  limit?: number;
-  hasMore?: boolean;
+  limit: number;
+  hasMore: boolean;
 };

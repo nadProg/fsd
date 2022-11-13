@@ -16,30 +16,30 @@ type ArticleListProps = PropsWithClassName & {
   view?: ValuesOf<typeof ArticleView>;
 };
 
+const getSkeletons = (count: number, view: ValuesOf<typeof ArticleView>) => new Array(count).fill(null)
+  /* eslint-disable-next-line react/no-array-index-key */
+  .map((_, index) => <ArticleListItemSkeleton key={index} view={view} />);
+
 export const ArticleList: FC<ArticleListProps> = (props) => {
   const { t } = useTranslation();
   const {
-    className, isLoading, articles, view = ArticleView.Grid,
+    className,
+    isLoading,
+    articles,
+    view = ArticleView.Grid,
   } = props;
 
-  if (isLoading) {
-    const skeletonsCount = view === ArticleView.Grid ? 9 : 3;
+  const isEmpty = !articles?.length;
 
-    return (
-      <div className={classNames(className, styles.ArticleList, styles.loading, styles[view])}>
-        {/* eslint-disable-next-line react/no-array-index-key */}
-        {new Array(skeletonsCount).fill(null).map((_, index) => <ArticleListItemSkeleton key={index} view={view} />)}
-      </div>
-    );
-  }
-
-  if (!articles?.length) {
+  if (isEmpty && !isLoading) {
     return (
       <div className={classNames(className, styles.ArticleList, styles.empty)}>
         {t('articles.list.empty')}
       </div>
     );
   }
+
+  const skeletonsCount = view === ArticleView.Grid ? 9 : 3;
 
   return (
     <div className={classNames(className, styles.ArticleList, styles[view])}>
@@ -51,6 +51,7 @@ export const ArticleList: FC<ArticleListProps> = (props) => {
           className={styles.card}
         />
       ))}
+      {isLoading && getSkeletons(skeletonsCount, view)}
     </div>
   );
 };

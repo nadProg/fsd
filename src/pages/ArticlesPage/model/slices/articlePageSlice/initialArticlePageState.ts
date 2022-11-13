@@ -10,4 +10,5 @@ export const initialArticlesPageState: ArticlesPageSchema = {
   view: ArticleView.List,
   page: 1,
   limit: 4,
+  hasMore: true,
 };

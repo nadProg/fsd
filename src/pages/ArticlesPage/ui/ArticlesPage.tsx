@@ -16,8 +16,10 @@ import {
 } from '../model/slices/articlePageSlice/articlesPageSlice';
 import { fetchArticles } from '../model/services/fetchArticles/fetchArticles';
 import { getArticlesPageView } from '../model/selectors/getArticlesPageView/getArticlesPageView';
-import { getArticlesPageIsLoading } from '../model/selectors/getArticlesPageIsLoading/getArticlesPageIsLoading';
+import { getArticlesPagePage } from '../model/selectors/getArticlesPagePage/getArticlesPagePage';
 import { getArticlesPageError } from '../model/selectors/getArticlesPageError/getArticlesPageError';
+import { getArticlesPageHasMore } from '../model/selectors/getArticlesPageHasMore/getArticlesPageHasMore';
+import { getArticlesPageIsLoading } from '../model/selectors/getArticlesPageIsLoading/getArticlesPageIsLoading';
 
 import styles from './ArticlesPage.module.scss';
 
@@ -27,6 +29,14 @@ const reducers: ReducersList = {
 
 export const ArticlesPage = () => {
   useDynamicReducers(reducers);
+
+  const articles = useSelector(getArticles.selectAll);
+  const isLoading = useSelector(getArticlesPageIsLoading);
+  const page = useSelector(getArticlesPagePage);
+  const view = useSelector(getArticlesPageView);
+  const hasMore = useSelector(getArticlesPageHasMore);
+  const error = useSelector(getArticlesPageError);
+
   const dispatch = useAppDispatch();
 
   useMountEffect(() => {
@@ -34,23 +44,30 @@ export const ArticlesPage = () => {
   });
 
   useProjectEffect(() => {
-    dispatch(fetchArticles({}));
-  }, []);
-
-  const articles = useSelector(getArticles.selectAll);
-  const isLoading = useSelector(getArticlesPageIsLoading);
-  const view = useSelector(getArticlesPageView);
-  const error = useSelector(getArticlesPageError);
-
-  const { t } = useTranslation();
+    dispatch(fetchArticles({
+      page,
+    }));
+  }, [dispatch]);
 
   const onViewSelect = useCallback((newView: ValuesOf<typeof ArticleView>) => {
     dispatch(articlesPageActions.setView(newView));
   }, [dispatch]);
 
   const onPageScrollEnd = useCallback(() => {
-    console.log('intersect end');
-  }, []);
+    (async () => {
+      if (hasMore && !isLoading) {
+        const nextPage = page + 1;
+
+        await dispatch(fetchArticles({
+          page: nextPage,
+        }));
+
+        dispatch(articlesPageActions.setPage(nextPage));
+      }
+    })();
+  }, [dispatch, page, isLoading, hasMore]);
+
+  const { t } = useTranslation();
 
   return (
     <Page onScrollEnd={onPageScrollEnd}>

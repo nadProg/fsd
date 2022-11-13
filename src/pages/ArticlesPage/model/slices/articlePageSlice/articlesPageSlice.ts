@@ -47,8 +47,10 @@ const articlesPageSlice = createSlice({
       state.isLoading = true;
     })
     .addCase(fetchArticles.fulfilled, (state, action) => {
-      articlesAdapter.setAll(state, action.payload);
+      articlesAdapter.addMany(state, action.payload);
       state.isLoading = false;
+
+      state.hasMore = !!action.payload.length;
     })
     .addCase(fetchArticles.rejected, (state, action) => {
       state.error = action.payload;
