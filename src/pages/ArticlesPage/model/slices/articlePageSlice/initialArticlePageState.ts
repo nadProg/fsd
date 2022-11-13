@@ -9,6 +9,6 @@ export const initialArticlesPageState: ArticlesPageSchema = {
   error: undefined,
   view: ArticleView.List,
   page: 1,
-  limit: 4,
+  limit: 3,
   hasMore: true,
 };
