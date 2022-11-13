@@ -45,7 +45,7 @@ const mockCommentEntities = {
   [mockComment3.id]: mockComment3,
 };
 
-describe('fetchArticleDetailsSlice', () => {
+describe('articleDetailsCommentsSlice', () => {
   test('should handle fetch article details comments data service pending', () => {
     const state: DeepPartial<ArticleDetailsCommentsSchema> = {
       error: 'error',
