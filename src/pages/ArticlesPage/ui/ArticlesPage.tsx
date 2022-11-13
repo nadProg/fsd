@@ -10,10 +10,10 @@ import { ReducersList, useDynamicReducers } from 'shared/hooks/useDynamicReducer
 
 import { ArticleList, ArticleView, ArticleViewSelector } from 'entities/Article';
 
+import { initArticlesPage } from '../model/services/initArticlesPage/initArticlesPage';
 import {
   articlesPageReducer, getArticles, articlesPageActions,
 } from '../model/slices/articlePageSlice/articlesPageSlice';
-import { initArticlesPage } from '../model/services/initArticlesPage/initArticledPage';
 import { fetchArticlesNextPage } from '../model/services/fetchArticlesNextPage/fetchArticlesNextPage';
 import { getArticlesPageView } from '../model/selectors/getArticlesPageView/getArticlesPageView';
 import { getArticlesPageError } from '../model/selectors/getArticlesPageError/getArticlesPageError';
