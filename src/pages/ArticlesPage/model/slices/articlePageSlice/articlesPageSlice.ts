@@ -18,7 +18,7 @@ const ARTICLE_VIEW_LOCAL_STORAGE_KEY = 'article_view';
 
 export const getArticles = articlesAdapter.getSelectors<StateSchema>(
   (state) => state.articlesPage
-    || articlesAdapter.getInitialState(initialArticlesPageState),
+    ?? articlesAdapter.getInitialState(initialArticlesPageState),
 );
 
 const articlesPageSlice = createSlice({
@@ -37,7 +37,7 @@ const articlesPageSlice = createSlice({
 
       if (view === ArticleView.List || view === ArticleView.Grid) {
         state.view = view;
-        state.limit = view === ArticleView.List ? 4 : 9;
+        state.limit = view === ArticleView.List ? 3 : 9;
       }
     },
   },

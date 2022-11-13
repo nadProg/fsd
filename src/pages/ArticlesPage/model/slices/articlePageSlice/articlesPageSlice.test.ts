@@ -2,7 +2,7 @@ import { DeepPartial, Id } from 'shared/types';
 
 import { Article } from 'entities/Article';
 
-import { articlesPageReducer } from './articlesPageSlice';
+import { articlesPageActions, articlesPageReducer } from './articlesPageSlice';
 import { fetchArticles } from '../../services/fetchArticles/fetchArticles';
 import { ArticlesPageSchema } from '../../types/articlesPageSchema';
 
@@ -50,6 +50,89 @@ const mockArticleEntities = {
 };
 
 describe('articlesPageSlice', () => {
+  test('should set page', () => {
+    const state = {} as ArticlesPageSchema;
+    const actionSet5 = articlesPageActions.setPage(5);
+    const actionSet10 = articlesPageActions.setPage(10);
+    const actionSet100 = articlesPageActions.setPage(100);
+
+    expect(articlesPageReducer(state, actionSet5))
+      .toEqual({
+        page: 5,
+      });
+
+    expect(articlesPageReducer(state, actionSet10))
+      .toEqual({
+        page: 10,
+      });
+
+    expect(articlesPageReducer(state, actionSet100))
+      .toEqual({
+        page: 100,
+      });
+  });
+
+  test('should set view', () => {
+    const state = {} as ArticlesPageSchema;
+    const actionSetList = articlesPageActions.setView('list');
+    const actionSetGrid = articlesPageActions.setView('grid');
+
+    expect(articlesPageReducer(state, actionSetList))
+      .toEqual({
+        view: 'list',
+      });
+
+    expect(articlesPageReducer(state, actionSetGrid))
+      .toEqual({
+        view: 'grid',
+      });
+  });
+
+  test('should init state when no view in localStorage', () => {
+    const state = {} as ArticlesPageSchema;
+    const initAction = articlesPageActions.initState();
+
+    Storage.prototype.getItem = jest.fn(() => null);
+
+    expect(articlesPageReducer(state, initAction))
+      .toEqual({});
+
+    expect(Storage.prototype.getItem).toHaveBeenCalledTimes(1);
+    expect(Storage.prototype.getItem).toHaveBeenCalledWith('article_view');
+  });
+
+  test('should init state when list view in localStorage', () => {
+    const state = {} as ArticlesPageSchema;
+    const initAction = articlesPageActions.initState();
+
+    Storage.prototype.getItem = jest.fn(() => 'list');
+
+    expect(articlesPageReducer(state, initAction))
+      .toEqual({
+        view: 'list',
+        limit: 3,
+      });
+
+    expect(Storage.prototype.getItem).toHaveBeenCalledTimes(1);
+    expect(Storage.prototype.getItem).toHaveBeenCalledWith('article_view');
+  });
+
+  test('should init state when grid view in localStorage', () => {
+    const state = {} as ArticlesPageSchema;
+    const initAction = articlesPageActions.initState();
+
+    Storage.prototype.getItem = jest.fn(() => 'grid');
+
+    expect(articlesPageReducer(state, initAction))
+      .toEqual({
+        view: 'grid',
+        limit: 9,
+      });
+
+    expect(Storage.prototype.getItem).toHaveBeenCalledTimes(1);
+    expect(Storage.prototype.getItem).toHaveBeenCalledWith('article_view');
+  });
+
   test('should handle fetch articles service pending', () => {
     const state: DeepPartial<ArticlesPageSchema> = {
       error: 'error',
