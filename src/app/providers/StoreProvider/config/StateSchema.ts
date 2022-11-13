@@ -12,6 +12,8 @@ import { ArticleDetailsSchema } from 'entities/Article';
 
 import { LoginSchema } from 'features/AuthByUsername';
 import { AddCommentFormSchema } from 'features/addCommentForm';
+import { ScrollPositionSchema } from 'features/keepScrollPosition';
+
 import { ArticlesPageSchema } from 'pages/ArticlesPage';
 
 export type StateSchema = {
@@ -23,6 +25,7 @@ export type StateSchema = {
   articleDetailsComments?: ArticleDetailsCommentsSchema;
   addCommentForm?: AddCommentFormSchema;
   articlesPage?: ArticlesPageSchema;
+  scrollPosition: ScrollPositionSchema;
 };
 
 export type StateSchemaKey = keyof StateSchema;
