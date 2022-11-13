@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 import { Id } from 'shared/types';
@@ -17,6 +17,7 @@ import { useCallback } from 'react';
 import { RoutePath } from 'shared/config/router/routeConfig/routeConfig';
 import { Button, ButtonTheme } from 'shared/ui/Button';
 import { Page } from 'shared/ui/Page';
+import { AppLink } from 'shared/ui/AppLink';
 import {
   fetchArticleDetailsComments,
 } from '../model/services/fetchArticleDetailsComments/fetchArticleDetailsComments';
@@ -37,8 +38,6 @@ const dynamicReducers: ReducersList = {
 export const ArticleDetailsPage = () => {
   useDynamicReducers(dynamicReducers);
 
-  const navigate = useNavigate();
-
   const dispatch = useAppDispatch();
 
   const comments = useSelector(getArticleComments.selectAll);
@@ -56,10 +55,6 @@ export const ArticleDetailsPage = () => {
     await dispatch(addCommentForArticle(text));
   }, [dispatch]);
 
-  const onBackToList = useCallback(() => {
-    navigate(RoutePath.articles);
-  }, [navigate]);
-
   if (!id) {
     return (
       <Page>
@@ -68,15 +63,18 @@ export const ArticleDetailsPage = () => {
     );
   }
 
+  const backPath = RoutePath.articles;
+
   return (
     <Page>
-      <Button
-        theme={ButtonTheme.Outlined}
-        className={styles.backButton}
-        onClick={onBackToList}
-      >
-        {t('article-details.back')}
-      </Button>
+      <AppLink to={backPath}>
+        <Button
+          theme={ButtonTheme.Outlined}
+          className={styles.backButton}
+        >
+          {t('article-details.back')}
+        </Button>
+      </AppLink>
 
       <ArticleDetails id={id} />
 

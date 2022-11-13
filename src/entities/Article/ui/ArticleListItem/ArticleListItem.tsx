@@ -1,4 +1,4 @@
-import { FC, useCallback } from 'react';
+import { FC } from 'react';
 import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
 
@@ -13,8 +13,8 @@ import { Avatar } from 'shared/ui/Avatar';
 import { Button, ButtonTheme } from 'shared/ui/Button';
 
 import { ArticleTextBlockComponent } from 'entities/Article/ui/ArticleTextBlockComponent/ArticleTextBlockComponent';
-import { useNavigate } from 'react-router-dom';
 import { RoutePath } from 'shared/config/router/routeConfig/routeConfig';
+import { AppLink } from 'shared/ui/AppLink';
 import {
   Article, ArticleBlockType, ArticleTextBlock, ArticleView,
 } from '../../model/types/article';
@@ -31,11 +31,8 @@ export const ArticleListItem: FC<ArticleListItemProps> = (props) => {
   const { className, article, view } = props;
   const [isHover, hoverProps] = useHover();
   const formattedTypes = article.types.join(' ');
-  const navigate = useNavigate();
 
-  const onReadArticle = useCallback(() => {
-    navigate(`${RoutePath['article-details']}${article.id}`);
-  }, [article.id, navigate]);
+  const articlePath = `${RoutePath['article-details']}${article.id}`;
 
   if (view === ArticleView.List) {
     const textBlock = article.blocks.find(
@@ -67,13 +64,15 @@ export const ArticleListItem: FC<ArticleListItemProps> = (props) => {
         {textBlock && <ArticleTextBlockComponent block={textBlock} />}
 
         <div className={styles.footer}>
-          <Button
-            theme={ButtonTheme.Outlined}
-            className={styles.button}
-            onClick={onReadArticle}
-          >
-            { t('article.read-more') }
-          </Button>
+          <AppLink to={articlePath}>
+            <Button
+              theme={ButtonTheme.Outlined}
+              className={styles.button}
+
+            >
+              { t('article.read-more') }
+            </Button>
+          </AppLink>
           <Text className={styles.views}>{article.views}</Text>
           <Icon icon={EyeIcon} />
         </div>
@@ -91,17 +90,21 @@ export const ArticleListItem: FC<ArticleListItemProps> = (props) => {
       {...hoverProps}
     >
       <div className={styles.imageWrapper}>
-        <img src={article.img} alt="" className={styles.image} />
-        <Text className={styles.date}>{article.createdAt}</Text>
+        <AppLink to={articlePath}>
+          <img src={article.img} alt="" className={styles.image} />
+          <Text className={styles.date}>{article.createdAt}</Text>
+        </AppLink>
       </div>
       <div className={styles.infoWrapper}>
         <Text className={styles.types}>{formattedTypes}</Text>
         <Text className={styles.views}>{article.views}</Text>
         <Icon icon={EyeIcon} />
       </div>
-      <Text className={styles.title}>
-        {article.title}
-      </Text>
+      <AppLink to={articlePath}>
+        <Text className={styles.title}>
+          {article.title}
+        </Text>
+      </AppLink>
     </Card>
   );
 };
