@@ -15,10 +15,10 @@ import {
   articlesPageReducer, getArticles, articlesPageActions,
 } from '../model/slices/articlePageSlice/articlesPageSlice';
 import { fetchArticles } from '../model/services/fetchArticles/fetchArticles';
+import { fetchArticlesNextPage } from '../model/services/fetchArticlesNextPage/fetchArticlesNextPage';
 import { getArticlesPageView } from '../model/selectors/getArticlesPageView/getArticlesPageView';
 import { getArticlesPagePage } from '../model/selectors/getArticlesPagePage/getArticlesPagePage';
 import { getArticlesPageError } from '../model/selectors/getArticlesPageError/getArticlesPageError';
-import { getArticlesPageHasMore } from '../model/selectors/getArticlesPageHasMore/getArticlesPageHasMore';
 import { getArticlesPageIsLoading } from '../model/selectors/getArticlesPageIsLoading/getArticlesPageIsLoading';
 
 import styles from './ArticlesPage.module.scss';
@@ -34,7 +34,6 @@ export const ArticlesPage = () => {
   const isLoading = useSelector(getArticlesPageIsLoading);
   const page = useSelector(getArticlesPagePage);
   const view = useSelector(getArticlesPageView);
-  const hasMore = useSelector(getArticlesPageHasMore);
   const error = useSelector(getArticlesPageError);
 
   const dispatch = useAppDispatch();
@@ -54,18 +53,8 @@ export const ArticlesPage = () => {
   }, [dispatch]);
 
   const onPageScrollEnd = useCallback(() => {
-    (async () => {
-      if (hasMore && !isLoading) {
-        const nextPage = page + 1;
-
-        await dispatch(fetchArticles({
-          page: nextPage,
-        }));
-
-        dispatch(articlesPageActions.setPage(nextPage));
-      }
-    })();
-  }, [dispatch, page, isLoading, hasMore]);
+    dispatch(fetchArticlesNextPage());
+  }, [dispatch]);
 
   const { t } = useTranslation();
 

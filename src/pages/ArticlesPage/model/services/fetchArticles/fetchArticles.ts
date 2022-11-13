@@ -32,7 +32,7 @@ export const fetchArticles = createAsyncThunk<Article[], FetchArticlesParams, Th
       });
 
       if (!response.data) {
-        return rejectWithValue('Articles aro not defined');
+        return rejectWithValue('Articles are not defined');
       }
 
       return response.data;
