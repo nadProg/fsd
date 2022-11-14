@@ -5,10 +5,15 @@ import { isAxiosError } from 'shared/helpers';
 import { Article } from 'entities/Article';
 
 import { ThunkConfig } from 'app/providers/StoreProvider';
+
+import { getArticlesPageSearch } from '../../selectors/getArticlesPageSearch/getArticlesPageSearch';
+import { getArticlesPageOrder } from '../../selectors/getArticlesPageOrder/getArticlesPageOrder';
+import { getArticlesPageSort } from '../../selectors/getArticlesPageSort/getArticlesPageSort';
 import { getArticlesPageLimit } from '../../selectors/getArticlesPageLimit/getArticlesPageLimit';
 
 type FetchArticlesParams = {
   page?: number;
+  replace?: boolean;
 };
 
 export const fetchArticles = createAsyncThunk<Article[], FetchArticlesParams, ThunkConfig<string>>(
@@ -20,6 +25,9 @@ export const fetchArticles = createAsyncThunk<Article[], FetchArticlesParams, Th
 
     const { page = 1 } = params;
 
+    const search = getArticlesPageSearch(getState());
+    const order = getArticlesPageOrder(getState());
+    const sort = getArticlesPageSort(getState());
     const limit = getArticlesPageLimit(getState());
 
     try {
@@ -28,6 +36,9 @@ export const fetchArticles = createAsyncThunk<Article[], FetchArticlesParams, Th
           _expand: 'user',
           _limit: limit,
           _page: page,
+          _order: order,
+          _sort: sort,
+          q: search,
         },
       });
 
