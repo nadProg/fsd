@@ -1,7 +1,9 @@
 import { FC } from 'react';
-import { ExtendableProps, PropsWithClassName, ValuesOf } from 'shared/types';
-import { Select, SelectProps } from 'shared/ui/Select';
 import { useTranslation } from 'react-i18next';
+import {
+  ExtendableProps, Option, PropsWithClassName, ValuesOf,
+} from 'shared/types';
+import { Select, SelectProps } from 'shared/ui/Select';
 import { Currency } from '../../model/types/types';
 
 export type ValuesOfCurrency = ValuesOf<typeof Currency>;
@@ -11,15 +13,28 @@ type OverrideProps = {
   onChange?: (value: ValuesOfCurrency) => void;
 };
 
-type CurrencySelectProps = PropsWithClassName & ExtendableProps<SelectProps, OverrideProps>;
+type CurrencySelectProps = PropsWithClassName & ExtendableProps<SelectProps<ValuesOfCurrency>, OverrideProps>;
 
-const options = [
-  { value: Currency.Rub, label: 'Рубль' },
-  { value: Currency.Eur, label: 'Евро' },
-  { value: Currency.Usd, label: 'Доллар' },
+const options: Option<ValuesOfCurrency>[] = [
+  {
+    value: Currency.Rub,
+    label: 'Рубль',
+  },
+  {
+    value: Currency.Eur,
+    label: 'Евро',
+  },
+  {
+    value: Currency.Usd,
+    label: 'Доллар',
+  },
 ];
 
-export const CurrencySelect: FC<CurrencySelectProps> = ({ className, onChange, ...restProps }) => {
+export const CurrencySelect: FC<CurrencySelectProps> = ({
+  className,
+  onChange,
+  ...restProps
+}) => {
   // todo: add translation to label
   const { t } = useTranslation();
 
@@ -28,7 +43,7 @@ export const CurrencySelect: FC<CurrencySelectProps> = ({ className, onChange, .
       className={className}
       label="Выберите валюту"
       options={options}
-      onChange={onChange as (value: string) => void}
+      onChange={onChange}
       {...restProps}
     />
   );

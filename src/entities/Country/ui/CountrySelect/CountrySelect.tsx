@@ -1,7 +1,10 @@
 import { FC } from 'react';
-import { ExtendableProps, PropsWithClassName, ValuesOf } from 'shared/types';
-import { Select, SelectProps } from 'shared/ui/Select';
 import { useTranslation } from 'react-i18next';
+
+import {
+  ExtendableProps, Option, PropsWithClassName, ValuesOf,
+} from 'shared/types';
+import { Select, SelectProps } from 'shared/ui/Select';
 
 import { Country } from '../../model/types/types';
 
@@ -12,18 +15,40 @@ type OverrideProps = {
   onChange?: (value: ValuesOfCountry) => void;
 };
 
-type CountrySelectProps = PropsWithClassName & ExtendableProps<SelectProps, OverrideProps>;
+type CountrySelectProps = PropsWithClassName & ExtendableProps<SelectProps<ValuesOfCountry>, OverrideProps>;
 
-const options = [
-  { value: Country.Armenia, label: 'Армения' },
-  { value: Country.Belarus, label: 'Беларусь' },
-  { value: Country.Kazakhstan, label: 'Казахстан' },
-  { value: Country.Russia, label: 'Россия' },
-  { value: Country.Ukraine, label: 'Украина' },
-  { value: Country.Mongolia, label: 'Монголия' },
+const options: Option<ValuesOfCountry>[] = [
+  {
+    value: Country.Armenia,
+    label: 'Армения',
+  },
+  {
+    value: Country.Belarus,
+    label: 'Беларусь',
+  },
+  {
+    value: Country.Kazakhstan,
+    label: 'Казахстан',
+  },
+  {
+    value: Country.Russia,
+    label: 'Россия',
+  },
+  {
+    value: Country.Ukraine,
+    label: 'Украина',
+  },
+  {
+    value: Country.Mongolia,
+    label: 'Монголия',
+  },
 ];
 
-export const CountrySelect: FC<CountrySelectProps> = ({ className, onChange, ...restProps }) => {
+export const CountrySelect: FC<CountrySelectProps> = ({
+  className,
+  onChange,
+  ...restProps
+}) => {
   // todo: add translation to label
   const { t } = useTranslation();
 
@@ -32,7 +57,7 @@ export const CountrySelect: FC<CountrySelectProps> = ({ className, onChange, ...
       className={className}
       label="Выберите страну"
       options={options}
-      onChange={onChange as (value: string) => void}
+      onChange={onChange}
       {...restProps}
     />
   );

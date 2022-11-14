@@ -3,21 +3,19 @@ import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 
 import { Page } from 'shared/ui/Page';
-import { ValuesOf } from 'shared/types';
 import { useAppDispatch } from 'shared/hooks/useAppDispatch';
 import { useProjectEffect } from 'shared/hooks/useProjectEffect';
 import { ReducersList, useDynamicReducers } from 'shared/hooks/useDynamicReducers';
 
-import { ArticleList, ArticleView, ArticleViewSelector } from 'entities/Article';
+import { ArticleList } from 'entities/Article';
 
-import { getArticlesPageView } from '../model/selectors/getArticlesPageView/getArticlesPageView';
-import { initArticlesPage } from '../model/services/initArticlesPage/initArticlesPage';
-import {
-  articlesPageReducer, getArticles, articlesPageActions,
-} from '../model/slices/articlePageSlice/articlesPageSlice';
-import { fetchArticlesNextPage } from '../model/services/fetchArticlesNextPage/fetchArticlesNextPage';
-import { getArticlesPageError } from '../model/selectors/getArticlesPageError/getArticlesPageError';
-import { getArticlesPageIsLoading } from '../model/selectors/getArticlesPageIsLoading/getArticlesPageIsLoading';
+import { ArticlesPageFilters } from '../ArticlesPageFilters/ArticlesPageFilters';
+import { getArticlesPageView } from '../../model/selectors/getArticlesPageView/getArticlesPageView';
+import { initArticlesPage } from '../../model/services/initArticlesPage/initArticlesPage';
+import { articlesPageReducer, getArticles } from '../../model/slices/articlePageSlice/articlesPageSlice';
+import { fetchArticlesNextPage } from '../../model/services/fetchArticlesNextPage/fetchArticlesNextPage';
+import { getArticlesPageError } from '../../model/selectors/getArticlesPageError/getArticlesPageError';
+import { getArticlesPageIsLoading } from '../../model/selectors/getArticlesPageIsLoading/getArticlesPageIsLoading';
 
 import styles from './ArticlesPage.module.scss';
 
@@ -41,10 +39,6 @@ export const ArticlesPage = () => {
     dispatch(initArticlesPage());
   }, [dispatch]);
 
-  const onViewSelect = useCallback((newView: ValuesOf<typeof ArticleView>) => {
-    dispatch(articlesPageActions.setView(newView));
-  }, [dispatch]);
-
   const onPageScrollEnd = useCallback(() => {
     dispatch(fetchArticlesNextPage());
   }, [dispatch]);
@@ -56,11 +50,7 @@ export const ArticlesPage = () => {
       <h1>{t('articles.title')}</h1>
       <p>{t('articles.content')}</p>
 
-      <ArticleViewSelector
-        className={styles.viewSelector}
-        view={view}
-        onSelect={onViewSelect}
-      />
+      <ArticlesPageFilters className={styles.filters} />
 
       <ArticleList
         view={view}

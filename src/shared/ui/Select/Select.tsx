@@ -1,30 +1,34 @@
-import {
-  ChangeEvent, FC, SelectHTMLAttributes, useCallback,
-} from 'react';
+import { ChangeEvent, SelectHTMLAttributes, useCallback } from 'react';
 
 import { PropsWithClassName, Option, ExtendableProps } from 'shared/types';
 
 import classNames from 'classnames';
 import styles from './Select.module.scss';
 
-type OverrideProps = {
+type OverrideProps<V extends string> = {
   label?: string;
-  options?: Option[];
-  value?: string;
-  onChange?: (value: string) => void;
+  options?: Option<V>[];
+  value?: V;
+  onChange?: (value: V) => void;
 };
 
 type ExtendedProps = SelectHTMLAttributes<HTMLSelectElement>;
 
-export type SelectProps = PropsWithClassName & ExtendableProps<ExtendedProps, OverrideProps>;
+export type SelectProps<V extends string = string> =
+  PropsWithClassName
+  & ExtendableProps<ExtendedProps, OverrideProps<V>>;
 
-export const Select: FC<SelectProps> = (props) => {
+export const Select = <V extends string>(props: SelectProps<V>) => {
   const {
-    className, label, options, onChange, ...restProps
+    className,
+    label,
+    options,
+    onChange,
+    ...restProps
   } = props;
 
   const onSelectChange = useCallback((evt: ChangeEvent<HTMLSelectElement>) => {
-    onChange?.(evt.target.value);
+    onChange?.(evt.target.value as V);
   }, [onChange]);
 
   return (
