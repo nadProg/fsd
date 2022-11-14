@@ -4,6 +4,8 @@ import { articlesPageActions } from '../../slices/articlePageSlice/articlesPageS
 import { fetchArticles } from '../fetchArticles/fetchArticles';
 import { initArticlesPage } from './initArticlesPage';
 
+const mockParams: URLSearchParams = new URLSearchParams();
+
 jest.mock('../fetchArticles/fetchArticles');
 jest.mock('../../slices/articlePageSlice/articlesPageSlice');
 
@@ -13,7 +15,7 @@ describe('initArticlesPage', () => {
 
     const { dispatch } = thunk;
 
-    const result = await thunk.callThunk();
+    const result = await thunk.callThunk(mockParams);
 
     expect(result.meta.requestStatus).toBe('fulfilled');
 
@@ -32,7 +34,7 @@ describe('initArticlesPage', () => {
 
     const { dispatch } = thunk;
 
-    const result = await thunk.callThunk();
+    const result = await thunk.callThunk(mockParams);
 
     expect(result.meta.requestStatus).toBe('fulfilled');
 

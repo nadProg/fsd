@@ -1,6 +1,7 @@
 import { useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
+import { useSearchParams } from 'react-router-dom';
 
 import { Page } from 'shared/ui/Page';
 import { useAppDispatch } from 'shared/hooks/useAppDispatch';
@@ -35,8 +36,10 @@ export const ArticlesPage = () => {
 
   const dispatch = useAppDispatch();
 
+  const [searchParams] = useSearchParams();
+
   useProjectEffect(() => {
-    dispatch(initArticlesPage());
+    dispatch(initArticlesPage(searchParams));
   }, [dispatch]);
 
   const onPageScrollEnd = useCallback(() => {

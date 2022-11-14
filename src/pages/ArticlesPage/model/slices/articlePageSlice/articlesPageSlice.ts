@@ -59,7 +59,7 @@ const articlesPageSlice = createSlice({
       state.error = undefined;
       state.isLoading = true;
 
-      if (action.meta.arg.replace) {
+      if (action.meta?.arg.replace) {
         articlesAdapter.removeAll(state);
       }
     })
@@ -67,7 +67,7 @@ const articlesPageSlice = createSlice({
       state.isLoading = false;
       state.hasMore = !!action.payload.length;
 
-      if (action.meta.arg.replace) {
+      if (action.meta?.arg.replace) {
         articlesAdapter.setAll(state, action.payload);
         return;
       }
