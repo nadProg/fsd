@@ -36,6 +36,9 @@ describe('getArticlesPage', () => {
       page: 1,
       limit: 3,
       view: 'list',
+      sort: 'views',
+      order: 'asc',
+      search: '',
     });
   });
 });

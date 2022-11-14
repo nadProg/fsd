@@ -52,3 +52,9 @@ export const ArticleView = {
   List: 'list',
   Grid: 'grid',
 } as const;
+
+export const ArticleSortField = {
+  Views: 'views',
+  Title: 'title',
+  CreatedAt: 'createdAt',
+} as const;

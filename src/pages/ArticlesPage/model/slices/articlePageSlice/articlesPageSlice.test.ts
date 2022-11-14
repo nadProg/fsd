@@ -88,6 +88,60 @@ describe('articlesPageSlice', () => {
       });
   });
 
+  test('should set order', () => {
+    const state = {} as ArticlesPageSchema;
+    const actionSetAsc = articlesPageActions.setOrder('asc');
+    const actionSetDesc = articlesPageActions.setOrder('desc');
+
+    expect(articlesPageReducer(state, actionSetAsc))
+      .toEqual({
+        order: 'asc',
+      });
+
+    expect(articlesPageReducer(state, actionSetDesc))
+      .toEqual({
+        order: 'desc',
+      });
+  });
+
+  test('should set sort', () => {
+    const state = {} as ArticlesPageSchema;
+    const actionSetViews = articlesPageActions.setSort('views');
+    const actionSetTitle = articlesPageActions.setSort('title');
+    const actionSetCreatedAt = articlesPageActions.setSort('createdAt');
+
+    expect(articlesPageReducer(state, actionSetViews))
+      .toEqual({
+        sort: 'views',
+      });
+
+    expect(articlesPageReducer(state, actionSetTitle))
+      .toEqual({
+        sort: 'title',
+      });
+
+    expect(articlesPageReducer(state, actionSetCreatedAt))
+      .toEqual({
+        sort: 'createdAt',
+      });
+  });
+
+  test('should set search', () => {
+    const state = {} as ArticlesPageSchema;
+    const actionSetShort = articlesPageActions.setSearch('short');
+    const actionSetLong = articlesPageActions.setSearch('long long long');
+
+    expect(articlesPageReducer(state, actionSetShort))
+      .toEqual({
+        search: 'short',
+      });
+
+    expect(articlesPageReducer(state, actionSetLong))
+      .toEqual({
+        search: 'long long long',
+      });
+  });
+
   test('should init state when no view in localStorage', () => {
     const state = {} as ArticlesPageSchema;
     const initAction = articlesPageActions.initState();
