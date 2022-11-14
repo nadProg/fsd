@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { useCallback } from 'react';
+import { useCallback, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 
 import { PropsWithClassName, ValuesOf } from 'shared/types';
@@ -13,10 +13,14 @@ import {
   ArticleSortField, ArticleSortSelector, ArticleView, ArticleViewSelector,
 } from 'entities/Article';
 
+import { Tab, Tabs } from 'shared/ui/Tabs';
+import { ArticleType } from 'entities/Article/model/types/article';
+import { useTranslation } from 'react-i18next';
 import { fetchArticles } from '../../model/services/fetchArticles/fetchArticles';
 import { getArticlesPageSort } from '../../model/selectors/getArticlesPageSort/getArticlesPageSort';
 import { getArticlesPageOrder } from '../../model/selectors/getArticlesPageOrder/getArticlesPageOrder';
 import { getArticlesPageView } from '../../model/selectors/getArticlesPageView/getArticlesPageView';
+import { getArticlesPageType } from '../../model/selectors/getArticlesPageType/getArticlesPageType';
 import { articlesPageActions } from '../../model/slices/articlePageSlice/articlesPageSlice';
 import { getArticlesPageSearch } from '../../model/selectors/getArticlesPageSearch/getArticlesPageSearch';
 
@@ -27,10 +31,13 @@ type ArticlesPageFiltersProps = PropsWithClassName;
 export const ArticlesPageFilters = (props: ArticlesPageFiltersProps) => {
   const { className } = props;
 
+  const { t } = useTranslation();
+
   const view = useSelector(getArticlesPageView);
   const sort = useSelector(getArticlesPageSort);
   const order = useSelector(getArticlesPageOrder);
   const search = useSelector(getArticlesPageSearch);
+  const type = useSelector(getArticlesPageType);
 
   const dispatch = useAppDispatch();
 
@@ -58,6 +65,33 @@ export const ArticlesPageFilters = (props: ArticlesPageFiltersProps) => {
     refetchData();
   }, [dispatch, refetchData]);
 
+  const onTabClick = useCallback((newTab: ValuesOf<typeof ArticleType> | 'ALL') => {
+    dispatch(articlesPageActions.setType(newTab));
+    refetchData();
+  }, [dispatch, refetchData]);
+
+  // todo: add translations
+  const tabs = useMemo<Tab<ValuesOf<typeof ArticleType> | 'ALL', string>[]>(() => (
+    [
+      {
+        value: 'ALL',
+        label: 'All',
+      },
+      {
+        value: ArticleType.It,
+        label: 'IT',
+      },
+      {
+        value: ArticleType.Economics,
+        label: 'Economics',
+      },
+      {
+        value: ArticleType.Science,
+        label: 'Science',
+      },
+    ]
+  ), [t]);
+
   return (
     <div className={classNames(className, styles.ArticlesPageFilters)}>
       <div className={styles.filters}>
@@ -76,6 +110,8 @@ export const ArticlesPageFilters = (props: ArticlesPageFiltersProps) => {
       <Card>
         <Input placeholder="Поиск" value={search} onChange={onSearchChange} />
       </Card>
+
+      <Tabs tabs={tabs} value={type} onTabClick={onTabClick} />
     </div>
   );
 };

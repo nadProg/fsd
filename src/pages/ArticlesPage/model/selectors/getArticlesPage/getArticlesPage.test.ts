@@ -13,6 +13,10 @@ describe('getArticlesPage', () => {
         page: 10,
         limit: 2,
         view: 'grid',
+        order: 'desc',
+        search: 'search',
+        sort: 'createdAt',
+        type: 'ECONOMICS',
       },
     };
 
@@ -24,6 +28,10 @@ describe('getArticlesPage', () => {
       page: 10,
       limit: 2,
       view: 'grid',
+      order: 'desc',
+      search: 'search',
+      sort: 'createdAt',
+      type: 'ECONOMICS',
     });
   });
 
@@ -39,6 +47,7 @@ describe('getArticlesPage', () => {
       sort: 'views',
       order: 'asc',
       search: '',
+      type: 'ALL',
     });
   });
 });

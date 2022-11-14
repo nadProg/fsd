@@ -7,7 +7,7 @@ import { ArticleViewSelector } from './ArticleViewSelector';
 import { ArticleView } from '../../model/types/article';
 
 export default {
-  title: 'entities/ArticleSortSelector',
+  title: 'entities/ArticleViewSelector',
   component: ArticleViewSelector,
   argTypes: {
     backgroundColor: { control: 'color' },

@@ -7,6 +7,7 @@ import { Article, ArticleSortField, ArticleView } from 'entities/Article';
 import { StateSchema } from 'app/providers/StoreProvider';
 
 import { SortOrder } from 'shared/constants/queryParams';
+import { ArticleType } from 'entities/Article/model/types/article';
 import { initialArticlesPageState } from './initialArticlePageState';
 import { fetchArticles } from '../../services/fetchArticles/fetchArticles';
 
@@ -41,6 +42,9 @@ const articlesPageSlice = createSlice({
     },
     setSearch: (state, action: PayloadAction<string>) => {
       state.search = action.payload;
+    },
+    setType: (state, action: PayloadAction<ValuesOf<typeof ArticleType> | 'ALL'>) => {
+      state.type = action.payload;
     },
     initState: (state) => {
       const view = localStorage.getItem(ARTICLE_VIEW_LOCAL_STORAGE_KEY);

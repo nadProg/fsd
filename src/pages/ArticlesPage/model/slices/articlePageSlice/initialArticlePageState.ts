@@ -16,4 +16,5 @@ export const initialArticlesPageState: ArticlesPageSchema = {
   order: SortOrder.Asc,
   sort: ArticleSortField.Views,
   search: '',
+  type: 'ALL',
 };

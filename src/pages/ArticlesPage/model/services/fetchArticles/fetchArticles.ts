@@ -11,6 +11,7 @@ import { getArticlesPageSearch } from '../../selectors/getArticlesPageSearch/get
 import { getArticlesPageOrder } from '../../selectors/getArticlesPageOrder/getArticlesPageOrder';
 import { getArticlesPageSort } from '../../selectors/getArticlesPageSort/getArticlesPageSort';
 import { getArticlesPageLimit } from '../../selectors/getArticlesPageLimit/getArticlesPageLimit';
+import { getArticlesPageType } from '../../selectors/getArticlesPageType/getArticlesPageType';
 
 type FetchArticlesParams = {
   page?: number;
@@ -27,12 +28,13 @@ export const fetchArticles = createAsyncThunk<Article[], FetchArticlesParams, Th
     const { page = 1 } = params;
 
     const search = getArticlesPageSearch(getState());
+    const type = getArticlesPageType(getState());
     const order = getArticlesPageOrder(getState());
     const sort = getArticlesPageSort(getState());
     const limit = getArticlesPageLimit(getState());
 
     addQueryParams({
-      order, sort, search,
+      order, sort, search, type,
     });
 
     try {
@@ -44,6 +46,7 @@ export const fetchArticles = createAsyncThunk<Article[], FetchArticlesParams, Th
           _order: order,
           _sort: sort,
           q: search,
+          types: type !== 'ALL' ? type : undefined,
         },
       });
 

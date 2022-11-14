@@ -10,8 +10,8 @@ import { ReducersList, useDynamicReducers } from 'shared/hooks/useDynamicReducer
 
 import { ArticleList } from 'entities/Article';
 
-import { ArticlesPageFilters } from '../ArticlesPageFilters/ArticlesPageFilters';
 import { getArticlesPageView } from '../../model/selectors/getArticlesPageView/getArticlesPageView';
+import { ArticlesPageFilters } from '../ArticlesPageFilters/ArticlesPageFilters';
 import { initArticlesPage } from '../../model/services/initArticlesPage/initArticlesPage';
 import { articlesPageReducer, getArticles } from '../../model/slices/articlePageSlice/articlesPageSlice';
 import { fetchArticlesNextPage } from '../../model/services/fetchArticlesNextPage/fetchArticlesNextPage';
