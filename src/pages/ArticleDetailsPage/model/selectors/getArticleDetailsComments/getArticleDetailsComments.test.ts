@@ -5,11 +5,13 @@ import { getArticleDetailsComments } from './getArticleDetailsComments';
 describe('getArticleDetailsComments', () => {
   test('should return state', () => {
     const state: DeepPartial<StateSchema> = {
-      articleDetailsComments: {
-        ids: [],
-        entities: {},
-        isLoading: false,
-        error: '',
+      articleDetailsPage: {
+        comments: {
+          ids: [],
+          entities: {},
+          isLoading: false,
+          error: '',
+        },
       },
     };
 

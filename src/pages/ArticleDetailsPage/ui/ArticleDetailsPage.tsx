@@ -18,19 +18,22 @@ import { ArticleDetails, ArticleList, ArticleView } from 'entities/Article';
 
 import { AddCommentForm } from 'features/addCommentForm';
 
+import {
+  articleDetailPageReducer,
+} from '../model/slices/articleDetailsPageSlice/articleDetailPageSlice';
 import { fetchRecommendations } from '../model/services/fetchRecommendations/fetchRecommendations';
 import {
   getArticleDetailsRecommendationsIsLoading,
 } from '../model/selectors/getArticleDetailsRecommendationsIsLoading/getArticleDetailsRecommendationsIsLoading';
 import {
-  articleDetailsRecommendationsReducer, getArticleRecommendations,
+  getArticleRecommendations,
 } from '../model/slices/artcileDetailsRecommendationsSlice/articleDetailsRecommendationsSlice';
 import {
   fetchArticleDetailsComments,
 } from '../model/services/fetchArticleDetailsComments/fetchArticleDetailsComments';
 import { addCommentForArticle } from '../model/services/addCommentForArticle/addCommentForArticle';
 import {
-  articleDetailsCommentsReducer, getArticleComments,
+  getArticleComments,
 } from '../model/slices/artilceDetailsCommentsSlice/articleDetailsCommentsSlice';
 import {
   getArticleDetailsCommentsIsLoading,
@@ -39,8 +42,7 @@ import {
 import styles from './ArticleDetailsPage.module.scss';
 
 const dynamicReducers: ReducersList = {
-  articleDetailsComments: articleDetailsCommentsReducer,
-  articleDetailsRecommendations: articleDetailsRecommendationsReducer,
+  articleDetailsPage: articleDetailPageReducer,
 };
 
 export const ArticleDetailsPage = () => {

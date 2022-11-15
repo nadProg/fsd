@@ -5,8 +5,10 @@ import { getArticleDetailsRecommendationsError } from './getArticleDetailsRecomm
 describe('getArticleDetailsRecommendationsError', () => {
   test('should return error state', () => {
     const state: DeepPartial<StateSchema> = {
-      articleDetailsRecommendations: {
-        error: 'error',
+      articleDetailsPage: {
+        recommendations: {
+          error: 'error',
+        },
       },
     };
 

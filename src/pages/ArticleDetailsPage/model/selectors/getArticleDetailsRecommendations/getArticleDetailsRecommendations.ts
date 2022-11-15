@@ -3,5 +3,5 @@ import {
   articleDetailsRecommendationInitialState,
 } from '../../slices/artcileDetailsRecommendationsSlice/articleDetailsRecommendationInitialState';
 
-export const getArticleDetailsRecommendations = (state: StateSchema) => state.articleDetailsRecommendations
+export const getArticleDetailsRecommendations = (state: StateSchema) => state.articleDetailsPage?.recommendations
   ?? articleDetailsRecommendationInitialState;

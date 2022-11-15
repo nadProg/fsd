@@ -7,19 +7,19 @@ import { profileReducer } from 'entities/Profile';
 import { ReducersList } from 'shared/hooks/useDynamicReducers';
 import { DeepPartial } from 'shared/types';
 import { articleDetailsReducer } from 'entities/Article';
-import {
-  articleDetailsCommentsReducer,
-} from 'pages/ArticleDetailsPage/model/slices/artilceDetailsCommentsSlice/articleDetailsCommentsSlice';
 import { addCommentFormReducer } from 'features/addCommentForm/model/slice/addCommentFormSlice';
 import { articlesPageReducer } from 'pages/ArticlesPage/model/slices/articlePageSlice/articlesPageSlice';
+import {
+  articleDetailPageReducer,
+} from 'pages/ArticleDetailsPage/model/slices/articleDetailsPageSlice/articleDetailPageSlice';
 
 const defaultAsyncReducers: ReducersList = {
   loginForm: loginReducer,
   profile: profileReducer,
   articleDetails: articleDetailsReducer,
-  articleDetailsComments: articleDetailsCommentsReducer,
   addCommentForm: addCommentFormReducer,
   articlesPage: articlesPageReducer,
+  articleDetailsPage: articleDetailPageReducer,
 };
 
 export const StoreDecorator = (

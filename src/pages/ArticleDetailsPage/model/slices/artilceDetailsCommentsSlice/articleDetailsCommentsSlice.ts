@@ -20,7 +20,7 @@ const articleDetailsInitialState: ArticleDetailsCommentsSchema = {
 };
 
 export const getArticleComments = commentsAdapter.getSelectors<StateSchema>(
-  (state) => state.articleDetailsComments
+  (state) => state.articleDetailsPage?.comments
     || commentsAdapter.getInitialState(articleDetailsInitialState),
 );
 

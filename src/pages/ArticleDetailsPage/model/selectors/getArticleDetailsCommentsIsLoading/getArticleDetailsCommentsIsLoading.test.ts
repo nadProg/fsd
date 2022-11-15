@@ -5,7 +5,9 @@ import { getArticleDetailsCommentsIsLoading } from './getArticleDetailsCommentsI
 describe('getArticleDetailsCommentsIsLoading', () => {
   test('should return loading state', () => {
     const state: DeepPartial<StateSchema> = {
-      articleDetailsComments: { isLoading: false },
+      articleDetailsPage: {
+        comments: { isLoading: false },
+      },
     };
 
     expect(getArticleDetailsCommentsIsLoading(state as StateSchema)).toBe(false);

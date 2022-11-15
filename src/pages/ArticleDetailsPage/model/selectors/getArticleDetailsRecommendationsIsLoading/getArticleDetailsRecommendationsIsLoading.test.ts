@@ -5,14 +5,18 @@ import { getArticleDetailsRecommendationsIsLoading } from './getArticleDetailsRe
 describe('getArticleDetailsRecommendationsIsLoading', () => {
   test('should return loading state', () => {
     const falseState: DeepPartial<StateSchema> = {
-      articleDetailsRecommendations: {
-        isLoading: false,
+      articleDetailsPage: {
+        recommendations: {
+          isLoading: false,
+        },
       },
     };
 
     const trueState: DeepPartial<StateSchema> = {
-      articleDetailsRecommendations: {
-        isLoading: true,
+      articleDetailsPage: {
+        recommendations: {
+          isLoading: true,
+        },
       },
     };
 

@@ -5,11 +5,13 @@ import { getArticleDetailsRecommendations } from './getArticleDetailsRecommendat
 describe('getArticleDetailsRecommendations', () => {
   test('should return state', () => {
     const state: DeepPartial<StateSchema> = {
-      articleDetailsRecommendations: {
-        ids: [],
-        entities: {},
-        isLoading: false,
-        error: '',
+      articleDetailsPage: {
+        recommendations: {
+          ids: [],
+          entities: {},
+          isLoading: false,
+          error: '',
+        },
       },
     };
 
