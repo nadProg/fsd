@@ -72,7 +72,7 @@ export const ArticlesPageFilters = (props: ArticlesPageFiltersProps) => {
 
   return (
     <div className={classNames(className, styles.ArticlesPageFilters)}>
-      <div className={styles.filters}>
+      <Card className={styles.filters}>
         <ArticleSortSelector
           sort={sort}
           order={order}
@@ -84,11 +84,10 @@ export const ArticlesPageFilters = (props: ArticlesPageFiltersProps) => {
           view={view}
           onSelect={onViewSelect}
         />
-      </div>
+      </Card>
       <Card>
         <Input placeholder="Поиск" value={search} onChange={onSearchChange} />
       </Card>
-
       <ArticleTypeTabs value={type} onTabClick={onTypeTabClick} />
     </div>
   );

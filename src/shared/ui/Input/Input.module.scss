@@ -9,6 +9,10 @@
 }
 
 .input {
+  background-color: transparent;
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+
   &[readonly] {
     opacity: 0.75;
     outline: none;
