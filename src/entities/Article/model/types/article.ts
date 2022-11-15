@@ -58,3 +58,10 @@ export const ArticleSortField = {
   Title: 'title',
   CreatedAt: 'createdAt',
 } as const;
+
+export const ArticleTypeTab = {
+  All: 'ALL',
+  ...ArticleType,
+} as const;
+
+export type ValuesOfArticleTypeTab = ValuesOf<typeof ArticleTypeTab>;

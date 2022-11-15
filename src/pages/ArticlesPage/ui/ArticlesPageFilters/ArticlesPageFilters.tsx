@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { useCallback, useMemo } from 'react';
+import { useCallback } from 'react';
 import { useSelector } from 'react-redux';
 
 import { PropsWithClassName, ValuesOf } from 'shared/types';
@@ -10,12 +10,14 @@ import { SortOrder } from 'shared/constants/queryParams';
 import { useDebouncedCallback } from 'shared/hooks/useDebouncedCallback/useDebouncedCallback';
 
 import {
-  ArticleSortField, ArticleSortSelector, ArticleView, ArticleViewSelector,
+  ArticleSortField,
+  ArticleSortSelector,
+  ArticleView,
+  ArticleViewSelector,
+  ArticleTypeTab,
+  ArticleTypeTabs,
 } from 'entities/Article';
 
-import { Tab, Tabs } from 'shared/ui/Tabs';
-import { ArticleType } from 'entities/Article/model/types/article';
-import { useTranslation } from 'react-i18next';
 import { fetchArticles } from '../../model/services/fetchArticles/fetchArticles';
 import { getArticlesPageSort } from '../../model/selectors/getArticlesPageSort/getArticlesPageSort';
 import { getArticlesPageOrder } from '../../model/selectors/getArticlesPageOrder/getArticlesPageOrder';
@@ -30,8 +32,6 @@ type ArticlesPageFiltersProps = PropsWithClassName;
 
 export const ArticlesPageFilters = (props: ArticlesPageFiltersProps) => {
   const { className } = props;
-
-  const { t } = useTranslation();
 
   const view = useSelector(getArticlesPageView);
   const sort = useSelector(getArticlesPageSort);
@@ -65,32 +65,10 @@ export const ArticlesPageFilters = (props: ArticlesPageFiltersProps) => {
     refetchData();
   }, [dispatch, refetchData]);
 
-  const onTabClick = useCallback((newTab: ValuesOf<typeof ArticleType> | 'ALL') => {
+  const onTypeTabClick = useCallback((newTab: ValuesOf<typeof ArticleTypeTab>) => {
     dispatch(articlesPageActions.setType(newTab));
     refetchData();
   }, [dispatch, refetchData]);
-
-  // todo: add translations
-  const tabs = useMemo<Tab<ValuesOf<typeof ArticleType> | 'ALL', string>[]>(() => (
-    [
-      {
-        value: 'ALL',
-        label: 'All',
-      },
-      {
-        value: ArticleType.It,
-        label: 'IT',
-      },
-      {
-        value: ArticleType.Economics,
-        label: 'Economics',
-      },
-      {
-        value: ArticleType.Science,
-        label: 'Science',
-      },
-    ]
-  ), [t]);
 
   return (
     <div className={classNames(className, styles.ArticlesPageFilters)}>
@@ -111,7 +89,7 @@ export const ArticlesPageFilters = (props: ArticlesPageFiltersProps) => {
         <Input placeholder="Поиск" value={search} onChange={onSearchChange} />
       </Card>
 
-      <Tabs tabs={tabs} value={type} onTabClick={onTabClick} />
+      <ArticleTypeTabs value={type} onTabClick={onTypeTabClick} />
     </div>
   );
 };
