@@ -7,28 +7,30 @@ import { Icon } from 'shared/ui/Icon';
 import { Card } from 'shared/ui/Card/Card';
 import { PropsWithClassName, ValuesOf } from 'shared/types';
 import EyeIcon from 'shared/assets/icons/eye.svg';
-
-import { useHover } from 'shared/hooks/useHover';
 import { Avatar } from 'shared/ui/Avatar';
+import { useHover } from 'shared/hooks/useHover';
 import { Button, ButtonTheme } from 'shared/ui/Button';
-
-import { ArticleTextBlockComponent } from 'entities/Article/ui/ArticleTextBlockComponent/ArticleTextBlockComponent';
+import { AppLink, AppLinkProps } from 'shared/ui/AppLink';
 import { RoutePath } from 'shared/config/router/routeConfig/routeConfig';
-import { AppLink } from 'shared/ui/AppLink';
+
 import {
   Article, ArticleBlockType, ArticleTextBlock, ArticleView,
 } from '../../model/types/article';
+import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
 
 import styles from './ArticleListItem.module.scss';
 
 type ArticleListItemProps = PropsWithClassName & {
   article: Article;
   view: ValuesOf<typeof ArticleView>;
+  linksTarget?: AppLinkProps['target'];
 };
 
 export const ArticleListItem: FC<ArticleListItemProps> = (props) => {
   const { t } = useTranslation();
-  const { className, article, view } = props;
+  const {
+    className, article, view, linksTarget,
+  } = props;
   const [isHover, hoverProps] = useHover();
   const formattedTypes = article.types.join(' ');
 
@@ -64,7 +66,7 @@ export const ArticleListItem: FC<ArticleListItemProps> = (props) => {
         {textBlock && <ArticleTextBlockComponent block={textBlock} />}
 
         <div className={styles.footer}>
-          <AppLink to={articlePath}>
+          <AppLink to={articlePath} target={linksTarget}>
             <Button
               theme={ButtonTheme.Outlined}
               className={styles.button}
@@ -90,7 +92,7 @@ export const ArticleListItem: FC<ArticleListItemProps> = (props) => {
       {...hoverProps}
     >
       <div className={styles.imageWrapper}>
-        <AppLink to={articlePath}>
+        <AppLink to={articlePath} target={linksTarget}>
           <img src={article.img} alt="" className={styles.image} />
           <Text className={styles.date}>{article.createdAt}</Text>
         </AppLink>
@@ -100,7 +102,7 @@ export const ArticleListItem: FC<ArticleListItemProps> = (props) => {
         <Text className={styles.views}>{article.views}</Text>
         <Icon icon={EyeIcon} />
       </div>
-      <AppLink to={articlePath}>
+      <AppLink to={articlePath} target={linksTarget}>
         <Text className={styles.title}>
           {article.title}
         </Text>

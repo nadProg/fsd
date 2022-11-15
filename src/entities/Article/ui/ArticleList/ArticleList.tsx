@@ -1,10 +1,11 @@
 import { FC } from 'react';
 import classNames from 'classnames';
-
-import { PropsWithClassName, ValuesOf } from 'shared/types';
-
 import { useTranslation } from 'react-i18next';
-import { ArticleListItemSkeleton } from 'entities/Article/ui/ArticleListItem/ArticleListItemSkeleton';
+
+import type { AppLinkProps } from 'shared/ui/AppLink';
+import type { PropsWithClassName, ValuesOf } from 'shared/types';
+
+import { ArticleListItemSkeleton } from '../ArticleListItem/ArticleListItemSkeleton';
 import { ArticleListItem } from '../ArticleListItem/ArticleListItem';
 import { Article, ArticleView } from '../../model/types/article';
 
@@ -14,6 +15,7 @@ type ArticleListProps = PropsWithClassName & {
   articles: Article[];
   isLoading: boolean;
   view?: ValuesOf<typeof ArticleView>;
+  linksTarget?: AppLinkProps['target'];
 };
 
 const getSkeletons = (count: number, view: ValuesOf<typeof ArticleView>) => new Array(count).fill(null)
@@ -27,6 +29,7 @@ export const ArticleList: FC<ArticleListProps> = (props) => {
     isLoading,
     articles,
     view = ArticleView.Grid,
+    linksTarget,
   } = props;
 
   const isEmpty = !articles?.length;
@@ -49,6 +52,7 @@ export const ArticleList: FC<ArticleListProps> = (props) => {
           article={article}
           view={view}
           className={styles.card}
+          linksTarget={linksTarget}
         />
       ))}
       {isLoading && getSkeletons(skeletonsCount, view)}

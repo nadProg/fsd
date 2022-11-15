@@ -100,6 +100,7 @@ export const ArticleDetailsPage = () => {
         articles={recommendations}
         isLoading={recommendationsIsLoading}
         view={ArticleView.Grid}
+        linksTarget="_blank"
       />
 
       <Text variant={TextVariant.Title} className={styles.sectionTitle}>

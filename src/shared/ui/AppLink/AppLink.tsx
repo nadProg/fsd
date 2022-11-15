@@ -11,7 +11,7 @@ export const AppLinkTheme = {
   Secondary: 'secondary',
 } as const;
 
-type AppLinkProps = LinkProps & {
+export type AppLinkProps = LinkProps & {
   className?: string;
   theme?: ValuesOf<typeof AppLinkTheme>;
 };
