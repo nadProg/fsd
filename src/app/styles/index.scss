@@ -8,6 +8,23 @@
 *::before,
 *::after {
   box-sizing: border-box;
+  scrollbar-width: thin;
+  scrollbar-color: var(--inverted-primary-color);
+}
+
+*::-webkit-scrollbar {
+  width: 12px;
+  height: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background-color: var(--bg-color);
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--inverted-primary-color);
+  border-radius: 20px;
+  border: 1px solid var(--primary-color);
 }
 
 body {

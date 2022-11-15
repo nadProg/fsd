@@ -3,7 +3,7 @@ import {
   AnyAction, CombinedState, EnhancedStore, Reducer, ReducersMapObject,
 } from '@reduxjs/toolkit';
 
-import { ArticleDetailsCommentsSchema } from 'pages/ArticleDetailsPage';
+import { ArticleDetailsCommentsSchema, ArticleDetailsRecommendationsSchema } from 'pages/ArticleDetailsPage';
 
 import { UserSchema } from 'entities/User';
 import { CounterSchema } from 'entities/Counter';
@@ -23,6 +23,7 @@ export type StateSchema = {
   profile?: ProfileSchema;
   articleDetails?: ArticleDetailsSchema;
   articleDetailsComments?: ArticleDetailsCommentsSchema;
+  articleDetailsRecommendations?: ArticleDetailsRecommendationsSchema;
   addCommentForm?: AddCommentFormSchema;
   articlesPage?: ArticlesPageSchema;
   scrollPosition: ScrollPositionSchema;

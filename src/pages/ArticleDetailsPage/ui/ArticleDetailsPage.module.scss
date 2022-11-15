@@ -1,9 +1,16 @@
-.commentsTitle {
+.sectionTitle {
   margin: 16px 0 12px;
 }
 
 .commentForm {
   margin-bottom: 20px;
+}
+
+.recommendations {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
 }
 
 .backButton {

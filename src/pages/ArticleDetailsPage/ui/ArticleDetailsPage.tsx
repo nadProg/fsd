@@ -1,3 +1,4 @@
+import { useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -7,17 +8,23 @@ import { Text, TextVariant } from 'shared/ui/Text';
 import { useAppDispatch } from 'shared/hooks/useAppDispatch';
 import { useProjectEffect } from 'shared/hooks/useProjectEffect';
 import { ReducersList, useDynamicReducers } from 'shared/hooks/useDynamicReducers';
-
-import { CommentList } from 'entities/Comment';
-import { ArticleDetails } from 'entities/Article';
-
-import { AddCommentForm } from 'features/addCommentForm';
-
-import { useCallback } from 'react';
 import { RoutePath } from 'shared/config/router/routeConfig/routeConfig';
 import { Button, ButtonTheme } from 'shared/ui/Button';
 import { Page } from 'shared/ui/Page';
 import { AppLink } from 'shared/ui/AppLink';
+
+import { CommentList } from 'entities/Comment';
+import { ArticleDetails, ArticleList, ArticleView } from 'entities/Article';
+
+import { AddCommentForm } from 'features/addCommentForm';
+
+import { fetchRecommendations } from '../model/services/fetchRecommendations/fetchRecommendations';
+import {
+  getArticleDetailsRecommendationsIsLoading,
+} from '../model/selectors/getArticleDetailsRecommendationsIsLoading/getArticleDetailsRecommendationsIsLoading';
+import {
+  articleDetailsRecommendationsReducer, getArticleRecommendations,
+} from '../model/slices/artcileDetailsRecommendationsSlice/articleDetailsRecommendationsSlice';
 import {
   fetchArticleDetailsComments,
 } from '../model/services/fetchArticleDetailsComments/fetchArticleDetailsComments';
@@ -33,6 +40,7 @@ import styles from './ArticleDetailsPage.module.scss';
 
 const dynamicReducers: ReducersList = {
   articleDetailsComments: articleDetailsCommentsReducer,
+  articleDetailsRecommendations: articleDetailsRecommendationsReducer,
 };
 
 export const ArticleDetailsPage = () => {
@@ -43,12 +51,16 @@ export const ArticleDetailsPage = () => {
   const comments = useSelector(getArticleComments.selectAll);
   const commentsIsLoading = useSelector(getArticleDetailsCommentsIsLoading);
 
+  const recommendations = useSelector(getArticleRecommendations.selectAll);
+  const recommendationsIsLoading = useSelector(getArticleDetailsRecommendationsIsLoading);
+
   const { t } = useTranslation();
 
   const { id } = useParams<{ id: Id }>();
 
   useProjectEffect(() => {
     dispatch(fetchArticleDetailsComments(id));
+    dispatch(fetchRecommendations());
   }, [dispatch, id]);
 
   const sendComment = useCallback(async (text: string) => {
@@ -78,7 +90,17 @@ export const ArticleDetailsPage = () => {
 
       <ArticleDetails id={id} />
 
-      <Text variant={TextVariant.Title} className={styles.commentsTitle}>
+      <Text variant={TextVariant.Title} className={styles.sectionTitle}>
+        {t('article-details.recommendations')}
+      </Text>
+      <ArticleList
+        className={styles.recommendations}
+        articles={recommendations}
+        isLoading={recommendationsIsLoading}
+        view={ArticleView.Grid}
+      />
+
+      <Text variant={TextVariant.Title} className={styles.sectionTitle}>
         {t('article-details.comments')}
       </Text>
 
