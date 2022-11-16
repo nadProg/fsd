@@ -23,6 +23,8 @@ export default ({ config }: { config: Configuration }) => {
     html: '',
     entry: '',
     src: path.resolve(__dirname, '..', '..', 'src'),
+    locales: '',
+    buildLocales: '',
   };
 
   if (config.resolve) {
