@@ -19,6 +19,10 @@ type PageProps = PropsWithChildren & PropsWithClassName & {
   onScrollEnd?: () => void;
 };
 
+const INFINITE_SCROLL_OPTIONS = {
+  threshold: 0,
+};
+
 export const Page = ({
   className,
   children,
@@ -29,6 +33,7 @@ export const Page = ({
     triggerRef,
   } = useInfiniteScroll<HTMLDivElement, HTMLDivElement>({
     callback: onScrollEnd,
+    options: INFINITE_SCROLL_OPTIONS,
   });
 
   const { pathname } = useLocation();
@@ -57,7 +62,7 @@ export const Page = ({
       onScroll={onPageScroll}
     >
       {children}
-      <div ref={triggerRef} />
+      <div ref={triggerRef} className={styles.trigger} />
     </main>
   );
 };

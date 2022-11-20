@@ -2,6 +2,7 @@ import { RefObject, useEffect, useRef } from 'react';
 
 export type UseInfiniteScrollOptions = {
   callback?: () => void;
+  options?: IntersectionObserverInit
 };
 
 export type UseInfiniteScrollResult<WrapperElement extends HTMLElement, TriggerElement extends HTMLElement> = {
@@ -9,8 +10,15 @@ export type UseInfiniteScrollResult<WrapperElement extends HTMLElement, TriggerE
   triggerRef: RefObject<TriggerElement>;
 };
 
+const DEFAULT_ROOT_MARGIN = '0px';
+const DEFAULT_THRESHOLD = 1.0;
+
 export const useInfiniteScroll = <WrapperElement extends HTMLElement, TriggerElement extends HTMLElement>({
   callback,
+  options: {
+    threshold,
+    rootMargin,
+  } = {},
 }: UseInfiniteScrollOptions): UseInfiniteScrollResult<WrapperElement, TriggerElement> => {
   const wrapperRef = useRef<WrapperElement>(null);
   const triggerRef = useRef<TriggerElement>(null);
@@ -24,8 +32,8 @@ export const useInfiniteScroll = <WrapperElement extends HTMLElement, TriggerEle
     if (callback && triggerElement && wrapperElement) {
       const options = {
         root: wrapperElement,
-        rootMargin: '0px',
-        threshold: 1.0,
+        rootMargin: rootMargin ?? DEFAULT_ROOT_MARGIN,
+        threshold: threshold ?? DEFAULT_THRESHOLD,
       };
 
       observer = new IntersectionObserver(([entry]) => {
@@ -42,7 +50,13 @@ export const useInfiniteScroll = <WrapperElement extends HTMLElement, TriggerEle
         observer.unobserve(triggerElement);
       }
     };
-  }, [callback, triggerRef, wrapperRef]);
+  }, [
+    callback,
+    triggerRef.current,
+    wrapperRef.current,
+    rootMargin,
+    threshold,
+  ]);
 
   return {
     triggerRef,
