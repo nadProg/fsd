@@ -1,24 +1,26 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
-
 import { Theme } from 'shared/providers/ThemeProvider';
-
+import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
-import { MainPage } from './MainPage';
+
+import { ArticleEditPage } from './ArticleEditPage';
 
 export default {
   title: 'pages/ArticleCreatePage',
-  component: MainPage,
+  component: ArticleEditPage,
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-} as ComponentMeta<typeof MainPage>;
+} as ComponentMeta<typeof ArticleEditPage>;
 
-const Template: ComponentStory<typeof MainPage> = () => <MainPage />;
+const Template: ComponentStory<typeof ArticleEditPage> = () => <ArticleEditPage />;
 
 export const Light = Template.bind({});
 Light.decorators = [StoreDecorator({})];
 
 export const Dark = Template.bind({});
 Dark.decorators = [StoreDecorator({}), ThemeDecorator(Theme.Dark)];
+
+export const Orange = Template.bind({});
+Orange.decorators = [StoreDecorator({}), ThemeDecorator(Theme.Orange)];

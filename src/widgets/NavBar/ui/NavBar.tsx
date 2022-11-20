@@ -3,11 +3,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import classNames from 'classnames';
 
-import { LoginModal } from 'features/AuthByUsername';
-
+import { AppLink } from 'shared/ui/AppLink';
 import { Button, ButtonTheme } from 'shared/ui/Button';
+import { RoutePath } from 'shared/config/router/routeConfig/routeConfig';
 
 import { getUserAuthData, userActions } from 'entities/User';
+
+import { LoginModal } from 'features/AuthByUsername';
 
 import styles from './NavBar.module.scss';
 
@@ -35,6 +37,14 @@ export const NavBar = ({ className }: NavBarProps) => {
   if (authData) {
     return (
       <div className={classNames(styles.Navbar, className)}>
+        <AppLink to={RoutePath.article_create}>
+          <Button
+            theme={ButtonTheme.Background}
+            type="button"
+          >
+            {t('navbar.new-article')}
+          </Button>
+        </AppLink>
         <Button
           theme={ButtonTheme.Background}
           type="button"

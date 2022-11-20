@@ -8,10 +8,7 @@ import { Text, TextVariant } from 'shared/ui/Text';
 import { useAppDispatch } from 'shared/hooks/useAppDispatch';
 import { useProjectEffect } from 'shared/hooks/useProjectEffect';
 import { ReducersList, useDynamicReducers } from 'shared/hooks/useDynamicReducers';
-import { RoutePath } from 'shared/config/router/routeConfig/routeConfig';
-import { Button, ButtonTheme } from 'shared/ui/Button';
 import { Page } from 'shared/ui/Page';
-import { AppLink } from 'shared/ui/AppLink';
 
 import { CommentList } from 'entities/Comment';
 import { ArticleDetails, ArticleList, ArticleView } from 'entities/Article';
@@ -19,25 +16,28 @@ import { ArticleDetails, ArticleList, ArticleView } from 'entities/Article';
 import { AddCommentForm } from 'features/addCommentForm';
 
 import {
+  ArticleDetailsPageHeader,
+} from 'pages/ArticleDetailsPage/ui/ArticleDetailsPageHeader/ArticleDetailsPageHeader';
+import {
   articleDetailPageReducer,
-} from '../model/slices/articleDetailsPageSlice/articleDetailPageSlice';
-import { fetchRecommendations } from '../model/services/fetchRecommendations/fetchRecommendations';
+} from '../../model/slices/articleDetailsPageSlice/articleDetailPageSlice';
+import { fetchRecommendations } from '../../model/services/fetchRecommendations/fetchRecommendations';
 import {
   getArticleDetailsRecommendationsIsLoading,
-} from '../model/selectors/getArticleDetailsRecommendationsIsLoading/getArticleDetailsRecommendationsIsLoading';
+} from '../../model/selectors/getArticleDetailsRecommendationsIsLoading/getArticleDetailsRecommendationsIsLoading';
 import {
   getArticleRecommendations,
-} from '../model/slices/artcileDetailsRecommendationsSlice/articleDetailsRecommendationsSlice';
+} from '../../model/slices/artcileDetailsRecommendationsSlice/articleDetailsRecommendationsSlice';
 import {
   fetchArticleDetailsComments,
-} from '../model/services/fetchArticleDetailsComments/fetchArticleDetailsComments';
-import { addCommentForArticle } from '../model/services/addCommentForArticle/addCommentForArticle';
+} from '../../model/services/fetchArticleDetailsComments/fetchArticleDetailsComments';
+import { addCommentForArticle } from '../../model/services/addCommentForArticle/addCommentForArticle';
 import {
   getArticleComments,
-} from '../model/slices/artilceDetailsCommentsSlice/articleDetailsCommentsSlice';
+} from '../../model/slices/artilceDetailsCommentsSlice/articleDetailsCommentsSlice';
 import {
   getArticleDetailsCommentsIsLoading,
-} from '../model/selectors/getArticleDetailsCommentsIsLoading/getArticleDetailsCommentsIsLoading';
+} from '../../model/selectors/getArticleDetailsCommentsIsLoading/getArticleDetailsCommentsIsLoading';
 
 import styles from './ArticleDetailsPage.module.scss';
 
@@ -77,18 +77,9 @@ export const ArticleDetailsPage = () => {
     );
   }
 
-  const backPath = RoutePath.articles;
-
   return (
     <Page>
-      <AppLink to={backPath}>
-        <Button
-          theme={ButtonTheme.Outlined}
-          className={styles.backButton}
-        >
-          {t('article-details.back')}
-        </Button>
-      </AppLink>
+      <ArticleDetailsPageHeader className={styles.header} />
 
       <ArticleDetails id={id} />
 

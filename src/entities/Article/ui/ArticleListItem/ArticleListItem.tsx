@@ -34,7 +34,7 @@ export const ArticleListItem: FC<ArticleListItemProps> = (props) => {
   const [isHover, hoverProps] = useHover();
   const formattedTypes = article.types.join(' ');
 
-  const articlePath = `${RoutePath['article-details']}${article.id}`;
+  const articlePath = `${RoutePath.article_details}${article.id}`;
 
   if (view === ArticleView.List) {
     const textBlock = article.blocks.find(
