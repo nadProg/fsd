@@ -25,10 +25,31 @@ export function SideBar({ className }: SideBarProps) {
   const onToggle = () => setCollapsed((prevCollapsed) => !prevCollapsed);
 
   return (
-    <div
+    <section
       data-testid="sidebar"
       className={classNames(className, styles.SideBar, { [styles.collapsed]: collapsed })}
     >
+      <nav className={styles.nav}>
+        {sidebarItems.map(({
+          key, icon: Icon, path,
+        }) => (
+          <AppLink
+            key={key}
+            className={styles.navLink}
+            to={path}
+          >
+            <Icon className={styles.navLinkIcon} />
+            <span>{t(`navbar.${key}`)}</span>
+          </AppLink>
+        ))}
+
+      </nav>
+
+      <div className={styles.switchers}>
+        <ThemeSwitcher />
+        <LangSwitcher short={collapsed} />
+      </div>
+
       <Button
         data-testid="sidebar-toggle"
         className={styles.collapseBtn}
@@ -39,27 +60,6 @@ export function SideBar({ className }: SideBarProps) {
       >
         {collapsed ? '>' : '<'}
       </Button>
-
-      <div className={styles.links}>
-        {sidebarItems.map(({
-          key, icon: Icon, path,
-        }) => (
-          <AppLink
-            key={key}
-            className={styles.link}
-            to={path}
-          >
-            <Icon className={styles.linkIcon} />
-            <span>{t(`navbar.${key}`)}</span>
-          </AppLink>
-        ))}
-
-      </div>
-
-      <div className={styles.switchers}>
-        <ThemeSwitcher />
-        <LangSwitcher short={collapsed} />
-      </div>
-    </div>
+    </section>
   );
 }
