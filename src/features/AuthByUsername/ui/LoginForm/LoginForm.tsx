@@ -1,4 +1,4 @@
-import { FC, useCallback } from 'react';
+import { FC, FormEventHandler, useCallback } from 'react';
 import classNames from 'classnames';
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
@@ -46,7 +46,9 @@ export const LoginForm: FC<LoginFormProps> = ({ className, onSuccess }) => {
     dispatch(loginActions.setPassword(value));
   }, [dispatch]);
 
-  const onLoginClick = useCallback(async () => {
+  const onFormSubmit = useCallback<FormEventHandler>(async (evt) => {
+    evt.preventDefault();
+
     const result = await dispatch(loginByUsername({
       username,
       password,
@@ -58,8 +60,9 @@ export const LoginForm: FC<LoginFormProps> = ({ className, onSuccess }) => {
   }, [dispatch, username, password, onSuccess]);
 
   return (
-    <div
+    <form
       className={classNames(className, styles.LoginForm)}
+      onSubmit={onFormSubmit}
     >
       {error && <Text theme={TextTheme.Error}>{t(`login-form.error.${error}`)}</Text>}
 
@@ -77,16 +80,17 @@ export const LoginForm: FC<LoginFormProps> = ({ className, onSuccess }) => {
         value={password}
         onChange={onChangePassword}
         placeholder={t('login-form.password.placeholder')}
-        type="text"
+        type="password"
       />
+
       <Button
         theme={ButtonTheme.BackgroundInverted}
         className={styles.submitBtn}
-        onClick={onLoginClick}
         disabled={isSubmitting}
+        type="submit"
       >
         {t('login-form.submit')}
       </Button>
-    </div>
+    </form>
   );
 };
