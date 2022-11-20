@@ -58,7 +58,7 @@ export const TopBar = ({ className }: NavBarProps) => {
   }
 
   return (
-    <header className={classNames(styles.Navbar, className)}>
+    <header className={classNames(styles.TopBar, className)}>
       <Button
         theme={ButtonTheme.Background}
         type="button"
