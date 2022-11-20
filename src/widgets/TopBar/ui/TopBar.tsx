@@ -11,13 +11,13 @@ import { getUserAuthData, userActions } from 'entities/User';
 
 import { LoginModal } from 'features/AuthByUsername';
 
-import styles from './NavBar.module.scss';
+import styles from './TopBar.module.scss';
 
 type NavBarProps = {
   className?: string;
 };
 
-export const NavBar = ({ className }: NavBarProps) => {
+export const TopBar = ({ className }: NavBarProps) => {
   const { t } = useTranslation();
   const authData = useSelector(getUserAuthData);
   const dispatch = useDispatch();
@@ -36,7 +36,7 @@ export const NavBar = ({ className }: NavBarProps) => {
 
   if (authData) {
     return (
-      <div className={classNames(styles.Navbar, className)}>
+      <header className={classNames(styles.TopBar, className)}>
         <AppLink to={RoutePath.article_create}>
           <Button
             theme={ButtonTheme.Background}
@@ -53,12 +53,12 @@ export const NavBar = ({ className }: NavBarProps) => {
           {t('navbar.logout')}
         </Button>
 
-      </div>
+      </header>
     );
   }
 
   return (
-    <div className={classNames(styles.Navbar, className)}>
+    <header className={classNames(styles.Navbar, className)}>
       <Button
         theme={ButtonTheme.Background}
         type="button"
@@ -68,6 +68,6 @@ export const NavBar = ({ className }: NavBarProps) => {
       </Button>
 
       <LoginModal isOpen={isAuthOpen} onClose={onCloseModal} onSuccess={onLoginSuccess} />
-    </div>
+    </header>
   );
 };

@@ -5,7 +5,7 @@ import { useMountEffect } from 'shared/hooks/useMountEffect';
 
 import { getUserInitialized, userActions } from 'entities/User';
 
-import { NavBar } from 'widgets/NavBar';
+import { TopBar } from 'widgets/TopBar';
 import { SideBar } from 'widgets/SideBar';
 
 import { AppRouter } from './providers/router';
@@ -22,7 +22,7 @@ export const App = () => {
   return (
     <div className="app">
       <Suspense fallback="App Suspense">
-        <NavBar />
+        <TopBar />
         <div className="app__content">
           <SideBar />
           {userInitialized && <AppRouter />}
