@@ -62,7 +62,8 @@ export const Page = ({
       onScroll={onPageScroll}
     >
       {children}
-      <div ref={triggerRef} className={styles.trigger} />
+      {onScrollEnd
+      && <div ref={triggerRef} className={styles.trigger} />}
     </main>
   );
 };
