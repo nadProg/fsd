@@ -9,7 +9,7 @@ export const useThrottledCallback = <F extends Callback>(
 ) => {
   const throttlingRef = useRef(false);
 
-  return useCallback((...args) => {
+  return useCallback(<A>(...args: A[]) => {
     if (!throttlingRef.current) {
       callback(...args);
       throttlingRef.current = true;

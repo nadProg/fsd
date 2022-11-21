@@ -9,7 +9,7 @@ export const useDebouncedCallback = <F extends Callback>(
 ) => {
   const timeoutId = useRef<NodeJS.Timeout>();
 
-  return useCallback((...args) => {
+  return useCallback(<A>(...args: A[]) => {
     if (timeoutId.current) {
       clearTimeout(timeoutId.current);
     }

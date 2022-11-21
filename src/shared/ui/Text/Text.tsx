@@ -1,7 +1,6 @@
-import { FC } from 'react';
 import classNames from 'classnames';
 
-import { PropsWithClassName, ValuesOf } from 'shared/types';
+import { PropsWithChildren, PropsWithClassName, ValuesOf } from 'shared/types';
 
 import styles from './Text.module.scss';
 
@@ -20,13 +19,13 @@ export const TextSize = {
   Large: 'largeSize',
 };
 
-type TextProps = PropsWithClassName & {
+type TextProps = PropsWithClassName & PropsWithChildren & {
   theme?: ValuesOf<typeof TextTheme>;
   variant?: ValuesOf<typeof TextVariant>;
   size?: ValuesOf<typeof TextSize>;
 };
 
-export const Text: FC<TextProps> = (props) => {
+export const Text = (props: TextProps) => {
   const {
     className,
     children,
