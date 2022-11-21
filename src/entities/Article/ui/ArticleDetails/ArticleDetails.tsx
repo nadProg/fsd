@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
 
@@ -14,6 +14,7 @@ import { Icon } from 'shared/ui/Icon/Icon';
 import { useProjectEffect } from 'shared/hooks/useProjectEffect';
 import { ReducersList, useDynamicReducers } from 'shared/hooks/useDynamicReducers';
 
+import { useAppDispatch } from 'shared/hooks/useAppDispatch';
 import {
   getArticleDetailsIsLoading,
 } from '../../model/selectors/getArticleDetailsIsLoading/getArticleDetailsIsLoading';
@@ -37,7 +38,7 @@ export const ArticleDetails = ({ className, id }: ArticleDetailsProps) => {
   useDynamicReducers(dynamicReducers);
 
   const { t } = useTranslation();
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const articleDetailsData = useSelector(getArticleDetailsData);
   const articleDetailsIsLoading = useSelector(getArticleDetailsIsLoading);
