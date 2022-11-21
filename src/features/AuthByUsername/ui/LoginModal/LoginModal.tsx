@@ -4,10 +4,10 @@ import classNames from 'classnames';
 import { Modal, ModalProps } from 'shared/ui/Modal';
 import { PropsWithClassName } from 'shared/types';
 
-import { LoginFormProps } from 'features/AuthByUsername/ui/LoginForm/LoginForm';
 import { Loader } from 'shared/ui/Loader';
-import { LoginFormAsync } from '../LoginForm/LoginForm.async';
 
+import { LoginFormAsync } from '../LoginForm/LoginForm.async';
+import { LoginFormProps } from '../LoginForm/LoginForm';
 import styles from './LoginModal.module.scss';
 
 type LoginModalProps = PropsWithClassName &

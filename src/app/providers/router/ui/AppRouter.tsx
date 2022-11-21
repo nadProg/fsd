@@ -5,7 +5,7 @@ import { routerConfig } from 'shared/config/router/routeConfig/routeConfig';
 
 import { PageLoader } from 'widgets/PageLoader';
 
-import { RequireAuth } from 'app/providers/router/ui/RequiredAuth';
+import { RequireAuth } from './RequiredAuth';
 
 const routes = Object.values(routerConfig);
 

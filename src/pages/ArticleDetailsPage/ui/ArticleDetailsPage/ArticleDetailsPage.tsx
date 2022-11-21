@@ -17,7 +17,7 @@ import { AddCommentForm } from 'features/addCommentForm';
 
 import {
   ArticleDetailsPageHeader,
-} from 'pages/ArticleDetailsPage/ui/ArticleDetailsPageHeader/ArticleDetailsPageHeader';
+} from '../ArticleDetailsPageHeader/ArticleDetailsPageHeader';
 import {
   articleDetailPageReducer,
 } from '../../model/slices/articleDetailsPageSlice/articleDetailPageSlice';

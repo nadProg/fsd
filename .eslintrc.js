@@ -21,7 +21,13 @@ module.exports = {
     sourceType: 'module',
     project: './tsconfig.json',
   },
-  plugins: ['react', '@typescript-eslint', 'i18next', 'react-hooks'],
+  plugins: [
+    'react',
+    '@typescript-eslint',
+    'i18next',
+    'react-hooks',
+    'feature-sliced-design',
+  ],
   rules: {
     indent: 'off',
     '@typescript-eslint/indent': ['error', 2, {
@@ -42,15 +48,22 @@ module.exports = {
     'jsx-a11y/label-has-associated-control': 'off',
     'react/jsx-filename-extension': [
       'error',
-      { extensions: ['.js', '.jsx', 'tsx'] },
+      {extensions: ['.js', '.jsx', 'tsx']},
     ],
-    'no-underscore-dangle': ['error', { allow: ['__IS_DEV__'] }],
-    'max-len': ["error", { "code": 120, "ignoreComments": true }],
+    'no-underscore-dangle': ['error', {allow: ['__IS_DEV__']}],
+    'max-len': ['error', {
+      'code': 120,
+      'ignoreComments': true
+    }],
     'react/jsx-props-no-spreading': 'off',
     'import/no-extraneous-dependencies': 'warn',
-    'i18next/no-literal-string': ['error', { markupOnly: true, onlyAttribute: [''] }],
+    'i18next/no-literal-string': ['error', {
+      markupOnly: true,
+      onlyAttribute: ['']
+    }],
     'react-hooks/rules-of-hooks': 'error',
-    'react-hooks/exhaustive-deps': 'warn'
+    'react-hooks/exhaustive-deps': 'warn',
+    'feature-sliced-design/path-checker': 'error',
   },
   globals: {
     __IS_DEV__: true,

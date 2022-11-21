@@ -5,7 +5,7 @@ import { PropsWithClassName } from 'shared/types';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import { counterActions } from 'entities/Counter';
+import { counterActions } from '../model/slice/CounterSlice';
 
 import { getCounterValue } from '../model/selectors/getCounterValue/getCounterValue';
 
