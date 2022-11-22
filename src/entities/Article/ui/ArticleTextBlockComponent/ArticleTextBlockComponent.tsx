@@ -1,9 +1,9 @@
-import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
 
 import { PropsWithClassName } from 'shared/types';
 
 import { Text, TextVariant } from 'shared/ui/Text';
+import { VStack } from 'shared/ui/Stack';
 import { ArticleTextBlock } from '../../model/types/article';
 
 import styles from './ArticleTextBlockComponent.module.scss';
@@ -16,8 +16,10 @@ export const ArticleTextBlockComponent = ({ className, block }: ArticleTextBlock
   const { t } = useTranslation();
 
   return (
-    <div
-      className={classNames(className, styles.ArticleTextBlockComponent)}
+    <VStack
+      gap={8}
+      align="stretch"
+      className={className}
     >
       {block.title && (
         <Text
@@ -36,6 +38,6 @@ export const ArticleTextBlockComponent = ({ className, block }: ArticleTextBlock
           {paragraph}
         </Text>
       ))}
-    </div>
+    </VStack>
   );
 };

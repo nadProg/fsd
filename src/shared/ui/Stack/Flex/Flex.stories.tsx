@@ -96,6 +96,12 @@ RowAlignEnd.args = {
   align: FlexAlign.End,
 };
 
+export const RowAlignStretch = Template.bind({});
+RowAlignStretch.args = {
+  direction: FlexDirection.Row,
+  align: FlexAlign.Stretch,
+};
+
 export const Column = Template.bind({});
 Column.args = {
   direction: FlexDirection.Column,
@@ -159,4 +165,10 @@ export const ColumnAlignEnd = Template.bind({});
 ColumnAlignEnd.args = {
   direction: FlexDirection.Column,
   align: FlexAlign.End,
+};
+
+export const ColumnAlignStretch = Template.bind({});
+ColumnAlignStretch.args = {
+  direction: FlexDirection.Column,
+  align: FlexAlign.Stretch,
 };

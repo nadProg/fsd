@@ -17,6 +17,7 @@ export const FlexAlign = {
   Start: 'start',
   Center: 'center',
   End: 'end',
+  Stretch: 'stretch',
 } as const;
 
 export const FlexDirection = {
@@ -24,7 +25,7 @@ export const FlexDirection = {
   Column: 'column',
 } as const;
 
-export const FlexGaps = [4, 8, 16, 32] as const;
+export const FlexGaps = [4, 8, 12, 16, 32] as const;
 
 type ValuesOfFlexJustify = ValuesOf<typeof FlexJustify>;
 type ValuesOfFlexAlign = ValuesOf<typeof FlexAlign>;
@@ -39,9 +40,10 @@ const mapJustifyToClassName: Record<ValuesOfFlexJustify, string> = {
 };
 
 const mapAlignToClassName: Record<ValuesOfFlexAlign, string> = {
-  [FlexJustify.Start]: styles.alignStart,
-  [FlexJustify.End]: styles.alignEnd,
-  [FlexJustify.Center]: styles.alignCenter,
+  [FlexAlign.Start]: styles.alignStart,
+  [FlexAlign.End]: styles.alignEnd,
+  [FlexAlign.Center]: styles.alignCenter,
+  [FlexAlign.Stretch]: styles.alignStretch,
 };
 
 const mapDirectionToClassName: Record<ValuesOfFlexDirection, string> = {

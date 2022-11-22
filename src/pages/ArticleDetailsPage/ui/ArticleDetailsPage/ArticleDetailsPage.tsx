@@ -4,11 +4,12 @@ import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 import { Id } from 'shared/types';
+import { Page } from 'shared/ui/Page';
+import { VStack } from 'shared/ui/Stack';
 import { Text, TextVariant } from 'shared/ui/Text';
 import { useAppDispatch } from 'shared/hooks/useAppDispatch';
 import { useProjectEffect } from 'shared/hooks/useProjectEffect';
 import { ReducersList, useDynamicReducers } from 'shared/hooks/useDynamicReducers';
-import { Page } from 'shared/ui/Page';
 
 import { CommentList } from 'entities/Comment';
 import { ArticleDetails, ArticleList, ArticleView } from 'entities/Article';
@@ -79,34 +80,35 @@ export const ArticleDetailsPage = () => {
 
   return (
     <Page>
-      <ArticleDetailsPageHeader className={styles.header} />
+      <VStack gap={16} align="stretch">
+        <ArticleDetailsPageHeader />
 
-      <ArticleDetails id={id} />
+        <ArticleDetails id={id} />
 
-      <Text variant={TextVariant.Title} className={styles.sectionTitle}>
-        {t('article-details.recommendations')}
-      </Text>
-      <ArticleList
-        className={styles.recommendations}
-        articles={recommendations}
-        isLoading={recommendationsIsLoading}
-        view={ArticleView.Grid}
-        linksTarget="_blank"
-      />
+        <Text variant={TextVariant.Title} className={styles.sectionTitle}>
+          {t('article-details.recommendations')}
+        </Text>
+        <ArticleList
+          className={styles.recommendations}
+          articles={recommendations}
+          isLoading={recommendationsIsLoading}
+          view={ArticleView.Grid}
+          linksTarget="_blank"
+        />
 
-      <Text variant={TextVariant.Title} className={styles.sectionTitle}>
-        {t('article-details.comments')}
-      </Text>
+        <Text variant={TextVariant.Title} className={styles.sectionTitle}>
+          {t('article-details.comments')}
+        </Text>
 
-      <AddCommentForm
-        className={styles.commentForm}
-        onSendComment={sendComment}
-      />
+        <AddCommentForm
+          onSendComment={sendComment}
+        />
 
-      <CommentList
-        isLoading={commentsIsLoading}
-        comments={comments}
-      />
+        <CommentList
+          isLoading={commentsIsLoading}
+          comments={comments}
+        />
+      </VStack>
     </Page>
   );
 };

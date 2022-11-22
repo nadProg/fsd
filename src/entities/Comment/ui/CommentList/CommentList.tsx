@@ -1,13 +1,11 @@
 import { PropsWithClassName } from 'shared/types';
-import classNames from 'classnames';
-
 import { useTranslation } from 'react-i18next';
+
+import { VStack } from 'shared/ui/Stack';
 import { Text, TextTheme } from 'shared/ui/Text';
 
 import { CommentCard } from '../CommentCard/CommentCard';
 import { Comment } from '../../model/types/comment';
-
-import styles from './CommentList.module.scss';
 
 type CommentListProps = PropsWithClassName & {
   comments?: Comment[];
@@ -24,17 +22,17 @@ export const CommentList = (props: CommentListProps) => {
 
   if (isLoading) {
     return (
-      <div className={classNames(className, styles.CommentList)}>
+      <VStack gap={12} align="stretch" className={className}>
         <CommentCard isLoading />
         <CommentCard isLoading />
         <CommentCard isLoading />
-      </div>
+      </VStack>
     );
   }
 
   if (error) {
     return (
-      <div className={classNames(className, styles.CommentList)}>
+      <div className={className}>
         <Text theme={TextTheme.Error}>{error}</Text>
       </div>
     );
@@ -42,17 +40,17 @@ export const CommentList = (props: CommentListProps) => {
 
   if (!comments?.length) {
     return (
-      <div className={classNames(className, styles.CommentList)}>
+      <div className={className}>
         {t('comments.list.empty-state')}
       </div>
     );
   }
 
   return (
-    <div className={classNames(className, styles.CommentList)}>
+    <VStack gap={12} align="stretch" className={className}>
       {
         comments.map((comment) => <CommentCard key={comment.id} comment={comment} />)
       }
-    </div>
+    </VStack>
   );
 };
