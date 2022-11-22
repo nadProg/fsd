@@ -12,6 +12,7 @@ import { Avatar } from 'shared/ui/Avatar';
 import { CurrencySelect, ValuesOfCurrency } from 'entities/Currency';
 
 import { CountrySelect, ValuesOfCountry } from 'entities/Country';
+import { VStack } from 'shared/ui/Stack';
 import type { Profile } from '../../model/types/profile';
 
 import styles from './ProfileCard.module.scss';
@@ -74,11 +75,13 @@ export const ProfileCard: FC<ProfileCardProps> = (props) => {
   const dataSource = readonly ? data : form;
 
   return (
-    <div className={classNames(
-      className,
-      styles.Profile,
-      { [styles.editing]: !readonly },
-    )}
+    <VStack
+      gap={16}
+      className={classNames(
+        className,
+        styles.Profile,
+        { [styles.editing]: !readonly },
+      )}
     >
       { dataSource?.avatar && (
         <div className={styles.avatarWrapper}>
@@ -139,6 +142,6 @@ export const ProfileCard: FC<ProfileCardProps> = (props) => {
         onChange={onChangeAvatar}
         readOnly={readonly}
       />
-    </div>
+    </VStack>
   );
 };

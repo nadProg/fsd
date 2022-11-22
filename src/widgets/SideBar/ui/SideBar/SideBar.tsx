@@ -9,6 +9,7 @@ import { Button, ButtonSize, ButtonTheme } from 'shared/ui/Button';
 import { LangSwitcher } from 'widgets/LangSwitcher';
 import { ThemeSwitcher } from 'widgets/ThemeSwitcher';
 
+import { VStack } from 'shared/ui/Stack';
 import { getSideBarItems } from '../../model/selectors/getSideBarItems';
 
 import styles from './SideBar.module.scss';
@@ -29,7 +30,7 @@ export function SideBar({ className }: SideBarProps) {
       data-testid="sidebar"
       className={classNames(className, styles.SideBar, { [styles.collapsed]: collapsed })}
     >
-      <nav className={styles.nav}>
+      <VStack gap={8}>
         {sidebarItems.map(({
           key, icon: Icon, path,
         }) => (
@@ -42,8 +43,7 @@ export function SideBar({ className }: SideBarProps) {
             <span>{t(`navbar.${key}`)}</span>
           </AppLink>
         ))}
-
-      </nav>
+      </VStack>
 
       <div className={styles.switchers}>
         <ThemeSwitcher />

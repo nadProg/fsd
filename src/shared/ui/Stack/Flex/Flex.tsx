@@ -58,7 +58,8 @@ export type FlexProps = PropsWithClassName & PropsWithChildren & {
   justify?: ValuesOfFlexJustify;
   align?: ValuesOfFlexAlign;
   direction?: ValuesOfFlexDirection;
-  gap?: ValuesOfFlexGap
+  gap?: ValuesOfFlexGap;
+  max?: boolean;
 };
 
 export const Flex = ({
@@ -68,11 +69,15 @@ export const Flex = ({
   align = FlexAlign.Center,
   direction = FlexDirection.Row,
   gap = FlexGaps[0],
+  max = false,
 }: FlexProps) => {
   const justifyClassName = mapJustifyToClassName[justify];
   const alignClassName = mapAlignToClassName[align];
   const directionClassName = mapDirectionToClassName[direction];
   const gapClassName = mapGapToClassName[gap];
+  const maxClassName = {
+    [styles.max]: max,
+  };
 
   const flexClassName = classNames(
     className,
@@ -81,6 +86,7 @@ export const Flex = ({
     alignClassName,
     directionClassName,
     gapClassName,
+    maxClassName,
   );
 
   return <div className={flexClassName}>{children}</div>;

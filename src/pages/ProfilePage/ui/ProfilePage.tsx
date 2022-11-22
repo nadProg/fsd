@@ -1,13 +1,12 @@
-import {
-  FC, useCallback,
-} from 'react';
+import { useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 import { Text, TextTheme } from 'shared/ui/Text';
 import { Page } from 'shared/ui/Page';
-import { Id, PropsWithClassName, ValuesOf } from 'shared/types';
+import { Id, ValuesOf } from 'shared/types';
+import { VStack } from 'shared/ui/Stack';
 import { useAppDispatch } from 'shared/hooks/useAppDispatch';
 import { useDynamicReducers } from 'shared/hooks/useDynamicReducers';
 import { useProjectEffect } from 'shared/hooks/useProjectEffect';
@@ -26,11 +25,11 @@ import { ValuesOfCurrency } from 'entities/Currency';
 
 import { ProfilePageHeader } from './ProfilePageHeader/ProfilePageHeader';
 
+import styles from './ProfilePage.module.scss';
+
 const reducers = {
   profile: profileReducer,
 };
-
-type ProfilePageProps = PropsWithClassName;
 
 const validateErrorTranslates: Record<ValuesOf<typeof ValidateProfileError>, string> = {
   [ValidateProfileError.NoData]: 'profile.errors.no_data',
@@ -40,7 +39,7 @@ const validateErrorTranslates: Record<ValuesOf<typeof ValidateProfileError>, str
   [ValidateProfileError.ServerError]: 'profile.errors.server_error',
 };
 
-export const ProfilePage: FC<ProfilePageProps> = ({ className }) => {
+export const ProfilePage = (): JSX.Element => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
   const { id } = useParams<{ id: Id }>();
@@ -93,30 +92,36 @@ export const ProfilePage: FC<ProfilePageProps> = ({ className }) => {
   }, [dispatch, id]);
 
   return (
-    <Page className={className}>
-      <ProfilePageHeader />
+    <Page>
+      <VStack
+        gap={16}
+        max
+      >
+        <ProfilePageHeader />
 
-      {profileValidateErrors?.map((error) => (
-        <Text key={error} theme={TextTheme.Error}>
-          { t(validateErrorTranslates[error]) }
-        </Text>
-      ))}
+        {profileValidateErrors?.map((error) => (
+          <Text key={error} theme={TextTheme.Error}>
+            { t(validateErrorTranslates[error]) }
+          </Text>
+        ))}
 
-      <ProfileCard
-        data={profileData}
-        form={profileForm}
-        error={profileError}
-        isLoading={profileIsLoading}
-        readonly={profileReadonly}
-        onChangeFirstName={onChangeFirstName}
-        onChangeLastName={onChangeLastName}
-        onChangeAge={onChangeAge}
-        onChangeCity={onChangeCity}
-        onChangeUserName={onChangeUserName}
-        onChangeAvatar={onChangeAvatar}
-        onChangeCurrency={onChangeCurrency}
-        onChangeCountry={onChangeCountry}
-      />
+        <ProfileCard
+          className={styles.profileCard}
+          data={profileData}
+          form={profileForm}
+          error={profileError}
+          isLoading={profileIsLoading}
+          readonly={profileReadonly}
+          onChangeFirstName={onChangeFirstName}
+          onChangeLastName={onChangeLastName}
+          onChangeAge={onChangeAge}
+          onChangeCity={onChangeCity}
+          onChangeUserName={onChangeUserName}
+          onChangeAvatar={onChangeAvatar}
+          onChangeCurrency={onChangeCurrency}
+          onChangeCountry={onChangeCountry}
+        />
+      </VStack>
     </Page>
   );
 };

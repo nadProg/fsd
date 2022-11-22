@@ -1,18 +1,16 @@
 import { FC, useCallback } from 'react';
-import classNames from 'classnames';
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 
+import { HStack } from 'shared/ui/Stack';
 import { PropsWithClassName } from 'shared/types';
 import { Button, ButtonTheme } from 'shared/ui/Button';
 import { useAppDispatch } from 'shared/hooks/useAppDispatch';
 
-import { getUserAuthData } from 'entities/User';
 import {
   getProfileData, getProfileReadonly, profileActions, updateProfileData,
 } from 'entities/Profile';
-
-import styles from './ProfilePageHeader.module.scss';
+import { getUserAuthData } from 'entities/User';
 
 type ProfilePageHeaderProps = PropsWithClassName;
 
@@ -44,15 +42,13 @@ export const ProfilePageHeader: FC<ProfilePageHeaderProps> = (props) => {
   }, [dispatch]);
 
   return (
-    <div className={classNames(className, styles.ProfilePageHeader)}>
-      <div>
-        <h1>{t('profile.title')}</h1>
-        <p>{t('profile.content')}</p>
-      </div>
+    <HStack className={className} max justify="between">
+
+      <h1>{t('profile.title')}</h1>
 
       {isOwnProfile
       && (
-        <div className={styles.actions}>
+        <HStack gap={8}>
           {profileReadonly
             ? (
               <Button
@@ -79,8 +75,8 @@ export const ProfilePageHeader: FC<ProfilePageHeaderProps> = (props) => {
                 </Button>
               </>
             )}
-        </div>
+        </HStack>
       )}
-    </div>
+    </HStack>
   );
 };
