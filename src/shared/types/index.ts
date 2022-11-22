@@ -2,6 +2,8 @@ import { ReactNode } from 'react';
 
 export type ValuesOf<T> = T[keyof T];
 
+export type ValuesOfArray<T extends Record<number, unknown>> = T[number];
+
 export type PropsWithClassName = {
   className?: string;
 };
