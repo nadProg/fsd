@@ -63,7 +63,7 @@ module.exports = {
     }],
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn',
-    'feature-sliced-design/path-checker': 'error',
+    'feature-sliced-design/relative-path-within-slice': 'error',
   },
   globals: {
     __IS_DEV__: true,
