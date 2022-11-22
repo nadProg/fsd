@@ -113,6 +113,9 @@
     "react-virtualized-auto-sizer": "1.0.7",
     "react-window": "1.8.8"
   },
+  "overrides": {
+    "chrome-remote-interface": "0.31.3"
+  },
   "engines": {
     "node": "18.x",
     "npm": "8.x"
