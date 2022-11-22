@@ -54,11 +54,11 @@ const mapGapToClassName = FlexGaps.reduce((map, gap) => ({
   [gap]: styles[`gap${gap}`],
 }), {} as Record<ValuesOfFlexGap, string>);
 
-type FlexProps = PropsWithClassName & PropsWithChildren & {
-  justify: ValuesOfFlexJustify;
-  align: ValuesOfFlexAlign;
-  direction: ValuesOfFlexDirection;
-  gap: ValuesOfFlexGap
+export type FlexProps = PropsWithClassName & PropsWithChildren & {
+  justify?: ValuesOfFlexJustify;
+  align?: ValuesOfFlexAlign;
+  direction?: ValuesOfFlexDirection;
+  gap?: ValuesOfFlexGap
 };
 
 export const Flex = ({
