@@ -1,54 +1,9 @@
-.ArticleDetails {
-  display: block;
-}
-
-.loading {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.loadingImage {
-  align-self: center;
-}
-
-.article {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
 .avatarWrapper {
-  display: flex;
-  justify-content: center;
-}
-
-.header {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.meta {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.metaItem {
-  display: flex;
-  align-items: center;
-  gap: 8px;
+  align-self: center;
 }
 
 .metaIcon {
   [fill] {
     fill: var(--secondary-color);
   }
-}
-
-.content {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
 }

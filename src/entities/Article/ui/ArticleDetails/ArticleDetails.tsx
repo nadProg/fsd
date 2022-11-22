@@ -1,5 +1,4 @@
 import { useSelector } from 'react-redux';
-import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
 
 import { Id, PropsWithClassName } from 'shared/types';
@@ -13,8 +12,9 @@ import CalendarIcon from 'shared/assets/icons/calendar.svg';
 import { Icon } from 'shared/ui/Icon/Icon';
 import { useProjectEffect } from 'shared/hooks/useProjectEffect';
 import { ReducersList, useDynamicReducers } from 'shared/hooks/useDynamicReducers';
-
+import { HStack, VStack } from 'shared/ui/Stack';
 import { useAppDispatch } from 'shared/hooks/useAppDispatch';
+
 import {
   getArticleDetailsIsLoading,
 } from '../../model/selectors/getArticleDetailsIsLoading/getArticleDetailsIsLoading';
@@ -50,22 +50,23 @@ export const ArticleDetails = ({ className, id }: ArticleDetailsProps) => {
 
   if (articleDetailsIsLoading) {
     return (
-      <div
-        className={classNames(className, styles.ArticleDetails, styles.loading)}
+      <VStack
+        gap={16}
+        className={className}
       >
-        <Skeleton className={styles.loadingImage} width={200} height={200} borderRadius="50%" />
+        <Skeleton className={styles.avatarWrapper} width={200} height={200} borderRadius="50%" />
         <Skeleton width={300} height={24} />
         <Skeleton width={600} height={24} />
         <Skeleton height={200} />
         <Skeleton height={200} />
-      </div>
+      </VStack>
     );
   }
 
   if (articleDetailsError) {
     return (
       <div
-        className={classNames(className, styles.ArticleDetails)}
+        className={className}
       >
         <Text theme={TextTheme.Error}>{t('Error')}</Text>
       </div>
@@ -73,8 +74,9 @@ export const ArticleDetails = ({ className, id }: ArticleDetailsProps) => {
   }
 
   return (
-    <div
-      className={classNames(className, styles.ArticleDetails, styles.article)}
+    <VStack
+      gap={16}
+      className={className}
     >
 
       { articleDetailsData?.img && (
@@ -83,7 +85,7 @@ export const ArticleDetails = ({ className, id }: ArticleDetailsProps) => {
         </div>
       ) }
 
-      <div className={styles.header}>
+      <VStack gap={8}>
         <Text
           variant={TextVariant.Title}
           size={TextSize.Large}
@@ -91,23 +93,23 @@ export const ArticleDetails = ({ className, id }: ArticleDetailsProps) => {
           {articleDetailsData?.title}
         </Text>
         <Text size={TextSize.Large}>{articleDetailsData?.subtitle}</Text>
-      </div>
+      </VStack>
 
-      <div className={styles.meta}>
-        <div className={styles.metaItem}>
+      <VStack gap={4}>
+        <HStack gap={4}>
           <Icon icon={EyeIcon} className={styles.metaIcon} />
           <Text>{articleDetailsData?.views}</Text>
-        </div>
+        </HStack>
 
-        <div className={styles.metaItem}>
+        <HStack gap={4}>
           <Icon icon={CalendarIcon} className={styles.metaIcon} />
           <Text>{articleDetailsData?.createdAt}</Text>
-        </div>
-      </div>
+        </HStack>
+      </VStack>
 
-      <div className={styles.content}>
+      <VStack gap={8}>
         {articleDetailsData?.blocks.map((block) => <ArticleBlockComponent key={block.id} block={block} />)}
-      </div>
-    </div>
+      </VStack>
+    </VStack>
   );
 };
