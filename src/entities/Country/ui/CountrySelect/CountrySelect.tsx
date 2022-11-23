@@ -1,10 +1,9 @@
-import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import {
-  ExtendableProps, Option, PropsWithClassName, ValuesOf,
+  ExtendableProps, PropsWithClassName, ValuesOf,
 } from 'shared/types';
-import { Select, SelectProps } from 'shared/ui/Select';
+import { ListBox, ListBoxProps } from 'shared/ui/ListBox';
 
 import { Country } from '../../model/types/types';
 
@@ -15,9 +14,11 @@ type OverrideProps = {
   onChange?: (value: ValuesOfCountry) => void;
 };
 
-type CountrySelectProps = PropsWithClassName & ExtendableProps<SelectProps<ValuesOfCountry>, OverrideProps>;
+type CountryListBoxProps = ListBoxProps<ValuesOfCountry>;
 
-const options: Option<ValuesOfCountry>[] = [
+type CountrySelectProps = PropsWithClassName & ExtendableProps<CountryListBoxProps, OverrideProps>;
+
+const items: CountryListBoxProps['items'] = [
   {
     value: Country.Armenia,
     label: 'Армения',
@@ -44,19 +45,19 @@ const options: Option<ValuesOfCountry>[] = [
   },
 ];
 
-export const CountrySelect: FC<CountrySelectProps> = ({
+export const CountrySelect = ({
   className,
   onChange,
   ...restProps
-}) => {
+}: CountrySelectProps): JSX.Element => {
   // todo: add translation to label
   const { t } = useTranslation();
 
   return (
-    <Select
+    <ListBox
       className={className}
       label="Выберите страну"
-      options={options}
+      items={items}
       onChange={onChange}
       {...restProps}
     />

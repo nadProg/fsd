@@ -37,6 +37,7 @@ const items = [
 ];
 
 const value = 'Kenton Towne';
+const disabled = true;
 
 export default {
   title: 'shared/ListBox',
@@ -57,6 +58,11 @@ const Template: ComponentStory<typeof ListBox> = (args) => <ListBox {...args} />
 export const Light = Template.bind({});
 Light.args = {};
 
+export const LightDisabled = Template.bind({});
+LightDisabled.args = {
+  disabled,
+};
+
 export const LightEmpty = Template.bind({});
 LightEmpty.args = {
   value: undefined,
@@ -65,6 +71,12 @@ LightEmpty.args = {
 export const Dark = Template.bind({});
 Dark.args = {};
 Dark.decorators = [ThemeDecorator(Theme.Dark)];
+
+export const DarkDisabled = Template.bind({});
+DarkDisabled.args = {
+  disabled,
+};
+DarkDisabled.decorators = [ThemeDecorator(Theme.Dark)];
 
 export const DarkEmpty = Template.bind({});
 DarkEmpty.args = {
@@ -75,6 +87,12 @@ DarkEmpty.decorators = [ThemeDecorator(Theme.Dark)];
 export const Orange = Template.bind({});
 Orange.args = {};
 Orange.decorators = [ThemeDecorator(Theme.Orange)];
+
+export const OrangeDisabled = Template.bind({});
+OrangeDisabled.args = {
+  disabled,
+};
+OrangeDisabled.decorators = [ThemeDecorator(Theme.Orange)];
 
 export const OrangeEmpty = Template.bind({});
 OrangeEmpty.args = {

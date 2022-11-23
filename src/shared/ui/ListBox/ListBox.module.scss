@@ -1,10 +1,23 @@
 .listBoxWrapper {
+  width: 100%;
   position: relative;
 }
 
+.label {
+  flex-shrink: 0;
+}
+
 .trigger {
+  height: var(--font-line-l);
   width: 100%;
-  text-align: left;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  &.disabled {
+    cursor: default;
+    opacity: 0.75;
+  }
 }
 
 .items {

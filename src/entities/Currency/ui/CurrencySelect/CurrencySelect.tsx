@@ -1,9 +1,9 @@
-import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
-  ExtendableProps, Option, PropsWithClassName, ValuesOf,
+  ExtendableProps, PropsWithClassName, ValuesOf,
 } from 'shared/types';
-import { Select, SelectProps } from 'shared/ui/Select';
+
+import { ListBox, ListBoxProps } from 'shared/ui/ListBox';
 import { Currency } from '../../model/types/types';
 
 export type ValuesOfCurrency = ValuesOf<typeof Currency>;
@@ -13,9 +13,11 @@ type OverrideProps = {
   onChange?: (value: ValuesOfCurrency) => void;
 };
 
-type CurrencySelectProps = PropsWithClassName & ExtendableProps<SelectProps<ValuesOfCurrency>, OverrideProps>;
+type CurrencyListBoxProps = ListBoxProps<ValuesOfCurrency>;
 
-const options: Option<ValuesOfCurrency>[] = [
+type CurrencySelectProps = PropsWithClassName & ExtendableProps<CurrencyListBoxProps, OverrideProps>;
+
+const items: CurrencyListBoxProps['items'] = [
   {
     value: Currency.Rub,
     label: 'Рубль',
@@ -30,19 +32,19 @@ const options: Option<ValuesOfCurrency>[] = [
   },
 ];
 
-export const CurrencySelect: FC<CurrencySelectProps> = ({
+export const CurrencySelect = ({
   className,
   onChange,
   ...restProps
-}) => {
+}: CurrencySelectProps): JSX.Element => {
   // todo: add translation to label
   const { t } = useTranslation();
 
   return (
-    <Select
+    <ListBox
       className={className}
       label="Выберите валюту"
-      options={options}
+      items={items}
       onChange={onChange}
       {...restProps}
     />

@@ -9,24 +9,23 @@ import type { PropsWithClassName } from 'shared/types';
 
 import styles from './ListBox.module.scss';
 
-type ListBoxItem<V> = {
-  id: Key;
+type ListBoxItem<V extends Key> = {
   value: V;
   label: ReactNode;
   disabled?: boolean;
 };
 
-type ListBoxProps<V> = PropsWithClassName & {
+export type ListBoxProps<V extends Key> = PropsWithClassName & {
   label?: string;
   items?: ListBoxItem<V>[];
   value?: V;
   onChange?: (value: V) => void;
   placeholder?: ReactNode;
+  disabled?: boolean;
 };
 
-// eslint-disable-next-line @typescript-eslint/comma-dangle
-export const ListBox = <V,>({
-  className, items = [], value, onChange, placeholder, label,
+export const ListBox = <V extends Key>({
+  className, items = [], value, onChange, placeholder, label, disabled,
 }: ListBoxProps<V>) => {
   const selectedItem = value !== undefined ? items.find((item) => item.value === value) : null;
   const selectedContent = selectedItem?.label ?? placeholder;
@@ -34,7 +33,7 @@ export const ListBox = <V,>({
   return (
     <HStack gap={8} className={className}>
       {label && (
-        <Text>
+        <Text className={styles.label}>
           {label}
           {'>'}
         </Text>
@@ -44,39 +43,49 @@ export const ListBox = <V,>({
         className={styles.listBoxWrapper}
         value={value}
         onChange={onChange}
+        disabled={disabled}
       >
-        <HeadLessListBox.Button as="div">
-          <Button className={styles.trigger} theme="outlined">
-            {selectedContent}
-          </Button>
-        </HeadLessListBox.Button>
-        <HeadLessListBox.Options className={styles.items}>
-          {items.map((item) => (
-            <HeadLessListBox.Option
-              key={item.id}
-              as={Fragment}
-              value={item.value}
-              disabled={item.disabled}
-            >
-              {
-                ({
-                  active,
-                  selected,
-                  disabled,
-                }) => (
-                  <li className={classNames(styles.item, {
-                    [styles.active]: active,
-                    [styles.selected]: selected,
-                    [styles.disabled]: disabled,
-                  })}
-                  >
-                    {item.label}
-                  </li>
-                )
-              }
-            </HeadLessListBox.Option>
-          ))}
-        </HeadLessListBox.Options>
+        {({ disabled: listBoxDisabled }) => (
+          <>
+            <HeadLessListBox.Button as="div">
+              <Button
+                className={classNames(styles.trigger, {
+                  [styles.disabled]: listBoxDisabled,
+                })}
+                theme="outlined"
+              >
+                {selectedContent}
+              </Button>
+            </HeadLessListBox.Button>
+            <HeadLessListBox.Options className={styles.items}>
+              {items.map((item) => (
+                <HeadLessListBox.Option
+                  key={item.value}
+                  as={Fragment}
+                  value={item.value}
+                  disabled={item.disabled}
+                >
+                  {
+                    ({
+                      active,
+                      selected,
+                      disabled: listItemDisabled,
+                    }) => (
+                      <li className={classNames(styles.item, {
+                        [styles.active]: active,
+                        [styles.selected]: selected,
+                        [styles.disabled]: listItemDisabled,
+                      })}
+                      >
+                        {item.label}
+                      </li>
+                    )
+                  }
+                </HeadLessListBox.Option>
+              ))}
+            </HeadLessListBox.Options>
+          </>
+        )}
       </HeadLessListBox>
     </HStack>
   );
