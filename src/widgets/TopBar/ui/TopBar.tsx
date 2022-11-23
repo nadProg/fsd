@@ -48,6 +48,7 @@ export const TopBar = ({ className }: NavBarProps) => {
           </Button>
         </AppLink>
 
+        {/* todo: make Avatar forwardRef ? */}
         <DropDown
           trigger={(
             <div>

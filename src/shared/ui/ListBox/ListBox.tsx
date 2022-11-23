@@ -15,6 +15,7 @@ type ListBoxItem<V extends Key> = {
   disabled?: boolean;
 };
 
+// todo: improve positioning
 export type ListBoxProps<V extends Key> = PropsWithClassName & {
   label?: string;
   items?: ListBoxItem<V>[];

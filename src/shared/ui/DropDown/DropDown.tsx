@@ -15,6 +15,7 @@ type DropDownItem<V extends Key> = {
   onClick?: () => void;
 };
 
+// todo: improve positioning
 type DropDownProps<V extends Key> = PropsWithClassName & {
   items?: DropDownItem<V>[];
   trigger: ReactNode;
