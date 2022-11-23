@@ -1,0 +1,22 @@
+.DropDown {
+  position: relative;
+}
+
+.items {
+  position: absolute;
+  z-index: 10;
+  overflow: hidden;
+  background-color: var(--card-bg);
+  border-radius: 8px;
+  border: 1px solid var(--primary-color);
+  list-style: none;
+}
+
+.item {
+  padding: 10px 20px;
+  transition: background-color 300ms;
+
+  &.active {
+    background-color: var(--inverted-bg-color);
+  }
+}

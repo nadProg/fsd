@@ -11,6 +11,8 @@ import { getUserAuthData, userActions } from 'entities/User';
 
 import { LoginModal } from 'features/AuthByUsername';
 
+import { DropDown } from 'shared/ui/DropDown';
+import { Avatar } from 'shared/ui/Avatar';
 import styles from './TopBar.module.scss';
 
 type NavBarProps = {
@@ -45,14 +47,21 @@ export const TopBar = ({ className }: NavBarProps) => {
             {t('navbar.new-article')}
           </Button>
         </AppLink>
-        <Button
-          theme={ButtonTheme.Background}
-          type="button"
-          onClick={onLogout}
-        >
-          {t('navbar.logout')}
-        </Button>
 
+        <DropDown
+          trigger={(
+            <div>
+              <Avatar size={30} src={authData.avatar} />
+            </div>
+          )}
+          items={[
+            {
+              value: 'logout',
+              label: t('navbar.logout'),
+              onClick: onLogout,
+            },
+          ]}
+        />
       </header>
     );
   }
