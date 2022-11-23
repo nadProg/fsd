@@ -20,15 +20,15 @@ jobs:
         run: npm install
       - name: build project
         run: npm run build:prod
-#      - name: linting typescript
-#        run: npm run lint-ts:fix
-#        if: always()
-#      - name: linting styles
-#        run: npm run lint-scss:fix
-#        if: always()
-#      - name: unit testing
-#        run: npm run test-unit
-#        if: always()
+      - name: linting typescript
+        run: npm run lint-ts:fix
+        if: always()
+      - name: linting styles
+        run: npm run lint-scss:fix
+        if: always()
+      - name: unit testing
+        run: npm run test-unit
+        if: always()
       - name: build storybook
         run: npm run storybook:build
         if: always()
