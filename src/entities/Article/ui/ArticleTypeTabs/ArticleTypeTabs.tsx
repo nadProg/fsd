@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { memo, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { Tab, Tabs } from 'shared/ui/Tabs';
@@ -11,7 +11,7 @@ type ArticleTypeTabsProps = PropsWithClassName & {
   onTabClick: (newTab: ValuesOfArticleTypeTab) => void;
 };
 
-export const ArticleTypeTabs = ({ className, value, onTabClick }: ArticleTypeTabsProps): JSX.Element => {
+export const ArticleTypeTabs = memo(({ className, value, onTabClick }: ArticleTypeTabsProps): JSX.Element => {
   const { t } = useTranslation();
 
   // todo: add translations
@@ -44,4 +44,6 @@ export const ArticleTypeTabs = ({ className, value, onTabClick }: ArticleTypeTab
       onTabClick={onTabClick}
     />
   );
-};
+});
+
+ArticleTypeTabs.displayName = 'ArticleTypeTabs';

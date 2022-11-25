@@ -1,4 +1,6 @@
-import { ChangeEvent, SelectHTMLAttributes, useCallback } from 'react';
+import {
+  ChangeEvent, memo, SelectHTMLAttributes, useCallback,
+} from 'react';
 
 import { PropsWithClassName, Option, ExtendableProps } from 'shared/types';
 
@@ -18,7 +20,11 @@ export type SelectProps<V extends string = string> =
   PropsWithClassName
   & ExtendableProps<ExtendedProps, OverrideProps<V>>;
 
-export const Select = <V extends string>(props: SelectProps<V>) => {
+type SelectComponent = (<V extends string>(props: SelectProps<V>) => JSX.Element) & {
+  displayName: string;
+};
+
+export const Select = memo(<V extends string>(props: SelectProps<V>): JSX.Element => {
   const {
     className,
     label,
@@ -53,4 +59,6 @@ export const Select = <V extends string>(props: SelectProps<V>) => {
       </select>
     </div>
   );
-};
+}) as SelectComponent;
+
+Select.displayName = 'Select';

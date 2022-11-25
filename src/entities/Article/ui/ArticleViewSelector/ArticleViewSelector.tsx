@@ -7,6 +7,7 @@ import ListIcon from 'shared/assets/icons/list.svg';
 import { Button } from 'shared/ui/Button';
 import { Icon } from 'shared/ui/Icon';
 
+import { memo } from 'react';
 import { ArticleView } from '../../model/types/article';
 import styles from './ArticleViewSelector.module.scss';
 
@@ -26,7 +27,7 @@ const VIEWS = [
   },
 ] as const;
 
-export const ArticleViewSelector = ({
+export const ArticleViewSelector = memo(({
   className,
   view: currentView,
   onSelect,
@@ -45,4 +46,6 @@ export const ArticleViewSelector = ({
       </Button>
     ))}
   </div>
-);
+));
+
+ArticleViewSelector.displayName = 'ArticleViewSelector';

@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { memo, useMemo } from 'react';
 import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
 
@@ -20,7 +20,7 @@ type ArticleViewSelectorProps = PropsWithClassName & {
   onOrderSelect: (value: ValuesOfSortOrder) => void;
 };
 
-export const ArticleSortSelector = ({
+export const ArticleSortSelector = memo(({
   className,
   sort,
   order,
@@ -71,4 +71,6 @@ export const ArticleSortSelector = ({
       />
     </div>
   );
-};
+});
+
+ArticleSortSelector.displayName = 'ArticleSortSelector';
