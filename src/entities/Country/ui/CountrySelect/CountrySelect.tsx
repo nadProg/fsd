@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import {
@@ -45,7 +46,7 @@ const items: CountryListBoxProps['items'] = [
   },
 ];
 
-export const CountrySelect = ({
+export const CountrySelect = memo(({
   className,
   onChange,
   ...restProps
@@ -62,4 +63,6 @@ export const CountrySelect = ({
       {...restProps}
     />
   );
-};
+});
+
+CountrySelect.displayName = 'CountrySelect';

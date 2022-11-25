@@ -1,4 +1,6 @@
-import { ChangeEventHandler, FC, InputHTMLAttributes } from 'react';
+import {
+  ChangeEventHandler, InputHTMLAttributes, memo,
+} from 'react';
 import classNames from 'classnames';
 
 import { ExtendableProps } from 'shared/types';
@@ -13,12 +15,12 @@ type OverrideInputProps = {
 
 type InputProps = ExtendableProps<ExtendedInputProps, OverrideInputProps>;
 
-export const Input: FC<InputProps> = ({
+export const Input = memo(({
   className,
   onChange,
   placeholder,
   ...restProps
-}) => {
+}: InputProps): JSX.Element => {
   const onInputChange: ChangeEventHandler<HTMLInputElement> = (evt) => onChange?.(evt.target.value);
 
   return (
@@ -36,4 +38,6 @@ export const Input: FC<InputProps> = ({
       />
     </label>
   );
-};
+});
+
+Input.displayName = 'Input';

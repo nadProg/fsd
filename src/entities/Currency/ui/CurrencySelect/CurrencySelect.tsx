@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
   ExtendableProps, PropsWithClassName, ValuesOf,
@@ -32,7 +33,7 @@ const items: CurrencyListBoxProps['items'] = [
   },
 ];
 
-export const CurrencySelect = ({
+export const CurrencySelect = memo(({
   className,
   onChange,
   ...restProps
@@ -49,4 +50,6 @@ export const CurrencySelect = ({
       {...restProps}
     />
   );
-};
+});
+
+CurrencySelect.displayName = 'CurrencySelect';

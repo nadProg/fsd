@@ -1,4 +1,4 @@
-import { FC, useCallback } from 'react';
+import { memo, useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 
@@ -14,7 +14,7 @@ import { getUserAuthData } from 'entities/User';
 
 type ProfilePageHeaderProps = PropsWithClassName;
 
-export const ProfilePageHeader: FC<ProfilePageHeaderProps> = (props) => {
+export const ProfilePageHeader = memo((props: ProfilePageHeaderProps): JSX.Element => {
   const { className } = props;
 
   const { t } = useTranslation();
@@ -47,36 +47,38 @@ export const ProfilePageHeader: FC<ProfilePageHeaderProps> = (props) => {
       <h1>{t('profile.title')}</h1>
 
       {isOwnProfile
-      && (
-        <HStack gap={8}>
-          {profileReadonly
-            ? (
-              <Button
-                theme={ButtonTheme.Outlined}
-                onClick={onEdit}
-              >
-                {t('profile.actions.edit')}
-              </Button>
-            )
-            : (
-              <>
-                {/* todo: add red theme */}
+        && (
+          <HStack gap={8}>
+            {profileReadonly
+              ? (
                 <Button
                   theme={ButtonTheme.Outlined}
-                  onClick={onCancel}
+                  onClick={onEdit}
                 >
-                  {t('profile.actions.cancel')}
+                  {t('profile.actions.edit')}
                 </Button>
-                <Button
-                  theme={ButtonTheme.Outlined}
-                  onClick={onSave}
-                >
-                  {t('profile.actions.save')}
-                </Button>
-              </>
-            )}
-        </HStack>
-      )}
+              )
+              : (
+                <>
+                  {/* todo: add red theme */}
+                  <Button
+                    theme={ButtonTheme.Outlined}
+                    onClick={onCancel}
+                  >
+                    {t('profile.actions.cancel')}
+                  </Button>
+                  <Button
+                    theme={ButtonTheme.Outlined}
+                    onClick={onSave}
+                  >
+                    {t('profile.actions.save')}
+                  </Button>
+                </>
+              )}
+          </HStack>
+        )}
     </HStack>
   );
-};
+});
+
+ProfilePageHeader.displayName = 'ProfilePageHeader';
