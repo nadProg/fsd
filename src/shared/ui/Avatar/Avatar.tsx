@@ -1,5 +1,5 @@
 import {
-  CSSProperties, FC, ImgHTMLAttributes, useMemo,
+  CSSProperties, forwardRef, ImgHTMLAttributes, useMemo,
 } from 'react';
 import classNames from 'classnames';
 
@@ -18,9 +18,9 @@ type AvatarProps = PropsWithClassName & ExtendableProps<ExtendedProps, OverrideP
 
 const DEFAULT_SIZE = 100;
 
-export const Avatar: FC<AvatarProps> = ({
+export const Avatar = forwardRef<HTMLImageElement, AvatarProps>(({
   className, src, alt, size = DEFAULT_SIZE, ...restProps
-}) => {
+}, ref) => {
   const style = useMemo<CSSProperties>(() => ({
     width: size,
     height: size,
@@ -28,6 +28,7 @@ export const Avatar: FC<AvatarProps> = ({
 
   return (
     <img
+      ref={ref}
       src={src || Placeholder}
       alt={alt}
       className={classNames(className, styles.Avatar)}
@@ -35,4 +36,6 @@ export const Avatar: FC<AvatarProps> = ({
       {...restProps}
     />
   );
-};
+});
+
+Avatar.displayName = 'Avatar';

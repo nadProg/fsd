@@ -31,3 +31,7 @@ export type DeepPartial<T> = T extends any[] ? T : T extends Record<string, any>
 } : T;
 
 export type Id = string;
+
+export type Nullable<T> = T | null;
+
+export type Optional<T> = T | undefined;

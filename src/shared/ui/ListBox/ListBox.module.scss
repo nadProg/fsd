@@ -1,8 +1,3 @@
-.listBoxWrapper {
-  width: 100%;
-  position: relative;
-}
-
 .label {
   flex-shrink: 0;
 }
@@ -22,11 +17,8 @@
 
 .items {
   overflow: hidden;
-  min-width: 100%;
   padding: 0;
-  position: absolute;
   background-color: var(--listbox-bg);
-  z-index: 10;
   border-radius: 12px;
   box-shadow: 4px 4px 8px var(--listbox-bg);
   list-style: none;

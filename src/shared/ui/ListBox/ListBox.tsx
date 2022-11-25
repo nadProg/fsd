@@ -7,6 +7,7 @@ import { Button } from 'shared/ui/Button';
 import { HStack } from 'shared/ui/Stack';
 import type { PropsWithClassName } from 'shared/types';
 
+import { usePopper } from 'shared/hooks/usePopper';
 import styles from './ListBox.module.scss';
 
 type ListBoxItem<V extends Key> = {
@@ -15,7 +16,6 @@ type ListBoxItem<V extends Key> = {
   disabled?: boolean;
 };
 
-// todo: improve positioning
 export type ListBoxProps<V extends Key> = PropsWithClassName & {
   label?: string;
   items?: ListBoxItem<V>[];
@@ -25,9 +25,34 @@ export type ListBoxProps<V extends Key> = PropsWithClassName & {
   disabled?: boolean;
 };
 
+const getTriggerClassName = ({ disabled = false } = {}) => classNames(styles.trigger, {
+  [styles.disabled]: disabled,
+});
+
+const getItemClassName = ({
+  active = false,
+  selected = false,
+  disabled = false,
+} = {}) => classNames(styles.item, {
+  [styles.active]: active,
+  [styles.selected]: selected,
+  [styles.disabled]: disabled,
+});
+
 export const ListBox = <V extends Key>({
-  className, items = [], value, onChange, placeholder, label, disabled,
+  className,
+  items = [],
+  value,
+  onChange,
+  placeholder,
+  label,
+  disabled,
 }: ListBoxProps<V>) => {
+  const {
+    referenceRef,
+    popperRef,
+    getPopperProps,
+  } = usePopper<HTMLButtonElement, HTMLUListElement>();
   const selectedItem = value !== undefined ? items.find((item) => item.value === value) : null;
   const selectedContent = selectedItem?.label ?? placeholder;
 
@@ -46,19 +71,22 @@ export const ListBox = <V extends Key>({
         onChange={onChange}
         disabled={disabled}
       >
-        {({ disabled: listBoxDisabled }) => (
+        {(listProps) => (
           <>
             <HeadLessListBox.Button as="div">
               <Button
-                className={classNames(styles.trigger, {
-                  [styles.disabled]: listBoxDisabled,
-                })}
+                ref={referenceRef}
+                className={getTriggerClassName(listProps)}
                 theme="outlined"
               >
                 {selectedContent}
               </Button>
             </HeadLessListBox.Button>
-            <HeadLessListBox.Options className={styles.items}>
+            <HeadLessListBox.Options
+              ref={popperRef}
+              className={styles.items}
+              {...getPopperProps()}
+            >
               {items.map((item) => (
                 <HeadLessListBox.Option
                   key={item.value}
@@ -67,17 +95,8 @@ export const ListBox = <V extends Key>({
                   disabled={item.disabled}
                 >
                   {
-                    ({
-                      active,
-                      selected,
-                      disabled: listItemDisabled,
-                    }) => (
-                      <li className={classNames(styles.item, {
-                        [styles.active]: active,
-                        [styles.selected]: selected,
-                        [styles.disabled]: listItemDisabled,
-                      })}
-                      >
+                    (itemProps) => (
+                      <li className={getItemClassName(itemProps)}>
                         {item.label}
                       </li>
                     )

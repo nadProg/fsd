@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes, FC } from 'react';
+import { ButtonHTMLAttributes, forwardRef } from 'react';
 import classNames from 'classnames';
 
 import { ValuesOf } from 'shared/types';
@@ -25,14 +25,14 @@ type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   size?: ValuesOf<typeof ButtonSize>
 };
 
-export const Button: FC<ButtonProps> = ({
+export const Button = forwardRef<HTMLButtonElement, ButtonProps>(({
   className,
   children,
   theme = ButtonTheme.Clear,
   square,
   size = ButtonSize.Medium,
   ...restProps
-}) => {
+}, ref) => {
   const buttonClassName = classNames(
     className,
     styles.Button,
@@ -45,6 +45,7 @@ export const Button: FC<ButtonProps> = ({
 
   return (
     <button
+      ref={ref}
       type="button"
       className={buttonClassName}
       {...restProps}
@@ -52,4 +53,6 @@ export const Button: FC<ButtonProps> = ({
       {children}
     </button>
   );
-};
+});
+
+Button.displayName = 'Button';

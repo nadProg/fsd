@@ -13,6 +13,7 @@ import { LoginModal } from 'features/AuthByUsername';
 
 import { DropDown } from 'shared/ui/DropDown';
 import { Avatar } from 'shared/ui/Avatar';
+
 import styles from './TopBar.module.scss';
 
 type NavBarProps = {
@@ -51,9 +52,9 @@ export const TopBar = ({ className }: NavBarProps) => {
         {/* todo: make Avatar forwardRef ? */}
         <DropDown
           trigger={(
-            <div>
+            <Button>
               <Avatar size={30} src={authData.avatar} />
-            </div>
+            </Button>
           )}
           items={[
             {
