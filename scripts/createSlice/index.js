@@ -6,11 +6,13 @@ const sliceName = process.argv[3];
 const layers = ['features', 'entities', 'pages'];
 
 if (!layer || !layers.includes(layer)) {
-  throw new Error(`Укажите слой ${layers.join(' или ')}`);
+  console.error(`Укажите слой ${layers.join(' или ')}`);
+  process.exit(1);
 }
 
 if (!sliceName) {
-  throw new Error('Укажите название слайса');
+  console.error('Укажите название слайса');
+  process.exit(1);
 }
 
 createTemplate(layer, sliceName);
