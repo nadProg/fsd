@@ -1,5 +1,4 @@
 import { useCallback } from 'react';
-import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { useSearchParams } from 'react-router-dom';
 
@@ -8,15 +7,11 @@ import { useAppDispatch } from 'shared/hooks/useAppDispatch';
 import { useProjectEffect } from 'shared/hooks/useProjectEffect';
 import { ReducersList, useDynamicReducers } from 'shared/hooks/useDynamicReducers';
 
-import { ArticleList } from 'entities/Article';
-
-import { getArticlesPageView } from '../../model/selectors/getArticlesPageView/getArticlesPageView';
-import { ArticlesPageFilters } from '../ArticlesPageFilters/ArticlesPageFilters';
 import { initArticlesPage } from '../../model/services/initArticlesPage/initArticlesPage';
-import { articlesPageReducer, getArticles } from '../../model/slices/articlePageSlice/articlesPageSlice';
+import { articlesPageReducer } from '../../model/slices/articlePageSlice/articlesPageSlice';
 import { fetchArticlesNextPage } from '../../model/services/fetchArticlesNextPage/fetchArticlesNextPage';
-import { getArticlesPageError } from '../../model/selectors/getArticlesPageError/getArticlesPageError';
-import { getArticlesPageIsLoading } from '../../model/selectors/getArticlesPageIsLoading/getArticlesPageIsLoading';
+import { ArticlesPageFilters } from '../ArticlesPageFilters/ArticlesPageFilters';
+import { ArticlesInfiniteList } from '../ArticlesInfiniteList/ArticlesInfiniteList';
 
 import styles from './ArticlesPage.module.scss';
 
@@ -29,10 +24,7 @@ export const ArticlesPage = () => {
     keepMounted: true,
   });
 
-  const articles = useSelector(getArticles.selectAll);
-  const isLoading = useSelector(getArticlesPageIsLoading);
-  const view = useSelector(getArticlesPageView);
-  const error = useSelector(getArticlesPageError);
+  const { t } = useTranslation();
 
   const dispatch = useAppDispatch();
 
@@ -46,20 +38,12 @@ export const ArticlesPage = () => {
     dispatch(fetchArticlesNextPage());
   }, [dispatch]);
 
-  const { t } = useTranslation();
-
   return (
     <Page onScrollEnd={onPageScrollEnd}>
       <h1>{t('articles.title')}</h1>
       <p>{t('articles.content')}</p>
-
       <ArticlesPageFilters className={styles.filters} />
-
-      <ArticleList
-        view={view}
-        articles={articles}
-        isLoading={isLoading}
-      />
+      <ArticlesInfiniteList />
     </Page>
   );
 };
