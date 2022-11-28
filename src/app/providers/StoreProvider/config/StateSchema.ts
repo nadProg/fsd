@@ -3,6 +3,8 @@ import {
   AnyAction, CombinedState, EnhancedStore, Reducer, ReducersMapObject,
 } from '@reduxjs/toolkit';
 
+import { rtkApi } from 'shared/api/rtkApi';
+
 import { UserSchema } from 'entities/User';
 import { CounterSchema } from 'entities/Counter';
 import { ProfileSchema } from 'entities/Profile';
@@ -25,6 +27,7 @@ export type StateSchema = {
   articlesPage?: ArticlesPageSchema;
   articleDetailsPage?: ArticleDetailsPageSchema
   scrollPosition: ScrollPositionSchema;
+  [rtkApi.reducerPath]: ReturnType<typeof rtkApi.reducer>
 };
 
 export type StateSchemaKey = keyof StateSchema;

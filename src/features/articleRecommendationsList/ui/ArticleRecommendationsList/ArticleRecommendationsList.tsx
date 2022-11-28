@@ -7,6 +7,8 @@ import { Text, TextVariant } from 'shared/ui/Text';
 
 import { ArticleList, ArticleView } from 'entities/Article';
 
+import { useArticleRecommendationsList } from '../../api/articleRecommendationsApi';
+
 import styles from './ArticleRecommendationsList.module.scss';
 
 interface ArticleRecommendationsListProps {
@@ -17,6 +19,10 @@ export const ArticleRecommendationsList = memo((props: ArticleRecommendationsLis
   const { className } = props;
   const { t } = useTranslation();
 
+  const response = useArticleRecommendationsList(3);
+
+  const { data, isLoading } = response;
+
   return (
     <VStack gap={8} className={classNames(className, styles.ArticleRecommendationsList)}>
       <Text variant={TextVariant.Title} className={styles.sectionTitle}>
@@ -24,8 +30,8 @@ export const ArticleRecommendationsList = memo((props: ArticleRecommendationsLis
       </Text>
       <ArticleList
         className={styles.recommendations}
-        articles={[]}
-        isLoading={false}
+        articles={data}
+        isLoading={isLoading}
         view={ArticleView.Grid}
         linksTarget="_blank"
       />
