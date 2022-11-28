@@ -12,10 +12,11 @@ import { useProjectEffect } from 'shared/hooks/useProjectEffect';
 import { ReducersList, useDynamicReducers } from 'shared/hooks/useDynamicReducers';
 
 import { CommentList } from 'entities/Comment';
-import { ArticleDetails, ArticleList, ArticleView } from 'entities/Article';
+import { ArticleDetails } from 'entities/Article';
 
 import { AddCommentForm } from 'features/addCommentForm';
 
+import { ArticleRecommendationsList } from 'features/articleRecommendationsList';
 import {
   ArticleDetailsPageHeader,
 } from '../ArticleDetailsPageHeader/ArticleDetailsPageHeader';
@@ -23,12 +24,6 @@ import {
   articleDetailPageReducer,
 } from '../../model/slices/articleDetailsPageSlice/articleDetailPageSlice';
 import { fetchRecommendations } from '../../model/services/fetchRecommendations/fetchRecommendations';
-import {
-  getArticleDetailsRecommendationsIsLoading,
-} from '../../model/selectors/getArticleDetailsRecommendationsIsLoading/getArticleDetailsRecommendationsIsLoading';
-import {
-  getArticleRecommendations,
-} from '../../model/slices/artcileDetailsRecommendationsSlice/articleDetailsRecommendationsSlice';
 import {
   fetchArticleDetailsComments,
 } from '../../model/services/fetchArticleDetailsComments/fetchArticleDetailsComments';
@@ -53,9 +48,6 @@ export const ArticleDetailsPage = () => {
 
   const comments = useSelector(getArticleComments.selectAll);
   const commentsIsLoading = useSelector(getArticleDetailsCommentsIsLoading);
-
-  const recommendations = useSelector(getArticleRecommendations.selectAll);
-  const recommendationsIsLoading = useSelector(getArticleDetailsRecommendationsIsLoading);
 
   const { t } = useTranslation();
 
@@ -85,16 +77,7 @@ export const ArticleDetailsPage = () => {
 
         <ArticleDetails id={id} />
 
-        <Text variant={TextVariant.Title} className={styles.sectionTitle}>
-          {t('article-details.recommendations')}
-        </Text>
-        <ArticleList
-          className={styles.recommendations}
-          articles={recommendations}
-          isLoading={recommendationsIsLoading}
-          view={ArticleView.Grid}
-          linksTarget="_blank"
-        />
+        <ArticleRecommendationsList />
 
         <Text variant={TextVariant.Title} className={styles.sectionTitle}>
           {t('article-details.comments')}
