@@ -7,33 +7,34 @@ module.exports = (sliceName) => {
 import { ${typeName} } from '../types/${sliceName}Schema';
 
 const initialState: ${typeName} = {
-    
+  // initialState
 };
 
 export const ${sliceName}Slice = createSlice({
-    name: '${sliceName}',
-    initialState,
-    reducers: {
-        template: (state, action: PayloadAction<string>) => {
-           
-        },
+  name: '${sliceName}',
+  initialState,
+  reducers: {
+    template: (state, action: PayloadAction<string>) => {
+      // template
     },
-    // extraReducers: (builder) => {
-    //     builder
-    //         .addCase(, (state) => {
-    //             state.error = undefined;
-    //             state.isLoading = true;
-    //         })
-    //         .addCase(, (state) => {
-    //             state.isLoading = false;
-    //         })
-    //         .addCase(, (state, action) => {
-    //             state.isLoading = false;
-    //             state.error = action.payload;
-    //         });
-    // },
+  },
+  // extraReducers: (builder) => {
+  //     builder
+  //         .addCase(, (state) => {
+  //             state.error = undefined;
+  //             state.isLoading = true;
+  //         })
+  //         .addCase(, (state) => {
+  //             state.isLoading = false;
+  //         })
+  //         .addCase(, (state, action) => {
+  //             state.isLoading = false;
+  //             state.error = action.payload;
+  //         });
+  // },
 });
 
 export const { actions: ${sliceName}Actions } = ${sliceName}Slice;
-export const { reducer: ${sliceName}Reducer } = ${sliceName}Slice;`;
+export const { reducer: ${sliceName}Reducer } = ${sliceName}Slice;
+`;
 };
