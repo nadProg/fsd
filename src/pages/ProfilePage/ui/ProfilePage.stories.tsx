@@ -19,7 +19,7 @@ export default {
     backgroundColor: { control: 'color' },
   },
   decorators: [StoreDecorator({
-    profile: {
+    editableProfile: {
       data: {
         firstname: 'firstname',
         username: 'username',
