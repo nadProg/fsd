@@ -25,8 +25,11 @@ export function SideBar({ className }: SideBarProps) {
 
   const onToggle = () => setCollapsed((prevCollapsed) => !prevCollapsed);
 
+  const toggleLabel = collapsed ? 'Expand sidebar' : 'Collapse sidebar';
+
   return (
     <section
+      id="sidebar"
       data-testid="sidebar"
       className={classNames(className, styles.SideBar, { [styles.collapsed]: collapsed })}
     >
@@ -57,8 +60,13 @@ export function SideBar({ className }: SideBarProps) {
         size={ButtonSize.Large}
         square
         onClick={onToggle}
+        aria-expanded={!collapsed}
+        aria-controls="sidebar"
+        aria-label={toggleLabel}
       >
-        {collapsed ? '>' : '<'}
+        <span aria-hidden="true">
+          {collapsed ? '>' : '<'}
+        </span>
       </Button>
     </section>
   );

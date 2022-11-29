@@ -7,18 +7,30 @@ describe('SideBar', () => {
   test('Render', () => {
     renderComponent(<SideBar />);
 
-    expect(screen.getByTestId('sidebar')).toBeInTheDocument();
+    const sidebar = screen.getByTestId('sidebar');
+    const toggleButton = screen.getByTestId('sidebar-toggle');
+
+    expect(sidebar).toBeInTheDocument();
+    expect(toggleButton).toBeInTheDocument();
   });
 
   test('Toggle', () => {
     renderComponent(<SideBar />);
 
     const toggleButton = screen.getByTestId('sidebar-toggle');
+    const sidebar = screen.getByTestId('sidebar');
 
-    expect(screen.getByTestId('sidebar')).not.toHaveClass('collapsed');
+    expect(sidebar).not.toHaveClass('collapsed');
+    expect(toggleButton).toHaveAttribute('aria-expanded', 'true');
 
     fireEvent.click(toggleButton);
 
     expect(screen.getByTestId('sidebar')).toHaveClass('collapsed');
+    expect(toggleButton).toHaveAttribute('aria-expanded', 'false');
+
+    fireEvent.click(toggleButton);
+
+    expect(screen.getByTestId('sidebar')).not.toHaveClass('collapsed');
+    expect(toggleButton).toHaveAttribute('aria-expanded', 'true');
   });
 });
