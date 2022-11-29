@@ -8,6 +8,10 @@ export type PropsWithClassName = {
   className?: string;
 };
 
+export type PropsWithDataAttributes = {
+  [key in `data-${string}`]?: string
+};
+
 export type PropsWithChildren = {
   children: ReactNode;
 };

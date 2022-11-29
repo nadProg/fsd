@@ -1,4 +1,4 @@
-import { render } from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 
 import { App } from 'app/App';
@@ -11,7 +11,15 @@ import 'shared/config/i18n/i18n';
 
 import 'app/styles/index.scss';
 
-render(
+const rootNode = document.getElementById('root');
+
+if (!rootNode) {
+  throw new Error('DOM node with id="root" not found');
+}
+
+const root = createRoot(rootNode);
+
+root.render(
   <StoreProvider>
     <BrowserRouter>
       <ErrorBoundary>
@@ -21,5 +29,4 @@ render(
       </ErrorBoundary>
     </BrowserRouter>
   </StoreProvider>,
-  document.getElementById('root'),
 );
