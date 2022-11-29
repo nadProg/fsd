@@ -12,8 +12,8 @@ import { Article, ArticleView } from '../../model/types/article';
 import styles from './ArticleList.module.scss';
 
 type ArticleListProps = PropsWithClassName & {
-  articles: Article[];
-  isLoading: boolean;
+  articles?: Article[];
+  isLoading?: boolean;
   view?: ValuesOf<typeof ArticleView>;
   linksTarget?: AppLinkProps['target'];
 };
