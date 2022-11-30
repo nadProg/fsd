@@ -11,6 +11,7 @@ import { NotFoundPage } from 'pages/NotFoundPage';
 import { ArticlesPage } from 'pages/ArticlesPage';
 import { ArticleEditPage } from 'pages/ArticleEditPage';
 import { AdminPanelPage } from 'pages/AdminPanelPage';
+import { ForbiddenPage } from 'pages/ForbiddenPage';
 import { ArticleDetailsPage } from 'pages/ArticleDetailsPage';
 
 export const AppRoute = {
@@ -22,6 +23,7 @@ export const AppRoute = {
   ArticleCreate: 'article_create',
   ArticleEdit: 'article_edit',
   AdminPanel: 'admin_panel',
+  Forbidden: 'forbidden',
   NotFound: 'not_found',
 } as const;
 
@@ -41,6 +43,7 @@ export const RoutePath: Record<ValuesOfAppRoute, string> = {
   [AppRoute.ArticleCreate]: '/articles/new',
   [AppRoute.ArticleEdit]: '/articles/:id/edit',
   [AppRoute.AdminPanel]: '/admin',
+  [AppRoute.Forbidden]: '/forbidden',
   [AppRoute.NotFound]: '*',
 };
 
@@ -83,6 +86,11 @@ export const routerConfig: Record<ValuesOfAppRoute, AppRouteProps> = {
     element: <AdminPanelPage />,
     authOnly: true,
     roles: [UserRole.Manager, UserRole.Admin],
+  },
+  [AppRoute.Forbidden]: {
+    path: RoutePath[AppRoute.Forbidden],
+    element: <ForbiddenPage />,
+    authOnly: true,
   },
   [AppRoute.NotFound]: {
     path: RoutePath[AppRoute.NotFound],

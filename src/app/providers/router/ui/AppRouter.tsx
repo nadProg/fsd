@@ -17,6 +17,7 @@ export const AppRouter: FC = () => (
       {routes.map(({
         path,
         authOnly,
+        roles,
         element,
         ...restProps
       }) => (
@@ -25,7 +26,7 @@ export const AppRouter: FC = () => (
             <Route
               key={path}
               path={path}
-              element={<RequireAuth>{element}</RequireAuth>}
+              element={<RequireAuth roles={roles}>{element}</RequireAuth>}
               {...restProps}
             />
           )

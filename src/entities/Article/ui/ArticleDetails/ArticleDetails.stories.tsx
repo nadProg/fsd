@@ -34,6 +34,7 @@ const data: Article = {
     id: '1',
     username: 'Username',
     avatar: MockAvatar,
+    roles: [],
   },
 };
 
