@@ -1,18 +1,17 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import classNames from 'classnames';
 
+import { Avatar } from 'shared/ui/Avatar';
 import { AppLink } from 'shared/ui/AppLink';
 import { Button, ButtonTheme } from 'shared/ui/Button';
+import { DropDown, DropDownItemType } from 'shared/ui/DropDown';
 import { RoutePath } from 'shared/config/router/routeConfig/routeConfig';
 
 import { getUserAuthData, userActions } from 'entities/User';
 
 import { LoginModal } from 'features/AuthByUsername';
-
-import { DropDown } from 'shared/ui/DropDown';
-import { Avatar } from 'shared/ui/Avatar';
 
 import styles from './TopBar.module.scss';
 
@@ -37,6 +36,27 @@ export const TopBar = ({ className }: NavBarProps) => {
 
   const onLoginSuccess = useCallback(() => setIsAuthOpen(false), [setIsAuthOpen]);
 
+  const dropDownItems = useMemo(() => ([
+    {
+      type: DropDownItemType.Link,
+      value: 'admin',
+      label: t('navbar.admin-panel'),
+      href: RoutePath.admin_panel,
+    },
+    {
+      type: DropDownItemType.Link,
+      value: 'profile',
+      label: t('navbar.profile'),
+      href: `${RoutePath.profile}${authData?.id}`,
+    },
+    {
+      type: DropDownItemType.Button,
+      value: 'logout',
+      label: t('navbar.logout'),
+      onClick: onLogout,
+    },
+  ]), [onLogout, authData?.id, t]);
+
   if (authData) {
     return (
       <header className={classNames(styles.TopBar, className)}>
@@ -49,20 +69,13 @@ export const TopBar = ({ className }: NavBarProps) => {
           </Button>
         </AppLink>
 
-        {/* todo: make Avatar forwardRef ? */}
         <DropDown
           trigger={(
             <Button>
               <Avatar size={30} src={authData.avatar} />
             </Button>
           )}
-          items={[
-            {
-              value: 'logout',
-              label: t('navbar.logout'),
-              onClick: onLogout,
-            },
-          ]}
+          items={dropDownItems}
         />
       </header>
     );

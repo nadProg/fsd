@@ -4,6 +4,7 @@ import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDeco
 import { Theme } from 'shared/providers/ThemeProvider';
 
 import { Button } from 'shared/ui/Button';
+import { DropDownItemType } from './DropDown.types';
 import { DropDown } from './DropDown';
 
 const trigger = <Button theme="backgroundInverted">Menu</Button>;
@@ -11,23 +12,28 @@ const label = 'Выберите значение';
 const placeholder = 'Выберите значение';
 const items = [
   {
+    type: DropDownItemType.Button,
     value: 'Durward Reynolds',
     label: 'Durward Reynolds',
   },
   {
+    type: DropDownItemType.Button,
     value: 'Kenton Towne',
     label: 'Kenton Towne',
   },
   {
+    type: DropDownItemType.Button,
     value: 'Therese Wunsch',
     label: 'Therese Wunsch',
   },
   {
+    type: DropDownItemType.Button,
     value: 'Benedict Kessler',
     label: 'Benedict Kessler',
     disabled: true,
   },
   {
+    type: DropDownItemType.Button,
     value: 'Katelyn Rohan',
     label: 'Katelyn Rohan',
   },

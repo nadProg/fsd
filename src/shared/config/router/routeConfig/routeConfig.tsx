@@ -2,13 +2,16 @@ import { RouteProps } from 'react-router-dom';
 
 import { ValuesOf } from 'shared/types';
 
+import { UserRole, ValuesOfUserRole } from 'entities/User';
+
 import { MainPage } from 'pages/MainPage';
 import { AboutPage } from 'pages/AboutPage';
 import { ProfilePage } from 'pages/ProfilePage';
 import { NotFoundPage } from 'pages/NotFoundPage';
 import { ArticlesPage } from 'pages/ArticlesPage';
-import { ArticleDetailsPage } from 'pages/ArticleDetailsPage';
 import { ArticleEditPage } from 'pages/ArticleEditPage';
+import { AdminPanelPage } from 'pages/AdminPanelPage';
+import { ArticleDetailsPage } from 'pages/ArticleDetailsPage';
 
 export const AppRoute = {
   Main: 'main',
@@ -18,6 +21,7 @@ export const AppRoute = {
   ArticleDetails: 'article_details',
   ArticleCreate: 'article_create',
   ArticleEdit: 'article_edit',
+  AdminPanel: 'admin_panel',
   NotFound: 'not_found',
 } as const;
 
@@ -25,6 +29,7 @@ type ValuesOfAppRoute = ValuesOf<typeof AppRoute>;
 
 export type AppRouteProps = RouteProps & {
   authOnly?: boolean;
+  roles?: ValuesOfUserRole[]
 };
 
 export const RoutePath: Record<ValuesOfAppRoute, string> = {
@@ -35,6 +40,7 @@ export const RoutePath: Record<ValuesOfAppRoute, string> = {
   [AppRoute.ArticleDetails]: '/articles/',
   [AppRoute.ArticleCreate]: '/articles/new',
   [AppRoute.ArticleEdit]: '/articles/:id/edit',
+  [AppRoute.AdminPanel]: '/admin',
   [AppRoute.NotFound]: '*',
 };
 
@@ -71,6 +77,12 @@ export const routerConfig: Record<ValuesOfAppRoute, AppRouteProps> = {
     path: RoutePath[AppRoute.ArticleEdit],
     element: <ArticleEditPage />,
     authOnly: true,
+  },
+  [AppRoute.AdminPanel]: {
+    path: RoutePath[AppRoute.AdminPanel],
+    element: <AdminPanelPage />,
+    authOnly: true,
+    roles: [UserRole.Manager, UserRole.Admin],
   },
   [AppRoute.NotFound]: {
     path: RoutePath[AppRoute.NotFound],

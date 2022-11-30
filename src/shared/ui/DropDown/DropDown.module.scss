@@ -1,12 +1,16 @@
 .items {
+  display: flex;
+  flex-flow: column;
   overflow: hidden;
   background-color: var(--card-bg);
   border-radius: 8px;
   border: 1px solid var(--primary-color);
   list-style: none;
+  text-align: center;
 }
 
 .item {
+  display: block;
   padding: 10px 20px;
   transition: background-color 300ms;
 

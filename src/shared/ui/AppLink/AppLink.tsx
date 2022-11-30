@@ -7,6 +7,7 @@ import { ValuesOf } from 'shared/types';
 import styles from './AppLink.module.scss';
 
 export const AppLinkTheme = {
+  Clear: 'clear',
   Primary: 'primary',
   Secondary: 'secondary',
 } as const;
