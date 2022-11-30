@@ -30,6 +30,7 @@ describe('loginByUsername', () => {
     expect(dispatch).toHaveBeenCalledWith(userActions.setAuthData({
       id: 'id',
       username: 'user',
+      roles: [],
     }));
 
     expect(Storage.prototype.setItem).toHaveBeenCalledTimes(1);

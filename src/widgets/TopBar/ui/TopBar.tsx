@@ -1,5 +1,5 @@
 import { useCallback, useMemo, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import classNames from 'classnames';
 
@@ -7,9 +7,12 @@ import { Avatar } from 'shared/ui/Avatar';
 import { AppLink } from 'shared/ui/AppLink';
 import { Button, ButtonTheme } from 'shared/ui/Button';
 import { DropDown, DropDownItemType } from 'shared/ui/DropDown';
+import { useAppDispatch } from 'shared/hooks/useAppDispatch';
 import { RoutePath } from 'shared/config/router/routeConfig/routeConfig';
 
-import { getUserAuthData, userActions } from 'entities/User';
+import {
+  getIsUserAdmin, getIsUserManager, getUserAuthData, userActions,
+} from 'entities/User';
 
 import { LoginModal } from 'features/AuthByUsername';
 
@@ -22,7 +25,9 @@ type NavBarProps = {
 export const TopBar = ({ className }: NavBarProps) => {
   const { t } = useTranslation();
   const authData = useSelector(getUserAuthData);
-  const dispatch = useDispatch();
+  const isAdmin = useSelector(getIsUserAdmin);
+  const isManager = useSelector(getIsUserManager);
+  const dispatch = useAppDispatch();
 
   const [isAuthOpen, setIsAuthOpen] = useState(false);
 
@@ -36,13 +41,15 @@ export const TopBar = ({ className }: NavBarProps) => {
 
   const onLoginSuccess = useCallback(() => setIsAuthOpen(false), [setIsAuthOpen]);
 
+  const isAdminPanelAvailable = isAdmin || isManager;
+
   const dropDownItems = useMemo(() => ([
-    {
+    ...(isAdminPanelAvailable ? ([{
       type: DropDownItemType.Link,
       value: 'admin',
       label: t('navbar.admin-panel'),
       href: RoutePath.admin_panel,
-    },
+    }]) : []),
     {
       type: DropDownItemType.Link,
       value: 'profile',
@@ -55,7 +62,7 @@ export const TopBar = ({ className }: NavBarProps) => {
       label: t('navbar.logout'),
       onClick: onLogout,
     },
-  ]), [onLogout, authData?.id, t]);
+  ]), [onLogout, authData?.id, t, isAdminPanelAvailable]);
 
   if (authData) {
     return (

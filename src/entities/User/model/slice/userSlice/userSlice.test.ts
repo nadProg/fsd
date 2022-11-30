@@ -9,18 +9,21 @@ describe('userSlice', () => {
     const action = userActions.setAuthData({
       id: '1',
       username: 'username',
+      roles: [],
     });
 
     const actionWithAvatar = userActions.setAuthData({
       id: '1',
       username: 'username',
       avatar: 'avatar',
+      roles: [],
     });
 
     expect(userReducer(state, action)).toEqual({
       authData: {
         id: '1',
         username: 'username',
+        roles: [],
       },
     });
 
@@ -29,6 +32,7 @@ describe('userSlice', () => {
         id: '1',
         username: 'username',
         avatar: 'avatar',
+        roles: [],
       },
     });
   });
