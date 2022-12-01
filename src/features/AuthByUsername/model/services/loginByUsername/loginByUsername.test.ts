@@ -15,6 +15,7 @@ describe('loginByUsername', () => {
       data: {
         id: 'id',
         username: 'user',
+        roles: [],
       },
     }));
 
@@ -37,6 +38,7 @@ describe('loginByUsername', () => {
     expect(Storage.prototype.setItem).toHaveBeenCalledWith('user', JSON.stringify({
       id: 'id',
       username: 'user',
+      roles: [],
     }));
 
     expect(dispatch).toHaveBeenCalledTimes(3);
