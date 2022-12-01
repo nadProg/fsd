@@ -1,3 +1,5 @@
+export {};
+
 describe('getIsArticleAuthorView', () => {
   test.todo('handle author');
   test.todo('handle not author');

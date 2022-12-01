@@ -1,3 +1,9 @@
+import { StateSchema } from 'app/providers/StoreProvider';
+
+import { getScroll } from './getScroll';
+
 describe('getScroll', () => {
-  test.todo('write tests');
+  test.skip('write tests', () => {
+    expect(getScroll({} as StateSchema)).toBeDefined();
+  });
 });
