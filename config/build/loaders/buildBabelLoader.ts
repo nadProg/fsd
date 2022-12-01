@@ -1,5 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { RuleSetRule, RuleSetUseItem } from 'webpack';
+import { babelRemovePropsPlugin } from '../../babel/babelRemovePropsPlugin';
 import { BuildOptions } from '../types/config';
 
 type BabelLoaderOptions = BuildOptions & {
@@ -23,8 +24,18 @@ export const buildBabelLoader = ({
     },
   };
 
-  if (isDev && babelLoaderItem.options && typeof babelLoaderItem.options === 'object') {
-    (babelLoaderItem.options.plugins as string[]).push('react-refresh/babel');
+  if (babelLoaderItem.options
+    && typeof babelLoaderItem.options === 'object'
+    && Array.isArray(babelLoaderItem.options.plugins)) {
+    if (isDev) {
+      babelLoaderItem.options.plugins.push('react-refresh/babel');
+    }
+
+    if (isTsx) {
+      babelLoaderItem.options.plugins.push([
+        babelRemovePropsPlugin, { props: ['data-testid'] },
+      ]);
+    }
   }
 
   return {
