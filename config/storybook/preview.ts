@@ -5,6 +5,7 @@ import i18n from './i18next';
 import { StyledDecorator } from '../../src/shared/config/storybook/StyledDecorator/StyledDecorator';
 import { ThemeDecorator } from '../../src/shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { RouterDecorator } from '../../src/shared/config/storybook/RouterDecorator/RouterDecorator';
+import { SuspenseDecorator } from '../../src/shared/config/storybook/SuspenseDecorator/SuspenseDecorator';
 import {
   InvertedBackgroundDecorator,
 } from '../../src/shared/config/storybook/InvertedBackgroundDectorator/InvertedBackgroundColor';
@@ -30,3 +31,4 @@ addDecorator(StyledDecorator);
 addDecorator(ThemeDecorator(Theme.Light));
 addDecorator(InvertedBackgroundDecorator(false));
 addDecorator(RouterDecorator);
+addDecorator(SuspenseDecorator);
