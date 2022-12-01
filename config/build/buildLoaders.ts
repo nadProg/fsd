@@ -22,13 +22,8 @@ export const buildLoaders = (options: BuildOptions): RuleSetRule[] => {
 
   const sassLoader = buildSassLoader(options);
 
-  const typeScriptLoader: RuleSetRule = {
-    test: /\.tsx?$/,
-    use: 'ts-loader',
-    exclude: /node_modules/,
-  };
+  const codeBabelLoader = buildBabelLoader({ ...options, isTsx: false });
+  const tsxCodeBabelLoader = buildBabelLoader({ ...options, isTsx: true });
 
-  const babelLoader = buildBabelLoader(options);
-
-  return [fileLoader, svgLoader, babelLoader, typeScriptLoader, sassLoader];
+  return [fileLoader, svgLoader, codeBabelLoader, tsxCodeBabelLoader, sassLoader];
 };

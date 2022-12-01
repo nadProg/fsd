@@ -6,6 +6,7 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 import CircularDependencyPlugin from 'circular-dependency-plugin';
+import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 
 import { BuildOptions } from './types/config';
 
@@ -45,6 +46,18 @@ export const buildPlugins = ({
 
   if (isDev) {
     plugins.push(new ReactRefreshWebpackPlugin());
+  }
+
+  if (!isDev) {
+    plugins.push(new ForkTsCheckerWebpackPlugin({
+      typescript: {
+        diagnosticOptions: {
+          semantic: true,
+          syntactic: true,
+        },
+        mode: 'write-references',
+      },
+    }));
   }
 
   if (analyze) {

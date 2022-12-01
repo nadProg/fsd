@@ -2,11 +2,24 @@
 import { RuleSetRule, RuleSetUseItem } from 'webpack';
 import { BuildOptions } from '../types/config';
 
-export const buildBabelLoader = ({ isDev }: BuildOptions): RuleSetRule => {
+type BabelLoaderOptions = BuildOptions & {
+  isTsx?: boolean;
+};
+
+export const buildBabelLoader = ({
+  isDev,
+  isTsx,
+}: BabelLoaderOptions): RuleSetRule => {
   const babelLoaderItem: RuleSetUseItem = {
     loader: 'babel-loader',
     options: {
-      plugins: [],
+      plugins: [
+        ['@babel/plugin-transform-typescript',
+          {
+            isTsx,
+          }],
+        '@babel/plugin-transform-runtime',
+      ],
     },
   };
 
@@ -15,7 +28,7 @@ export const buildBabelLoader = ({ isDev }: BuildOptions): RuleSetRule => {
   }
 
   return {
-    test: /\.[jt]sx?$/,
+    test: isTsx ? /\.[jt]sx$/ : /\.[jt]s$/,
     exclude: /node_modules/,
     use: [babelLoaderItem],
   };
