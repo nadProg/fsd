@@ -53,7 +53,7 @@ export default ({ config }: { config: Configuration }) => {
   if (config.plugins) {
     config.plugins.push(new DefinePlugin({
       __IS_DEV__: true,
-      __API_URL__: JSON.stringify(''),
+      __API_URL__: JSON.stringify('http://storybook.mock.api.com'),
       __PROJECT__: JSON.stringify(Project.Storybook),
     }));
   }
