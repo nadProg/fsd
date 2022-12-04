@@ -10,7 +10,7 @@
     "build": "webpack --env apiUrl=\"https://fsd-backend.vercel.app/\"",
     "build:prod": "webpack --env prod apiUrl=\"https://fsd-backend.vercel.app/\"",
     "analyze:prod": "webpack --env prod analyze apiUrl=\"https://fsd-backend.vercel.app/\"",
-    "check-types": "tsc --noEmit",
+    "check-types": "tsc --noemit",
     "lint-ts": "eslint \"**/*.{ts,tsx}\"",
     "lint-ts:fix": "yarn lint-ts --fix",
     "lint-scss": "stylelint \"**/*.scss\"",
