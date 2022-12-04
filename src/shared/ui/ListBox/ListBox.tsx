@@ -66,7 +66,6 @@ export const ListBox = <V extends Key>({
       )}
       <HeadLessListBox
         as="div"
-        className={styles.listBoxWrapper}
         value={value}
         onChange={onChange}
         disabled={disabled}

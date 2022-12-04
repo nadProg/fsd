@@ -8,3 +8,12 @@
   gap: 1rem;
   background-color: var(--inverted-bg-color);
 }
+
+.bellIcon {
+  width: 24px;
+  height: 24px;
+
+  [fill] {
+    fill: var(--bg-color);
+  }
+}

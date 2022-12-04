@@ -9,6 +9,7 @@ import { Button, ButtonTheme } from 'shared/ui/Button';
 import { DropDown, DropDownItemType } from 'shared/ui/DropDown';
 import { useAppDispatch } from 'shared/hooks/useAppDispatch';
 import { RoutePath } from 'shared/config/router/routeConfig/routeConfig';
+import BellIcon from 'shared/assets/icons/bell.svg';
 
 import {
   getIsUserAdmin, getIsUserManager, getUserAuthData, userActions,
@@ -16,6 +17,7 @@ import {
 
 import { LoginModal } from 'features/AuthByUsername';
 
+import { Popover } from 'shared/ui/Popover';
 import styles from './TopBar.module.scss';
 
 type NavBarProps = {
@@ -75,6 +77,10 @@ export const TopBar = ({ className }: NavBarProps) => {
             {t('navbar.new-article')}
           </Button>
         </AppLink>
+
+        <Popover trigger={<Button theme="clear"><BellIcon className={styles.bellIcon} /></Button>}>
+          {t('navbar.notifications')}
+        </Popover>
 
         <DropDown
           trigger={(
