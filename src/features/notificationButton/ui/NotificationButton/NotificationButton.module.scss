@@ -1,0 +1,18 @@
+.NotificationButton {
+  // styles
+}
+
+.bellIcon {
+  width: 24px;
+  height: 24px;
+
+  [fill] {
+    fill: var(--bg-color);
+  }
+}
+
+.notifications {
+  max-height: 300px;
+  min-width: 300px;
+  overflow-y: auto;
+}

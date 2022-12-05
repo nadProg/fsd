@@ -1,23 +1,20 @@
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import classNames from 'classnames';
 
-import { Avatar } from 'shared/ui/Avatar';
 import { AppLink } from 'shared/ui/AppLink';
 import { Button, ButtonTheme } from 'shared/ui/Button';
-import { DropDown, DropDownItemType } from 'shared/ui/DropDown';
-import { useAppDispatch } from 'shared/hooks/useAppDispatch';
 import { RoutePath } from 'shared/config/router/routeConfig/routeConfig';
-import BellIcon from 'shared/assets/icons/bell.svg';
 
 import {
-  getIsUserAdmin, getIsUserManager, getUserAuthData, userActions,
+  getUserAuthData,
 } from 'entities/User';
 
+import { AvatarMenu } from 'features/avatarMenu';
 import { LoginModal } from 'features/AuthByUsername';
+import { NotificationButton } from 'features/notificationButton';
 
-import { Popover } from 'shared/ui/Popover';
 import styles from './TopBar.module.scss';
 
 type NavBarProps = {
@@ -26,10 +23,8 @@ type NavBarProps = {
 
 export const TopBar = ({ className }: NavBarProps) => {
   const { t } = useTranslation();
+
   const authData = useSelector(getUserAuthData);
-  const isAdmin = useSelector(getIsUserAdmin);
-  const isManager = useSelector(getIsUserManager);
-  const dispatch = useAppDispatch();
 
   const [isAuthOpen, setIsAuthOpen] = useState(false);
 
@@ -37,34 +32,7 @@ export const TopBar = ({ className }: NavBarProps) => {
 
   const onOpenModal = useCallback(() => setIsAuthOpen(true), [setIsAuthOpen]);
 
-  const onLogout = useCallback(() => {
-    dispatch(userActions.logout());
-  }, [dispatch]);
-
   const onLoginSuccess = useCallback(() => setIsAuthOpen(false), [setIsAuthOpen]);
-
-  const isAdminPanelAvailable = isAdmin || isManager;
-
-  const dropDownItems = useMemo(() => ([
-    ...(isAdminPanelAvailable ? ([{
-      type: DropDownItemType.Link,
-      value: 'admin',
-      label: t('navbar.admin-panel'),
-      href: RoutePath.admin_panel,
-    }]) : []),
-    {
-      type: DropDownItemType.Link,
-      value: 'profile',
-      label: t('navbar.profile'),
-      href: `${RoutePath.profile}${authData?.id}`,
-    },
-    {
-      type: DropDownItemType.Button,
-      value: 'logout',
-      label: t('navbar.logout'),
-      onClick: onLogout,
-    },
-  ]), [onLogout, authData?.id, t, isAdminPanelAvailable]);
 
   if (authData) {
     return (
@@ -78,18 +46,9 @@ export const TopBar = ({ className }: NavBarProps) => {
           </Button>
         </AppLink>
 
-        <Popover trigger={<Button theme="clear"><BellIcon className={styles.bellIcon} /></Button>}>
-          {t('navbar.notifications')}
-        </Popover>
+        <NotificationButton />
 
-        <DropDown
-          trigger={(
-            <Button>
-              <Avatar size={30} src={authData.avatar} />
-            </Button>
-          )}
-          items={dropDownItems}
-        />
+        <AvatarMenu />
       </header>
     );
   }

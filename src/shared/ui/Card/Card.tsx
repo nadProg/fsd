@@ -13,12 +13,22 @@ export const CardTheme = {
 type CardProps = PropsWithClassName & PropsWithChildren & {
   theme?: ValuesOf<typeof CardTheme>;
   onClick?: MouseEventHandler;
+  max?: boolean;
 };
 
 export const Card = (props: CardProps) => {
   const {
-    className, children, theme = CardTheme.Contained, ...restProps
+    className, children, theme = CardTheme.Contained, max, ...restProps
   } = props;
 
-  return <div className={classNames(className, styles.Card, styles[theme])} {...restProps}>{children}</div>;
+  return (
+    <div
+      className={classNames(className, styles.Card, styles[theme], {
+        [styles.max]: max,
+      })}
+      {...restProps}
+    >
+      {children}
+    </div>
+  );
 };
