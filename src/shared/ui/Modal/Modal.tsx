@@ -4,6 +4,7 @@ import {
 import classNames from 'classnames';
 
 import { Portal } from 'shared/ui/Portal';
+import { Overlay } from 'shared/ui/Overlay';
 
 import styles from './Modal.module.scss';
 
@@ -51,7 +52,7 @@ export const Modal = ({
   return (
     <Portal>
       <div className={classNames(className, styles.Modal, { [styles.opened]: isOpen })}>
-        <div className={styles.overlay} onClick={onClose} />
+        <Overlay onClick={onClose} />
 
         <div className={styles.content}>
           {children}
