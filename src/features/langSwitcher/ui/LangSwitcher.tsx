@@ -1,9 +1,6 @@
 import { useTranslation } from 'react-i18next';
-import classNames from 'classnames';
 
 import { Button, ButtonTheme } from 'shared/ui/Button';
-
-import styles from './LangSwitcher.module.scss';
 
 type LangSwitcherProps = {
   className?: string;
@@ -19,7 +16,7 @@ export function LangSwitcher({ className, short }: LangSwitcherProps) {
   return (
     <Button
       theme={ButtonTheme.Background}
-      className={classNames(className, styles.LangSwitcher)}
+      className={className}
       onClick={toggle}
     >
       {t(short ? 'sidebar.short-language' : 'sidebar.language')}

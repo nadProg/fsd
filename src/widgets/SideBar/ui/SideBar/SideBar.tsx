@@ -3,13 +3,13 @@ import { useTranslation } from 'react-i18next';
 import classNames from 'classnames';
 import { useSelector } from 'react-redux';
 
+import { VStack } from 'shared/ui/Stack';
 import { AppLink } from 'shared/ui/AppLink';
 import { Button, ButtonSize, ButtonTheme } from 'shared/ui/Button';
 
-import { LangSwitcher } from 'widgets/LangSwitcher';
-import { ThemeSwitcher } from 'widgets/ThemeSwitcher';
+import { LangSwitcher } from 'features/langSwitcher';
+import { ThemeSwitcher } from 'features/themeSwitcher';
 
-import { VStack } from 'shared/ui/Stack';
 import { getSideBarItems } from '../../model/selectors/getSideBarItems';
 
 import styles from './SideBar.module.scss';
