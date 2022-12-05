@@ -1,7 +1,8 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 const path = require('path');
 const jsonServer = require('json-server');
 const fs = require('fs/promises');
-const cors = require('cors')
+const cors = require('cors');
 
 const DB_FILE = 'db.json';
 const CUSTOM_DELAY = 800;
@@ -30,10 +31,10 @@ server.post('/login', async (req, res) => {
     } = req.body;
 
     const db = JSON.parse(await fs.readFile(path.resolve(__dirname, DB_FILE), {
-      encoding: 'utf-8'
+      encoding: 'utf-8',
     }));
 
-    const users = db.users;
+    const { users } = db;
 
     const authUser = users.find((user) => user.username === username && user.password === password);
 
@@ -43,18 +44,18 @@ server.post('/login', async (req, res) => {
     }
 
     res.status(403)
-      .json({message: 'Non-authorized'});
+      .json({ message: 'Non-authorized' });
   } catch (e) {
     console.log(e);
     res.status(500)
-      .json({message: e.message});
+      .json({ message: e.message });
   }
 });
 
 server.use(async (req, res, next) => {
   if (!req.headers.authorization) {
     res.status(403)
-      .json({message: 'Non-authorized'});
+      .json({ message: 'Non-authorized' });
     return;
   }
 

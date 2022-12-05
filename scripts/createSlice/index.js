@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 const createTemplate = require('./templates/createTemplate');
 
 const layer = process.argv[2];

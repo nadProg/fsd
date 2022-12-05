@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 module.exports = (layer, componentName) => `import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { ${componentName} } from './${componentName}';

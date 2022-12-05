@@ -2,7 +2,7 @@ module.exports = {
   env: {
     browser: true,
     es2021: true,
-    jest: true
+    jest: true,
   },
   extends: [
     'eslint:recommended',
@@ -19,7 +19,7 @@ module.exports = {
     },
     ecmaVersion: 'latest',
     sourceType: 'module',
-    project: './tsconfig.json',
+    project: './tsconfig.eslint.json',
   },
   plugins: [
     'react',
@@ -31,7 +31,7 @@ module.exports = {
   rules: {
     indent: 'off',
     '@typescript-eslint/indent': ['error', 2, {
-      'SwitchCase': 0
+      SwitchCase: 0,
     }],
     'linebreak-style': ['error', 'unix'],
     quotes: ['error', 'single'],
@@ -49,18 +49,18 @@ module.exports = {
     'jsx-a11y/label-has-associated-control': 'off',
     'react/jsx-filename-extension': [
       'error',
-      {extensions: ['.js', '.jsx', 'tsx']},
+      { extensions: ['.js', '.jsx', 'tsx'] },
     ],
-    'no-underscore-dangle': ['error', {allow: ['__IS_DEV__']}],
+    'no-underscore-dangle': ['error', { allow: ['__IS_DEV__'] }],
     'max-len': ['error', {
-      'code': 120,
-      'ignoreComments': true
+      code: 120,
+      ignoreComments: true,
     }],
     'react/jsx-props-no-spreading': 'off',
     'import/no-extraneous-dependencies': 'warn',
     'i18next/no-literal-string': ['error', {
       markupOnly: true,
-      onlyAttribute: ['']
+      onlyAttribute: [''],
     }],
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn',
@@ -69,15 +69,15 @@ module.exports = {
   globals: {
     __IS_DEV__: true,
     __API_URL: true,
-    __PROJECT__: true
+    __PROJECT__: true,
   },
   overrides: [
     {
       files: ['**/src/**/*.{test,stories}.{ts,tsx}'],
       rules: {
         'i18next/no-literal-string': 'off',
-        'import/no-extraneous-dependencies': 'off'
-      }
-    }
+        'import/no-extraneous-dependencies': 'off',
+      },
+    },
   ],
 };
