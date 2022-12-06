@@ -3,13 +3,13 @@ import classNames from 'classnames';
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 
-import { Input } from 'shared/ui/Input';
-import { Button, ButtonTheme } from 'shared/ui/Button';
+import { Input } from '@/shared/ui/Input';
+import { Button, ButtonTheme } from '@/shared/ui/Button';
 
-import { TextTheme, Text } from 'shared/ui/Text';
-import { useDynamicReducers } from 'shared/hooks/useDynamicReducers';
-import { useAppDispatch } from 'shared/hooks/useAppDispatch';
-import { PropsWithClassName } from 'shared/types';
+import { TextTheme, Text } from '@/shared/ui/Text';
+import { useDynamicReducers } from '@/shared/hooks/useDynamicReducers';
+import { useAppDispatch } from '@/shared/hooks/useAppDispatch';
+import { PropsWithClassName } from '@/shared/types';
 import { loginActions, loginReducer } from '../../model/slice/loginSlice/loginSlice';
 import { getLoginError } from '../../model/selectors/getLoginError/getLoginError';
 import { getLoginUsername } from '../../model/selectors/getLoginUsername/getLoginUsername';

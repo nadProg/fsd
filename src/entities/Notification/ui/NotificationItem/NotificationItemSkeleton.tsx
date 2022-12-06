@@ -1,11 +1,11 @@
 import { memo } from 'react';
 import classNames from 'classnames';
 
-import { Card, CardTheme } from 'shared/ui/Card';
+import { Card, CardTheme } from '@/shared/ui/Card';
 
-import type { PropsWithClassName } from 'shared/types';
+import type { PropsWithClassName } from '@/shared/types';
 
-import { Skeleton } from 'shared/ui/Skeleton';
+import { Skeleton } from '@/shared/ui/Skeleton';
 
 import styles from './NotificationItem.module.scss';
 

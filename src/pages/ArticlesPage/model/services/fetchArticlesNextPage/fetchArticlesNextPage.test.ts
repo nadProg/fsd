@@ -1,8 +1,8 @@
-import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunk/TestAsyncThunk';
+import { TestAsyncThunk } from '@/shared/lib/tests/TestAsyncThunk/TestAsyncThunk';
 
-import { DeepPartial } from 'shared/types';
+import { DeepPartial } from '@/shared/types';
 
-import { Article } from 'entities/Article';
+import { Article } from '@/entities/Article';
 
 import { fetchArticles } from '../fetchArticles/fetchArticles';
 import { fetchArticlesNextPage } from './fetchArticlesNextPage';

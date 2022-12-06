@@ -1,12 +1,12 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-import { isAxiosError } from 'shared/helpers';
+import { isAxiosError } from '@/shared/helpers';
 
-import { Comment } from 'entities/Comment';
-import { getUserAuthData } from 'entities/User';
-import { getArticleDetailsData } from 'entities/Article';
+import { Comment } from '@/entities/Comment';
+import { getUserAuthData } from '@/entities/User';
+import { getArticleDetailsData } from '@/entities/Article';
 
-import { ThunkConfig } from 'app/providers/StoreProvider';
+import { ThunkConfig } from '@/app/providers/StoreProvider';
 
 import { fetchArticleDetailsComments } from '../fetchArticleDetailsComments/fetchArticleDetailsComments';
 

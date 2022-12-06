@@ -1,12 +1,12 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
+import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
 
-import { Theme } from 'shared/providers/ThemeProvider';
+import { Theme } from '@/shared/providers/ThemeProvider';
 
 import {
   InvertedBackgroundDecorator,
-} from 'shared/config/storybook/InvertedBackgroundDectorator/InvertedBackgroundColor';
+} from '@/shared/config/storybook/InvertedBackgroundDectorator/InvertedBackgroundColor';
 import { LangSwitcher } from './LangSwitcher';
 
 export default {

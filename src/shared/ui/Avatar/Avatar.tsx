@@ -3,8 +3,8 @@ import {
 } from 'react';
 import classNames from 'classnames';
 
-import { ExtendableProps, PropsWithClassName } from 'shared/types';
-import Placeholder from 'shared/assets/img/user-avatar-placeholder.jpeg';
+import { ExtendableProps, PropsWithClassName } from '@/shared/types';
+import Placeholder from '@/shared/assets/img/user-avatar-placeholder.jpeg';
 
 import styles from './Avatar.module.scss';
 

@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import classNames from 'classnames';
 
-import { Page } from 'shared/ui/Page';
+import { Page } from '@/shared/ui/Page';
 
 import styles from './NotFoundPage.module.scss';
 

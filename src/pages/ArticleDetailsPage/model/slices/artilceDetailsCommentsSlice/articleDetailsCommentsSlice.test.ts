@@ -1,5 +1,5 @@
-import { DeepPartial } from 'shared/types';
-import { Comment } from 'entities/Comment';
+import { DeepPartial } from '@/shared/types';
+import { Comment } from '@/entities/Comment';
 import { articleDetailsCommentsReducer } from './articleDetailsCommentsSlice';
 import { fetchArticleDetailsComments } from '../../services/fetchArticleDetailsComments/fetchArticleDetailsComments';
 import { ArticleDetailsCommentsSchema } from '../../types/articleDetailsCommentsSchema';

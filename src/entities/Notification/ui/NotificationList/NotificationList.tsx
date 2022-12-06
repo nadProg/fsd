@@ -1,7 +1,7 @@
 import classNames from 'classnames';
-import type { PropsWithClassName } from 'shared/types';
+import type { PropsWithClassName } from '@/shared/types';
 
-import { VStack } from 'shared/ui/Stack';
+import { VStack } from '@/shared/ui/Stack';
 
 import { NotificationItemSkeleton } from '../NotificationItem/NotificationItemSkeleton';
 import { NotificationItem } from '../NotificationItem/NotificationItem';

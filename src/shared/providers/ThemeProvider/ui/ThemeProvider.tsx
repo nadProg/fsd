@@ -1,7 +1,7 @@
 import {
   useState, useMemo, useEffect,
 } from 'react';
-import { PropsWithChildren } from 'shared/types';
+import { PropsWithChildren } from '@/shared/types';
 import {
   initialThemeContext, ThemeContext, ValuesOfTheme,
 } from '../lib/ThemeContext';

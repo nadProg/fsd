@@ -1,6 +1,6 @@
-import { DeepPartial } from 'shared/types';
+import { DeepPartial } from '@/shared/types';
 
-import { StateSchema } from 'app/providers/StoreProvider';
+import { StateSchema } from '@/app/providers/StoreProvider';
 
 import { getProfileValidateErrors } from './getProfileValidateErrors';
 import { ValidateProfileError } from '../../types/editableProfileCardSchema';

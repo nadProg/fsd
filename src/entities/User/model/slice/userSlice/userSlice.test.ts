@@ -1,4 +1,4 @@
-import { DeepPartial } from 'shared/types';
+import { DeepPartial } from '@/shared/types';
 import { userActions, userReducer } from './userSlice';
 import { UserSchema } from '../../types/user';
 

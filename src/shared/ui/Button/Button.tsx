@@ -1,7 +1,7 @@
 import { ButtonHTMLAttributes, forwardRef } from 'react';
 import classNames from 'classnames';
 
-import { ValuesOf } from 'shared/types';
+import { ValuesOf } from '@/shared/types';
 
 import styles from './Button.module.scss';
 

@@ -1,7 +1,7 @@
-import { Button, ButtonTheme } from 'shared/ui/Button';
-import { useTheme } from 'shared/providers/ThemeProvider';
+import { Button, ButtonTheme } from '@/shared/ui/Button';
+import { useTheme } from '@/shared/providers/ThemeProvider';
 
-import ThemeIcon from 'shared/assets/icons/theme-light.svg';
+import ThemeIcon from '@/shared/assets/icons/theme-light.svg';
 
 import styles from './ThemeSwitcher.module.scss';
 

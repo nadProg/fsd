@@ -1,6 +1,6 @@
-import { ValuesOf } from 'shared/types';
+import { ValuesOf } from '@/shared/types';
 
-import { Profile } from 'entities/Profile';
+import { Profile } from '@/entities/Profile';
 
 export const ValidateProfileError = {
   NoData: 'NO_DATA',

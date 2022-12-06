@@ -1,6 +1,6 @@
-import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunk/TestAsyncThunk';
+import { TestAsyncThunk } from '@/shared/lib/tests/TestAsyncThunk/TestAsyncThunk';
 
-import { DeepPartial } from 'shared/types';
+import { DeepPartial } from '@/shared/types';
 import { fetchArticleDetailsData } from './fetchArticleDetailsData';
 import { Article, ArticleType } from '../../types/article';
 

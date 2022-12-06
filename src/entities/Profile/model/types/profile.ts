@@ -1,7 +1,7 @@
-import { Id } from 'shared/types';
+import { Id } from '@/shared/types';
 
-import { ValuesOfCurrency } from 'entities/Currency';
-import { ValuesOfCountry } from 'entities/Country';
+import { ValuesOfCurrency } from '@/entities/Currency';
+import { ValuesOfCountry } from '@/entities/Country';
 
 export type Profile = {
   id?: Id;

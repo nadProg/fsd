@@ -1,11 +1,11 @@
-import { PropsWithClassName } from 'shared/types';
 import { useTranslation } from 'react-i18next';
+import type { PropsWithClassName } from '@/shared/types';
 
-import { VStack } from 'shared/ui/Stack';
-import { Text, TextTheme } from 'shared/ui/Text';
+import { VStack } from '@/shared/ui/Stack';
+import { Text, TextTheme } from '@/shared/ui/Text';
 
+import type { Comment } from '../../model/types/comment';
 import { CommentCard } from '../CommentCard/CommentCard';
-import { Comment } from '../../model/types/comment';
 
 type CommentListProps = PropsWithClassName & {
   comments?: Comment[];

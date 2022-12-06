@@ -1,5 +1,5 @@
-import { ValuesOf } from 'shared/types';
-import { User } from 'entities/User';
+import { ValuesOf } from '@/shared/types';
+import { User } from '@/entities/User';
 
 export const ArticleBlockType = {
   Code: 'CODE',

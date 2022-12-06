@@ -1,12 +1,12 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
-import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
-import MockAvatar from 'shared/assets/test/images/avatar.png';
-import { Theme } from 'shared/providers/ThemeProvider';
+import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
+import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
+import MockAvatar from '@/shared/assets/test/images/avatar.png';
+import { Theme } from '@/shared/providers/ThemeProvider';
 
-import { DeepPartial } from 'shared/types';
-import { StateSchema } from 'app/providers/StoreProvider';
+import { DeepPartial } from '@/shared/types';
+import { StateSchema } from '@/app/providers/StoreProvider';
 import { ArticleDetails } from './ArticleDetails';
 import { Article, ArticleType } from '../../model/types/article';
 

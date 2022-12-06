@@ -1,10 +1,10 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-import { isAxiosError } from 'shared/helpers';
+import { isAxiosError } from '@/shared/helpers';
 
-import { Article } from 'entities/Article';
+import { Article } from '@/entities/Article';
 
-import { ThunkConfig } from 'app/providers/StoreProvider';
+import { ThunkConfig } from '@/app/providers/StoreProvider';
 
 export const fetchRecommendations = createAsyncThunk<Article[], void, ThunkConfig<string>>(
   'articleDetailsPage/fetchRecommendations',

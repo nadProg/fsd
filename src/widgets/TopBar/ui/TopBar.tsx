@@ -3,17 +3,17 @@ import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import classNames from 'classnames';
 
-import { AppLink } from 'shared/ui/AppLink';
-import { Button, ButtonTheme } from 'shared/ui/Button';
-import { RoutePath } from 'shared/config/router/routeConfig/routeConfig';
+import { AppLink } from '@/shared/ui/AppLink';
+import { Button, ButtonTheme } from '@/shared/ui/Button';
+import { RoutePath } from '@/shared/config/router/routeConfig/routeConfig';
 
 import {
   getUserAuthData,
-} from 'entities/User';
+} from '@/entities/User';
 
-import { AvatarMenu } from 'features/avatarMenu';
-import { LoginModal } from 'features/AuthByUsername';
-import { NotificationButton } from 'features/notificationButton';
+import { AvatarMenu } from '@/features/avatarMenu';
+import { LoginModal } from '@/features/AuthByUsername';
+import { NotificationButton } from '@/features/notificationButton';
 
 import styles from './TopBar.module.scss';
 

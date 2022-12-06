@@ -1,6 +1,6 @@
-import { DeepPartial, Id } from 'shared/types';
+import { DeepPartial, Id } from '@/shared/types';
 
-import { Article } from 'entities/Article';
+import { Article } from '@/entities/Article';
 
 import { articlesPageActions, articlesPageReducer } from './articlesPageSlice';
 import { fetchArticles } from '../../services/fetchArticles/fetchArticles';

@@ -1,4 +1,4 @@
-import { DeepPartial } from 'shared/types';
+import { DeepPartial } from '@/shared/types';
 
 import { AddCommentFormSchema } from '../types/addCommentForm';
 

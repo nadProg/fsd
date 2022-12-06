@@ -1,8 +1,8 @@
 import { memo, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { Tab, Tabs } from 'shared/ui/Tabs';
-import { PropsWithClassName } from 'shared/types';
+import { Tab, Tabs } from '@/shared/ui/Tabs';
+import { PropsWithClassName } from '@/shared/types';
 
 import { ArticleTypeTab, ValuesOfArticleTypeTab } from '../../model/types/article';
 

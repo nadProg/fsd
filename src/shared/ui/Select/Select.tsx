@@ -1,10 +1,9 @@
-import {
-  ChangeEvent, memo, SelectHTMLAttributes, useCallback,
-} from 'react';
-
-import { PropsWithClassName, Option, ExtendableProps } from 'shared/types';
-
 import classNames from 'classnames';
+import { memo, useCallback } from 'react';
+import type { ChangeEvent, SelectHTMLAttributes } from 'react';
+
+import type { PropsWithClassName, Option, ExtendableProps } from '@/shared/types';
+
 import styles from './Select.module.scss';
 
 type OverrideProps<V extends string> = {

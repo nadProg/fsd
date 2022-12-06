@@ -2,12 +2,12 @@ import classNames from 'classnames';
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 
-import { AppLink } from 'shared/ui/AppLink';
-import type { PropsWithClassName } from 'shared/types';
-import { Button, ButtonTheme } from 'shared/ui/Button';
-import { RoutePath } from 'shared/config/router/routeConfig/routeConfig';
+import { AppLink } from '@/shared/ui/AppLink';
+import type { PropsWithClassName } from '@/shared/types';
+import { Button, ButtonTheme } from '@/shared/ui/Button';
+import { RoutePath } from '@/shared/config/router/routeConfig/routeConfig';
 
-import { getArticleDetailsData } from 'entities/Article';
+import { getArticleDetailsData } from '@/entities/Article';
 
 import {
   getIsArticleAuthorView,

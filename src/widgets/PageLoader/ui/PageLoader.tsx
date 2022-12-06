@@ -1,9 +1,9 @@
 import { FC } from 'react';
 import classNames from 'classnames';
-import { PropsWithClassName } from 'shared/types';
+import { PropsWithClassName } from '@/shared/types';
 
-import { Page } from 'shared/ui/Page';
-import { Loader } from 'shared/ui/Loader';
+import { Page } from '@/shared/ui/Page';
+import { Loader } from '@/shared/ui/Loader';
 
 import styles from './PageLoader.module.scss';
 

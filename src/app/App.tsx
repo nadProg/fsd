@@ -1,12 +1,12 @@
 import { Suspense } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { useMountEffect } from 'shared/hooks/useMountEffect';
+import { useMountEffect } from '@/shared/hooks/useMountEffect';
 
-import { getUserInitialized, userActions } from 'entities/User';
+import { getUserInitialized, userActions } from '@/entities/User';
 
-import { TopBar } from 'widgets/TopBar';
-import { SideBar } from 'widgets/SideBar';
+import { TopBar } from '@/widgets/TopBar';
+import { SideBar } from '@/widgets/SideBar';
 
 import { AppRouter } from './providers/router';
 

@@ -1,8 +1,8 @@
 import { useCallback, useState } from 'react';
 import { usePopper as useOriginalPopper } from 'react-popper';
 
-import type { Nullable } from 'shared/types';
-import { isFunction } from 'shared/helpers';
+import type { Nullable } from '@/shared/types';
+import { isFunction } from '@/shared/helpers';
 
 import { PopperConfig, PopperProps, UsePopperReturn } from './usePopper.types';
 
@@ -61,7 +61,7 @@ export const usePopper = <ReferenceElement extends HTMLElement = HTMLButtonEleme
 
   const updatePopper = useCallback(() => {
     if (isFunction(update)) {
-      setTimeout(update);
+      setTimeout(() => update());
     }
   }, [update]);
 

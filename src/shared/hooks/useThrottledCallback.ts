@@ -1,6 +1,6 @@
 import { DependencyList, useCallback, useRef } from 'react';
 
-import { Callback } from 'shared/types';
+import { Callback } from '@/shared/types';
 
 export const useThrottledCallback = <F extends Callback>(
   callback: F,

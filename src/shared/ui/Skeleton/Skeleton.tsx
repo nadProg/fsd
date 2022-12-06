@@ -1,7 +1,7 @@
 import { CSSProperties, useMemo } from 'react';
 import classNames from 'classnames';
 
-import { PropsWithClassName } from 'shared/types';
+import { PropsWithClassName } from '@/shared/types';
 
 import styles from './Skeleton.module.scss';
 

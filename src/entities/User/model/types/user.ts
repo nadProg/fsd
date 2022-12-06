@@ -1,4 +1,4 @@
-import { ValuesOf } from 'shared/types';
+import { ValuesOf } from '@/shared/types';
 
 export const UserRole = {
   User: 'USER',

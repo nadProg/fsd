@@ -3,17 +3,17 @@ import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import classNames from 'classnames';
 
-import { Text, TextTheme } from 'shared/ui/Text';
-import { Id, PropsWithClassName, ValuesOf } from 'shared/types';
-import { useAppDispatch } from 'shared/hooks/useAppDispatch';
-import { useDynamicReducers } from 'shared/hooks/useDynamicReducers';
-import { useProjectEffect } from 'shared/hooks/useProjectEffect';
+import { Text, TextTheme } from '@/shared/ui/Text';
+import { Id, PropsWithClassName, ValuesOf } from '@/shared/types';
+import { useAppDispatch } from '@/shared/hooks/useAppDispatch';
+import { useDynamicReducers } from '@/shared/hooks/useDynamicReducers';
+import { useProjectEffect } from '@/shared/hooks/useProjectEffect';
 
 import {
   ProfileCard,
-} from 'entities/Profile';
-import { ValuesOfCountry } from 'entities/Country';
-import { ValuesOfCurrency } from 'entities/Currency';
+} from '@/entities/Profile';
+import { ValuesOfCountry } from '@/entities/Country';
+import { ValuesOfCurrency } from '@/entities/Currency';
 
 import {
   EditableProfileCardHeader,

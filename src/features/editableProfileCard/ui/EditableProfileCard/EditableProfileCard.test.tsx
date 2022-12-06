@@ -1,10 +1,10 @@
 import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import { ReducersList } from 'shared/hooks/useDynamicReducers';
-import { renderComponent } from 'shared/lib/tests/renderComponent/renderComponent';
+import { ReducersList } from '@/shared/hooks/useDynamicReducers';
+import { renderComponent } from '@/shared/lib/tests/renderComponent/renderComponent';
 
-import { Country } from 'entities/Country';
+import { Country } from '@/entities/Country';
 import { editableProfileSliceReducer } from '../../model/slices/editableProfileCardSlice';
 
 import { EditableProfileCard } from './EditableProfileCard';

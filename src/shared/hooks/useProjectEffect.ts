@@ -1,7 +1,7 @@
 import { EffectCallback, useEffect } from 'react';
 
-import { Project } from 'shared/constants/project';
-import { ValuesOf } from 'shared/types';
+import { Project } from '@/shared/constants/project';
+import { ValuesOf } from '@/shared/types';
 
 type Projects = ValuesOf<typeof Project>[];
 

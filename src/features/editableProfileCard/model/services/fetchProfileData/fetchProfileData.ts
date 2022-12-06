@@ -1,11 +1,11 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-import { Id } from 'shared/types';
-import { isAxiosError } from 'shared/helpers';
+import { Id } from '@/shared/types';
+import { isAxiosError } from '@/shared/helpers';
 
-import { Profile } from 'entities/Profile';
+import { Profile } from '@/entities/Profile';
 
-import { ThunkConfig } from 'app/providers/StoreProvider';
+import { ThunkConfig } from '@/app/providers/StoreProvider';
 
 export const fetchProfileData = createAsyncThunk<Profile, Id, ThunkConfig<string>>(
   'profile/fetchProfileData',

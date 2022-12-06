@@ -4,10 +4,10 @@ import {
   cloneElement, Fragment, Key,
 } from 'react';
 
-import { Button } from 'shared/ui/Button';
-import { AppLink } from 'shared/ui/AppLink';
-import { AppLinkTheme } from 'shared/ui/AppLink/AppLink';
-import { PopperProvider, usePopper } from 'shared/providers/PopperProvider';
+import { Button } from '@/shared/ui/Button';
+import { AppLink } from '@/shared/ui/AppLink';
+import { AppLinkTheme } from '@/shared/ui/AppLink/AppLink';
+import { PopperProvider, usePopper } from '@/shared/providers/PopperProvider';
 
 import { isButtonDropDownItem } from './utils/isButtonDropDownItem';
 import { DropDownProps } from './DropDown.types';

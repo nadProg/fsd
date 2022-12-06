@@ -1,10 +1,10 @@
 import { useCallback, useRef } from 'react';
-import { PropsWithClassName, PropsWithChildren } from 'shared/types';
 import classNames from 'classnames';
+import type { PropsWithClassName, PropsWithChildren } from '@/shared/types';
 
-import { Icon } from 'shared/ui/Icon/Icon';
-import { Button, ButtonTheme } from 'shared/ui/Button';
-import CopyIcon from 'shared/assets/icons/copy.svg';
+import { Icon } from '@/shared/ui/Icon/Icon';
+import { Button, ButtonTheme } from '@/shared/ui/Button';
+import CopyIcon from '@/shared/assets/icons/copy.svg';
 
 import styles from './Code.module.scss';
 

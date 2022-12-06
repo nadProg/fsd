@@ -1,6 +1,6 @@
-import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunk/TestAsyncThunk';
+import { TestAsyncThunk } from '@/shared/lib/tests/TestAsyncThunk/TestAsyncThunk';
 
-import { Comment } from 'entities/Comment';
+import { Comment } from '@/entities/Comment';
 
 import { fetchArticleDetailsComments } from './fetchArticleDetailsComments';
 

@@ -2,7 +2,7 @@ import classNames from 'classnames';
 
 import {
   PropsWithChildren, PropsWithClassName, PropsWithDataAttributes, ValuesOf,
-} from 'shared/types';
+} from '@/shared/types';
 
 import styles from './Text.module.scss';
 

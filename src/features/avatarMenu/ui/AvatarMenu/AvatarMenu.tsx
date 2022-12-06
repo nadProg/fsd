@@ -2,17 +2,17 @@ import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { memo, useCallback, useMemo } from 'react';
 
-import { PropsWithClassName } from 'shared/types';
+import { PropsWithClassName } from '@/shared/types';
 
-import { Button } from 'shared/ui/Button';
-import { Avatar } from 'shared/ui/Avatar';
-import { DropDown, DropDownItemType } from 'shared/ui/DropDown';
-import { RoutePath } from 'shared/config/router/routeConfig/routeConfig';
-import { useAppDispatch } from 'shared/hooks/useAppDispatch';
+import { Button } from '@/shared/ui/Button';
+import { Avatar } from '@/shared/ui/Avatar';
+import { DropDown, DropDownItemType } from '@/shared/ui/DropDown';
+import { RoutePath } from '@/shared/config/router/routeConfig/routeConfig';
+import { useAppDispatch } from '@/shared/hooks/useAppDispatch';
 
 import {
   getIsUserAdmin, getIsUserManager, getUserAuthData, userActions,
-} from 'entities/User';
+} from '@/entities/User';
 
 type AvatarMenuProps = PropsWithClassName;
 

@@ -1,4 +1,4 @@
-import type { Id } from 'shared/types';
+import type { Id } from '@/shared/types';
 
 export type Notification = {
   id: Id;

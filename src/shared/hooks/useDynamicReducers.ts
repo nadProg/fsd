@@ -1,8 +1,10 @@
 import { useDispatch, useStore } from 'react-redux';
-import { ReduxStoreWithManager, StateSchema } from 'app/providers/StoreProvider';
-import { StateSchemaKey } from 'app/providers/StoreProvider/config/StateSchema';
-import { Reducer } from '@reduxjs/toolkit';
-import { useMountEffect } from 'shared/hooks/useMountEffect';
+import type { Reducer } from '@reduxjs/toolkit';
+
+import { useMountEffect } from '@/shared/hooks/useMountEffect';
+
+import type { StateSchemaKey } from '@/app/providers/StoreProvider/config/StateSchema';
+import type { ReduxStoreWithManager, StateSchema } from '@/app/providers/StoreProvider';
 
 export type ReducersList = {
   [key in StateSchemaKey]?: Reducer<NonNullable<StateSchema[key]>>;

@@ -6,13 +6,13 @@ import {
 } from 'react-device-detect';
 import classNames from 'classnames';
 
-import type { PropsWithClassName } from 'shared/types';
-import { Button } from 'shared/ui/Button';
-import { Drawer } from 'shared/ui/Drawer';
-import { Popover } from 'shared/ui/Popover';
-import BellIcon from 'shared/assets/icons/bell.svg';
+import type { PropsWithClassName } from '@/shared/types';
+import { Button } from '@/shared/ui/Button';
+import { Drawer } from '@/shared/ui/Drawer';
+import { Popover } from '@/shared/ui/Popover';
+import BellIcon from '@/shared/assets/icons/bell.svg';
 
-import { NotificationList } from 'entities/Notification';
+import { NotificationList } from '@/entities/Notification';
 
 import styles from './NotificationButton.module.scss';
 

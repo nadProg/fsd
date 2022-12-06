@@ -1,19 +1,19 @@
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 
-import { Id, PropsWithClassName } from 'shared/types';
+import { Id, PropsWithClassName } from '@/shared/types';
 import {
   Text, TextTheme, TextVariant, TextSize,
-} from 'shared/ui/Text';
-import { Skeleton } from 'shared/ui/Skeleton';
-import { Avatar } from 'shared/ui/Avatar';
-import EyeIcon from 'shared/assets/icons/eye.svg';
-import CalendarIcon from 'shared/assets/icons/calendar.svg';
-import { Icon } from 'shared/ui/Icon/Icon';
-import { useProjectEffect } from 'shared/hooks/useProjectEffect';
-import { ReducersList, useDynamicReducers } from 'shared/hooks/useDynamicReducers';
-import { HStack, VStack } from 'shared/ui/Stack';
-import { useAppDispatch } from 'shared/hooks/useAppDispatch';
+} from '@/shared/ui/Text';
+import { Skeleton } from '@/shared/ui/Skeleton';
+import { Avatar } from '@/shared/ui/Avatar';
+import EyeIcon from '@/shared/assets/icons/eye.svg';
+import CalendarIcon from '@/shared/assets/icons/calendar.svg';
+import { Icon } from '@/shared/ui/Icon/Icon';
+import { useProjectEffect } from '@/shared/hooks/useProjectEffect';
+import { ReducersList, useDynamicReducers } from '@/shared/hooks/useDynamicReducers';
+import { HStack, VStack } from '@/shared/ui/Stack';
+import { useAppDispatch } from '@/shared/hooks/useAppDispatch';
 
 import {
   getArticleDetailsIsLoading,

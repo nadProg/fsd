@@ -6,6 +6,7 @@ import { getUserAuthData } from './model/selectors/getUserAuthData/getUserAuthDa
 import { getUserInitialized } from './model/selectors/getUserInitialized/getUserInitialized';
 import { getIsUserAdmin } from './model/selectors/getIsUserAdmin/getIsUserAdmin';
 import { getIsUserManager } from './model/selectors/getIsUserManager/getIsUserManager';
+import { getUserAuthDataRoles } from './model/selectors/getUserAuthDataRoles/getUserAuthDataRoles';
 
 export {
   userActions,
@@ -15,6 +16,7 @@ export {
   getUserInitialized,
   getIsUserAdmin,
   getIsUserManager,
+  getUserAuthDataRoles,
 };
 
 export type { User, UserSchema, ValuesOfUserRole };

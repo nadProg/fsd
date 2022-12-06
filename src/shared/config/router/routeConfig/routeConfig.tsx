@@ -1,18 +1,18 @@
 import { RouteProps } from 'react-router-dom';
 
-import { ValuesOf } from 'shared/types';
+import { ValuesOf } from '@/shared/types';
 
-import { UserRole, ValuesOfUserRole } from 'entities/User';
+import { UserRole, ValuesOfUserRole } from '@/entities/User';
 
-import { MainPage } from 'pages/MainPage';
-import { AboutPage } from 'pages/AboutPage';
-import { ProfilePage } from 'pages/ProfilePage';
-import { NotFoundPage } from 'pages/NotFoundPage';
-import { ArticlesPage } from 'pages/ArticlesPage';
-import { ArticleEditPage } from 'pages/ArticleEditPage';
-import { AdminPanelPage } from 'pages/AdminPanelPage';
-import { ForbiddenPage } from 'pages/ForbiddenPage';
-import { ArticleDetailsPage } from 'pages/ArticleDetailsPage';
+import { MainPage } from '@/pages/MainPage';
+import { AboutPage } from '@/pages/AboutPage';
+import { ProfilePage } from '@/pages/ProfilePage';
+import { NotFoundPage } from '@/pages/NotFoundPage';
+import { ArticlesPage } from '@/pages/ArticlesPage';
+import { ArticleEditPage } from '@/pages/ArticleEditPage';
+import { AdminPanelPage } from '@/pages/AdminPanelPage';
+import { ForbiddenPage } from '@/pages/ForbiddenPage';
+import { ArticleDetailsPage } from '@/pages/ArticleDetailsPage';
 
 export const AppRoute = {
   Main: 'main',

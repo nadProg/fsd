@@ -1,13 +1,13 @@
+import { memo } from 'react';
 import classNames from 'classnames';
 
-import { PropsWithClassName, ValuesOf } from 'shared/types';
-import GridIcon from 'shared/assets/icons/grid.svg';
-import ListIcon from 'shared/assets/icons/list.svg';
+import { PropsWithClassName, ValuesOf } from '@/shared/types';
+import GridIcon from '@/shared/assets/icons/grid.svg';
+import ListIcon from '@/shared/assets/icons/list.svg';
 
-import { Button } from 'shared/ui/Button';
-import { Icon } from 'shared/ui/Icon';
+import { Icon } from '@/shared/ui/Icon';
+import { Button } from '@/shared/ui/Button';
 
-import { memo } from 'react';
 import { ArticleView } from '../../model/types/article';
 import styles from './ArticleViewSelector.module.scss';
 

@@ -1,5 +1,5 @@
 import { Key, ReactNode } from 'react';
-import { PropsWithClassName, ValuesOf } from 'shared/types';
+import { PropsWithClassName, ValuesOf } from '@/shared/types';
 
 export const DropDownItemType = {
   Button: 'button',

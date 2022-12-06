@@ -1,4 +1,4 @@
-import { PropsWithClassName } from 'shared/types';
+import { PropsWithClassName } from '@/shared/types';
 
 import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
 import { ArticleCodeBlockComponent } from '../ArticleCodeBlockComponent/ArticleCodeBlockComponent';

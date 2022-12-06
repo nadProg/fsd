@@ -2,10 +2,10 @@ import { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSearchParams } from 'react-router-dom';
 
-import { Page } from 'shared/ui/Page';
-import { useAppDispatch } from 'shared/hooks/useAppDispatch';
-import { useProjectEffect } from 'shared/hooks/useProjectEffect';
-import { ReducersList, useDynamicReducers } from 'shared/hooks/useDynamicReducers';
+import { Page } from '@/shared/ui/Page';
+import { useAppDispatch } from '@/shared/hooks/useAppDispatch';
+import { useProjectEffect } from '@/shared/hooks/useProjectEffect';
+import { ReducersList, useDynamicReducers } from '@/shared/hooks/useDynamicReducers';
 
 import { initArticlesPage } from '../../model/services/initArticlesPage/initArticlesPage';
 import { articlesPageReducer } from '../../model/slices/articlePageSlice/articlesPageSlice';

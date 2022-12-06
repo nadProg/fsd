@@ -2,12 +2,12 @@ import classNames from 'classnames';
 import { useCallback } from 'react';
 import { useSelector } from 'react-redux';
 
-import { PropsWithClassName, ValuesOf } from 'shared/types';
-import { useAppDispatch } from 'shared/hooks/useAppDispatch';
-import { Card } from 'shared/ui/Card/Card';
-import { Input } from 'shared/ui/Input';
-import { SortOrder } from 'shared/constants/queryParams';
-import { useDebouncedCallback } from 'shared/hooks/useDebouncedCallback/useDebouncedCallback';
+import { PropsWithClassName, ValuesOf } from '@/shared/types';
+import { useAppDispatch } from '@/shared/hooks/useAppDispatch';
+import { Card } from '@/shared/ui/Card/Card';
+import { Input } from '@/shared/ui/Input';
+import { SortOrder } from '@/shared/constants/queryParams';
+import { useDebouncedCallback } from '@/shared/hooks/useDebouncedCallback/useDebouncedCallback';
 
 import {
   ArticleSortField,
@@ -16,7 +16,7 @@ import {
   ArticleViewSelector,
   ArticleTypeTab,
   ArticleTypeTabs,
-} from 'entities/Article';
+} from '@/entities/Article';
 
 import { fetchArticles } from '../../model/services/fetchArticles/fetchArticles';
 import { getArticlesPageSort } from '../../model/selectors/getArticlesPageSort/getArticlesPageSort';

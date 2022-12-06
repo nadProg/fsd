@@ -2,16 +2,16 @@ import { memo, useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 
-import { Text, TextVariant } from 'shared/ui/Text';
+import { Text, TextVariant } from '@/shared/ui/Text';
 
-import { VStack } from 'shared/ui/Stack';
-import { Id, PropsWithClassName } from 'shared/types';
-import { useAppDispatch } from 'shared/hooks/useAppDispatch';
-import { useProjectEffect } from 'shared/hooks/useProjectEffect';
+import { VStack } from '@/shared/ui/Stack';
+import { Id, PropsWithClassName } from '@/shared/types';
+import { useAppDispatch } from '@/shared/hooks/useAppDispatch';
+import { useProjectEffect } from '@/shared/hooks/useProjectEffect';
 
-import { CommentList } from 'entities/Comment';
+import { CommentList } from '@/entities/Comment';
 
-import { AddCommentForm } from 'features/addCommentForm';
+import { AddCommentForm } from '@/features/addCommentForm';
 
 import {
   fetchArticleDetailsComments,

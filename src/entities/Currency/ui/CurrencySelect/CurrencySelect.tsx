@@ -2,9 +2,9 @@ import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
   ExtendableProps, PropsWithClassName, ValuesOf,
-} from 'shared/types';
+} from '@/shared/types';
 
-import { ListBox, ListBoxProps } from 'shared/ui/ListBox';
+import { ListBox, ListBoxProps } from '@/shared/ui/ListBox';
 import { Currency } from '../../model/types/types';
 
 export type ValuesOfCurrency = ValuesOf<typeof Currency>;

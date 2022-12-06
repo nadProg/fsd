@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 
-import { PropsWithClassName } from 'shared/types';
-import { Code } from 'shared/ui/Code';
+import { PropsWithClassName } from '@/shared/types';
+import { Code } from '@/shared/ui/Code';
 
 import { ArticleCodeBlock } from '../../model/types/article';
 

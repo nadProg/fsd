@@ -1,6 +1,6 @@
-import { StateSchema } from 'app/providers/StoreProvider';
+import { StateSchema } from '@/app/providers/StoreProvider';
 
-import { DeepPartial } from 'shared/types';
+import { DeepPartial } from '@/shared/types';
 import { getScroll } from './getScroll';
 
 describe('getScroll', () => {

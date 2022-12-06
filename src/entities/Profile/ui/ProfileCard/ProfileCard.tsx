@@ -3,16 +3,16 @@ import classNames from 'classnames';
 
 import { useTranslation } from 'react-i18next';
 
-import type { PropsWithClassName } from 'shared/types';
-import { Input } from 'shared/ui/Input';
-import { Loader } from 'shared/ui/Loader';
-import { Text, TextTheme } from 'shared/ui/Text';
-import { Avatar } from 'shared/ui/Avatar';
+import type { PropsWithClassName } from '@/shared/types';
+import { Input } from '@/shared/ui/Input';
+import { Loader } from '@/shared/ui/Loader';
+import { Text, TextTheme } from '@/shared/ui/Text';
+import { Avatar } from '@/shared/ui/Avatar';
 
-import { CurrencySelect, ValuesOfCurrency } from 'entities/Currency';
+import { CurrencySelect, ValuesOfCurrency } from '@/entities/Currency';
 
-import { CountrySelect, ValuesOfCountry } from 'entities/Country';
-import { VStack } from 'shared/ui/Stack';
+import { CountrySelect, ValuesOfCountry } from '@/entities/Country';
+import { VStack } from '@/shared/ui/Stack';
 import type { Profile } from '../../model/types/profile';
 
 import styles from './ProfileCard.module.scss';

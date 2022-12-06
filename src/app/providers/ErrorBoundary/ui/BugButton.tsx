@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 
-import { PropsWithClassName } from 'shared/types';
+import { PropsWithClassName } from '@/shared/types';
 
-import { Button } from 'shared/ui/Button';
+import { Button } from '@/shared/ui/Button';
 
 type BugButtonProps = PropsWithClassName;
 

@@ -2,16 +2,16 @@ import { FC } from 'react';
 import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
 
-import { Text, TextVariant } from 'shared/ui/Text';
-import { Icon } from 'shared/ui/Icon';
-import { Card } from 'shared/ui/Card/Card';
-import { PropsWithClassName, ValuesOf } from 'shared/types';
-import EyeIcon from 'shared/assets/icons/eye.svg';
-import { Avatar } from 'shared/ui/Avatar';
-import { useHover } from 'shared/hooks/useHover';
-import { Button, ButtonTheme } from 'shared/ui/Button';
-import { AppLink, AppLinkProps } from 'shared/ui/AppLink';
-import { RoutePath } from 'shared/config/router/routeConfig/routeConfig';
+import { Text, TextVariant } from '@/shared/ui/Text';
+import { Icon } from '@/shared/ui/Icon';
+import { Card } from '@/shared/ui/Card/Card';
+import { PropsWithClassName, ValuesOf } from '@/shared/types';
+import EyeIcon from '@/shared/assets/icons/eye.svg';
+import { Avatar } from '@/shared/ui/Avatar';
+import { useHover } from '@/shared/hooks/useHover';
+import { Button, ButtonTheme } from '@/shared/ui/Button';
+import { AppLink, AppLinkProps } from '@/shared/ui/AppLink';
+import { RoutePath } from '@/shared/config/router/routeConfig/routeConfig';
 
 import {
   Article, ArticleBlockType, ArticleTextBlock, ArticleView,

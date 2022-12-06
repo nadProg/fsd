@@ -1,15 +1,16 @@
-import { PropsWithClassName } from 'shared/types';
 import classNames from 'classnames';
 
-import { Avatar } from 'shared/ui/Avatar';
-import { Text, TextVariant } from 'shared/ui/Text';
+import type { PropsWithClassName } from '@/shared/types';
 
-import { Skeleton } from 'shared/ui/Skeleton';
-import { AppLink } from 'shared/ui/AppLink';
-import { RoutePath } from 'shared/config/router/routeConfig/routeConfig';
+import { Avatar } from '@/shared/ui/Avatar';
+import { Text, TextVariant } from '@/shared/ui/Text';
 
-import { HStack, VStack } from 'shared/ui/Stack';
-import { Comment } from '../../model/types/comment';
+import { Skeleton } from '@/shared/ui/Skeleton';
+import { AppLink } from '@/shared/ui/AppLink';
+import { HStack, VStack } from '@/shared/ui/Stack';
+import { RoutePath } from '@/shared/config/router/routeConfig/routeConfig';
+
+import type { Comment } from '../../model/types/comment';
 
 import styles from './CommentCard.module.scss';
 

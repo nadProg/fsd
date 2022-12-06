@@ -1,5 +1,5 @@
 import { createContext } from 'react';
-import { ValuesOf } from 'shared/types';
+import { ValuesOf } from '@/shared/types';
 
 export const Theme = {
   Dark: 'dark',

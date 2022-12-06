@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import classNames from 'classnames';
-import { Button, ButtonTheme } from 'shared/ui/Button';
+import { Button, ButtonTheme } from '@/shared/ui/Button';
 
 import styles from './PageError.module.scss';
 

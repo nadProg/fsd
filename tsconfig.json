@@ -9,9 +9,9 @@
     "moduleResolution": "node",
     "baseUrl": ".",
     "paths": {
-      "*": [
+      "@/*": [
         "./src/*"
-      ]
+      ],
     },
     "skipLibCheck": true,
     "isolatedModules": true,

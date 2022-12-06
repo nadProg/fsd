@@ -1,12 +1,12 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-import { isAxiosError } from 'shared/helpers';
+import { isAxiosError } from '@/shared/helpers';
 
-import { Article } from 'entities/Article';
+import { Article } from '@/entities/Article';
 
-import { ThunkConfig } from 'app/providers/StoreProvider';
+import { ThunkConfig } from '@/app/providers/StoreProvider';
 
-import { addQueryParams } from 'shared/lib/url/addQueryParams/addQueryParams';
+import { addQueryParams } from '@/shared/lib/url/addQueryParams/addQueryParams';
 import { getArticlesPageSearch } from '../../selectors/getArticlesPageSearch/getArticlesPageSearch';
 import { getArticlesPageOrder } from '../../selectors/getArticlesPageOrder/getArticlesPageOrder';
 import { getArticlesPageSort } from '../../selectors/getArticlesPageSort/getArticlesPageSort';

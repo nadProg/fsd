@@ -1,11 +1,11 @@
 import { useCallback, useEffect } from 'react';
 import classNames from 'classnames';
 
-import type { PropsWithChildren, PropsWithClassName } from 'shared/types';
-import { Portal } from 'shared/ui/Portal';
-import { Overlay } from 'shared/ui/Overlay';
+import type { PropsWithChildren, PropsWithClassName } from '@/shared/types';
+import { Portal } from '@/shared/ui/Portal';
+import { Overlay } from '@/shared/ui/Overlay';
 
-import { AnimationProvider, useAnimation } from 'shared/providers/AnimationProvider';
+import { AnimationProvider, useAnimation } from '@/shared/providers/AnimationProvider';
 import styles from './Drawer.module.scss';
 
 const height = window.innerHeight;

@@ -3,8 +3,8 @@ import { useTranslation } from 'react-i18next';
 
 import {
   ExtendableProps, PropsWithClassName, ValuesOf,
-} from 'shared/types';
-import { ListBox, ListBoxProps } from 'shared/ui/ListBox';
+} from '@/shared/types';
+import { ListBox, ListBoxProps } from '@/shared/ui/ListBox';
 
 import { Country } from '../../model/types/types';
 

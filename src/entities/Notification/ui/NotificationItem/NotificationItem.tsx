@@ -2,10 +2,10 @@ import { memo } from 'react';
 import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
 
-import { VStack } from 'shared/ui/Stack';
-import { Card, CardTheme } from 'shared/ui/Card';
-import { Text, TextVariant } from 'shared/ui/Text';
-import type { PropsWithClassName } from 'shared/types';
+import { VStack } from '@/shared/ui/Stack';
+import { Card, CardTheme } from '@/shared/ui/Card';
+import { Text, TextVariant } from '@/shared/ui/Text';
+import type { PropsWithClassName } from '@/shared/types';
 
 import type { Notification } from '../../model/types/notification';
 

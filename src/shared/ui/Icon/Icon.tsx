@@ -1,11 +1,11 @@
-import { VFC, SVGProps } from 'react';
-import { PropsWithClassName } from 'shared/types';
+import type { FC, SVGProps } from 'react';
 import classNames from 'classnames';
+import type { PropsWithClassName } from '@/shared/types';
 
 import styles from './Icon.module.scss';
 
 type IconProps = PropsWithClassName & {
-  icon: VFC<SVGProps<SVGSVGElement>>
+  icon: FC<SVGProps<SVGSVGElement>>
 };
 
 export const Icon = (props: IconProps) => {

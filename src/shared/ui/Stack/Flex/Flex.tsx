@@ -2,7 +2,7 @@ import classNames from 'classnames';
 
 import type {
   PropsWithChildren, PropsWithClassName, ValuesOf, ValuesOfArray,
-} from 'shared/types';
+} from '@/shared/types';
 
 import styles from './Flex.module.scss';
 

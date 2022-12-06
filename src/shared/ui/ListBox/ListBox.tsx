@@ -2,11 +2,11 @@ import { Fragment, Key, ReactNode } from 'react';
 import classNames from 'classnames';
 import { Listbox as HeadLessListBox } from '@headlessui/react';
 
-import { Text } from 'shared/ui/Text';
-import { Button } from 'shared/ui/Button';
-import { HStack } from 'shared/ui/Stack';
-import type { PropsWithClassName } from 'shared/types';
-import { PopperProvider, usePopper } from 'shared/providers/PopperProvider';
+import { Text } from '@/shared/ui/Text';
+import { Button } from '@/shared/ui/Button';
+import { HStack } from '@/shared/ui/Stack';
+import type { PropsWithClassName } from '@/shared/types';
+import { PopperProvider, usePopper } from '@/shared/providers/PopperProvider';
 
 import styles from './ListBox.module.scss';
 

@@ -3,8 +3,8 @@ import {
 } from 'react';
 import classNames from 'classnames';
 
-import { Portal } from 'shared/ui/Portal';
-import { Overlay } from 'shared/ui/Overlay';
+import { Portal } from '@/shared/ui/Portal';
+import { Overlay } from '@/shared/ui/Overlay';
 
 import styles from './Modal.module.scss';
 

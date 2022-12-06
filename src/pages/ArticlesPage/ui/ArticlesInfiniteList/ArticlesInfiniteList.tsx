@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 
-import { ArticleList } from 'entities/Article';
+import { ArticleList } from '@/entities/Article';
 
 import { getArticles } from '../../model/slices/articlePageSlice/articlesPageSlice';
 import {

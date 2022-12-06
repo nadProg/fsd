@@ -1,12 +1,12 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
+import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
 
-import { Theme } from 'shared/providers/ThemeProvider';
-import Image from 'shared/assets/test/images/avatar.png';
+import { Theme } from '@/shared/providers/ThemeProvider';
+import Image from '@/shared/assets/test/images/avatar.png';
 
-import { Country } from 'entities/Country';
-import { Currency } from 'entities/Currency';
+import { Country } from '@/entities/Country';
+import { Currency } from '@/entities/Currency';
 
 import { ProfileCard } from './ProfileCard';
 

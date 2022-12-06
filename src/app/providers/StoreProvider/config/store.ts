@@ -2,13 +2,13 @@ import {
   CombinedState, configureStore, Reducer, ReducersMapObject,
 } from '@reduxjs/toolkit';
 
-import { $api } from 'shared/api/api';
-import { rtkApi } from 'shared/api/rtkApi';
+import { $api } from '@/shared/api/api';
+import { rtkApi } from '@/shared/api/rtkApi';
 
-import { userReducer } from 'entities/User';
-import { counterReducer } from 'entities/Counter';
+import { userReducer } from '@/entities/User';
+import { counterReducer } from '@/entities/Counter';
 
-import { scrollPositionSliceReducer } from 'features/keepScrollPosition';
+import { scrollPositionSliceReducer } from '@/features/keepScrollPosition';
 
 import { StateSchema, ThunkExtraArgs } from './StateSchema';
 import { createReducerManager } from './reducerManager';

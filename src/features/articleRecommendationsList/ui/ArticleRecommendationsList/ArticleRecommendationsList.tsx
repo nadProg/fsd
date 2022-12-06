@@ -2,10 +2,10 @@ import { memo } from 'react';
 import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
 
-import { VStack } from 'shared/ui/Stack';
-import { Text, TextVariant } from 'shared/ui/Text';
+import { VStack } from '@/shared/ui/Stack';
+import { Text, TextVariant } from '@/shared/ui/Text';
 
-import { ArticleList, ArticleView } from 'entities/Article';
+import { ArticleList, ArticleView } from '@/entities/Article';
 
 import { useArticleRecommendationsList } from '../../api/articleRecommendationsApi';
 

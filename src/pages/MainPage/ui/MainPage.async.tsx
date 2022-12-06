@@ -1,6 +1,6 @@
 import { lazy } from 'react';
 
-import { asyncDelay, makeModuleDefault } from 'shared/helpers';
+import { asyncDelay, makeModuleDefault } from '@/shared/helpers';
 
 export const MainPageAsync = lazy(async () => {
   await asyncDelay(300);

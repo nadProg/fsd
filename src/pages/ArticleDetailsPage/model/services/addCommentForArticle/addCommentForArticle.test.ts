@@ -1,8 +1,8 @@
-import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunk/TestAsyncThunk';
+import { TestAsyncThunk } from '@/shared/lib/tests/TestAsyncThunk/TestAsyncThunk';
 
-import { Comment } from 'entities/Comment';
+import { Comment } from '@/entities/Comment';
 
-import { User } from 'entities/User';
+import { User } from '@/entities/User';
 import { addCommentForArticle } from './addCommentForArticle';
 
 const mockArticleId = '1';

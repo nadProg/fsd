@@ -1,8 +1,8 @@
 import { useTranslation } from 'react-i18next';
 
-import { Page } from 'shared/ui/Page';
+import { Page } from '@/shared/ui/Page';
 
-import { Counter } from 'entities/Counter';
+import { Counter } from '@/entities/Counter';
 
 export const MainPage = () => {
   const { t } = useTranslation();

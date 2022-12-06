@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import { MouseEventHandler } from 'react';
 
-import { PropsWithChildren, PropsWithClassName, ValuesOf } from 'shared/types';
+import { PropsWithChildren, PropsWithClassName, ValuesOf } from '@/shared/types';
 
 import styles from './Card.module.scss';
 

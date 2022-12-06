@@ -2,8 +2,8 @@ import { FC } from 'react';
 import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
 
-import type { AppLinkProps } from 'shared/ui/AppLink';
-import type { PropsWithClassName, ValuesOf } from 'shared/types';
+import type { AppLinkProps } from '@/shared/ui/AppLink';
+import type { PropsWithClassName, ValuesOf } from '@/shared/types';
 
 import { ArticleListItemSkeleton } from '../ArticleListItem/ArticleListItemSkeleton';
 import { ArticleListItem } from '../ArticleListItem/ArticleListItem';

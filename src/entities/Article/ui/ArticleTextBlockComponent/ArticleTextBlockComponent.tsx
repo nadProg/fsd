@@ -1,9 +1,9 @@
 import { useTranslation } from 'react-i18next';
 
-import { PropsWithClassName } from 'shared/types';
+import { PropsWithClassName } from '@/shared/types';
 
-import { Text, TextVariant } from 'shared/ui/Text';
-import { VStack } from 'shared/ui/Stack';
+import { Text, TextVariant } from '@/shared/ui/Text';
+import { VStack } from '@/shared/ui/Stack';
 import { ArticleTextBlock } from '../../model/types/article';
 
 import styles from './ArticleTextBlockComponent.module.scss';

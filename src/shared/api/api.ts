@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { USER_LOCALSTORAGE_KEY } from 'shared/constants/localStorage';
+import { USER_LOCALSTORAGE_KEY } from '@/shared/constants/localStorage';
 
 const $api = axios.create({
   baseURL: __API_URL__,

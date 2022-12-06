@@ -1,5 +1,5 @@
-import { DeepPartial } from 'shared/types';
-import { StateSchema } from 'app/providers/StoreProvider';
+import { DeepPartial } from '@/shared/types';
+import { StateSchema } from '@/app/providers/StoreProvider';
 import { getArticleDetailsRecommendationsError } from './getArticleDetailsRecommendationsError';
 
 describe('getArticleDetailsRecommendationsError', () => {

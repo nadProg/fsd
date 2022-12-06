@@ -2,7 +2,7 @@ import { FC } from 'react';
 import classNames from 'classnames';
 import { Link, LinkProps } from 'react-router-dom';
 
-import { ValuesOf } from 'shared/types';
+import { ValuesOf } from '@/shared/types';
 
 import styles from './AppLink.module.scss';
 

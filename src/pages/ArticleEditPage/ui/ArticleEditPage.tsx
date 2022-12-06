@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
-
-import { Page } from 'shared/ui/Page';
 import { useParams } from 'react-router-dom';
+
+import { Page } from '@/shared/ui/Page';
 
 export const ArticleEditPage = () => {
   const { t } = useTranslation();

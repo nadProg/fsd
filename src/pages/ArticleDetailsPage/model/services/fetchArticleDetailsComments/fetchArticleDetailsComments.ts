@@ -1,11 +1,11 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-import { Id } from 'shared/types';
-import { isAxiosError } from 'shared/helpers';
+import { Id } from '@/shared/types';
+import { isAxiosError } from '@/shared/helpers';
 
-import { ThunkConfig } from 'app/providers/StoreProvider';
+import { ThunkConfig } from '@/app/providers/StoreProvider';
 
-import { Comment } from 'entities/Comment';
+import { Comment } from '@/entities/Comment';
 
 export const fetchArticleDetailsComments = createAsyncThunk<Comment[], Id | undefined, ThunkConfig<string>>(
   'articleDetailsComments/fetchArticleDetailsComments',

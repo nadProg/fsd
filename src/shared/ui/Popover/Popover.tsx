@@ -1,7 +1,7 @@
 import { cloneElement, Fragment } from 'react';
 import { Popover as HeadlessPopover } from '@headlessui/react';
 
-import { PopperProvider, usePopper } from 'shared/providers/PopperProvider';
+import { PopperProvider, usePopper } from '@/shared/providers/PopperProvider';
 
 import type { PopoverProps } from './Popover.types';
 

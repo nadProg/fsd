@@ -1,8 +1,8 @@
 import classNames from 'classnames';
 
-import { Card } from 'shared/ui/Card/Card';
-import { Skeleton } from 'shared/ui/Skeleton';
-import { PropsWithClassName, ValuesOf } from 'shared/types';
+import { Card } from '@/shared/ui/Card/Card';
+import { Skeleton } from '@/shared/ui/Skeleton';
+import { PropsWithClassName, ValuesOf } from '@/shared/types';
 
 import { ArticleView } from '../../model/types/article';
 

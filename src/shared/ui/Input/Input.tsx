@@ -3,7 +3,7 @@ import {
 } from 'react';
 import classNames from 'classnames';
 
-import { ExtendableProps } from 'shared/types';
+import { ExtendableProps } from '@/shared/types';
 import styles from './Input.module.scss';
 
 type ExtendedInputProps = InputHTMLAttributes<HTMLInputElement>;

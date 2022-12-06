@@ -3,11 +3,11 @@ import classNames from 'classnames';
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 
-import { Input } from 'shared/ui/Input';
-import { PropsWithClassName } from 'shared/types';
-import { Button, ButtonTheme } from 'shared/ui/Button';
-import { useAppDispatch } from 'shared/hooks/useAppDispatch';
-import { ReducersList, useDynamicReducers } from 'shared/hooks/useDynamicReducers';
+import { Input } from '@/shared/ui/Input';
+import { PropsWithClassName } from '@/shared/types';
+import { Button, ButtonTheme } from '@/shared/ui/Button';
+import { useAppDispatch } from '@/shared/hooks/useAppDispatch';
+import { ReducersList, useDynamicReducers } from '@/shared/hooks/useDynamicReducers';
 
 import { addCommentFormActions, addCommentFormReducer } from '../model/slice/addCommentFormSlice';
 import { getAddCommentFormText } from '../model/selectors/getAddCommentFormText/getAddCommentFormText';

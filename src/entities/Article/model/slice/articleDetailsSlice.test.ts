@@ -1,4 +1,4 @@
-import { DeepPartial } from 'shared/types';
+import { DeepPartial } from '@/shared/types';
 
 import { fetchArticleDetailsData } from '../services/fetchArticleDetailsData/fetchArticleDetailsData';
 import { articleDetailsReducer } from './articleDetailsSlice';

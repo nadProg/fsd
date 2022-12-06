@@ -1,9 +1,8 @@
 import { FC } from 'react';
 import classNames from 'classnames';
-
-import { PropsWithClassName } from 'shared/types';
-
 import { useDispatch, useSelector } from 'react-redux';
+
+import type { PropsWithClassName } from '@/shared/types';
 
 import { counterActions } from '../model/slice/CounterSlice';
 

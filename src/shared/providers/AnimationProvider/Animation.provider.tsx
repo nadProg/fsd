@@ -2,7 +2,7 @@ import {
   useEffect, useMemo, useRef, useState,
 } from 'react';
 import type { ReactNode } from 'react';
-import type { PropsWithChildren } from 'shared/types';
+import type { PropsWithChildren } from '@/shared/types';
 import type { AnimationContextValue, Gesture, Spring } from './Animation.types';
 import { importAnimation } from './Animation.helpers';
 import { AnimationContext } from './Animation.context';

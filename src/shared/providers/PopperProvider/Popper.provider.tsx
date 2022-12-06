@@ -2,7 +2,7 @@ import {
   useEffect, useMemo, useRef, useState,
 } from 'react';
 import type { ReactNode } from 'react';
-import type { PropsWithChildren } from 'shared/types';
+import type { PropsWithChildren } from '@/shared/types';
 import type { Popper, PopperContextValue } from './Popper.types';
 import { PopperContext } from './Popper.context';
 import { importPopper } from './Popper.helpers';

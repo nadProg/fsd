@@ -1,13 +1,14 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import { MemoryRouter } from 'react-router-dom';
 import { render } from '@testing-library/react';
-import i18nForTests from 'shared/config/i18n/i18nForTests';
 import { I18nextProvider } from 'react-i18next';
-import { StateSchema, StoreProvider } from 'app/providers/StoreProvider';
-import { DeepPartial } from 'shared/types';
-import { ReducersList } from 'shared/hooks/useDynamicReducers';
-import { ReducersMapObject } from '@reduxjs/toolkit';
+import type { ReducersMapObject } from '@reduxjs/toolkit';
+import i18nForTests from '@/shared/config/i18n/i18nForTests';
+import { StoreProvider } from '@/app/providers/StoreProvider';
+import type { StateSchema } from '@/app/providers/StoreProvider';
+import type { DeepPartial } from '@/shared/types';
+import type { ReducersList } from '@/shared/hooks/useDynamicReducers';
 
 type RenderWithRouterOptions = {
   route?: string

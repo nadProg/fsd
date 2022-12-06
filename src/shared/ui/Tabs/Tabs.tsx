@@ -1,8 +1,8 @@
 import classNames from 'classnames';
 import { MouseEventHandler, ReactNode } from 'react';
 
-import { Card, CardTheme } from 'shared/ui/Card';
-import type { PropsWithClassName } from 'shared/types';
+import { Card, CardTheme } from '@/shared/ui/Card';
+import type { PropsWithClassName } from '@/shared/types';
 
 import styles from './Tabs.module.scss';
 

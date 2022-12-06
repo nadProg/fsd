@@ -1,6 +1,6 @@
-import { ArticleSortField, ArticleView } from 'entities/Article';
+import { ArticleSortField, ArticleView } from '@/entities/Article';
 
-import { SortOrder } from 'shared/constants/queryParams';
+import { SortOrder } from '@/shared/constants/queryParams';
 
 import { ArticlesPageSchema } from '../../types/articlesPageSchema';
 

@@ -1,9 +1,9 @@
-import { DeepPartial } from 'shared/types';
+import { DeepPartial } from '@/shared/types';
 
-import { StateSchema } from 'app/providers/StoreProvider';
+import { StateSchema } from '@/app/providers/StoreProvider';
 
-import { Currency } from 'entities/Currency';
-import { Country } from 'entities/Country';
+import { Currency } from '@/entities/Currency';
+import { Country } from '@/entities/Country';
 
 import { getProfile } from './getProfile';
 

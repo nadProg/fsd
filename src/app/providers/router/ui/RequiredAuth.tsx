@@ -1,11 +1,12 @@
+import { useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { Navigate, useLocation } from 'react-router-dom';
 
-import { getUserAuthData, ValuesOfUserRole } from 'entities/User';
-import { RoutePath } from 'shared/config/router/routeConfig/routeConfig';
-import { PropsWithChildren } from 'shared/types';
-import { useMemo } from 'react';
-import { getUserAuthDataRoles } from 'entities/User/model/selectors/getUserAuthDataRoles/getUserAuthDataRoles';
+import { PropsWithChildren } from '@/shared/types';
+import { RoutePath } from '@/shared/config/router/routeConfig/routeConfig';
+
+import type { ValuesOfUserRole } from '@/entities/User';
+import { getUserAuthData, getUserAuthDataRoles } from '@/entities/User';
 
 type RequireAuthProps = PropsWithChildren & {
   roles?: ValuesOfUserRole[];
