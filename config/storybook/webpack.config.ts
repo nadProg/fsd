@@ -13,6 +13,10 @@ const fileLoader: RuleSetRule = {
   },
 };
 
+const alias = {
+  '@': path.resolve(__dirname, '..', '..', 'src'),
+};
+
 export default ({ config }: { config: Configuration }) => {
   const paths: BuildPaths = {
     build: '',
@@ -26,6 +30,13 @@ export default ({ config }: { config: Configuration }) => {
   if (config.resolve) {
     config.resolve.modules?.push(paths.src);
     config.resolve.extensions?.push('.ts', '.tsx');
+
+    const prevAlias = config.resolve.alias || {};
+
+    config.resolve.alias = {
+      ...prevAlias,
+      ...alias,
+    };
   }
 
   if (config.module && config.module.rules) {
