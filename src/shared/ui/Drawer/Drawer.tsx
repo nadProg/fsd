@@ -1,12 +1,11 @@
 import { useCallback, useEffect } from 'react';
 import classNames from 'classnames';
-import { useDrag } from '@use-gesture/react';
-import { a, useSpring, config } from '@react-spring/web';
 
 import type { PropsWithChildren, PropsWithClassName } from 'shared/types';
 import { Portal } from 'shared/ui/Portal';
 import { Overlay } from 'shared/ui/Overlay';
 
+import { AnimationProvider, useAnimation } from 'shared/providers/AnimationProvider';
 import styles from './Drawer.module.scss';
 
 const height = window.innerHeight;
@@ -16,13 +15,15 @@ type DrawerProps = PropsWithClassName & PropsWithChildren & {
   onClose?: () => void;
 };
 
-export const Drawer = ({
+export const DrawerContent = ({
   className,
   children,
   isOpen,
   onClose,
 }: DrawerProps): JSX.Element => {
-  const [{ y }, api] = useSpring(() => ({ y: height }));
+  const { Spring, Gesture } = useAnimation();
+
+  const [{ y }, api] = Spring.useSpring(() => ({ y: height }));
 
   const openDrawer = useCallback(() => {
     api.start({ y: 0, immediate: false });
@@ -39,13 +40,13 @@ export const Drawer = ({
       y: height,
       immediate: false,
       config: {
-        ...config.stiff, velocity,
+        ...Spring.config.stiff, velocity,
       },
       onResolve: onClose,
     });
-  }, [api, onClose]);
+  }, [Spring.config.stiff, api, onClose]);
 
-  const bind = useDrag(
+  const bind = Gesture.useDrag(
     ({
       last,
       velocity: [, vy],
@@ -79,14 +80,20 @@ export const Drawer = ({
       })}
       >
         <Overlay onClick={closeDrawer} />
-        <a.div
+        <Spring.a.div
           className={styles.content}
           style={{ display, bottom: `calc(-100vh + ${height - 100}px)`, y }}
           {...bind()}
         >
           {children}
-        </a.div>
+        </Spring.a.div>
       </div>
     </Portal>
   );
 };
+
+export const Drawer = ({ children, ...restDrawerProp }: DrawerProps): JSX.Element => (
+  <AnimationProvider>
+    <DrawerContent {...restDrawerProp}>{children}</DrawerContent>
+  </AnimationProvider>
+);
