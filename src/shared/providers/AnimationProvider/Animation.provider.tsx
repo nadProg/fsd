@@ -3,8 +3,8 @@ import {
 } from 'react';
 import type { ReactNode } from 'react';
 import type { PropsWithChildren } from 'shared/types';
-import { importAnimation } from './Animation.helpers';
 import type { AnimationContextValue, Gesture, Spring } from './Animation.types';
+import { importAnimation } from './Animation.helpers';
 import { AnimationContext } from './Animation.context';
 
 type AnimationProviderProps = PropsWithChildren & {

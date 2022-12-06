@@ -6,8 +6,8 @@ import { Text } from 'shared/ui/Text';
 import { Button } from 'shared/ui/Button';
 import { HStack } from 'shared/ui/Stack';
 import type { PropsWithClassName } from 'shared/types';
+import { PopperProvider, usePopper } from 'shared/providers/PopperProvider';
 
-import { usePopper } from 'shared/hooks/usePopper';
 import styles from './ListBox.module.scss';
 
 type ListBoxItem<V extends Key> = {
@@ -39,7 +39,7 @@ const getItemClassName = ({
   [styles.disabled]: disabled,
 });
 
-export const ListBox = <V extends Key>({
+const ListBoxContent = <V extends Key>({
   className,
   items = [],
   value,
@@ -48,11 +48,13 @@ export const ListBox = <V extends Key>({
   label,
   disabled,
 }: ListBoxProps<V>) => {
+  const { Popper } = usePopper();
+
   const {
     referenceRef,
     popperRef,
     getPopperProps,
-  } = usePopper<HTMLButtonElement, HTMLUListElement>();
+  } = Popper.usePopper<HTMLButtonElement, HTMLUListElement>();
   const selectedItem = value !== undefined ? items.find((item) => item.value === value) : null;
   const selectedContent = selectedItem?.label ?? placeholder;
 
@@ -109,3 +111,9 @@ export const ListBox = <V extends Key>({
     </HStack>
   );
 };
+
+export const ListBox = <V extends Key>(props: ListBoxProps<V>) => (
+  <PopperProvider>
+    <ListBoxContent {...props} />
+  </PopperProvider>
+);

@@ -1,18 +1,20 @@
 import { cloneElement, Fragment } from 'react';
 import { Popover as HeadlessPopover } from '@headlessui/react';
 
-import { usePopper } from 'shared/hooks/usePopper';
+import { PopperProvider, usePopper } from 'shared/providers/PopperProvider';
 
 import type { PopoverProps } from './Popover.types';
 
 import styles from './Popover.module.scss';
 
-export const Popover = ({ trigger, className, children }: PopoverProps): JSX.Element => {
+const PopoverContent = ({ trigger, className, children }: PopoverProps): JSX.Element => {
+  const { Popper } = usePopper();
+
   const {
     referenceRef,
     popperRef,
     getPopperProps,
-  } = usePopper();
+  } = Popper.usePopper();
 
   return (
     <HeadlessPopover className={className}>
@@ -28,3 +30,9 @@ export const Popover = ({ trigger, className, children }: PopoverProps): JSX.Ele
     </HeadlessPopover>
   );
 };
+
+export const Popover = ({ children, ...restPopoverProps }: PopoverProps) => (
+  <PopperProvider>
+    <PopoverContent {...restPopoverProps}>{children}</PopoverContent>
+  </PopperProvider>
+);

@@ -5,10 +5,10 @@ import {
 } from 'react';
 
 import { Button } from 'shared/ui/Button';
-import { usePopper } from 'shared/hooks/usePopper';
-
 import { AppLink } from 'shared/ui/AppLink';
 import { AppLinkTheme } from 'shared/ui/AppLink/AppLink';
+import { PopperProvider, usePopper } from 'shared/providers/PopperProvider';
+
 import { isButtonDropDownItem } from './utils/isButtonDropDownItem';
 import { DropDownProps } from './DropDown.types';
 import styles from './DropDown.module.scss';
@@ -17,16 +17,18 @@ const getItemClassName = (active: boolean): string => classNames(styles.item, {
   [styles.active]: active,
 });
 
-export const DropDown = <V extends Key>({
+const DropDownContent = <V extends Key>({
   className,
   trigger,
   items = [],
 }: DropDownProps<V>): JSX.Element => {
+  const { Popper } = usePopper();
+
   const {
     referenceRef,
     popperRef,
     getPopperProps,
-  } = usePopper();
+  } = Popper.usePopper();
 
   return (
     <Menu as="div" className={classNames(className, styles.DropDown)}>
@@ -65,3 +67,9 @@ export const DropDown = <V extends Key>({
     </Menu>
   );
 };
+
+export const DropDown = <V extends Key>(props: DropDownProps<V>) => (
+  <PopperProvider>
+    <DropDownContent {...props} />
+  </PopperProvider>
+);
