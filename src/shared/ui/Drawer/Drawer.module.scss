@@ -22,11 +22,10 @@
   width: 100%;
   min-height: 100px;
   padding: 20px;
-  transition: 0.3s transform;
-  transform: translateY(100%);
   overflow-y: auto;
   overflow-x: hidden;
   z-index: 10000;
+  touch-action: none;
 }
 
 .content::before {
