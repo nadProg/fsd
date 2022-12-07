@@ -1,15 +1,18 @@
 import type { FC, SVGProps } from 'react';
 import classNames from 'classnames';
-import type { PropsWithClassName } from '@/shared/types';
+import { memo } from 'react';
+import type { ExtendableProps } from '@/shared/types';
 
 import styles from './Icon.module.scss';
 
-type IconProps = PropsWithClassName & {
-  icon: FC<SVGProps<SVGSVGElement>>
-};
+type IconProps = ExtendableProps<SVGProps<SVGSVGElement>, {
+  icon: FC<SVGProps<SVGSVGElement>> }
+>;
 
-export const Icon = (props: IconProps) => {
-  const { className, icon: IconComponent } = props;
+export const Icon = memo((props: IconProps) => {
+  const { className, icon: IconComponent, ...restIconProps } = props;
 
-  return <IconComponent className={classNames(className, styles.Icon)} />;
-};
+  return <IconComponent className={classNames(className, styles.Icon)} {...restIconProps} />;
+});
+
+Icon.displayName = 'Icon';
