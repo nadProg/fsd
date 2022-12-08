@@ -1,2 +1,3 @@
-export { RatingCard } from 'src/entities/Rating/ui/RatingCard/RatingCard';
-export type { RatingSchema } from './model/types/RatingSchema';
+export { RatingCard } from './ui/RatingCard/RatingCard';
+
+export type { Rating } from './model/types/Rating';

@@ -51,11 +51,13 @@ export const ArticleDetailsComments = memo(({ className, id }: ArticleDetailsCom
 
       <AddCommentForm
         onSendComment={sendComment}
+        className="fullwidth"
       />
 
       <CommentList
         isLoading={commentsIsLoading}
         comments={comments}
+        className="fullwidth"
       />
     </VStack>
   );

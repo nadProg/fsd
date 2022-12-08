@@ -11,6 +11,7 @@ import { ReducersList, useDynamicReducers } from '@/shared/hooks/useDynamicReduc
 
 import { ArticleDetails } from '@/entities/Article';
 
+import { ArticleRating } from '@/features/articleRating';
 import { ArticleRecommendationsList } from '@/features/articleRecommendationsList';
 
 import { ArticleDetailsComments } from '../ArticleDetailsComments/ArticleDetailsComments';
@@ -52,6 +53,7 @@ export const ArticleDetailsPage = () => {
       <VStack gap={16} align="stretch">
         <ArticleDetailsPageHeader />
         <ArticleDetails id={id} />
+        <ArticleRating articleId={id} />
         <ArticleRecommendationsList />
         <ArticleDetailsComments id={id} />
       </VStack>

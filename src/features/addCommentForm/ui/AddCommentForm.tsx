@@ -14,6 +14,7 @@ import { getAddCommentFormText } from '../model/selectors/getAddCommentFormText/
 import { getAddCommentFormError } from '../model/selectors/getAddCommentFormError/getAddCommentFormError';
 
 import styles from './AddCommentForm.module.scss';
+import { HStack } from '@/shared/ui/Stack';
 
 type AddCommentFormProps = PropsWithClassName & {
   onSendComment: (text: string) => Promise<void>;
@@ -43,7 +44,7 @@ export const AddCommentForm: FC<AddCommentFormProps> = ({ className, onSendComme
   }, [onSendComment, text, dispatch]);
 
   return (
-    <div className={classNames(className, styles.AddCommentForm)}>
+    <HStack className={classNames(className, styles.AddCommentForm)} justify="between" gap={16}>
       <Input
         className={styles.input}
         placeholder="Введите комментарий"
@@ -57,6 +58,6 @@ export const AddCommentForm: FC<AddCommentFormProps> = ({ className, onSendComme
       >
         {t('comments.form.submit')}
       </Button>
-    </div>
+    </HStack>
   );
 };
