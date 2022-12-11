@@ -64,7 +64,9 @@ module.exports = {
     }],
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn',
-    'feature-sliced-design/relative-path-within-slice': 'error',
+    'feature-sliced-design/relative-path-within-slice': [
+      'error', { alias: '@' },
+    ],
   },
   globals: {
     __IS_DEV__: true,

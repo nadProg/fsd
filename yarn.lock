@@ -6933,10 +6933,10 @@ eslint-module-utils@^2.7.2:
   dependencies:
     debug "^3.2.7"
 
-eslint-plugin-feature-sliced-design@1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-feature-sliced-design/-/eslint-plugin-feature-sliced-design-1.0.0.tgz#d2ee9a0a826d3c9f715e15e5f2322d4aa489debf"
-  integrity sha512-oa1ti349VN5+FjzT97H66Uc354X1xV76toUb3YMLLX+shGJQhrcBUzxwt4FzSjZV3Cax0+kCNnc7ZNj19TtYXA==
+eslint-plugin-feature-sliced-design@1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-feature-sliced-design/-/eslint-plugin-feature-sliced-design-1.1.0.tgz#27c2bdeecc9df150bc5f4cf6edf915e096c74057"
+  integrity sha512-TrSBAkBx4NL+CwxfTO9A5uXWL6l0J4knuK5E72j34tgLPAzDUTMHqwdI68AOy3wU8mgZIzdl2tOLjTYKaX/kHA==
   dependencies:
     requireindex "^1.2.0"
 
