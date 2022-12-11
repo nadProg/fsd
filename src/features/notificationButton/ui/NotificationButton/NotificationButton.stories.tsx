@@ -7,6 +7,20 @@ import {
   InvertedBackgroundDecorator,
 } from '@/shared/config/storybook/InvertedBackgroundDectorator/InvertedBackgroundColor';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
+import { Notification } from '@/entities/Notification';
+
+const mockResponse: Notification[] = [
+  {
+    id: '1',
+    title: 'Title 1',
+    description: 'Description 1',
+  },
+  {
+    id: '2',
+    title: 'Title 2 ',
+    description: 'Description 2',
+  },
+];
 
 export default {
   title: 'features/NotificationButton',
@@ -22,9 +36,17 @@ export default {
       },
     },
   })],
+  parameters: {
+    mockData: [
+      {
+        url: `${__API_URL__}/notifications`,
+        method: 'GET',
+        status: 200,
+        response: mockResponse,
+      },
+    ],
+  },
 } as ComponentMeta<typeof NotificationButton>;
-
-// todo: mock api request
 
 const Template: ComponentStory<typeof NotificationButton> = (args) => <NotificationButton {...args} />;
 
