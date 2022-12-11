@@ -1,11 +1,11 @@
 module.exports = (componentName) => {
-  const componentProps = `${componentName}Props`
+  const componentProps = `${componentName}Props`;
 
   return `import { memo } from 'react';
 import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
 
-import { PropsWithClassName } from 'shared/types';
+import { PropsWithClassName } from '@/shared/types';
 
 import styles from './${componentName}.module.scss';
 
@@ -23,5 +23,5 @@ export const ${componentName} = memo((props: ${componentName}Props) => {
 });
 
 ${componentName}.displayName = '${componentName}';
-`
+`;
 };
