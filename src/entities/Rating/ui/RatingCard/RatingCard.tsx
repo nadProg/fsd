@@ -11,15 +11,16 @@ import { Drawer } from '@/shared/ui/Drawer';
 import { StarRating } from '@/shared/ui/StarRating';
 import { Text, TextVariant } from '@/shared/ui/Text';
 
-import { FeedBackForm } from '../FeedBackForm/FeedBackForm';
 import type { FeedBackFormData } from '../FeedBackForm/FeedBackForm';
+import type { RatingCardData } from '../../model/types/Rating';
+import { FeedBackForm } from '../FeedBackForm/FeedBackForm';
 
 import styles from './RatingCard.module.scss';
 
 type RatingProps = PropsWithClassName & {
   title?: string;
   rate?: Nullable<number>;
-  onRate?: (data: FeedBackFormData) => Promise<void> | void;
+  onRate?: (data: RatingCardData) => Promise<void> | void;
   onRateSuccess?: () => Promise<void> | void;
   onRateError?: () => Promise<void> | void;
 };
@@ -44,14 +45,22 @@ export const RatingCard = memo(({
   }, [setIsModalOpen]);
 
   const onFeedBackFormSubmit = useCallback(async (data: FeedBackFormData) => {
+    if (!chosenRating) {
+      throw new Error('Rate is required');
+    }
+
     try {
-      await onRate?.(data);
+      const ratingCardData: RatingCardData = {
+        rate: chosenRating,
+        feedback: data.feedBack,
+      };
+      await onRate?.(ratingCardData);
       closeModal({ success: true });
       onRateSuccess?.();
     } catch (error) {
       onRateError?.();
     }
-  }, [onRate, onRateSuccess, onRateError, closeModal]);
+  }, [onRate, onRateSuccess, onRateError, closeModal, chosenRating]);
 
   return (
     <Card className={classNames(className, styles.Rating)}>

@@ -1,3 +1,7 @@
 .ArticleRating {
-  // styles
+  transition: opacity 300ms;
+}
+
+.fetching {
+  opacity: 0.5;
 }
