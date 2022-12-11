@@ -11,7 +11,7 @@ import { Currency } from '@/entities/Currency';
 import { EditableProfileCard } from './EditableProfileCard';
 
 export default {
-  title: 'features/EditableProfileCard',
+  title: 'features/editableProfileCard',
   component: EditableProfileCard,
   argTypes: {
     backgroundColor: { control: 'color' },

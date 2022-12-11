@@ -13,7 +13,7 @@ import { Article, ArticleType } from '../../model/types/article';
 const store: DeepPartial<StateSchema> = {};
 
 export default {
-  title: 'entities/ArticleDetails',
+  title: 'entities/Article/ArticleDetails',
   component: ArticleDetails,
   argTypes: {
     backgroundColor: { control: 'color' },

@@ -10,7 +10,7 @@ import {
 import { LangSwitcher } from './LangSwitcher';
 
 export default {
-  title: 'widgets/LangSwitcher',
+  title: 'features/LangSwitcher',
   component: LangSwitcher,
   argTypes: {
     backgroundColor: { control: 'color' },

@@ -7,7 +7,7 @@ import { ArticleTypeTab } from '../../model/types/article';
 import { ArticleTypeTabs } from './ArticleTypeTabs';
 
 export default {
-  title: 'entities/ArticleTypeTabs',
+  title: 'entities/Article/ArticleTypeTabs',
   component: ArticleTypeTabs,
   argTypes: {
     backgroundColor: { control: 'color' },

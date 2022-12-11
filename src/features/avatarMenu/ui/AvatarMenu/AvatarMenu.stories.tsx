@@ -6,7 +6,7 @@ import { Theme } from '@/shared/providers/ThemeProvider';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
 
 export default {
-  title: 'features/AvatarMenu',
+  title: 'features/avatarMenu',
   component: AvatarMenu,
   argTypes: {
     backgroundColor: { control: 'color' },

@@ -5,7 +5,7 @@ import {
 } from './Flex';
 
 export default {
-  title: 'shared/Flex',
+  title: 'shared/Stack/Flex',
   component: Flex,
   argTypes: {
     backgroundColor: { control: 'color' },

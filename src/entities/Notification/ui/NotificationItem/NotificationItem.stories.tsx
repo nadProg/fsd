@@ -5,7 +5,7 @@ import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDe
 import { Theme } from '@/shared/providers/ThemeProvider';
 
 export default {
-  title: 'entities/NotificationItems',
+  title: 'entities/Notification/NotificationItems',
   component: NotificationItem,
   argTypes: {
     backgroundColor: { control: 'color' },

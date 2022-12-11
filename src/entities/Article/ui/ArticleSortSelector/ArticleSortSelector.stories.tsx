@@ -6,7 +6,7 @@ import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDe
 import { ArticleSortSelector } from './ArticleSortSelector';
 
 export default {
-  title: 'entities/ArticleSortSelector',
+  title: 'entities/Article/ArticleSortSelector',
   component: ArticleSortSelector,
   argTypes: {
     backgroundColor: { control: 'color' },

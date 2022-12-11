@@ -10,7 +10,7 @@ import { StateSchema } from '@/app/providers/StoreProvider';
 import { LoginForm } from './LoginForm';
 
 export default {
-  title: 'features/LoginForm',
+  title: 'features/authByUsername/LoginForm',
   component: LoginForm,
   argTypes: {
     backgroundColor: { control: 'color' },
