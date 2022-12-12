@@ -67,6 +67,9 @@ module.exports = {
     'feature-sliced-design/relative-path-within-slice': [
       'error', { alias: '@' },
     ],
+    'feature-sliced-design/public-api-slice-import': [
+      'error', { alias: '@', ignoreLayers: ['shared', 'app'] },
+    ],
   },
   globals: {
     __IS_DEV__: true,

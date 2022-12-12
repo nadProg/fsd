@@ -2,12 +2,13 @@ import { createEntityAdapter, createSlice, PayloadAction } from '@reduxjs/toolki
 
 import { ValuesOf } from '@/shared/types';
 
-import { Article, ArticleSortField, ArticleView } from '@/entities/Article';
+import {
+  Article, ArticleSortField, ArticleView, ArticleType,
+} from '@/entities/Article';
 
 import { StateSchema } from '@/app/providers/StoreProvider';
 
 import { SortOrder } from '@/shared/constants/queryParams';
-import { ArticleType } from '@/entities/Article/model/types/article';
 import { initialArticlesPageState } from './initialArticlePageState';
 import { fetchArticles } from '../../services/fetchArticles/fetchArticles';
 

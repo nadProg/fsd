@@ -3,11 +3,10 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ValuesOf } from '@/shared/types';
 import { SortOrder } from '@/shared/constants/queryParams';
 
-import { ArticleSortField } from '@/entities/Article';
+import { ArticleSortField, ArticleType } from '@/entities/Article';
 
-import { ThunkConfig } from '@/app/providers/StoreProvider';
+import type { ThunkConfig } from '@/app/providers/StoreProvider';
 
-import { ArticleType } from '@/entities/Article/model/types/article';
 import { fetchArticles } from '../fetchArticles/fetchArticles';
 import { articlesPageActions } from '../../slices/articlePageSlice/articlesPageSlice';
 import { getArticlesPagePage } from '../../selectors/getArticlesPagePage/getArticlesPagePage';

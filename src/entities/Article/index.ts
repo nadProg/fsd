@@ -2,7 +2,9 @@ import { ArticleDetails } from './ui/ArticleDetails/ArticleDetails';
 import { articleDetailsReducer } from './model/slice/articleDetailsSlice';
 import type { ArticleDetailsSchema } from './model/types/articleDetailsSchema';
 import { getArticleDetailsData } from './model/selectors/getArticleDetailsData/getArticleDetailsData';
-import { ArticleView, ArticleSortField, ArticleTypeTab } from './model/types/article';
+import {
+  ArticleView, ArticleSortField, ArticleTypeTab, ArticleType,
+} from './model/types/article';
 import { ArticleList } from './ui/ArticleList/ArticleList';
 import type { Article } from './model/types/article';
 import { ArticleViewSelector } from './ui/ArticleViewSelector/ArticleViewSelector';
@@ -19,6 +21,7 @@ export {
   ArticleViewSelector,
   ArticleSortSelector,
   ArticleTypeTab,
+  ArticleType,
   ArticleTypeTabs,
 };
 

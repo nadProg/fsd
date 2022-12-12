@@ -1,3 +1,4 @@
+/* eslint-disable feature-sliced-design/public-api-slice-import */
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { Story } from '@storybook/react';
 
