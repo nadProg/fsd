@@ -7,7 +7,7 @@ import { PropsWithClassName } from '@/shared/types';
 import { Button } from '@/shared/ui/Button';
 import { Avatar } from '@/shared/ui/Avatar';
 import { DropDown, DropDownItemType } from '@/shared/ui/DropDown';
-import { RoutePath } from '@/shared/config/router/routeConfig/routeConfig';
+import { RoutePath } from '@/shared/constants/router';
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch';
 
 import {

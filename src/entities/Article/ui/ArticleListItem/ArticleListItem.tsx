@@ -11,7 +11,7 @@ import { Avatar } from '@/shared/ui/Avatar';
 import { useHover } from '@/shared/hooks/useHover';
 import { Button, ButtonTheme } from '@/shared/ui/Button';
 import { AppLink, AppLinkProps } from '@/shared/ui/AppLink';
-import { RoutePath } from '@/shared/config/router/routeConfig/routeConfig';
+import { RoutePath } from '@/shared/constants/router';
 
 import {
   Article, ArticleBlockType, ArticleTextBlock, ArticleView,

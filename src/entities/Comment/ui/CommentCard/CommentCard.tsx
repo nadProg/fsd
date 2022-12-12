@@ -8,7 +8,7 @@ import { Text, TextVariant } from '@/shared/ui/Text';
 import { Skeleton } from '@/shared/ui/Skeleton';
 import { AppLink } from '@/shared/ui/AppLink';
 import { HStack, VStack } from '@/shared/ui/Stack';
-import { RoutePath } from '@/shared/config/router/routeConfig/routeConfig';
+import { RoutePath } from '@/shared/constants/router';
 
 import type { Comment } from '../../model/types/comment';
 

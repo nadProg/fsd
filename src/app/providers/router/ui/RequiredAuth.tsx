@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { Navigate, useLocation } from 'react-router-dom';
 
 import { PropsWithChildren } from '@/shared/types';
-import { RoutePath } from '@/shared/config/router/routeConfig/routeConfig';
+import { RoutePath } from '@/shared/constants/router';
 
 import type { ValuesOfUserRole } from '@/entities/User';
 import { getUserAuthData, getUserAuthDataRoles } from '@/entities/User';

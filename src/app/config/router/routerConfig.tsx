@@ -1,52 +1,22 @@
-import { RouteProps } from 'react-router-dom';
+import type { RouteProps } from 'react-router-dom';
 
-import { ValuesOf } from '@/shared/types';
-
-import { UserRole, ValuesOfUserRole } from '@/entities/User';
+import { AppRoute, RoutePath, ValuesOfAppRoute } from '@/shared/constants/router';
 
 import { MainPage } from '@/pages/MainPage';
 import { AboutPage } from '@/pages/AboutPage';
 import { ProfilePage } from '@/pages/ProfilePage';
-import { NotFoundPage } from '@/pages/NotFoundPage';
 import { ArticlesPage } from '@/pages/ArticlesPage';
+import { ArticleDetailsPage } from '@/pages/ArticleDetailsPage';
 import { ArticleEditPage } from '@/pages/ArticleEditPage';
 import { AdminPanelPage } from '@/pages/AdminPanelPage';
+import { UserRole, ValuesOfUserRole } from '@/entities/User';
 import { ForbiddenPage } from '@/pages/ForbiddenPage';
-import { ArticleDetailsPage } from '@/pages/ArticleDetailsPage';
-
-export const AppRoute = {
-  Main: 'main',
-  About: 'about',
-  Profile: 'profile',
-  Articles: 'articles',
-  ArticleDetails: 'article_details',
-  ArticleCreate: 'article_create',
-  ArticleEdit: 'article_edit',
-  AdminPanel: 'admin_panel',
-  Forbidden: 'forbidden',
-  NotFound: 'not_found',
-} as const;
-
-type ValuesOfAppRoute = ValuesOf<typeof AppRoute>;
+import { NotFoundPage } from '@/pages/NotFoundPage';
 
 export type AppRouteProps = RouteProps & {
   authOnly?: boolean;
   roles?: ValuesOfUserRole[]
 };
-
-export const RoutePath: Record<ValuesOfAppRoute, string> = {
-  [AppRoute.Main]: '/',
-  [AppRoute.About]: '/about',
-  [AppRoute.Profile]: '/profile/',
-  [AppRoute.Articles]: '/articles',
-  [AppRoute.ArticleDetails]: '/articles/',
-  [AppRoute.ArticleCreate]: '/articles/new',
-  [AppRoute.ArticleEdit]: '/articles/:id/edit',
-  [AppRoute.AdminPanel]: '/admin',
-  [AppRoute.Forbidden]: '/forbidden',
-  [AppRoute.NotFound]: '*',
-};
-
 export const routerConfig: Record<ValuesOfAppRoute, AppRouteProps> = {
   [AppRoute.Main]: {
     path: RoutePath[AppRoute.Main],

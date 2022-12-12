@@ -5,7 +5,7 @@ import classNames from 'classnames';
 
 import { AppLink } from '@/shared/ui/AppLink';
 import { Button, ButtonTheme } from '@/shared/ui/Button';
-import { RoutePath } from '@/shared/config/router/routeConfig/routeConfig';
+import { RoutePath } from '@/shared/constants/router';
 
 import {
   getUserAuthData,
