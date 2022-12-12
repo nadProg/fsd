@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { Navigate, useLocation } from 'react-router-dom';
 
 import { PropsWithChildren } from '@/shared/types';
-import { RoutePath } from '@/shared/constants/router';
+import { AppRoute } from '@/shared/constants/router';
 
 import type { ValuesOfUserRole } from '@/entities/User';
 import { getUserAuthData, getUserAuthDataRoles } from '@/entities/User';
@@ -27,11 +27,11 @@ export const RequireAuth = ({ children, roles }: RequireAuthProps) => {
   }, [roles, userRoles]);
 
   if (!authData) {
-    return <Navigate to={RoutePath.main} state={{ from: location }} replace />;
+    return <Navigate to={AppRoute.Main()} state={{ from: location }} replace />;
   }
 
   if (!hasRequiredRoles) {
-    return <Navigate to={RoutePath.forbidden} state={{ from: location }} replace />;
+    return <Navigate to={AppRoute.Forbidden()} state={{ from: location }} replace />;
   }
 
   // eslint-disable-next-line react/jsx-no-useless-fragment

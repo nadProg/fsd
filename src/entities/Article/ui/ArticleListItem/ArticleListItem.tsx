@@ -11,7 +11,7 @@ import { Avatar } from '@/shared/ui/Avatar';
 import { useHover } from '@/shared/hooks/useHover';
 import { Button, ButtonTheme } from '@/shared/ui/Button';
 import { AppLink, AppLinkProps } from '@/shared/ui/AppLink';
-import { RoutePath } from '@/shared/constants/router';
+import { AppRoute } from '@/shared/constants/router';
 
 import {
   Article, ArticleBlockType, ArticleTextBlock, ArticleView,
@@ -34,7 +34,7 @@ export const ArticleListItem: FC<ArticleListItemProps> = (props) => {
   const [isHover, hoverProps] = useHover();
   const formattedTypes = article.types.join(' ');
 
-  const articlePath = `${RoutePath.article_details}${article.id}`;
+  const articlePath = AppRoute.ArticleDetails(article.id);
 
   if (view === ArticleView.List) {
     const textBlock = article.blocks.find(

@@ -7,7 +7,7 @@ import { PropsWithClassName } from '@/shared/types';
 import { Button } from '@/shared/ui/Button';
 import { Avatar } from '@/shared/ui/Avatar';
 import { DropDown, DropDownItemType } from '@/shared/ui/DropDown';
-import { RoutePath } from '@/shared/constants/router';
+import { AppRoute } from '@/shared/constants/router';
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch';
 
 import {
@@ -24,6 +24,8 @@ export const AvatarMenu = memo((props: AvatarMenuProps) => {
   const isAdmin = useSelector(getIsUserAdmin);
   const isManager = useSelector(getIsUserManager);
 
+  const userId = authData?.id;
+
   const dispatch = useAppDispatch();
 
   const isAdminPanelAvailable = isAdmin || isManager;
@@ -37,13 +39,13 @@ export const AvatarMenu = memo((props: AvatarMenuProps) => {
       type: DropDownItemType.Link,
       value: 'admin',
       label: t('navbar.admin-panel'),
-      href: RoutePath.admin_panel,
+      href: AppRoute.AdminPanel(),
     }]) : []),
     {
       type: DropDownItemType.Link,
       value: 'profile',
       label: t('navbar.profile'),
-      href: `${RoutePath.profile}${authData?.id}`,
+      href: AppRoute.Profile(userId),
     },
     {
       type: DropDownItemType.Button,
@@ -51,10 +53,10 @@ export const AvatarMenu = memo((props: AvatarMenuProps) => {
       label: t('navbar.logout'),
       onClick: onLogout,
     },
-  ]), [onLogout, authData?.id, t, isAdminPanelAvailable]);
+  ]), [onLogout, userId, t, isAdminPanelAvailable]);
 
   // todo: make props ?
-  if (!authData) {
+  if (!userId) {
     return null;
   }
 

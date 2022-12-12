@@ -5,7 +5,7 @@ import classNames from 'classnames';
 
 import { AppLink } from '@/shared/ui/AppLink';
 import { Button, ButtonTheme } from '@/shared/ui/Button';
-import { RoutePath } from '@/shared/constants/router';
+import { AppRoute } from '@/shared/constants/router';
 
 import {
   getUserAuthData,
@@ -37,7 +37,7 @@ export const TopBar = ({ className }: NavBarProps) => {
   if (authData) {
     return (
       <header className={classNames(styles.TopBar, className)}>
-        <AppLink to={RoutePath.article_create}>
+        <AppLink to={AppRoute.ArticleCreate()}>
           <Button
             theme={ButtonTheme.Background}
             type="button"

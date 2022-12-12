@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { AppLink } from '@/shared/ui/AppLink';
 import type { PropsWithClassName } from '@/shared/types';
 import { Button, ButtonTheme } from '@/shared/ui/Button';
-import { RoutePath } from '@/shared/constants/router';
+import { AppRoute } from '@/shared/constants/router';
 
 import { getArticleDetailsData } from '@/entities/Article';
 
@@ -17,14 +17,14 @@ import styles from './ArticleDetailsPageHeader.module.scss';
 
 type ArticleDetailsPageHeaderProps = PropsWithClassName;
 
-const BACK_PATH = RoutePath.articles;
+const BACK_PATH = AppRoute.Articles();
 
 export const ArticleDetailsPageHeader = ({ className }: ArticleDetailsPageHeaderProps): JSX.Element => {
   const { t } = useTranslation();
   const isAuthorView = useSelector(getIsArticleAuthorView);
   const article = useSelector(getArticleDetailsData);
 
-  const editPath = `${RoutePath.articles}/${article?.id}/edit`;
+  const editPath = AppRoute.ArticleEdit(article?.id);
 
   return (
     <div className={classNames(className, styles.ArticleDetailsPageHeader)}>

@@ -1,6 +1,6 @@
 import { createSelector } from '@reduxjs/toolkit';
 
-import { RoutePath } from '@/shared/constants/router';
+import { AppRoute } from '@/shared/constants/router';
 
 import HomeIcon from '@/shared/assets/icons/home.svg';
 import AboutIcon from '@/shared/assets/icons/about.svg';
@@ -14,12 +14,12 @@ import { SideBarItem } from '../types/sidebar';
 export const getSideBarItems = createSelector(getUserAuthData, (userData): SideBarItem[] => {
   let items: SideBarItem[] = [
     {
-      path: RoutePath.main,
+      path: AppRoute.Main(),
       key: 'main',
       icon: HomeIcon,
     },
     {
-      path: RoutePath.about,
+      path: AppRoute.About(),
       key: 'about',
       icon: AboutIcon,
     },
@@ -29,13 +29,13 @@ export const getSideBarItems = createSelector(getUserAuthData, (userData): SideB
     const id = userData?.id;
     items = items.concat([
       {
-        path: RoutePath.profile + id,
+        path: AppRoute.Profile(id),
         key: 'profile',
         icon: ProfileIcon,
 
       },
       {
-        path: RoutePath.articles,
+        path: AppRoute.Articles(),
         key: 'articles',
         icon: ArticleIcon,
       },

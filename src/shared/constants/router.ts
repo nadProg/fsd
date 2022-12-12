@@ -1,29 +1,26 @@
-import type { ValuesOf } from '@/shared/types';
-
-export const AppRoute = {
-  Main: 'main',
+const Path = {
   About: 'about',
   Profile: 'profile',
   Articles: 'articles',
-  ArticleDetails: 'article_details',
-  ArticleCreate: 'article_create',
-  ArticleEdit: 'article_edit',
-  AdminPanel: 'admin_panel',
+  New: 'new',
+  Edit: 'edit',
+  Admin: 'admin',
   Forbidden: 'forbidden',
-  NotFound: 'not_found',
 } as const;
 
-export type ValuesOfAppRoute = ValuesOf<typeof AppRoute>;
+const getRoutePath = (...paths: string[]) => `/${paths.join('/')}`;
 
-export const RoutePath: Record<ValuesOfAppRoute, string> = {
-  [AppRoute.Main]: '/',
-  [AppRoute.About]: '/about',
-  [AppRoute.Profile]: '/profile/',
-  [AppRoute.Articles]: '/articles',
-  [AppRoute.ArticleDetails]: '/articles/',
-  [AppRoute.ArticleCreate]: '/articles/new',
-  [AppRoute.ArticleEdit]: '/articles/:id/edit',
-  [AppRoute.AdminPanel]: '/admin',
-  [AppRoute.Forbidden]: '/forbidden',
-  [AppRoute.NotFound]: '*',
-};
+const ID_PLACEHOLDER = ':id';
+
+export const AppRoute = {
+  Main: () => getRoutePath(),
+  About: () => getRoutePath(Path.About),
+  Profile: (id = ID_PLACEHOLDER) => getRoutePath(Path.Profile, id),
+  Articles: () => getRoutePath(Path.Articles),
+  ArticleDetails: (id = ID_PLACEHOLDER) => getRoutePath(Path.Articles, id),
+  ArticleCreate: () => getRoutePath(Path.Articles, Path.New),
+  ArticleEdit: (id = ID_PLACEHOLDER) => getRoutePath(Path.Articles, id, Path.Edit),
+  AdminPanel: () => getRoutePath(Path.Admin),
+  Forbidden: () => getRoutePath(Path.Forbidden),
+  NotFound: () => '*',
+} as const;

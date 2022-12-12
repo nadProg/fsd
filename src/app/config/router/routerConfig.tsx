@@ -1,6 +1,9 @@
 import type { RouteProps } from 'react-router-dom';
 
-import { AppRoute, RoutePath, ValuesOfAppRoute } from '@/shared/constants/router';
+import { AppRoute } from '@/shared/constants/router';
+
+import type { ValuesOfUserRole } from '@/entities/User';
+import { UserRole } from '@/entities/User';
 
 import { MainPage } from '@/pages/MainPage';
 import { AboutPage } from '@/pages/AboutPage';
@@ -9,7 +12,6 @@ import { ArticlesPage } from '@/pages/ArticlesPage';
 import { ArticleDetailsPage } from '@/pages/ArticleDetailsPage';
 import { ArticleEditPage } from '@/pages/ArticleEditPage';
 import { AdminPanelPage } from '@/pages/AdminPanelPage';
-import { UserRole, ValuesOfUserRole } from '@/entities/User';
 import { ForbiddenPage } from '@/pages/ForbiddenPage';
 import { NotFoundPage } from '@/pages/NotFoundPage';
 
@@ -17,53 +19,53 @@ export type AppRouteProps = RouteProps & {
   authOnly?: boolean;
   roles?: ValuesOfUserRole[]
 };
-export const routerConfig: Record<ValuesOfAppRoute, AppRouteProps> = {
-  [AppRoute.Main]: {
-    path: RoutePath[AppRoute.Main],
+export const routerConfig: Record<keyof typeof AppRoute, AppRouteProps> = {
+  Main: {
+    path: AppRoute.Main(),
     element: <MainPage />,
   },
-  [AppRoute.About]: {
-    path: RoutePath[AppRoute.About],
+  About: {
+    path: AppRoute.About(),
     element: <AboutPage />,
   },
-  [AppRoute.Profile]: {
-    path: `${RoutePath[AppRoute.Profile]}:id`,
+  Profile: {
+    path: AppRoute.Profile(),
     element: <ProfilePage />,
     authOnly: true,
   },
-  [AppRoute.Articles]: {
-    path: RoutePath[AppRoute.Articles],
+  Articles: {
+    path: AppRoute.Articles(),
     element: <ArticlesPage />,
     authOnly: true,
   },
-  [AppRoute.ArticleDetails]: {
-    path: `${RoutePath[AppRoute.ArticleDetails]}:id`,
+  ArticleDetails: {
+    path: AppRoute.ArticleDetails(),
     element: <ArticleDetailsPage />,
     authOnly: true,
   },
-  [AppRoute.ArticleCreate]: {
-    path: RoutePath[AppRoute.ArticleCreate],
+  ArticleCreate: {
+    path: AppRoute.ArticleCreate(),
     element: <ArticleEditPage />,
     authOnly: true,
   },
-  [AppRoute.ArticleEdit]: {
-    path: RoutePath[AppRoute.ArticleEdit],
+  ArticleEdit: {
+    path: AppRoute.ArticleEdit(),
     element: <ArticleEditPage />,
     authOnly: true,
   },
-  [AppRoute.AdminPanel]: {
-    path: RoutePath[AppRoute.AdminPanel],
+  AdminPanel: {
+    path: AppRoute.AdminPanel(),
     element: <AdminPanelPage />,
     authOnly: true,
     roles: [UserRole.Manager, UserRole.Admin],
   },
-  [AppRoute.Forbidden]: {
-    path: RoutePath[AppRoute.Forbidden],
+  Forbidden: {
+    path: AppRoute.Forbidden(),
     element: <ForbiddenPage />,
     authOnly: true,
   },
-  [AppRoute.NotFound]: {
-    path: RoutePath[AppRoute.NotFound],
+  NotFound: {
+    path: AppRoute.NotFound(),
     element: <NotFoundPage />,
   },
 };
