@@ -3,11 +3,11 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Theme } from '@/shared/providers/ThemeProvider';
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
 
-import { ArticleTypeTab } from '../../model/types/article';
+import { ArticleTypeTab } from '../../model/constants';
 import { ArticleTypeTabs } from './ArticleTypeTabs';
 
 export default {
-  title: 'entities/Article/ArticleTypeTabs',
+  title: 'features/ArticleTypeTabs',
   component: ArticleTypeTabs,
   argTypes: {
     backgroundColor: { control: 'color' },

@@ -6,7 +6,7 @@ import { Select } from '@/shared/ui/Select';
 import { SortOrder } from '@/shared/constants/queryParams';
 import { Option, PropsWithClassName, ValuesOf } from '@/shared/types';
 
-import { ArticleSortField } from '../../model/types/article';
+import { ArticleSortField } from '../../model/constants';
 
 import styles from './ArticleSortSelector.module.scss';
 

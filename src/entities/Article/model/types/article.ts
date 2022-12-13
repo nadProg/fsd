@@ -1,5 +1,5 @@
-import { ValuesOf } from '@/shared/types';
-import { User } from '@/entities/User';
+import type { ValuesOf } from '@/shared/types';
+import type { User } from '@/entities/User';
 
 export const ArticleBlockType = {
   Code: 'CODE',
@@ -52,16 +52,3 @@ export const ArticleView = {
   List: 'list',
   Grid: 'grid',
 } as const;
-
-export const ArticleSortField = {
-  Views: 'views',
-  Title: 'title',
-  CreatedAt: 'createdAt',
-} as const;
-
-export const ArticleTypeTab = {
-  All: 'ALL',
-  ...ArticleType,
-} as const;
-
-export type ValuesOfArticleTypeTab = ValuesOf<typeof ArticleTypeTab>;

@@ -1,8 +1,9 @@
-import { ArticleSortField, ArticleView } from '@/entities/Article';
+import { ArticleView } from '@/entities/Article';
+import { ArticleSortField } from '@/features/ArticleSortSelector';
 
 import { SortOrder } from '@/shared/constants/queryParams';
 
-import { ArticlesPageSchema } from '../../types/articlesPageSchema';
+import type { ArticlesPageSchema } from '../../types/articlesPageSchema';
 
 export const initialArticlesPageState: ArticlesPageSchema = {
   isLoading: true,
