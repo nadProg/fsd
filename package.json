@@ -6,7 +6,7 @@
   "scripts": {
     "start": "webpack serve",
     "start-server:dev": "node ./json-server/index.js",
-    "start:dev": "concurrently \"yarn start\" \"yarn start-server:dev\"",
+    "start:dev": "concurrently -n Client,API \"yarn start\" \"yarn start-server:dev\"",
     "build": "webpack --env apiUrl=\"https://fsd-backend.vercel.app/\"",
     "build:prod": "webpack --env prod apiUrl=\"https://fsd-backend.vercel.app/\"",
     "analyze:prod": "webpack --env prod analyze apiUrl=\"https://fsd-backend.vercel.app/\"",

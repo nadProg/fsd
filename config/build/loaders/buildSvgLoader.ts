@@ -3,6 +3,7 @@ import { RuleSetRule } from 'webpack';
 
 export const buildSvgLoader = (): RuleSetRule => ({
   test: /\.svg$/,
+  exclude: /node_modules/,
   use: [{
     loader: '@svgr/webpack',
     options: {

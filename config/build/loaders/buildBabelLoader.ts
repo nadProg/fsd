@@ -11,9 +11,12 @@ export const buildBabelLoader = ({
   isDev,
   isTsx,
 }: BabelLoaderOptions): RuleSetRule => {
+  const isProd = !isDev;
+
   const babelLoaderItem: RuleSetUseItem = {
     loader: 'babel-loader',
     options: {
+      cacheDirectory: true,
       plugins: [
         ['@babel/plugin-transform-typescript',
           {
@@ -31,7 +34,7 @@ export const buildBabelLoader = ({
       babelLoaderItem.options.plugins.push('react-refresh/babel');
     }
 
-    if (isTsx) {
+    if (isProd && isTsx) {
       babelLoaderItem.options.plugins.push([
         babelRemovePropsPlugin, { props: ['data-testid'] },
       ]);
