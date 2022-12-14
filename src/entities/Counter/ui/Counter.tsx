@@ -1,25 +1,22 @@
-import { FC } from 'react';
 import classNames from 'classnames';
-import { useDispatch, useSelector } from 'react-redux';
 
 import type { PropsWithClassName } from '@/shared/types';
 
-import { counterActions } from '../model/slice/CounterSlice';
-
-import { getCounterValue } from '../model/selectors/getCounterValue/getCounterValue';
+import { useCounterActions } from '../model/slice/CounterSlice';
+import { useCounterValue } from '../model/selectors/getCounterValue/getCounterValue';
 
 type CounterProps = PropsWithClassName;
 
-export const Counter: FC<CounterProps> = ({ className }) => {
-  const dispatch = useDispatch();
-  const counterValue = useSelector(getCounterValue);
+export const Counter = ({ className }: CounterProps): JSX.Element => {
+  const counterValue = useCounterValue();
+  const counterActions = useCounterActions();
 
   const increase = () => {
-    dispatch(counterActions.increment());
+    counterActions.increment();
   };
 
   const decrease = () => {
-    dispatch(counterActions.decrement());
+    counterActions.decrement();
   };
 
   return (
