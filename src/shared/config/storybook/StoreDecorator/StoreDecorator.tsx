@@ -1,21 +1,16 @@
-/* eslint-disable feature-sliced-design/public-api-slice-import */
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { Story } from '@storybook/react';
 
 import { ReducersMapObject } from '@reduxjs/toolkit';
-import { loginReducer } from '@/features/AuthByUsername';
 import { ReducersList } from '@/shared/hooks/useDynamicReducers';
 import { DeepPartial } from '@/shared/types';
 
-import { articleDetailsReducer } from '@/entities/Article';
-
-import { addCommentFormReducer } from '@/features/addCommentForm/model/slice/addCommentFormSlice';
-import { editableProfileSliceReducer } from '@/features/editableProfileCard';
-
-import { articlesPageReducer } from '@/pages/ArticlesPage/model/slices/articlePageSlice/articlesPageSlice';
-import {
-  articleDetailPageReducer,
-} from '@/pages/ArticleDetailsPage/model/slices/articleDetailsPageSlice/articleDetailPageSlice';
+import { articleDetailsReducer } from '@/entities/Article/testing';
+import { loginReducer } from '@/features/AuthByUsername/testing';
+import { addCommentFormReducer } from '@/features/addCommentForm/testing';
+import { editableProfileSliceReducer } from '@/features/editableProfileCard/testing';
+import { articlesPageReducer } from '@/pages/ArticlesPage/testing';
+import { articleDetailPageReducer } from '@/pages/ArticleDetailsPage/testing';
 
 import { StateSchema, StoreProvider } from '@/app/providers/StoreProvider';
 

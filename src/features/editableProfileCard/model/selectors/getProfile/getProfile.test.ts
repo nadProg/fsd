@@ -2,8 +2,8 @@ import { DeepPartial } from '@/shared/types';
 
 import { StateSchema } from '@/app/providers/StoreProvider';
 
-import { Currency } from '@/entities/Currency';
-import { Country } from '@/entities/Country';
+import { Currency } from '@/entities/Currency/testing';
+import { Country } from '@/entities/Country/testing';
 
 import { getProfile } from './getProfile';
 

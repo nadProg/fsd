@@ -1,7 +1,7 @@
 import { DeepPartial } from '@/shared/types';
 
-import { Country } from '@/entities/Country';
-import { Currency } from '@/entities/Currency';
+import { Country } from '@/entities/Country/testing';
+import { Currency } from '@/entities/Currency/testing';
 
 import { EditableProfileCardSchema, ValidateProfileError } from '../types/editableProfileCardSchema';
 import { updateProfileData } from '../services/updateProfileData/updateProfileData';

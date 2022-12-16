@@ -2,7 +2,7 @@ import { TestAsyncThunk } from '@/shared/lib/tests/TestAsyncThunk/TestAsyncThunk
 
 import { DeepPartial } from '@/shared/types';
 
-import { Article } from '@/entities/Article';
+import type { Article } from '@/entities/Article/testing';
 
 import { fetchArticles } from './fetchArticles';
 

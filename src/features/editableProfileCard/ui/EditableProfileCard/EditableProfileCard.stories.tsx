@@ -5,8 +5,8 @@ import { Theme } from '@/shared/providers/ThemeProvider';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
 
-import { Country } from '@/entities/Country';
-import { Currency } from '@/entities/Currency';
+import { Country } from '@/entities/Country/testing';
+import { Currency } from '@/entities/Currency/testing';
 
 import { EditableProfileCard } from './EditableProfileCard';
 

@@ -7,7 +7,7 @@ import {
   InvertedBackgroundDecorator,
 } from '@/shared/config/storybook/InvertedBackgroundDectorator/InvertedBackgroundColor';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
-import { Notification } from '@/entities/Notification';
+import type { Notification } from '@/entities/Notification/testing';
 
 const mockResponse: Notification[] = [
   {

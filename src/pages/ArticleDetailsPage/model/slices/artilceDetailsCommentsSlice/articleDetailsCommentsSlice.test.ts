@@ -1,8 +1,10 @@
-import { DeepPartial } from '@/shared/types';
-import { Comment } from '@/entities/Comment';
+import type { DeepPartial } from '@/shared/types';
+
+import type { Comment } from '@/entities/Comment/testing';
+
 import { articleDetailsCommentsReducer } from './articleDetailsCommentsSlice';
 import { fetchArticleDetailsComments } from '../../services/fetchArticleDetailsComments/fetchArticleDetailsComments';
-import { ArticleDetailsCommentsSchema } from '../../types/articleDetailsCommentsSchema';
+import type { ArticleDetailsCommentsSchema } from '../../types/articleDetailsCommentsSchema';
 
 const mockArticleId = '1';
 

@@ -68,7 +68,15 @@ module.exports = {
       'error', { alias: '@' },
     ],
     'feature-sliced-design/public-api-slice-import': [
-      'error', { alias: '@', ignoreLayers: ['shared', 'app'] },
+      'error', {
+        alias: '@',
+        ignoreLayers: ['shared', 'app'],
+        testFiles: [
+          '**/*.test.{ts,tsx}',
+          '**/*.stories.tsx',
+          '**/storybook/**/*[decorator].{ts,tsx}',
+        ],
+      },
     ],
   },
   globals: {

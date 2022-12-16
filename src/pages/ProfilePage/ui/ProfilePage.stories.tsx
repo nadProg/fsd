@@ -7,8 +7,8 @@ import { Theme } from '@/shared/providers/ThemeProvider';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
 import Image from '@/shared/assets/test/images/avatar.png';
 
-import { Country } from '@/entities/Country';
-import { Currency } from '@/entities/Currency';
+import { Country } from '@/entities/Country/testing';
+import { Currency } from '@/entities/Currency/testing';
 
 import { ProfilePage } from './ProfilePage';
 

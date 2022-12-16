@@ -1,6 +1,4 @@
-import { Currency } from './model/types/types';
-import { CurrencySelect, ValuesOfCurrency } from './ui/CurrencySelect/CurrencySelect';
+export { Currency } from './model/types/types';
+export { CurrencySelect } from './ui/CurrencySelect/CurrencySelect';
 
-export { Currency, CurrencySelect };
-
-export type { ValuesOfCurrency };
+export type { ValuesOfCurrency } from './ui/CurrencySelect/CurrencySelect';

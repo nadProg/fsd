@@ -1,10 +1,11 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
+import MockAvatar from '@/shared/assets/test/images/avatar.png';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
 
-import type { Article } from '@/entities/Article';
-import { ArticleType } from '@/entities/Article';
-import MockAvatar from '@/shared/assets/test/images/avatar.png';
+import type { Article } from '@/entities/Article/testing';
+import { ArticleType } from '@/entities/Article/testing';
+
 import { ArticleRecommendationsList } from './ArticleRecommendationsList';
 
 const limit = 3;

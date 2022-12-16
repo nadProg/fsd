@@ -6933,12 +6933,13 @@ eslint-module-utils@^2.7.2:
   dependencies:
     debug "^3.2.7"
 
-eslint-plugin-feature-sliced-design@1.3.1:
-  version "1.3.1"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-feature-sliced-design/-/eslint-plugin-feature-sliced-design-1.3.1.tgz#993ab66828aa45a4f82efcb132deafee053145f9"
-  integrity sha512-dbb0q1hTaUzyMX2+Pw/vB2iEunc3SX0RbT063bdiubZ223JbJM+YVoMC0xVQM7idDTDMBvHCbSgz7VmhjI7+nw==
+eslint-plugin-feature-sliced-design@1.4.0:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-feature-sliced-design/-/eslint-plugin-feature-sliced-design-1.4.0.tgz#860f3f9ef33d2f1362df55d06bf23f2719667dfc"
+  integrity sha512-EPX1HbC8f0RxWpt1W4VYXJ56I3onQ3njOQFq2WUGy3sXWrX3qlp0BX3FJmdfwCxujTAmHJdZtf475KdyKr67Zg==
   dependencies:
-    requireindex "^1.2.0"
+    micromatch "4.0.5"
+    requireindex "1.2.0"
 
 eslint-plugin-i18next@5.1.2:
   version "5.1.2"
@@ -10561,6 +10562,14 @@ microevent.ts@~0.1.1:
   resolved "https://registry.yarnpkg.com/microevent.ts/-/microevent.ts-0.1.1.tgz#70b09b83f43df5172d0205a63025bce0f7357fa0"
   integrity sha512-jo1OfR4TaEwd5HOrt5+tAZ9mqT4jmpNAusXtyfNzqVm9uiSYFZlKM1wYL4oU7azZW/PxQW53wM0S6OR1JHNa2g==
 
+micromatch@4.0.5, micromatch@^4.0.0, micromatch@^4.0.2, micromatch@^4.0.4:
+  version "4.0.5"
+  resolved "https://registry.yarnpkg.com/micromatch/-/micromatch-4.0.5.tgz#bc8999a7cbbf77cdc89f132f6e467051b49090c6"
+  integrity sha512-DMy+ERcEW2q8Z2Po+WNXuw3c5YaUSFjAO5GsJqfEl7UjvtIuFKO6ZrKvcItdy98dwFI2N1tg3zNIdKaQT+aNdA==
+  dependencies:
+    braces "^3.0.2"
+    picomatch "^2.3.1"
+
 micromatch@^3.1.10, micromatch@^3.1.4:
   version "3.1.10"
   resolved "https://registry.yarnpkg.com/micromatch/-/micromatch-3.1.10.tgz#70859bc95c9840952f359a068a3fc49f9ecfac23"
@@ -10579,14 +10588,6 @@ micromatch@^3.1.10, micromatch@^3.1.4:
     regex-not "^1.0.0"
     snapdragon "^0.8.1"
     to-regex "^3.0.2"
-
-micromatch@^4.0.0, micromatch@^4.0.2, micromatch@^4.0.4:
-  version "4.0.5"
-  resolved "https://registry.yarnpkg.com/micromatch/-/micromatch-4.0.5.tgz#bc8999a7cbbf77cdc89f132f6e467051b49090c6"
-  integrity sha512-DMy+ERcEW2q8Z2Po+WNXuw3c5YaUSFjAO5GsJqfEl7UjvtIuFKO6ZrKvcItdy98dwFI2N1tg3zNIdKaQT+aNdA==
-  dependencies:
-    braces "^3.0.2"
-    picomatch "^2.3.1"
 
 miller-rabin@^4.0.0:
   version "4.0.1"
@@ -12651,7 +12652,7 @@ require-from-string@^2.0.2:
   resolved "https://registry.yarnpkg.com/require-from-string/-/require-from-string-2.0.2.tgz#89a7fdd938261267318eafe14f9c32e598c36909"
   integrity sha512-Xf0nWe6RseziFMu+Ap9biiUbmplq6S9/p+7w7YXP/JBHhrUDDUhwa+vANyubuqfZWTveU//DYVGsDG7RKL/vEw==
 
-requireindex@^1.2.0:
+requireindex@1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/requireindex/-/requireindex-1.2.0.tgz#3463cdb22ee151902635aa6c9535d4de9c2ef1ef"
   integrity sha512-L9jEkOi3ASd9PYit2cwRfyppc9NoABujTP8/5gFcbERmo5jUoAKovIC3fsF17pkTnGsrByysqX+Kxd2OTNI1ww==
