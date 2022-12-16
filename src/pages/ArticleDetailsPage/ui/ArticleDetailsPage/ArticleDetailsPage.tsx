@@ -1,8 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
-import { Id } from '@/shared/types';
-import { Page } from '@/shared/ui/Page';
+import type { Id } from '@/shared/types';
 import { VStack } from '@/shared/ui/Stack';
 
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch';
@@ -13,6 +12,8 @@ import { ArticleDetails } from '@/entities/Article';
 
 import { ArticleRating } from '@/features/articleRating';
 import { ArticleRecommendationsList } from '@/features/articleRecommendationsList';
+
+import { Page } from '@/widgets/Page';
 
 import { ArticleDetailsComments } from '../ArticleDetailsComments/ArticleDetailsComments';
 import {

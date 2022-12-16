@@ -8,7 +8,7 @@ import { getUserInitialized, userActions } from '@/entities/User';
 import { TopBar } from '@/widgets/TopBar';
 import { SideBar } from '@/widgets/SideBar';
 
-import { AppRouter } from './providers/router';
+import { AppRouter } from './providers/AppRouter';
 
 export const App = () => {
   const dispatch = useDispatch();

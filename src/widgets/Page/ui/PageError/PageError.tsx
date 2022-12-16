@@ -1,14 +1,12 @@
 import { useTranslation } from 'react-i18next';
 import classNames from 'classnames';
+
 import { Button, ButtonTheme } from '@/shared/ui/Button';
+import type { PropsWithClassName } from '@/shared/types';
 
 import styles from './PageError.module.scss';
 
-type PageErrorProps = {
-  className?: string;
-};
-
-export const PageError = ({ className }: PageErrorProps) => {
+export const PageError = ({ className }: PropsWithClassName) => {
   const { t } = useTranslation();
 
   const reloadPage = () => window.location.reload();

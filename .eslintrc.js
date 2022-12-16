@@ -78,6 +78,14 @@ module.exports = {
         ],
       },
     ],
+    'feature-sliced-design/layers-hierarchy': [
+      'error',
+      {
+        alias: '@',
+        ignoredImports: ['**/app/providers/StoreProvider'],
+        ignoredFiles: ['**/storybook/**/*[decorator].{ts,tsx}'],
+      },
+    ],
   },
   globals: {
     __IS_DEV__: true,

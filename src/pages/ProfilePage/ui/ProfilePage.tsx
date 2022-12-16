@@ -1,12 +1,13 @@
 import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
-import { Page } from '@/shared/ui/Page';
-import { Id } from '@/shared/types';
+import type { Id } from '@/shared/types';
 import { VStack } from '@/shared/ui/Stack';
 import { Text } from '@/shared/ui/Text';
 
 import { EditableProfileCard } from '@/features/editableProfileCard';
+
+import { Page } from '@/widgets/Page';
 
 import styles from './ProfilePage.module.scss';
 

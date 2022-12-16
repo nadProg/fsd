@@ -2,9 +2,10 @@ import { memo } from 'react';
 import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
 
-import { Page } from '@/shared/ui/Page';
 import { PropsWithClassName } from '@/shared/types';
 import { Text, TextVariant } from '@/shared/ui/Text';
+
+import { Page } from '@/widgets/Page';
 
 import styles from './AdminPanelPage.module.scss';
 
