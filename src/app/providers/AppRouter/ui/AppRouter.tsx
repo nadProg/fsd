@@ -1,7 +1,7 @@
 import { FC, Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
-import { PageLoader } from '@/widgets/Page';
+import { PageLoader } from '@/shared/ui/PageLoader';
 
 import { routerConfig } from '../model/routerConfig';
 

@@ -1,9 +1,11 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { ArticleViewSelector } from 'src/features/ArticleViewSelector/ui/ArticleViewSelector/ArticleViewSelector';
-import { ArticleView } from 'src/entities/Article/model/types/article';
 import { Theme } from '@/shared/providers/ThemeProvider';
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
+
+import { ArticleView } from '@/entities/Article/testing';
+
+import { ArticleViewSelector } from './ArticleViewSelector';
 
 export default {
   title: 'features/ArticleViewSelector',

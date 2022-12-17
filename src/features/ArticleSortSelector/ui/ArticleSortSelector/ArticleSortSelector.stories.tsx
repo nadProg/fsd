@@ -1,8 +1,9 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { ArticleSortSelector } from 'src/features/ArticleSortSelector/ui/ArticleSortSelector/ArticleSortSelector';
 import { Theme } from '@/shared/providers/ThemeProvider';
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
+
+import { ArticleSortSelector } from './ArticleSortSelector';
 
 export default {
   title: 'features/ArticleSortSelector',

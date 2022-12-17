@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import classNames from 'classnames';
 
-import styles from 'src/widgets/Page/ui/Page/Page.module.scss';
 import type { PropsWithChildren, PropsWithClassName } from '@/shared/types';
 import { useMountEffect } from '@/shared/hooks/useMountEffect';
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch';
@@ -12,7 +11,9 @@ import { useThrottledCallback } from '@/shared/hooks/useThrottledCallback';
 
 import { getScrollPosition, scrollPositionSliceActions } from '@/features/keepScrollPosition';
 
-import { StateSchema } from '@/app/providers/StoreProvider';
+import type { StateSchema } from '@/app/providers/StoreProvider';
+
+import styles from './Page.module.scss';
 
 type PageProps = PropsWithChildren & PropsWithClassName & {
   onScrollEnd?: () => void;
