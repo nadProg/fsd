@@ -27,6 +27,7 @@ module.exports = {
     'i18next',
     'react-hooks',
     'feature-sliced-design',
+    'unused-imports',
   ],
   rules: {
     indent: 'off',
@@ -39,6 +40,7 @@ module.exports = {
     'import/extensions': 'off',
     'import/no-unresolved': 'off',
     'import/prefer-default-export': 'off',
+    'unused-imports/no-unused-imports': 'error',
     'react/prop-types': 'off',
     'react/react-in-jsx-scope': 'off',
     'react/require-default-props': 'off',
