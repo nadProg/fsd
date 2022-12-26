@@ -1,4 +1,4 @@
-import { screen } from '@testing-library/react';
+import { act, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import { ReducersList } from '@/shared/hooks/useDynamicReducers';
@@ -15,8 +15,8 @@ const asyncReducers: ReducersList = {
 };
 
 describe('features/EditableProfileCard', () => {
-  test('Render in readonly mode', () => {
-    renderComponent(<EditableProfileCard id={mockId} />, {
+  test('Render in readonly mode', async () => {
+    await act(() => renderComponent(<EditableProfileCard id={mockId} />, {
       initialState: {
         editableProfile: {
           readonly: true,
@@ -24,7 +24,7 @@ describe('features/EditableProfileCard', () => {
         },
       },
       asyncReducers,
-    });
+    }));
 
     const error = screen.queryByTestId('EditableProfileCard.Error');
     const editButton = screen.getByTestId('EditableProfileCardHeader.EditButton');
@@ -42,8 +42,8 @@ describe('features/EditableProfileCard', () => {
     expect(lastNameInput).toBeInTheDocument();
   });
 
-  test('Render in editable mode', () => {
-    renderComponent(<EditableProfileCard id={mockId} />, {
+  test('Render in editable mode', async () => {
+    await act(() => renderComponent(<EditableProfileCard id={mockId} />, {
       initialState: {
         editableProfile: {
           readonly: false,
@@ -51,7 +51,7 @@ describe('features/EditableProfileCard', () => {
         },
       },
       asyncReducers,
-    });
+    }));
 
     const error = screen.queryByTestId('EditableProfileCard.Error');
     const editButton = screen.queryByTestId('EditableProfileCardHeader.EditButton');
@@ -70,7 +70,7 @@ describe('features/EditableProfileCard', () => {
   });
 
   test('Should switch to editable mode in editable mode', async () => {
-    renderComponent(<EditableProfileCard id={mockId} />, {
+    await act(() => renderComponent(<EditableProfileCard id={mockId} />, {
       initialState: {
         editableProfile: {
           data: {
@@ -89,7 +89,7 @@ describe('features/EditableProfileCard', () => {
         },
       },
       asyncReducers,
-    });
+    }));
 
     let error = screen.queryByTestId('EditableProfileCard.Error');
     let editButton = screen.queryByTestId('EditableProfileCardHeader.EditButton');
@@ -103,7 +103,9 @@ describe('features/EditableProfileCard', () => {
     expect(cancelButton).not.toBeInTheDocument();
     expect(saveButton).not.toBeInTheDocument();
 
-    await userEvent.click(editButton as HTMLElement);
+    await act(async () => {
+      await userEvent.click(editButton as HTMLElement);
+    });
 
     error = screen.queryByTestId('EditableProfileCard.Error');
     editButton = screen.queryByTestId('EditableProfileCardHeader.EditButton');
@@ -121,7 +123,7 @@ describe('features/EditableProfileCard', () => {
   });
 
   test('Should save profile data', async () => {
-    renderComponent(<EditableProfileCard id={mockId} />, {
+    await act(() => renderComponent(<EditableProfileCard id={mockId} />, {
       initialState: {
         editableProfile: {
           data: {
@@ -146,25 +148,29 @@ describe('features/EditableProfileCard', () => {
         },
       },
       asyncReducers,
-    });
+    }));
 
     expect(screen.getByTestId('ProfileCard.FirstNameInput')).toHaveValue('first');
     expect(screen.getByTestId('ProfileCard.LastNameInput')).toHaveValue('last');
 
-    await userEvent.type(screen.getByTestId('ProfileCard.FirstNameInput'), ' type');
-    await userEvent.type(screen.getByTestId('ProfileCard.LastNameInput'), ' type');
+    await act(async () => {
+      await userEvent.type(screen.getByTestId('ProfileCard.FirstNameInput'), ' type');
+      await userEvent.type(screen.getByTestId('ProfileCard.LastNameInput'), ' type');
+    });
 
     expect(screen.getByTestId('ProfileCard.FirstNameInput')).toHaveValue('first type');
     expect(screen.getByTestId('ProfileCard.LastNameInput')).toHaveValue('last type');
 
-    await userEvent.click(screen.getByTestId('EditableProfileCardHeader.SaveButton'));
+    await act(async () => {
+      await userEvent.click(screen.getByTestId('EditableProfileCardHeader.SaveButton'));
+    });
 
     expect(screen.getByTestId('ProfileCard.FirstNameInput')).toHaveValue('first type');
     expect(screen.getByTestId('ProfileCard.LastNameInput')).toHaveValue('last type');
   });
 
   test('Should prevent saving invalid data', async () => {
-    renderComponent(<EditableProfileCard id={mockId} />, {
+    await act(() => renderComponent(<EditableProfileCard id={mockId} />, {
       initialState: {
         editableProfile: {
           data: {
@@ -189,15 +195,17 @@ describe('features/EditableProfileCard', () => {
         },
       },
       asyncReducers,
-    });
+    }));
 
     expect(screen.getByTestId('ProfileCard.FirstNameInput')).toHaveValue('first');
     expect(screen.getByTestId('ProfileCard.LastNameInput')).toHaveValue('last');
 
-    await userEvent.clear(screen.getByTestId('ProfileCard.FirstNameInput'));
-    await userEvent.clear(screen.getByTestId('ProfileCard.LastNameInput'));
+    await act(async () => {
+      await userEvent.clear(screen.getByTestId('ProfileCard.FirstNameInput'));
+      await userEvent.clear(screen.getByTestId('ProfileCard.LastNameInput'));
 
-    await userEvent.click(screen.getByTestId('EditableProfileCardHeader.SaveButton'));
+      await userEvent.click(screen.getByTestId('EditableProfileCardHeader.SaveButton'));
+    });
 
     expect(screen.getByTestId('ProfileCard.FirstNameInput')).toHaveValue('');
     expect(screen.getByTestId('ProfileCard.LastNameInput')).toHaveValue('');
@@ -208,7 +216,7 @@ describe('features/EditableProfileCard', () => {
   });
 
   test('Should cancel not saved profile data', async () => {
-    renderComponent(<EditableProfileCard id={mockId} />, {
+    await act(() => renderComponent(<EditableProfileCard id={mockId} />, {
       initialState: {
         editableProfile: {
           data: {
@@ -233,18 +241,22 @@ describe('features/EditableProfileCard', () => {
         },
       },
       asyncReducers,
-    });
+    }));
 
     expect(screen.getByTestId('ProfileCard.FirstNameInput')).toHaveValue('first');
     expect(screen.getByTestId('ProfileCard.LastNameInput')).toHaveValue('last');
 
-    await userEvent.type(screen.getByTestId('ProfileCard.FirstNameInput'), ' type');
-    await userEvent.type(screen.getByTestId('ProfileCard.LastNameInput'), ' type');
+    await act(async () => {
+      await userEvent.type(screen.getByTestId('ProfileCard.FirstNameInput'), ' type');
+      await userEvent.type(screen.getByTestId('ProfileCard.LastNameInput'), ' type');
+    });
 
     expect(screen.getByTestId('ProfileCard.FirstNameInput')).toHaveValue('first type');
     expect(screen.getByTestId('ProfileCard.LastNameInput')).toHaveValue('last type');
 
-    await userEvent.click(screen.getByTestId('EditableProfileCardHeader.CancelButton'));
+    await act(async () => {
+      await userEvent.click(screen.getByTestId('EditableProfileCardHeader.CancelButton'));
+    });
 
     expect(screen.getByTestId('ProfileCard.FirstNameInput')).toHaveValue('first');
     expect(screen.getByTestId('ProfileCard.LastNameInput')).toHaveValue('last');

@@ -1,4 +1,4 @@
-import { screen } from '@testing-library/react';
+import { act, screen } from '@testing-library/react';
 import { userEvent } from '@storybook/testing-library';
 import { renderComponent } from '@/shared/lib/tests/renderComponent/renderComponent';
 import { Counter } from './Counter';
@@ -25,7 +25,9 @@ describe('Counter', () => {
       },
     });
 
-    await userEvent.click(screen.getByTestId('increment-button'));
+    await act(async () => {
+      await userEvent.click(screen.getByTestId('increment-button'));
+    });
 
     expect(screen.getByTestId('counter-value')).toHaveTextContent('11');
   });
@@ -39,7 +41,9 @@ describe('Counter', () => {
       },
     });
 
-    await userEvent.click(screen.getByTestId('decrement-button'));
+    await act(async () => {
+      await userEvent.click(screen.getByTestId('decrement-button'));
+    });
 
     expect(screen.getByTestId('counter-value')).toHaveTextContent('9');
   });
