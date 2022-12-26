@@ -17,20 +17,20 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - name: install modules
-        run: npm install
+        run: yarn install --immutable --immutable-cache --check-cache
       - name: build project
-        run: npm run build:prod
+        run: yarn build:prod
       - name: linting typescript
-        run: npm run lint-ts:fix
+        run: yarn lint-ts
         if: always()
       - name: linting styles
-        run: npm run lint-scss:fix
+        run: yarn lint-scss
         if: always()
       - name: unit testing
-        run: npm run test-unit
+        run: yarn test-unit
         if: always()
       - name: build storybook
-        run: npm run storybook:build
+        run: yarn storybook:build
         if: always()
       - name: ui testing
-        run: npm run test-ui:ci
+        run: yarn test-ui:ci
