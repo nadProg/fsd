@@ -16,7 +16,7 @@ describe('Counter', () => {
     expect(screen.getByTestId('counter-value')).toHaveTextContent('10');
   });
 
-  test('should increase counter value', () => {
+  test('should increase counter value', async () => {
     renderComponent(<Counter />, {
       initialState: {
         counter: {
@@ -25,12 +25,12 @@ describe('Counter', () => {
       },
     });
 
-    userEvent.click(screen.getByTestId('increment-button'));
+    await userEvent.click(screen.getByTestId('increment-button'));
 
     expect(screen.getByTestId('counter-value')).toHaveTextContent('11');
   });
 
-  test('should decrease counter value', () => {
+  test('should decrease counter value', async () => {
     renderComponent(<Counter />, {
       initialState: {
         counter: {
@@ -39,7 +39,7 @@ describe('Counter', () => {
       },
     });
 
-    userEvent.click(screen.getByTestId('decrement-button'));
+    await userEvent.click(screen.getByTestId('decrement-button'));
 
     expect(screen.getByTestId('counter-value')).toHaveTextContent('9');
   });
