@@ -5,32 +5,45 @@ on:
   pull_request:
     branches: [ main ]
 jobs:
-  pipeline:
+  check:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [ 18.x ]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Starting Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Install dependencies
+        run: yarn install:ci
+      - name: Checking types
+        run: yarn check-types
+      - name: Linting *.ts/*.tsx files
+        run: yarn lint-ts
+        if: always()
+      - name: Linting *.scss files
+        run: yarn lint-scss
+        if: always()
+      - name: Unit testing
+        run: yarn test-unit
+        if: always()
+
+  storybook:
     runs-on: windows-latest
     strategy:
       matrix:
         node-version: [ 18.x ]
     steps:
       - uses: actions/checkout@v2
-      - name: Staring Node.js ${{ matrix.node-version }}
+      - name: Starting Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - name: install modules
-        run: yarn install --immutable --immutable-cache --check-cache
-      - name: build project
-        run: yarn build:prod
-      - name: linting typescript
-        run: yarn lint-ts
-        if: always()
-      - name: linting styles
-        run: yarn lint-scss
-        if: always()
-      - name: unit testing
-        run: yarn test-unit
-        if: always()
-      - name: build storybook
+      - name: Install dependencies
+        run: yarn install:ci
+      - name: Building storybook
         run: yarn storybook:build
-        if: always()
-      - name: ui testing
+      - name: UI testing
         run: yarn test-ui:ci
