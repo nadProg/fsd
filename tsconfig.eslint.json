@@ -6,6 +6,7 @@
     "scripts",
     "json-server",
     ".eslintrc.js",
+    ".lintstagedrc.js",
     "webpack.config.ts"
   ]
 }
