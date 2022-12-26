@@ -8,7 +8,7 @@ export const ForbiddenPage = () => {
   const { t } = useTranslation();
 
   return (
-    <Page className={styles.NotFoundPage}>
+    <Page className={styles.NotFoundPage} data-testid="forbidden-page">
       {t('forbidden.title')}
     </Page>
   );

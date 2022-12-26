@@ -8,7 +8,7 @@ export const MainPage = () => {
   const { t } = useTranslation();
 
   return (
-    <Page>
+    <Page data-testid="main-page">
       <h1>{t('main.title')}</h1>
       <p>{t('main.content')}</p>
 

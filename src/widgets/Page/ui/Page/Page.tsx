@@ -27,6 +27,7 @@ export const Page = ({
   className,
   children,
   onScrollEnd,
+  ...restProps
 }: PageProps) => {
   const {
     wrapperRef,
@@ -60,6 +61,7 @@ export const Page = ({
       ref={wrapperRef}
       className={classNames(className, styles.Page, 'app__main')}
       onScroll={onPageScroll}
+      {...restProps}
     >
       {children}
       {onScrollEnd

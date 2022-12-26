@@ -16,7 +16,7 @@ export const AdminPanelPage = memo((props: AdminPanelPageProps) => {
   const { t } = useTranslation();
 
   return (
-    <Page className={classNames(className, styles.AdminPanelPage)}>
+    <Page className={classNames(className, styles.AdminPanelPage)} data-testid="admin-panel-page">
       <Text variant={TextVariant.Title}>
         {t('admin.title')}
       </Text>

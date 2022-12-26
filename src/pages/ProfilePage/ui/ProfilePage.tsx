@@ -21,7 +21,7 @@ export const ProfilePage = (): JSX.Element => {
   }
 
   return (
-    <Page>
+    <Page data-testid="profile-page">
       <VStack gap={16} max>
         <EditableProfileCard className={styles.profileCard} id={id} />
       </VStack>
