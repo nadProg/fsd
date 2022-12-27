@@ -13,11 +13,13 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-  decorators: [StoreDecorator({
-    user: {
-      authData: {},
-    },
-  })],
+  decorators: [
+    StoreDecorator({
+      user: {
+        authData: {},
+      },
+    }),
+  ],
 } as ComponentMeta<typeof SideBar>;
 
 const Template: ComponentStory<typeof SideBar> = (args) => <SideBar {...args} />;

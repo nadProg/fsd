@@ -6,7 +6,7 @@ export const scrollPositionSlice = createSlice({
   name: 'scrollPositionSlice',
   initialState: initialScrollPositionState,
   reducers: {
-    setScrollPosition: (state, action: PayloadAction<{ path: string, position: number }>) => {
+    setScrollPosition: (state, action: PayloadAction<{ path: string; position: number }>) => {
       const { path, position } = action.payload;
       state.scroll[path] = position;
     },

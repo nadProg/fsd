@@ -38,32 +38,40 @@ export const LoginForm: FC<LoginFormProps> = ({ className, onSuccess }) => {
 
   useDynamicReducers(dynamicReducers);
 
-  const onChangeUsername = useCallback((value: string) => {
-    dispatch(loginActions.setUsername(value));
-  }, [dispatch]);
+  const onChangeUsername = useCallback(
+    (value: string) => {
+      dispatch(loginActions.setUsername(value));
+    },
+    [dispatch],
+  );
 
-  const onChangePassword = useCallback((value: string) => {
-    dispatch(loginActions.setPassword(value));
-  }, [dispatch]);
+  const onChangePassword = useCallback(
+    (value: string) => {
+      dispatch(loginActions.setPassword(value));
+    },
+    [dispatch],
+  );
 
-  const onFormSubmit = useCallback<FormEventHandler>(async (evt) => {
-    evt.preventDefault();
+  const onFormSubmit = useCallback<FormEventHandler>(
+    async (evt) => {
+      evt.preventDefault();
 
-    const result = await dispatch(loginByUsername({
-      username,
-      password,
-    }));
+      const result = await dispatch(
+        loginByUsername({
+          username,
+          password,
+        }),
+      );
 
-    if (result.meta.requestStatus === 'fulfilled') {
-      onSuccess();
-    }
-  }, [dispatch, username, password, onSuccess]);
+      if (result.meta.requestStatus === 'fulfilled') {
+        onSuccess();
+      }
+    },
+    [dispatch, username, password, onSuccess],
+  );
 
   return (
-    <form
-      className={classNames(className, styles.LoginForm)}
-      onSubmit={onFormSubmit}
-    >
+    <form className={classNames(className, styles.LoginForm)} onSubmit={onFormSubmit}>
       {error && <Text theme={TextTheme.Error}>{t(`login-form.error.${error}`)}</Text>}
 
       <Input
@@ -83,12 +91,7 @@ export const LoginForm: FC<LoginFormProps> = ({ className, onSuccess }) => {
         type="password"
       />
 
-      <Button
-        theme={ButtonTheme.BackgroundInverted}
-        className={styles.submitBtn}
-        disabled={isSubmitting}
-        type="submit"
-      >
+      <Button theme={ButtonTheme.BackgroundInverted} className={styles.submitBtn} disabled={isSubmitting} type="submit">
         {t('login-form.submit')}
       </Button>
     </form>

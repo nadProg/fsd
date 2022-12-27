@@ -4,20 +4,18 @@ import { USER_LOCALSTORAGE_KEY } from '@/shared/constants/localStorage';
 
 export const rtkApi = createApi({
   reducerPath: 'api',
-  baseQuery: fetchBaseQuery(
-    {
-      baseUrl: __API_URL__,
-      prepareHeaders: (headers) => {
-        const token = localStorage.getItem(USER_LOCALSTORAGE_KEY);
+  baseQuery: fetchBaseQuery({
+    baseUrl: __API_URL__,
+    prepareHeaders: (headers) => {
+      const token = localStorage.getItem(USER_LOCALSTORAGE_KEY);
 
-        if (token) {
-          headers.set('Authorization', token);
-        }
+      if (token) {
+        headers.set('Authorization', token);
+      }
 
-        return headers;
-      },
+      return headers;
     },
-  ),
+  }),
   endpoints: () => ({}),
   tagTypes: ['ArticleRating'],
 });

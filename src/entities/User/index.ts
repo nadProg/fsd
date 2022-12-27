@@ -1,7 +1,5 @@
 import { userReducer, userActions } from './model/slice/userSlice/userSlice';
-import {
-  User, UserSchema, ValuesOfUserRole, UserRole,
-} from './model/types/user';
+import { User, UserSchema, ValuesOfUserRole, UserRole } from './model/types/user';
 import { getUserAuthData } from './model/selectors/getUserAuthData/getUserAuthData';
 import { getUserInitialized } from './model/selectors/getUserInitialized/getUserInitialized';
 import { getIsUserAdmin } from './model/selectors/getIsUserAdmin/getIsUserAdmin';

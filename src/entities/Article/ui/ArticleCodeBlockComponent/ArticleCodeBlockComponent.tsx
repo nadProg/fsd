@@ -15,12 +15,8 @@ export const ArticleCodeBlockComponent = (props: ArticleCodeBlockComponentProps)
   const { className, block } = props;
 
   return (
-    <div
-      className={classNames(className, styles.ArticleCodeBlockComponent)}
-    >
-      <Code>
-        {block.code}
-      </Code>
+    <div className={classNames(className, styles.ArticleCodeBlockComponent)}>
+      <Code>{block.code}</Code>
     </div>
   );
 };

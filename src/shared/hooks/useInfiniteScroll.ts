@@ -2,7 +2,7 @@ import { RefObject, useEffect, useRef } from 'react';
 
 export type UseInfiniteScrollOptions = {
   callback?: () => void;
-  options?: IntersectionObserverInit
+  options?: IntersectionObserverInit;
 };
 
 export type UseInfiniteScrollResult<WrapperElement extends HTMLElement, TriggerElement extends HTMLElement> = {
@@ -15,10 +15,7 @@ const DEFAULT_THRESHOLD = 1.0;
 
 export const useInfiniteScroll = <WrapperElement extends HTMLElement, TriggerElement extends HTMLElement>({
   callback,
-  options: {
-    threshold,
-    rootMargin,
-  } = {},
+  options: { threshold, rootMargin } = {},
 }: UseInfiniteScrollOptions): UseInfiniteScrollResult<WrapperElement, TriggerElement> => {
   const wrapperRef = useRef<WrapperElement>(null);
   const triggerRef = useRef<TriggerElement>(null);
@@ -50,13 +47,7 @@ export const useInfiniteScroll = <WrapperElement extends HTMLElement, TriggerEle
         observer.unobserve(triggerElement);
       }
     };
-  }, [
-    callback,
-    triggerRef.current,
-    wrapperRef.current,
-    rootMargin,
-    threshold,
-  ]);
+  }, [callback, triggerRef.current, wrapperRef.current, rootMargin, threshold]);
 
   return {
     triggerRef,

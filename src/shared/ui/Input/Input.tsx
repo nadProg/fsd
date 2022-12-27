@@ -1,6 +1,4 @@
-import {
-  ChangeEventHandler, InputHTMLAttributes, memo,
-} from 'react';
+import { ChangeEventHandler, InputHTMLAttributes, memo } from 'react';
 import classNames from 'classnames';
 
 import { ExtendableProps } from '@/shared/types';
@@ -15,12 +13,7 @@ type OverrideInputProps = {
 
 type InputProps = ExtendableProps<ExtendedInputProps, OverrideInputProps>;
 
-export const Input = memo(({
-  className,
-  onChange,
-  placeholder,
-  ...restProps
-}: InputProps): JSX.Element => {
+export const Input = memo(({ className, onChange, placeholder, ...restProps }: InputProps): JSX.Element => {
   const onInputChange: ChangeEventHandler<HTMLInputElement> = (evt) => onChange?.(evt.target.value);
 
   return (
@@ -31,11 +24,7 @@ export const Input = memo(({
           {'>'}
         </span>
       )}
-      <input
-        onChange={onInputChange}
-        className={styles.input}
-        {...restProps}
-      />
+      <input onChange={onInputChange} className={styles.input} {...restProps} />
     </label>
   );
 });

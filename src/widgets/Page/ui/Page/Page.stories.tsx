@@ -15,11 +15,7 @@ export default {
   decorators: [StoreDecorator()],
 } as ComponentMeta<typeof Page>;
 
-const Template: ComponentStory<typeof Page> = (args) => (
-  <Page {...args}>
-    Page content
-  </Page>
-);
+const Template: ComponentStory<typeof Page> = (args) => <Page {...args}>Page content</Page>;
 
 export const Default = Template.bind({});
 Default.args = {};

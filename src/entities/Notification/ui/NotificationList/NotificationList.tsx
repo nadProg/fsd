@@ -11,10 +11,7 @@ import styles from './NotificationList.module.scss';
 
 type NotificationListProps = PropsWithClassName;
 export const NotificationList = ({ className }: NotificationListProps) => {
-  const {
-    data: notifications,
-    isLoading,
-  } = useNotifications(null, {
+  const { data: notifications, isLoading } = useNotifications(null, {
     pollingInterval: 5000,
   });
 
@@ -30,7 +27,9 @@ export const NotificationList = ({ className }: NotificationListProps) => {
 
   return (
     <VStack gap={16} className={classNames(className, styles.NotificationList)}>
-      {notifications?.map((notification) => <NotificationItem key={notification.id} notification={notification} />)}
+      {notifications?.map((notification) => (
+        <NotificationItem key={notification.id} notification={notification} />
+      ))}
     </VStack>
   );
 };

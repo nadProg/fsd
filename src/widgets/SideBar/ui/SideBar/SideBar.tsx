@@ -31,17 +31,13 @@ export function SideBar({ className }: SideBarProps) {
     <section
       id="sidebar"
       data-testid="sidebar"
-      className={classNames(className, styles.SideBar, { [styles.collapsed]: collapsed })}
+      className={classNames(className, styles.SideBar, {
+        [styles.collapsed]: collapsed,
+      })}
     >
       <VStack gap={8}>
-        {sidebarItems.map(({
-          key, icon: Icon, path,
-        }) => (
-          <AppLink
-            key={key}
-            className={styles.navLink}
-            to={path}
-          >
+        {sidebarItems.map(({ key, icon: Icon, path }) => (
+          <AppLink key={key} className={styles.navLink} to={path}>
             <Icon className={styles.navLinkIcon} />
             <span>{t(`navbar.${key}`)}</span>
           </AppLink>
@@ -64,9 +60,7 @@ export function SideBar({ className }: SideBarProps) {
         aria-controls="sidebar"
         aria-label={toggleLabel}
       >
-        <span aria-hidden="true">
-          {collapsed ? '>' : '<'}
-        </span>
+        <span aria-hidden="true">{collapsed ? '>' : '<'}</span>
       </Button>
     </section>
   );

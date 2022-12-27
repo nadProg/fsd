@@ -17,16 +17,8 @@ export type AppLinkProps = LinkProps & {
   theme?: ValuesOf<typeof AppLinkTheme>;
 };
 
-export const AppLink: FC<AppLinkProps> = ({
-  className,
-  theme = AppLinkTheme.Primary,
-  children,
-  ...restProps
-}) => (
-  <Link
-    className={classNames(className, styles.AppLink, styles[theme])}
-    {...restProps}
-  >
+export const AppLink: FC<AppLinkProps> = ({ className, theme = AppLinkTheme.Primary, children, ...restProps }) => (
+  <Link className={classNames(className, styles.AppLink, styles[theme])} {...restProps}>
     {children}
   </Link>
 );

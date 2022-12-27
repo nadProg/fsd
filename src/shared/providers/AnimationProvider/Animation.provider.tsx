@@ -1,6 +1,4 @@
-import {
-  useEffect, useMemo, useRef, useState,
-} from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import type { ReactNode } from 'react';
 import type { PropsWithChildren } from '@/shared/types';
 import type { AnimationContextValue, Gesture, Spring } from './Animation.types';
@@ -24,11 +22,14 @@ export const AnimationProvider = ({ children, fallback = null }: AnimationProvid
     });
   }, []);
 
-  const value: Partial<AnimationContextValue> = useMemo(() => ({
-    Spring: springRef.current,
-    Gesture: gestureRef.current,
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }), [isLoading]);
+  const value: Partial<AnimationContextValue> = useMemo(
+    () => ({
+      Spring: springRef.current,
+      Gesture: gestureRef.current,
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }),
+    [isLoading],
+  );
 
   if (isLoading || !springRef.current || !gestureRef.current) {
     // eslint-disable-next-line react/jsx-no-useless-fragment

@@ -22,37 +22,21 @@ type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   className?: string;
   theme?: ValuesOf<typeof ButtonTheme>;
   square?: boolean;
-  size?: ValuesOf<typeof ButtonSize>
+  size?: ValuesOf<typeof ButtonSize>;
 };
 
-export const Button = forwardRef<HTMLButtonElement, ButtonProps>(({
-  className,
-  children,
-  theme = ButtonTheme.Clear,
-  square,
-  size = ButtonSize.Medium,
-  ...restProps
-}, ref) => {
-  const buttonClassName = classNames(
-    className,
-    styles.Button,
-    styles[theme],
-    styles[size],
-    {
+export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ className, children, theme = ButtonTheme.Clear, square, size = ButtonSize.Medium, ...restProps }, ref) => {
+    const buttonClassName = classNames(className, styles.Button, styles[theme], styles[size], {
       [styles.square]: square,
-    },
-  );
+    });
 
-  return (
-    <button
-      ref={ref}
-      type="button"
-      className={buttonClassName}
-      {...restProps}
-    >
-      {children}
-    </button>
-  );
-});
+    return (
+      <button ref={ref} type="button" className={buttonClassName} {...restProps}>
+        {children}
+      </button>
+    );
+  },
+);
 
 Button.displayName = 'Button';

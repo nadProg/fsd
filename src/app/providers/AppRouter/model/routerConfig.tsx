@@ -17,7 +17,7 @@ import { NotFoundPage } from '@/pages/NotFoundPage';
 
 export type AppRouteProps = RouteProps & {
   authOnly?: boolean;
-  roles?: ValuesOfUserRole[]
+  roles?: ValuesOfUserRole[];
 };
 export const routerConfig: Record<keyof typeof AppRoute, AppRouteProps> = {
   Main: {

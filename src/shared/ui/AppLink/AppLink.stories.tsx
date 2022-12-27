@@ -3,9 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { Theme } from '@/shared/providers/ThemeProvider';
 
-import {
-  InvertedBackgroundDecorator,
-} from '@/shared/config/storybook/InvertedBackgroundDectorator/InvertedBackgroundColor';
+import { InvertedBackgroundDecorator } from '@/shared/config/storybook/InvertedBackgroundDectorator/InvertedBackgroundColor';
 import { AppLink, AppLinkTheme } from './AppLink';
 
 export default {

@@ -1,6 +1,4 @@
-import {
-  CombinedState, configureStore, Reducer, ReducersMapObject,
-} from '@reduxjs/toolkit';
+import { CombinedState, configureStore, Reducer, ReducersMapObject } from '@reduxjs/toolkit';
 
 import { $api } from '@/shared/api/api';
 import { rtkApi } from '@/shared/api/rtkApi';
@@ -14,16 +12,11 @@ import { StateSchema, ThunkExtraArgs } from './StateSchema';
 import { createReducerManager } from './reducerManager';
 
 type StoreConfig = {
-  initialState?: StateSchema,
-  asyncReducers?: ReducersMapObject<StateSchema>,
+  initialState?: StateSchema;
+  asyncReducers?: ReducersMapObject<StateSchema>;
 };
 
-export const createReduxStore = (
-  {
-    initialState,
-    asyncReducers,
-  }: StoreConfig = {},
-) => {
+export const createReduxStore = ({ initialState, asyncReducers }: StoreConfig = {}) => {
   const ensuredAsyncReducers = asyncReducers || {};
 
   const rootReducer: ReducersMapObject<StateSchema> = {
@@ -44,11 +37,12 @@ export const createReduxStore = (
     reducer: reducerManager.reduce as Reducer<CombinedState<StateSchema>>,
     devTools: __IS_DEV__,
     preloadedState: initialState,
-    middleware: (getDefaultMiddleware) => getDefaultMiddleware({
-      thunk: {
-        extraArgument,
-      },
-    }).concat(rtkApi.middleware),
+    middleware: (getDefaultMiddleware) =>
+      getDefaultMiddleware({
+        thunk: {
+          extraArgument,
+        },
+      }).concat(rtkApi.middleware),
   });
 
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment

@@ -4,9 +4,7 @@ import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDe
 
 import { Theme } from '@/shared/providers/ThemeProvider';
 
-import {
-  InvertedBackgroundDecorator,
-} from '@/shared/config/storybook/InvertedBackgroundDectorator/InvertedBackgroundColor';
+import { InvertedBackgroundDecorator } from '@/shared/config/storybook/InvertedBackgroundDectorator/InvertedBackgroundColor';
 import { ThemeSwitcher } from './ThemeSwitcher';
 
 export default {

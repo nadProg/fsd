@@ -19,23 +19,24 @@ type TabProps<V extends string, L extends ReactNode> = PropsWithClassName & {
 };
 
 export const Tabs = <V extends string, L extends ReactNode>(props: TabProps<V, L>) => {
-  const {
-    tabs,
-    className, value, onTabClick, onClick,
-  } = props;
+  const { tabs, className, value, onTabClick, onClick } = props;
 
-  const clickHandle = (newTab: V): MouseEventHandler => (evt) => {
-    if (value !== newTab) {
-      onTabClick(newTab);
-    }
-    onClick?.(evt);
-  };
+  const clickHandle =
+    (newTab: V): MouseEventHandler =>
+    (evt) => {
+      if (value !== newTab) {
+        onTabClick(newTab);
+      }
+      onClick?.(evt);
+    };
 
   return (
     <div className={classNames(className, styles.Tabs)}>
       {tabs.map((tab) => (
         <Card
-          className={classNames(styles.tab, { [styles.active]: value === tab.value })}
+          className={classNames(styles.tab, {
+            [styles.active]: value === tab.value,
+          })}
           key={tab.value}
           theme={value === tab.value ? CardTheme.Contained : CardTheme.Outlined}
           onClick={clickHandle(tab.value)}

@@ -24,9 +24,11 @@ describe('fetchProfileData', () => {
 
     const { api, dispatch } = thunk;
 
-    api.get.mockReturnValue(Promise.resolve({
-      data: mockData,
-    }));
+    api.get.mockReturnValue(
+      Promise.resolve({
+        data: mockData,
+      }),
+    );
 
     const result = await thunk.callThunk(mockId);
 
@@ -44,9 +46,11 @@ describe('fetchProfileData', () => {
 
     const { api, dispatch } = thunk;
 
-    api.get.mockReturnValue(Promise.resolve({
-      status: 403,
-    }));
+    api.get.mockReturnValue(
+      Promise.resolve({
+        status: 403,
+      }),
+    );
 
     const result = await thunk.callThunk(mockId);
 

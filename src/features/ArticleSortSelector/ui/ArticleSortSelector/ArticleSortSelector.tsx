@@ -20,57 +20,49 @@ type ArticleViewSelectorProps = PropsWithClassName & {
   onOrderSelect: (value: ValuesOfSortOrder) => void;
 };
 
-export const ArticleSortSelector = memo(({
-  className,
-  sort,
-  order,
-  onOrderSelect,
-  onSortSelect,
-}: ArticleViewSelectorProps) => {
-  const { t } = useTranslation();
+export const ArticleSortSelector = memo(
+  ({ className, sort, order, onOrderSelect, onSortSelect }: ArticleViewSelectorProps) => {
+    const { t } = useTranslation();
 
-  const orderOptions = useMemo<Option<ValuesOfSortOrder>[]>(() => ([
-    {
-      value: SortOrder.Asc,
-      label: t('sort-order.asc'),
-    },
-    {
-      value: SortOrder.Desc,
-      label: t('sort-order.desc'),
-    },
-  ]), [t]);
+    const orderOptions = useMemo<Option<ValuesOfSortOrder>[]>(
+      () => [
+        {
+          value: SortOrder.Asc,
+          label: t('sort-order.asc'),
+        },
+        {
+          value: SortOrder.Desc,
+          label: t('sort-order.desc'),
+        },
+      ],
+      [t],
+    );
 
-  const sortOptions = useMemo<Option<ValuesOfArticleSortField>[]>(() => ([
-    {
-      value: ArticleSortField.Views,
-      label: t('article-sort-field.views'),
-    },
-    {
-      value: ArticleSortField.Title,
-      label: t('article-sort-field.title'),
-    },
-    {
-      value: ArticleSortField.CreatedAt,
-      label: t('article-sort-field.created-at'),
-    },
-  ]), [t]);
+    const sortOptions = useMemo<Option<ValuesOfArticleSortField>[]>(
+      () => [
+        {
+          value: ArticleSortField.Views,
+          label: t('article-sort-field.views'),
+        },
+        {
+          value: ArticleSortField.Title,
+          label: t('article-sort-field.title'),
+        },
+        {
+          value: ArticleSortField.CreatedAt,
+          label: t('article-sort-field.created-at'),
+        },
+      ],
+      [t],
+    );
 
-  return (
-    <div className={classNames(className, styles.ArticleSortSelector)}>
-      <Select
-        label="Поле"
-        options={sortOptions}
-        value={sort}
-        onChange={onSortSelect}
-      />
-      <Select
-        label="Направление"
-        options={orderOptions}
-        value={order}
-        onChange={onOrderSelect}
-      />
-    </div>
-  );
-});
+    return (
+      <div className={classNames(className, styles.ArticleSortSelector)}>
+        <Select label="Поле" options={sortOptions} value={sort} onChange={onSortSelect} />
+        <Select label="Направление" options={orderOptions} value={order} onChange={onOrderSelect} />
+      </div>
+    );
+  },
+);
 
 ArticleSortSelector.displayName = 'ArticleSortSelector';

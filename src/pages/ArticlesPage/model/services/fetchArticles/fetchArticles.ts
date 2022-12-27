@@ -21,9 +21,7 @@ type FetchArticlesParams = {
 export const fetchArticles = createAsyncThunk<Article[], FetchArticlesParams, ThunkConfig<string>>(
   'articlesPage/fetchArticles',
   async (params, thunkApi) => {
-    const {
-      rejectWithValue, extra, getState,
-    } = thunkApi;
+    const { rejectWithValue, extra, getState } = thunkApi;
 
     const { page = 1 } = params;
 
@@ -34,7 +32,10 @@ export const fetchArticles = createAsyncThunk<Article[], FetchArticlesParams, Th
     const limit = getArticlesPageLimit(getState());
 
     addQueryParams({
-      order, sort, search, type,
+      order,
+      sort,
+      search,
+      type,
     });
 
     try {

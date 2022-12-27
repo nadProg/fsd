@@ -16,21 +16,23 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-  decorators: [StoreDecorator({
-    editableProfile: {
-      data: {
-        firstname: 'firstname',
-        username: 'username',
-        lastname: 'lastname',
-        age: 30,
-        city: 'city',
-        country: Country.Armenia,
-        currency: Currency.Eur,
-        avatar: Image,
+  decorators: [
+    StoreDecorator({
+      editableProfile: {
+        data: {
+          firstname: 'firstname',
+          username: 'username',
+          lastname: 'lastname',
+          age: 30,
+          city: 'city',
+          country: Country.Armenia,
+          currency: Currency.Eur,
+          avatar: Image,
+        },
+        isLoading: false,
       },
-      isLoading: false,
-    },
-  })],
+    }),
+  ],
 } as ComponentMeta<typeof EditableProfileCard>;
 
 const Template: ComponentStory<typeof EditableProfileCard> = (args) => <EditableProfileCard {...args} />;

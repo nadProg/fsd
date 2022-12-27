@@ -9,7 +9,7 @@ export type PropsWithClassName = {
 };
 
 export type PropsWithDataAttributes = {
-  [key in `data-${string}`]?: string
+  [key in `data-${string}`]?: string;
 };
 
 export type PropsWithChildren = {
@@ -18,7 +18,7 @@ export type PropsWithChildren = {
 
 export type Option<V = string, L = string> = {
   label: L;
-  value: V
+  value: V;
 };
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -30,9 +30,13 @@ export type ExtendableProps<
 > = OverrideProps & Omit<ExtendedProps, keyof OverrideProps>;
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export type DeepPartial<T> = T extends any[] ? T : T extends Record<string, any> ? {
-  [P in keyof T]?: DeepPartial<T[P]>;
-} : T;
+export type DeepPartial<T> = T extends any[]
+  ? T
+  : T extends Record<string, any>
+  ? {
+      [P in keyof T]?: DeepPartial<T[P]>;
+    }
+  : T;
 
 export type Id = string;
 

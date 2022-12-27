@@ -13,9 +13,7 @@ import { Button, ButtonTheme } from '@/shared/ui/Button';
 import { AppLink, AppLinkProps } from '@/shared/ui/AppLink';
 import { AppRoute } from '@/shared/constants/router';
 
-import {
-  Article, ArticleBlockType, ArticleTextBlock, ArticleView,
-} from '../../model/types/article';
+import { Article, ArticleBlockType, ArticleTextBlock, ArticleView } from '../../model/types/article';
 import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
 
 import styles from './ArticleListItem.module.scss';
@@ -28,29 +26,23 @@ type ArticleListItemProps = PropsWithClassName & {
 
 export const ArticleListItem: FC<ArticleListItemProps> = (props) => {
   const { t } = useTranslation();
-  const {
-    className, article, view, linksTarget,
-  } = props;
+  const { className, article, view, linksTarget } = props;
   const [isHover, hoverProps] = useHover();
   const formattedTypes = article.types.join(' ');
 
   const articlePath = AppRoute.ArticleDetails(article.id);
 
   if (view === ArticleView.List) {
-    const textBlock = article.blocks.find(
-      (block) => block.type === ArticleBlockType.Text,
-    ) as ArticleTextBlock | undefined;
+    const textBlock = article.blocks.find((block) => block.type === ArticleBlockType.Text) as
+      | ArticleTextBlock
+      | undefined;
 
     return (
       <Card className={classNames(className, styles.list)}>
         <div className={styles.header}>
           <Avatar className={styles.avatar} size={30} src={article.user.avatar} />
-          <Text className={styles.username}>
-            {article.user.username}
-          </Text>
-          <Text className={styles.date}>
-            {article.createdAt}
-          </Text>
+          <Text className={styles.username}>{article.user.username}</Text>
+          <Text className={styles.date}>{article.createdAt}</Text>
         </div>
 
         <Text variant={TextVariant.Title} className={styles.title}>
@@ -67,12 +59,8 @@ export const ArticleListItem: FC<ArticleListItemProps> = (props) => {
 
         <div className={styles.footer}>
           <AppLink to={articlePath} target={linksTarget}>
-            <Button
-              theme={ButtonTheme.Outlined}
-              className={styles.button}
-
-            >
-              { t('article.read-more') }
+            <Button theme={ButtonTheme.Outlined} className={styles.button}>
+              {t('article.read-more')}
             </Button>
           </AppLink>
           <Text className={styles.views}>{article.views}</Text>
@@ -84,11 +72,9 @@ export const ArticleListItem: FC<ArticleListItemProps> = (props) => {
 
   return (
     <Card
-      className={classNames(
-        className,
-        styles.grid,
-        { [styles.hover]: isHover },
-      )}
+      className={classNames(className, styles.grid, {
+        [styles.hover]: isHover,
+      })}
       {...hoverProps}
     >
       <div className={styles.imageWrapper}>
@@ -103,9 +89,7 @@ export const ArticleListItem: FC<ArticleListItemProps> = (props) => {
         <Icon icon={EyeIcon} />
       </div>
       <AppLink to={articlePath} target={linksTarget}>
-        <Text className={styles.title}>
-          {article.title}
-        </Text>
+        <Text className={styles.title}>{article.title}</Text>
       </AppLink>
     </Card>
   );

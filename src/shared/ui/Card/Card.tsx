@@ -10,16 +10,15 @@ export const CardTheme = {
   Outlined: 'outlined',
 };
 
-type CardProps = PropsWithClassName & PropsWithChildren & {
-  theme?: ValuesOf<typeof CardTheme>;
-  onClick?: MouseEventHandler;
-  max?: boolean;
-};
+type CardProps = PropsWithClassName &
+  PropsWithChildren & {
+    theme?: ValuesOf<typeof CardTheme>;
+    onClick?: MouseEventHandler;
+    max?: boolean;
+  };
 
 export const Card = (props: CardProps) => {
-  const {
-    className, children, theme = CardTheme.Contained, max, ...restProps
-  } = props;
+  const { className, children, theme = CardTheme.Contained, max, ...restProps } = props;
 
   return (
     <div

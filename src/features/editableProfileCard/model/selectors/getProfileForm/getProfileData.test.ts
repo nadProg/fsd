@@ -22,17 +22,15 @@ describe('getProfileForm', () => {
       },
     };
 
-    expect(getProfileForm(state as StateSchema)).toEqual(
-      {
-        username: 'username',
-        lastname: 'lastname',
-        age: 30,
-        city: 'city',
-        country: Country.Armenia,
-        currency: Currency.Eur,
-        avatar: '',
-      },
-    );
+    expect(getProfileForm(state as StateSchema)).toEqual({
+      username: 'username',
+      lastname: 'lastname',
+      age: 30,
+      city: 'city',
+      country: Country.Armenia,
+      currency: Currency.Eur,
+      avatar: '',
+    });
   });
 
   test('should handle empty state profile', () => {

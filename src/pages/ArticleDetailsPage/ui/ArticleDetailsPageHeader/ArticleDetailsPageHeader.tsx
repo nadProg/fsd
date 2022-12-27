@@ -9,9 +9,7 @@ import { AppRoute } from '@/shared/constants/router';
 
 import { getArticleDetailsData } from '@/entities/Article';
 
-import {
-  getIsArticleAuthorView,
-} from '../../model/selectors/getIsArticleAuthorView/getIsArticleAuthorView';
+import { getIsArticleAuthorView } from '../../model/selectors/getIsArticleAuthorView/getIsArticleAuthorView';
 
 import styles from './ArticleDetailsPageHeader.module.scss';
 
@@ -29,21 +27,14 @@ export const ArticleDetailsPageHeader = ({ className }: ArticleDetailsPageHeader
   return (
     <div className={classNames(className, styles.ArticleDetailsPageHeader)}>
       <AppLink to={BACK_PATH}>
-        <Button
-          theme={ButtonTheme.Outlined}
-          className={styles.backButton}
-        >
+        <Button theme={ButtonTheme.Outlined} className={styles.backButton}>
           {t('article-details.back')}
         </Button>
       </AppLink>
 
-      {isAuthorView
-      && (
+      {isAuthorView && (
         <AppLink to={editPath}>
-          <Button
-            theme={ButtonTheme.Outlined}
-            className={styles.backButton}
-          >
+          <Button theme={ButtonTheme.Outlined} className={styles.backButton}>
             {t('article-details.edit')}
           </Button>
         </AppLink>

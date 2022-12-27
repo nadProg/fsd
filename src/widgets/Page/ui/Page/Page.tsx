@@ -15,40 +15,37 @@ import type { StateSchema } from '@/app/providers/StoreProvider';
 
 import styles from './Page.module.scss';
 
-type PageProps = PropsWithChildren & PropsWithClassName & {
-  onScrollEnd?: () => void;
-};
+type PageProps = PropsWithChildren &
+  PropsWithClassName & {
+    onScrollEnd?: () => void;
+  };
 
 const INFINITE_SCROLL_OPTIONS = {
   threshold: 0,
 };
 
-export const Page = ({
-  className,
-  children,
-  onScrollEnd,
-  ...restProps
-}: PageProps) => {
-  const {
-    wrapperRef,
-    triggerRef,
-  } = useInfiniteScroll<HTMLDivElement, HTMLDivElement>({
+export const Page = ({ className, children, onScrollEnd, ...restProps }: PageProps) => {
+  const { wrapperRef, triggerRef } = useInfiniteScroll<HTMLDivElement, HTMLDivElement>({
     callback: onScrollEnd,
     options: INFINITE_SCROLL_OPTIONS,
   });
 
   const { pathname } = useLocation();
   const dispatch = useAppDispatch();
-  const scrollPosition = useSelector(
-    (state: StateSchema) => getScrollPosition(state, pathname),
-  );
+  const scrollPosition = useSelector((state: StateSchema) => getScrollPosition(state, pathname));
 
-  const onPageScroll = useThrottledCallback<UIEventHandler>((evt) => {
-    dispatch(scrollPositionSliceActions.setScrollPosition({
-      position: evt?.currentTarget?.scrollTop,
-      path: pathname,
-    }));
-  }, 500, [dispatch, pathname]);
+  const onPageScroll = useThrottledCallback<UIEventHandler>(
+    (evt) => {
+      dispatch(
+        scrollPositionSliceActions.setScrollPosition({
+          position: evt?.currentTarget?.scrollTop,
+          path: pathname,
+        }),
+      );
+    },
+    500,
+    [dispatch, pathname],
+  );
 
   useMountEffect(() => {
     if (wrapperRef.current) {
@@ -64,8 +61,7 @@ export const Page = ({
       {...restProps}
     >
       {children}
-      {onScrollEnd
-      && <div ref={triggerRef} className={styles.trigger} />}
+      {onScrollEnd && <div ref={triggerRef} className={styles.trigger} />}
     </main>
   );
 };

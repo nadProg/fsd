@@ -14,9 +14,7 @@ type CommentListProps = PropsWithClassName & {
 };
 
 export const CommentList = (props: CommentListProps) => {
-  const {
-    className, comments, isLoading, error,
-  } = props;
+  const { className, comments, isLoading, error } = props;
 
   const { t } = useTranslation();
 
@@ -39,18 +37,14 @@ export const CommentList = (props: CommentListProps) => {
   }
 
   if (!comments?.length) {
-    return (
-      <div className={className}>
-        {t('comments.list.empty-state')}
-      </div>
-    );
+    return <div className={className}>{t('comments.list.empty-state')}</div>;
   }
 
   return (
     <VStack gap={12} align="stretch" className={className}>
-      {
-        comments.map((comment) => <CommentCard key={comment.id} comment={comment} />)
-      }
+      {comments.map((comment) => (
+        <CommentCard key={comment.id} comment={comment} />
+      ))}
     </VStack>
   );
 };

@@ -16,19 +16,14 @@ type ArticleViewSelectorProps = PropsWithClassName & {
   onSelect: (view: ValuesOf<typeof ArticleView>) => void;
 };
 
-export const ArticleViewSelector = memo(({
-  className,
-  view: currentView,
-  onSelect,
-}: ArticleViewSelectorProps) => (
+export const ArticleViewSelector = memo(({ className, view: currentView, onSelect }: ArticleViewSelectorProps) => (
   <div className={classNames(className, styles.ArticleViewSelector)}>
-    {VIEWS.map(({
-      view,
-      icon,
-    }) => (
+    {VIEWS.map(({ view, icon }) => (
       <Button
         key={view}
-        className={classNames(styles.button, { [styles.active]: view === currentView })}
+        className={classNames(styles.button, {
+          [styles.active]: view === currentView,
+        })}
         onClick={() => onSelect(view)}
       >
         <Icon icon={icon} className={styles.icon} />

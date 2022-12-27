@@ -11,6 +11,8 @@ module.exports = {
     'plugin:react/recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:i18next/recommended',
+    'prettier',
+    'plugin:prettier/recommended',
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -28,15 +30,12 @@ module.exports = {
     'react-hooks',
     'feature-sliced-design',
     'unused-imports',
+    'prettier',
   ],
   rules: {
-    indent: 'off',
-    '@typescript-eslint/indent': ['error', 2, {
-      SwitchCase: 0,
-    }],
-    'linebreak-style': ['error', 'unix'],
-    quotes: ['error', 'single'],
-    semi: ['error', 'always'],
+    'prettier/prettier': ['error'],
+    'arrow-body-style': 'off',
+    'prefer-arrow-callback': 'off',
     'import/extensions': 'off',
     'import/no-unresolved': 'off',
     'import/prefer-default-export': 'off',
@@ -54,23 +53,24 @@ module.exports = {
       { extensions: ['.js', '.jsx', 'tsx'] },
     ],
     'no-underscore-dangle': ['error', { allow: ['__IS_DEV__'] }],
-    'max-len': ['error', {
-      code: 120,
-      ignoreComments: true,
-    }],
     'react/jsx-props-no-spreading': 'off',
     'import/no-extraneous-dependencies': 'warn',
-    'i18next/no-literal-string': ['error', {
-      markupOnly: true,
-      onlyAttribute: [''],
-    }],
+    'i18next/no-literal-string': [
+      'error',
+      {
+        markupOnly: true,
+        onlyAttribute: [''],
+      },
+    ],
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn',
     'feature-sliced-design/relative-path-within-slice': [
-      'error', { alias: '@' },
+      'error',
+      { alias: '@' },
     ],
     'feature-sliced-design/public-api-slice-import': [
-      'error', {
+      'error',
+      {
         alias: '@',
         ignoreLayers: ['shared', 'app'],
         testFiles: [

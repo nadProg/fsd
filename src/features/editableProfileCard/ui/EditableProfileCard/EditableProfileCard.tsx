@@ -9,23 +9,15 @@ import { useAppDispatch } from '@/shared/hooks/useAppDispatch';
 import { useDynamicReducers } from '@/shared/hooks/useDynamicReducers';
 import { useProjectEffect } from '@/shared/hooks/useProjectEffect';
 
-import {
-  ProfileCard,
-} from '@/entities/Profile';
+import { ProfileCard } from '@/entities/Profile';
 import { ValuesOfCountry } from '@/entities/Country';
 import { ValuesOfCurrency } from '@/entities/Currency';
 
-import {
-  EditableProfileCardHeader,
-} from '../EditableProfileCardHeader/EditableProfileCardHeader';
+import { EditableProfileCardHeader } from '../EditableProfileCardHeader/EditableProfileCardHeader';
 import { fetchProfileData } from '../../model/services/fetchProfileData/fetchProfileData';
 import { getProfileForm } from '../../model/selectors/getProfileForm/getProfileForm';
-import {
-  getProfileIsLoading,
-} from '../../model/selectors/getProfileIsLoading/getProfileIsLoading';
-import {
-  getProfileValidateErrors,
-} from '../../model/selectors/getProfileValidateErrors/getProfileValidateErrors';
+import { getProfileIsLoading } from '../../model/selectors/getProfileIsLoading/getProfileIsLoading';
+import { getProfileValidateErrors } from '../../model/selectors/getProfileValidateErrors/getProfileValidateErrors';
 import { getProfileReadonly } from '../../model/selectors/getProfileReadonly/getProfileReadonly';
 import { getProfileError } from '../../model/selectors/getProfileError/getProfileError';
 import { getProfileData } from '../../model/selectors/getProfileData/getProfileData';
@@ -71,37 +63,61 @@ export const EditableProfileCard = memo((props: EditableProfileCardProps) => {
   const profileReadonly = useSelector(getProfileReadonly);
   const profileValidateErrors = useSelector(getProfileValidateErrors);
 
-  const onChangeFirstName = useCallback((value?: string) => {
-    dispatch(editableProfileSliceActions.updateForm({ firstname: value }));
-  }, [dispatch]);
+  const onChangeFirstName = useCallback(
+    (value?: string) => {
+      dispatch(editableProfileSliceActions.updateForm({ firstname: value }));
+    },
+    [dispatch],
+  );
 
-  const onChangeLastName = useCallback((value?: string) => {
-    dispatch(editableProfileSliceActions.updateForm({ lastname: value }));
-  }, [dispatch]);
+  const onChangeLastName = useCallback(
+    (value?: string) => {
+      dispatch(editableProfileSliceActions.updateForm({ lastname: value }));
+    },
+    [dispatch],
+  );
 
-  const onChangeAge = useCallback((value?: string) => {
-    dispatch(editableProfileSliceActions.updateForm({ age: Number(value) }));
-  }, [dispatch]);
+  const onChangeAge = useCallback(
+    (value?: string) => {
+      dispatch(editableProfileSliceActions.updateForm({ age: Number(value) }));
+    },
+    [dispatch],
+  );
 
-  const onChangeCity = useCallback((value?: string) => {
-    dispatch(editableProfileSliceActions.updateForm({ city: value }));
-  }, [dispatch]);
+  const onChangeCity = useCallback(
+    (value?: string) => {
+      dispatch(editableProfileSliceActions.updateForm({ city: value }));
+    },
+    [dispatch],
+  );
 
-  const onChangeUserName = useCallback((value?: string) => {
-    dispatch(editableProfileSliceActions.updateForm({ username: value }));
-  }, [dispatch]);
+  const onChangeUserName = useCallback(
+    (value?: string) => {
+      dispatch(editableProfileSliceActions.updateForm({ username: value }));
+    },
+    [dispatch],
+  );
 
-  const onChangeAvatar = useCallback((value?: string) => {
-    dispatch(editableProfileSliceActions.updateForm({ avatar: value }));
-  }, [dispatch]);
+  const onChangeAvatar = useCallback(
+    (value?: string) => {
+      dispatch(editableProfileSliceActions.updateForm({ avatar: value }));
+    },
+    [dispatch],
+  );
 
-  const onChangeCurrency = useCallback((value?: ValuesOfCurrency) => {
-    dispatch(editableProfileSliceActions.updateForm({ currency: value }));
-  }, [dispatch]);
+  const onChangeCurrency = useCallback(
+    (value?: ValuesOfCurrency) => {
+      dispatch(editableProfileSliceActions.updateForm({ currency: value }));
+    },
+    [dispatch],
+  );
 
-  const onChangeCountry = useCallback((value?: ValuesOfCountry) => {
-    dispatch(editableProfileSliceActions.updateForm({ country: value }));
-  }, [dispatch]);
+  const onChangeCountry = useCallback(
+    (value?: ValuesOfCountry) => {
+      dispatch(editableProfileSliceActions.updateForm({ country: value }));
+    },
+    [dispatch],
+  );
 
   return (
     <div className={classNames(className, styles.EditableProfileCard)}>
@@ -109,7 +125,7 @@ export const EditableProfileCard = memo((props: EditableProfileCardProps) => {
 
       {profileValidateErrors?.map((error) => (
         <Text key={error} theme={TextTheme.Error} data-testid="EditableProfileCard.Error">
-          { t(validateErrorTranslates[error]) }
+          {t(validateErrorTranslates[error])}
         </Text>
       ))}
 

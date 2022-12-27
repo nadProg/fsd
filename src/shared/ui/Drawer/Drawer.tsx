@@ -10,17 +10,13 @@ import styles from './Drawer.module.scss';
 
 const height = window.innerHeight;
 
-type DrawerProps = PropsWithClassName & PropsWithChildren & {
-  isOpen?: boolean;
-  onClose?: () => void;
-};
+type DrawerProps = PropsWithClassName &
+  PropsWithChildren & {
+    isOpen?: boolean;
+    onClose?: () => void;
+  };
 
-export const DrawerContent = ({
-  className,
-  children,
-  isOpen,
-  onClose,
-}: DrawerProps): JSX.Element => {
+export const DrawerContent = ({ className, children, isOpen, onClose }: DrawerProps): JSX.Element => {
   const { Spring, Gesture } = useAnimation();
 
   const [{ y }, api] = Spring.useSpring(() => ({ y: height }));
@@ -35,25 +31,23 @@ export const DrawerContent = ({
     }
   }, [api, isOpen, openDrawer]);
 
-  const closeDrawer = useCallback((velocity = 0) => {
-    api.start({
-      y: height,
-      immediate: false,
-      config: {
-        ...Spring.config.stiff, velocity,
-      },
-      onResolve: onClose,
-    });
-  }, [Spring.config.stiff, api, onClose]);
+  const closeDrawer = useCallback(
+    (velocity = 0) => {
+      api.start({
+        y: height,
+        immediate: false,
+        config: {
+          ...Spring.config.stiff,
+          velocity,
+        },
+        onResolve: onClose,
+      });
+    },
+    [Spring.config.stiff, api, onClose],
+  );
 
   const bind = Gesture.useDrag(
-    ({
-      last,
-      velocity: [, vy],
-      direction: [, dy],
-      movement: [, my],
-      cancel,
-    }) => {
+    ({ last, velocity: [, vy], direction: [, dy], movement: [, my], cancel }) => {
       if (my < -70) cancel();
 
       if (last) {
@@ -67,7 +61,10 @@ export const DrawerContent = ({
       }
     },
     {
-      from: () => [0, y.get()], filterTaps: true, bounds: { top: 0 }, rubberband: true,
+      from: () => [0, y.get()],
+      filterTaps: true,
+      bounds: { top: 0 },
+      rubberband: true,
     },
   );
 
@@ -75,9 +72,10 @@ export const DrawerContent = ({
 
   return (
     <Portal>
-      <div className={classNames(className, styles.Drawer, {
-        [styles.opened]: isOpen,
-      })}
+      <div
+        className={classNames(className, styles.Drawer, {
+          [styles.opened]: isOpen,
+        })}
       >
         <Overlay onClick={closeDrawer} />
         <Spring.a.div

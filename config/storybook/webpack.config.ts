@@ -42,9 +42,10 @@ export default ({ config }: { config: Configuration }) => {
   if (config.module && config.module.rules) {
     config.module.rules = config.module.rules.map((rule) => {
       if (typeof rule === 'object' && /svg/.test(rule.test as string)) {
-        return ({
-          ...rule, exclude: /\.(png|svg|jpe?g|gif)$/i,
-        });
+        return {
+          ...rule,
+          exclude: /\.(png|svg|jpe?g|gif)$/i,
+        };
       }
 
       return rule;
@@ -58,11 +59,13 @@ export default ({ config }: { config: Configuration }) => {
   }
 
   if (config.plugins) {
-    config.plugins.push(new DefinePlugin({
-      __IS_DEV__: true,
-      __API_URL__: JSON.stringify('http://storybook.mock.api.com'),
-      __PROJECT__: JSON.stringify(Project.Storybook),
-    }));
+    config.plugins.push(
+      new DefinePlugin({
+        __IS_DEV__: true,
+        __API_URL__: JSON.stringify('http://storybook.mock.api.com'),
+        __PROJECT__: JSON.stringify(Project.Storybook),
+      }),
+    );
   }
 
   return config;

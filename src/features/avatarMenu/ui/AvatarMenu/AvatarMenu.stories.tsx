@@ -11,14 +11,16 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-  decorators: [StoreDecorator({
-    user: {
-      authData: {
-        id: '1',
-        username: 'Username',
+  decorators: [
+    StoreDecorator({
+      user: {
+        authData: {
+          id: '1',
+          username: 'Username',
+        },
       },
-    },
-  })],
+    }),
+  ],
 } as ComponentMeta<typeof AvatarMenu>;
 
 const Template: ComponentStory<typeof AvatarMenu> = (args) => <AvatarMenu {...args} />;

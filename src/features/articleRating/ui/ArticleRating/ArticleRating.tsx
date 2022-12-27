@@ -14,23 +14,21 @@ import styles from './ArticleRating.module.scss';
 import { useArticleRatings, useRateArticle } from '../../api/articleRatingApi';
 
 type ArticleRatingProps = PropsWithClassName & {
-  articleId: Id
+  articleId: Id;
 };
 
 const onRateError = () => alert('Error');
 
 export const ArticleRating = memo((props: ArticleRatingProps) => {
-  const {
-    className,
-    articleId,
-  } = props;
+  const { className, articleId } = props;
   const { t } = useTranslation();
 
   const userId = useSelector(getUserAuthData)?.id;
 
   const {
     data: articleRatings,
-    isLoading, isFetching,
+    isLoading,
+    isFetching,
   } = useArticleRatings({
     userId: userId as Id,
     articleId,
@@ -38,17 +36,20 @@ export const ArticleRating = memo((props: ArticleRatingProps) => {
 
   const [rateArticleMutation] = useRateArticle();
 
-  const onRate = useCallback(async (data: RatingCardData) => {
-    if (!userId) {
-      throw new Error('User in not authorized');
-    }
+  const onRate = useCallback(
+    async (data: RatingCardData) => {
+      if (!userId) {
+        throw new Error('User in not authorized');
+      }
 
-    await rateArticleMutation({
-      ...data,
-      userId,
-      articleId,
-    });
-  }, [rateArticleMutation, articleId, userId]);
+      await rateArticleMutation({
+        ...data,
+        userId,
+        articleId,
+      });
+    },
+    [rateArticleMutation, articleId, userId],
+  );
 
   if (isLoading) {
     return <Skeleton height="150px" />;

@@ -3,7 +3,8 @@ import { AnimationContext } from './Animation.context';
 import type { AnimationContextValue } from './Animation.types';
 
 // eslint-disable-next-line max-len
-const isAnimationRequired = (animation: Partial<AnimationContextValue>): animation is AnimationContextValue => animation.Spring !== undefined && animation.Gesture !== undefined;
+const isAnimationRequired = (animation: Partial<AnimationContextValue>): animation is AnimationContextValue =>
+  animation.Spring !== undefined && animation.Gesture !== undefined;
 
 export const useAnimation = (): AnimationContextValue => {
   const animation = useContext(AnimationContext);

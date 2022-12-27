@@ -9,9 +9,7 @@ import { Input } from '@/shared/ui/Input';
 import { SortOrder } from '@/shared/constants/queryParams';
 import { useDebouncedCallback } from '@/shared/hooks/useDebouncedCallback/useDebouncedCallback';
 
-import {
-  ArticleView,
-} from '@/entities/Article';
+import { ArticleView } from '@/entities/Article';
 
 import { ArticleViewSelector } from '@/features/ArticleViewSelector';
 import { ArticleTypeTabs, ArticleTypeTab } from '@/features/ArticleTypeTabs';
@@ -40,49 +38,59 @@ export const ArticlesPageFilters = (props: ArticlesPageFiltersProps) => {
 
   const dispatch = useAppDispatch();
 
-  const refetchData = useDebouncedCallback(() => {
-    // todo: resetPage to 1 ?
-    dispatch(fetchArticles({ replace: true }));
-  }, 500, [dispatch]);
+  const refetchData = useDebouncedCallback(
+    () => {
+      // todo: resetPage to 1 ?
+      dispatch(fetchArticles({ replace: true }));
+    },
+    500,
+    [dispatch],
+  );
 
-  const onViewSelect = useCallback((newView: ValuesOf<typeof ArticleView>) => {
-    dispatch(articlesPageActions.setView(newView));
-  }, [dispatch]);
+  const onViewSelect = useCallback(
+    (newView: ValuesOf<typeof ArticleView>) => {
+      dispatch(articlesPageActions.setView(newView));
+    },
+    [dispatch],
+  );
 
-  const onOrderSelect = useCallback((newOrder: ValuesOf<typeof SortOrder>) => {
-    dispatch(articlesPageActions.setOrder(newOrder));
-    refetchData();
-  }, [dispatch, refetchData]);
+  const onOrderSelect = useCallback(
+    (newOrder: ValuesOf<typeof SortOrder>) => {
+      dispatch(articlesPageActions.setOrder(newOrder));
+      refetchData();
+    },
+    [dispatch, refetchData],
+  );
 
-  const onSortSelect = useCallback((newSort: ValuesOf<typeof ArticleSortField>) => {
-    dispatch(articlesPageActions.setSort(newSort));
-    refetchData();
-  }, [dispatch, refetchData]);
+  const onSortSelect = useCallback(
+    (newSort: ValuesOf<typeof ArticleSortField>) => {
+      dispatch(articlesPageActions.setSort(newSort));
+      refetchData();
+    },
+    [dispatch, refetchData],
+  );
 
-  const onSearchChange = useCallback((newSearch: string) => {
-    dispatch(articlesPageActions.setSearch(newSearch));
-    refetchData();
-  }, [dispatch, refetchData]);
+  const onSearchChange = useCallback(
+    (newSearch: string) => {
+      dispatch(articlesPageActions.setSearch(newSearch));
+      refetchData();
+    },
+    [dispatch, refetchData],
+  );
 
-  const onTypeTabClick = useCallback((newTab: ValuesOf<typeof ArticleTypeTab>) => {
-    dispatch(articlesPageActions.setType(newTab));
-    refetchData();
-  }, [dispatch, refetchData]);
+  const onTypeTabClick = useCallback(
+    (newTab: ValuesOf<typeof ArticleTypeTab>) => {
+      dispatch(articlesPageActions.setType(newTab));
+      refetchData();
+    },
+    [dispatch, refetchData],
+  );
 
   return (
     <div className={classNames(className, styles.ArticlesPageFilters)}>
       <Card className={styles.filters}>
-        <ArticleSortSelector
-          sort={sort}
-          order={order}
-          onSortSelect={onSortSelect}
-          onOrderSelect={onOrderSelect}
-        />
-        <ArticleViewSelector
-          className={styles.viewSelector}
-          view={view}
-          onSelect={onViewSelect}
-        />
+        <ArticleSortSelector sort={sort} order={order} onSortSelect={onSortSelect} onOrderSelect={onOrderSelect} />
+        <ArticleViewSelector className={styles.viewSelector} view={view} onSelect={onViewSelect} />
       </Card>
       <Card>
         <Input placeholder="Поиск" value={search} onChange={onSearchChange} />

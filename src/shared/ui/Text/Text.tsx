@@ -1,8 +1,6 @@
 import classNames from 'classnames';
 
-import {
-  PropsWithChildren, PropsWithClassName, PropsWithDataAttributes, ValuesOf,
-} from '@/shared/types';
+import { PropsWithChildren, PropsWithClassName, PropsWithDataAttributes, ValuesOf } from '@/shared/types';
 
 import styles from './Text.module.scss';
 
@@ -22,12 +20,12 @@ export const TextSize = {
 };
 
 type TextProps = PropsWithClassName &
-PropsWithChildren &
-PropsWithDataAttributes & {
-  theme?: ValuesOf<typeof TextTheme>;
-  variant?: ValuesOf<typeof TextVariant>;
-  size?: ValuesOf<typeof TextSize>;
-};
+  PropsWithChildren &
+  PropsWithDataAttributes & {
+    theme?: ValuesOf<typeof TextTheme>;
+    variant?: ValuesOf<typeof TextVariant>;
+    size?: ValuesOf<typeof TextSize>;
+  };
 
 export const Text = (props: TextProps) => {
   const {
@@ -44,13 +42,7 @@ export const Text = (props: TextProps) => {
 
   return (
     <div
-      className={classNames(
-        className,
-        styles.Text,
-        styles[theme],
-        styles[variant],
-        styles[size],
-      )}
+      className={classNames(className, styles.Text, styles[theme], styles[variant], styles[size])}
       data-testid={textDataTestId}
       {...restProps}
     >

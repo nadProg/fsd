@@ -55,9 +55,11 @@ describe('fetchArticlesNextPage', () => {
 
     const { api, dispatch } = thunk;
 
-    api.get.mockReturnValue(Promise.resolve({
-      data: mockData,
-    }));
+    api.get.mockReturnValue(
+      Promise.resolve({
+        data: mockData,
+      }),
+    );
 
     const result = await thunk.callThunk();
 
@@ -85,9 +87,11 @@ describe('fetchArticlesNextPage', () => {
 
     const { api, dispatch } = thunk;
 
-    api.get.mockReturnValue(Promise.resolve({
-      data: mockData,
-    }));
+    api.get.mockReturnValue(
+      Promise.resolve({
+        data: mockData,
+      }),
+    );
 
     const result = await thunk.callThunk();
 
@@ -115,9 +119,11 @@ describe('fetchArticlesNextPage', () => {
 
     const { api, dispatch } = thunk;
 
-    api.get.mockReturnValue(Promise.resolve({
-      data: mockData,
-    }));
+    api.get.mockReturnValue(
+      Promise.resolve({
+        data: mockData,
+      }),
+    );
 
     const result = await thunk.callThunk();
 

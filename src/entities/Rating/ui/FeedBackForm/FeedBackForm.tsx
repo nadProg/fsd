@@ -7,28 +7,27 @@ import { Button } from '@/shared/ui/Button';
 import { HStack, VStack } from '@/shared/ui/Stack';
 
 export type FeedBackFormData = {
-  feedBack: string
+  feedBack: string;
 };
 
 type FeedBackFormProps = {
-
   onSubmit: (data: FeedBackFormData) => Promise<void> | void;
   onCancel: () => Promise<void> | void;
 };
 
 const DEFAULT_FEEDBACK = '';
 
-export const FeedBackForm = memo(({
-  onCancel,
-  onSubmit,
-}: FeedBackFormProps): JSX.Element => {
+export const FeedBackForm = memo(({ onCancel, onSubmit }: FeedBackFormProps): JSX.Element => {
   const { t } = useTranslation();
   const [feedBack, setFeedBack] = useState(DEFAULT_FEEDBACK);
   const [isFormSubmitting, setIsFormSubmitting] = useState(false);
 
-  const onFeedBackChange = useCallback((value: string) => {
-    setFeedBack(value);
-  }, [setFeedBack]);
+  const onFeedBackChange = useCallback(
+    (value: string) => {
+      setFeedBack(value);
+    },
+    [setFeedBack],
+  );
 
   const onFormReset = () => {
     setFeedBack(DEFAULT_FEEDBACK);
@@ -60,8 +59,12 @@ export const FeedBackForm = memo(({
           disabled={isFormSubmitting}
         />
         <HStack gap={8} max justify="end">
-          <Button theme="outlined" onClick={onCancel} disabled={isFormSubmitting}>{t('cancel')}</Button>
-          <Button theme="backgroundInverted" type="submit" disabled={isFormSubmitting}>{t('submit')}</Button>
+          <Button theme="outlined" onClick={onCancel} disabled={isFormSubmitting}>
+            {t('cancel')}
+          </Button>
+          <Button theme="backgroundInverted" type="submit" disabled={isFormSubmitting}>
+            {t('submit')}
+          </Button>
         </HStack>
       </VStack>
     </form>

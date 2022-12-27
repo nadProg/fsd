@@ -34,9 +34,12 @@ export const AddCommentForm: FC<AddCommentFormProps> = ({ className, onSendComme
 
   const dispatch = useAppDispatch();
 
-  const onCommentTexChange = useCallback((value: string) => {
-    dispatch(addCommentFormActions.setText(value));
-  }, [dispatch]);
+  const onCommentTexChange = useCallback(
+    (value: string) => {
+      dispatch(addCommentFormActions.setText(value));
+    },
+    [dispatch],
+  );
 
   const sendComment = useCallback(async () => {
     await onSendComment(text);
@@ -45,17 +48,9 @@ export const AddCommentForm: FC<AddCommentFormProps> = ({ className, onSendComme
 
   return (
     <HStack className={classNames(className, styles.AddCommentForm)} justify="between" gap={16}>
-      <Input
-        className={styles.input}
-        placeholder="Введите комментарий"
-        value={text}
-        onChange={onCommentTexChange}
-      />
+      <Input className={styles.input} placeholder="Введите комментарий" value={text} onChange={onCommentTexChange} />
 
-      <Button
-        theme={ButtonTheme.Outlined}
-        onClick={sendComment}
-      >
+      <Button theme={ButtonTheme.Outlined} onClick={sendComment}>
         {t('comments.form.submit')}
       </Button>
     </HStack>

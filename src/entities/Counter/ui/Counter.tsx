@@ -20,9 +20,7 @@ export const Counter = ({ className }: CounterProps): JSX.Element => {
   };
 
   return (
-    <div
-      className={classNames(className, '')}
-    >
+    <div className={classNames(className, '')}>
       {/* eslint-disable-next-line i18next/no-literal-string */}
       <h1 data-testid="counter-value">
         Value:
@@ -30,9 +28,13 @@ export const Counter = ({ className }: CounterProps): JSX.Element => {
       </h1>
 
       {/* eslint-disable-next-line i18next/no-literal-string */}
-      <button type="button" onClick={increase} data-testid="increment-button">increment</button>
+      <button type="button" onClick={increase} data-testid="increment-button">
+        increment
+      </button>
       {/* eslint-disable-next-line i18next/no-literal-string */}
-      <button type="button" onClick={decrease} data-testid="decrement-button">decrement</button>
+      <button type="button" onClick={decrease} data-testid="decrement-button">
+        decrement
+      </button>
     </div>
   );
 };

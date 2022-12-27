@@ -1,14 +1,12 @@
-import {
-  Component, ErrorInfo, ReactNode, Suspense,
-} from 'react';
+import { Component, ErrorInfo, ReactNode, Suspense } from 'react';
 import { PageError } from '@/shared/ui/PageError';
 
 type ErrorBoundaryProps = {
-  children: ReactNode
+  children: ReactNode;
 };
 
 type ErrorBoundaryState = {
-  hasError: boolean
+  hasError: boolean;
 };
 
 export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {

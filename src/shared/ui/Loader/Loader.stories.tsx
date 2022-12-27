@@ -12,7 +12,11 @@ export default {
     backgroundColor: { control: 'color' },
   },
   decorators: [
-    (StoryComponent) => <div style={{ paddingTop: 'calc(2 * var(--loader-size))' }}><StoryComponent /></div>,
+    (StoryComponent) => (
+      <div style={{ paddingTop: 'calc(2 * var(--loader-size))' }}>
+        <StoryComponent />
+      </div>
+    ),
   ],
 } as ComponentMeta<typeof Loader>;
 

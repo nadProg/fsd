@@ -10,9 +10,7 @@ import { DropDown, DropDownItemType } from '@/shared/ui/DropDown';
 import { AppRoute } from '@/shared/constants/router';
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch';
 
-import {
-  getIsUserAdmin, getIsUserManager, getUserAuthData, userActions,
-} from '@/entities/User';
+import { getIsUserAdmin, getIsUserManager, getUserAuthData, userActions } from '@/entities/User';
 
 type AvatarMenuProps = PropsWithClassName;
 
@@ -34,26 +32,33 @@ export const AvatarMenu = memo((props: AvatarMenuProps) => {
     dispatch(userActions.logout());
   }, [dispatch]);
 
-  const dropDownItems = useMemo(() => ([
-    ...(isAdminPanelAvailable ? ([{
-      type: DropDownItemType.Link,
-      value: 'admin',
-      label: t('navbar.admin-panel'),
-      href: AppRoute.AdminPanel(),
-    }]) : []),
-    {
-      type: DropDownItemType.Link,
-      value: 'profile',
-      label: t('navbar.profile'),
-      href: AppRoute.Profile(userId),
-    },
-    {
-      type: DropDownItemType.Button,
-      value: 'logout',
-      label: t('navbar.logout'),
-      onClick: onLogout,
-    },
-  ]), [onLogout, userId, t, isAdminPanelAvailable]);
+  const dropDownItems = useMemo(
+    () => [
+      ...(isAdminPanelAvailable
+        ? [
+            {
+              type: DropDownItemType.Link,
+              value: 'admin',
+              label: t('navbar.admin-panel'),
+              href: AppRoute.AdminPanel(),
+            },
+          ]
+        : []),
+      {
+        type: DropDownItemType.Link,
+        value: 'profile',
+        label: t('navbar.profile'),
+        href: AppRoute.Profile(userId),
+      },
+      {
+        type: DropDownItemType.Button,
+        value: 'logout',
+        label: t('navbar.logout'),
+        onClick: onLogout,
+      },
+    ],
+    [onLogout, userId, t, isAdminPanelAvailable],
+  );
 
   // todo: make props ?
   if (!userId) {
@@ -63,11 +68,11 @@ export const AvatarMenu = memo((props: AvatarMenuProps) => {
   return (
     <DropDown
       className={className}
-      trigger={(
+      trigger={
         <Button>
           <Avatar size={30} src={authData.avatar} />
         </Button>
-      )}
+      }
       items={dropDownItems}
     />
   );

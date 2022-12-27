@@ -1,8 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import {
-  Flex, FlexAlign, FlexDirection, FlexJustify,
-} from './Flex';
+import { Flex, FlexAlign, FlexDirection, FlexJustify } from './Flex';
 
 export default {
   title: 'shared/Stack/Flex',
@@ -11,23 +9,21 @@ export default {
     backgroundColor: { control: 'color' },
   },
   args: {
-    children:
-      Array(5)
-        .fill(null)
-        .map((_, index) => (
-          <div
-            // eslint-disable-next-line react/no-array-index-key
-            key={index}
-            style={{
-              border: '1px solid var(--primary-color)',
-              padding: `${5 + 2 * index}px`,
-            }}
-          >
-            Item
-            {index + 1}
-          </div>
-        ))
-    ,
+    children: Array(5)
+      .fill(null)
+      .map((_, index) => (
+        <div
+          // eslint-disable-next-line react/no-array-index-key
+          key={index}
+          style={{
+            border: '1px solid var(--primary-color)',
+            padding: `${5 + 2 * index}px`,
+          }}
+        >
+          Item
+          {index + 1}
+        </div>
+      )),
   },
 } as ComponentMeta<typeof Flex>;
 

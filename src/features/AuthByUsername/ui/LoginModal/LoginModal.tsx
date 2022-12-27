@@ -10,21 +10,16 @@ import { LoginFormAsync } from '../LoginForm/LoginForm.async';
 import { LoginFormProps } from '../LoginForm/LoginForm';
 import styles from './LoginModal.module.scss';
 
-type LoginModalProps = PropsWithClassName &
-Pick<ModalProps, 'isOpen' | 'onClose'> &
-Pick<LoginFormProps, 'onSuccess'>;
+type LoginModalProps = PropsWithClassName & Pick<ModalProps, 'isOpen' | 'onClose'> & Pick<LoginFormProps, 'onSuccess'>;
 
-export const LoginModal: FC<LoginModalProps> = ({
-  className,
-  onSuccess,
-  ...restProps
-}) => (
+export const LoginModal: FC<LoginModalProps> = ({ className, onSuccess, ...restProps }) => (
   <Modal className={classNames(className, styles.LoginModal)} {...restProps} lazy>
-    <Suspense fallback={(
-      <div className={styles.loaderWrapper}>
-        <Loader />
-      </div>
-    )}
+    <Suspense
+      fallback={
+        <div className={styles.loaderWrapper}>
+          <Loader />
+        </div>
+      }
     >
       <LoginFormAsync onSuccess={onSuccess} />
     </Suspense>

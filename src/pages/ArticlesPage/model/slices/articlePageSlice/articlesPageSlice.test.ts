@@ -56,20 +56,17 @@ describe('articlesPageSlice', () => {
     const actionSet10 = articlesPageActions.setPage(10);
     const actionSet100 = articlesPageActions.setPage(100);
 
-    expect(articlesPageReducer(state, actionSet5))
-      .toEqual({
-        page: 5,
-      });
+    expect(articlesPageReducer(state, actionSet5)).toEqual({
+      page: 5,
+    });
 
-    expect(articlesPageReducer(state, actionSet10))
-      .toEqual({
-        page: 10,
-      });
+    expect(articlesPageReducer(state, actionSet10)).toEqual({
+      page: 10,
+    });
 
-    expect(articlesPageReducer(state, actionSet100))
-      .toEqual({
-        page: 100,
-      });
+    expect(articlesPageReducer(state, actionSet100)).toEqual({
+      page: 100,
+    });
   });
 
   test('should set view', () => {
@@ -77,15 +74,13 @@ describe('articlesPageSlice', () => {
     const actionSetList = articlesPageActions.setView('list');
     const actionSetGrid = articlesPageActions.setView('grid');
 
-    expect(articlesPageReducer(state, actionSetList))
-      .toEqual({
-        view: 'list',
-      });
+    expect(articlesPageReducer(state, actionSetList)).toEqual({
+      view: 'list',
+    });
 
-    expect(articlesPageReducer(state, actionSetGrid))
-      .toEqual({
-        view: 'grid',
-      });
+    expect(articlesPageReducer(state, actionSetGrid)).toEqual({
+      view: 'grid',
+    });
   });
 
   test('should set order', () => {
@@ -93,15 +88,13 @@ describe('articlesPageSlice', () => {
     const actionSetAsc = articlesPageActions.setOrder('asc');
     const actionSetDesc = articlesPageActions.setOrder('desc');
 
-    expect(articlesPageReducer(state, actionSetAsc))
-      .toEqual({
-        order: 'asc',
-      });
+    expect(articlesPageReducer(state, actionSetAsc)).toEqual({
+      order: 'asc',
+    });
 
-    expect(articlesPageReducer(state, actionSetDesc))
-      .toEqual({
-        order: 'desc',
-      });
+    expect(articlesPageReducer(state, actionSetDesc)).toEqual({
+      order: 'desc',
+    });
   });
 
   test('should set sort', () => {
@@ -110,20 +103,17 @@ describe('articlesPageSlice', () => {
     const actionSetTitle = articlesPageActions.setSort('title');
     const actionSetCreatedAt = articlesPageActions.setSort('createdAt');
 
-    expect(articlesPageReducer(state, actionSetViews))
-      .toEqual({
-        sort: 'views',
-      });
+    expect(articlesPageReducer(state, actionSetViews)).toEqual({
+      sort: 'views',
+    });
 
-    expect(articlesPageReducer(state, actionSetTitle))
-      .toEqual({
-        sort: 'title',
-      });
+    expect(articlesPageReducer(state, actionSetTitle)).toEqual({
+      sort: 'title',
+    });
 
-    expect(articlesPageReducer(state, actionSetCreatedAt))
-      .toEqual({
-        sort: 'createdAt',
-      });
+    expect(articlesPageReducer(state, actionSetCreatedAt)).toEqual({
+      sort: 'createdAt',
+    });
   });
 
   test('should set search', () => {
@@ -131,15 +121,13 @@ describe('articlesPageSlice', () => {
     const actionSetShort = articlesPageActions.setSearch('short');
     const actionSetLong = articlesPageActions.setSearch('long long long');
 
-    expect(articlesPageReducer(state, actionSetShort))
-      .toEqual({
-        search: 'short',
-      });
+    expect(articlesPageReducer(state, actionSetShort)).toEqual({
+      search: 'short',
+    });
 
-    expect(articlesPageReducer(state, actionSetLong))
-      .toEqual({
-        search: 'long long long',
-      });
+    expect(articlesPageReducer(state, actionSetLong)).toEqual({
+      search: 'long long long',
+    });
   });
 
   test('should init state when no view in localStorage', () => {
@@ -148,10 +136,9 @@ describe('articlesPageSlice', () => {
 
     Storage.prototype.getItem = jest.fn(() => null);
 
-    expect(articlesPageReducer(state, initAction))
-      .toEqual({
-        __initialized__: true,
-      });
+    expect(articlesPageReducer(state, initAction)).toEqual({
+      __initialized__: true,
+    });
 
     expect(Storage.prototype.getItem).toHaveBeenCalledTimes(1);
     expect(Storage.prototype.getItem).toHaveBeenCalledWith('article_view');
@@ -163,12 +150,11 @@ describe('articlesPageSlice', () => {
 
     Storage.prototype.getItem = jest.fn(() => 'list');
 
-    expect(articlesPageReducer(state, initAction))
-      .toEqual({
-        view: 'list',
-        limit: 3,
-        __initialized__: true,
-      });
+    expect(articlesPageReducer(state, initAction)).toEqual({
+      view: 'list',
+      limit: 3,
+      __initialized__: true,
+    });
 
     expect(Storage.prototype.getItem).toHaveBeenCalledTimes(1);
     expect(Storage.prototype.getItem).toHaveBeenCalledWith('article_view');
@@ -180,12 +166,11 @@ describe('articlesPageSlice', () => {
 
     Storage.prototype.getItem = jest.fn(() => 'grid');
 
-    expect(articlesPageReducer(state, initAction))
-      .toEqual({
-        view: 'grid',
-        limit: 9,
-        __initialized__: true,
-      });
+    expect(articlesPageReducer(state, initAction)).toEqual({
+      view: 'grid',
+      limit: 9,
+      __initialized__: true,
+    });
 
     expect(Storage.prototype.getItem).toHaveBeenCalledTimes(1);
     expect(Storage.prototype.getItem).toHaveBeenCalledWith('article_view');
@@ -199,10 +184,9 @@ describe('articlesPageSlice', () => {
 
     const action = fetchArticles.pending;
 
-    expect(articlesPageReducer(state as ArticlesPageSchema, action))
-      .toEqual({
-        isLoading: true,
-      });
+    expect(articlesPageReducer(state as ArticlesPageSchema, action)).toEqual({
+      isLoading: true,
+    });
   });
 
   test('should handle fetch article service fulfilled', () => {
@@ -214,13 +198,12 @@ describe('articlesPageSlice', () => {
 
     const action = fetchArticles.fulfilled(mockData as Article[], '', mockParams);
 
-    expect(articlesPageReducer(state as ArticlesPageSchema, action))
-      .toEqual({
-        ids: mockArticleIds,
-        entities: mockArticleEntities,
-        isLoading: false,
-        hasMore: true,
-      });
+    expect(articlesPageReducer(state as ArticlesPageSchema, action)).toEqual({
+      ids: mockArticleIds,
+      entities: mockArticleEntities,
+      isLoading: false,
+      hasMore: true,
+    });
   });
 
   test('should handle fetch article service rejected', () => {
@@ -230,10 +213,9 @@ describe('articlesPageSlice', () => {
 
     const action = fetchArticles.rejected(null, '', mockParams, 'error');
 
-    expect(articlesPageReducer(state as ArticlesPageSchema, action))
-      .toEqual({
-        error: 'error',
-        isLoading: false,
-      });
+    expect(articlesPageReducer(state as ArticlesPageSchema, action)).toEqual({
+      error: 'error',
+      isLoading: false,
+    });
   });
 });

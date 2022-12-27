@@ -42,18 +42,18 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-  decorators: [StoreDecorator({
-    user: {
-      authData: mockUserAuthData,
-    },
-  })],
+  decorators: [
+    StoreDecorator({
+      user: {
+        authData: mockUserAuthData,
+      },
+    }),
+  ],
   args: {
     articleId: mockArticleId,
   },
   parameters: {
-    mockData: [
-      mockEmptyData,
-    ],
+    mockData: [mockEmptyData],
   },
 } as ComponentMeta<typeof ArticleRating>;
 
@@ -65,9 +65,7 @@ Light.args = {};
 export const LightWithFeedBack = Template.bind({});
 LightWithFeedBack.args = {};
 LightWithFeedBack.parameters = {
-  mockData: [
-    mockData,
-  ],
+  mockData: [mockData],
 };
 
 export const Dark = Template.bind({});
@@ -78,9 +76,7 @@ export const DarkWithFeedBack = Template.bind({});
 DarkWithFeedBack.args = {};
 DarkWithFeedBack.decorators = [ThemeDecorator(Theme.Dark)];
 DarkWithFeedBack.parameters = {
-  mockData: [
-    mockData,
-  ],
+  mockData: [mockData],
 };
 
 export const Orange = Template.bind({});
@@ -91,7 +87,5 @@ export const OrangeWithFeedBack = Template.bind({});
 OrangeWithFeedBack.args = {};
 OrangeWithFeedBack.decorators = [ThemeDecorator(Theme.Orange)];
 OrangeWithFeedBack.parameters = {
-  mockData: [
-    mockData,
-  ],
+  mockData: [mockData],
 };

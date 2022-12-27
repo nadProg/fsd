@@ -3,9 +3,7 @@ import { createEntityAdapter, createSlice, PayloadAction } from '@reduxjs/toolki
 import type { ValuesOf } from '@/shared/types';
 import { SortOrder } from '@/shared/constants/queryParams';
 
-import {
-  Article, ArticleView, ArticleType,
-} from '@/entities/Article';
+import { Article, ArticleView, ArticleType } from '@/entities/Article';
 
 import { ArticleSortField } from '@/features/ArticleSortSelector';
 
@@ -22,8 +20,7 @@ const articlesAdapter = createEntityAdapter<Article>({
 const ARTICLE_VIEW_LOCAL_STORAGE_KEY = 'article_view';
 
 export const getArticles = articlesAdapter.getSelectors<StateSchema>(
-  (state) => state.articlesPage
-    ?? articlesAdapter.getInitialState(initialArticlesPageState),
+  (state) => state.articlesPage ?? articlesAdapter.getInitialState(initialArticlesPageState),
 );
 
 const articlesPageSlice = createSlice({
@@ -61,30 +58,31 @@ const articlesPageSlice = createSlice({
       state.__initialized__ = true;
     },
   },
-  extraReducers: (builder) => builder
-    .addCase(fetchArticles.pending, (state, action) => {
-      state.error = undefined;
-      state.isLoading = true;
+  extraReducers: (builder) =>
+    builder
+      .addCase(fetchArticles.pending, (state, action) => {
+        state.error = undefined;
+        state.isLoading = true;
 
-      if (action.meta?.arg.replace) {
-        articlesAdapter.removeAll(state);
-      }
-    })
-    .addCase(fetchArticles.fulfilled, (state, action) => {
-      state.isLoading = false;
-      state.hasMore = !!action.payload.length;
+        if (action.meta?.arg.replace) {
+          articlesAdapter.removeAll(state);
+        }
+      })
+      .addCase(fetchArticles.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.hasMore = !!action.payload.length;
 
-      if (action.meta?.arg.replace) {
-        articlesAdapter.setAll(state, action.payload);
-        return;
-      }
+        if (action.meta?.arg.replace) {
+          articlesAdapter.setAll(state, action.payload);
+          return;
+        }
 
-      articlesAdapter.addMany(state, action.payload);
-    })
-    .addCase(fetchArticles.rejected, (state, action) => {
-      state.error = action.payload;
-      state.isLoading = false;
-    }),
+        articlesAdapter.addMany(state, action.payload);
+      })
+      .addCase(fetchArticles.rejected, (state, action) => {
+        state.error = action.payload;
+        state.isLoading = false;
+      }),
 });
 
 export const { reducer: articlesPageReducer } = articlesPageSlice;

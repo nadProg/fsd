@@ -13,8 +13,8 @@ export default {
     backgroundColor: { control: 'color' },
   },
   args: {
-    trigger: (<Button theme="backgroundInverted">Popover trigger</Button>),
-    children: (<p>Popover content</p>),
+    trigger: <Button theme="backgroundInverted">Popover trigger</Button>,
+    children: <p>Popover content</p>,
   },
 } as ComponentMeta<typeof Popover>;
 

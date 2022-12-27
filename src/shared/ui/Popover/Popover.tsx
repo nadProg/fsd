@@ -10,11 +10,7 @@ import styles from './Popover.module.scss';
 const PopoverContent = ({ trigger, className, children }: PopoverProps): JSX.Element => {
   const { Popper } = usePopper();
 
-  const {
-    referenceRef,
-    popperRef,
-    getPopperProps,
-  } = Popper.usePopper();
+  const { referenceRef, popperRef, getPopperProps } = Popper.usePopper();
 
   return (
     <HeadlessPopover className={className}>

@@ -7,9 +7,7 @@ import { AppLink } from '@/shared/ui/AppLink';
 import { Button, ButtonTheme } from '@/shared/ui/Button';
 import { AppRoute } from '@/shared/constants/router';
 
-import {
-  getUserAuthData,
-} from '@/entities/User';
+import { getUserAuthData } from '@/entities/User';
 
 import { AvatarMenu } from '@/features/avatarMenu';
 import { LoginModal } from '@/features/AuthByUsername';
@@ -38,10 +36,7 @@ export const TopBar = ({ className }: NavBarProps) => {
     return (
       <header className={classNames(styles.TopBar, className)}>
         <AppLink to={AppRoute.ArticleCreate()}>
-          <Button
-            theme={ButtonTheme.Background}
-            type="button"
-          >
+          <Button theme={ButtonTheme.Background} type="button">
             {t('navbar.new-article')}
           </Button>
         </AppLink>
@@ -55,11 +50,7 @@ export const TopBar = ({ className }: NavBarProps) => {
 
   return (
     <header className={classNames(styles.TopBar, className)}>
-      <Button
-        theme={ButtonTheme.Background}
-        type="button"
-        onClick={onOpenModal}
-      >
+      <Button theme={ButtonTheme.Background} type="button" onClick={onOpenModal}>
         {t('navbar.sign-in')}
       </Button>
 

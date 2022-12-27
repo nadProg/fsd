@@ -2,7 +2,7 @@ import { rtkApi } from '@/shared/api/rtkApi';
 import type { Id } from '@/shared/types';
 import type { Rating, RatingCardData } from '@/entities/Rating';
 
-type GetArticleArgs = { userId: Id, articleId: Id };
+type GetArticleArgs = { userId: Id; articleId: Id };
 
 type RateArticleArgs = GetArticleArgs & RatingCardData;
 
@@ -16,9 +16,16 @@ const articleRatingApi = rtkApi.injectEndpoints({
           articleId,
         },
       }),
-      providesTags: (result) => (result
-        ? [...result.map(({ id }) => ({ type: 'ArticleRating' as const, id })), 'ArticleRating']
-        : ['ArticleRating']),
+      providesTags: (result) =>
+        result
+          ? [
+              ...result.map(({ id }) => ({
+                type: 'ArticleRating' as const,
+                id,
+              })),
+              'ArticleRating',
+            ]
+          : ['ArticleRating'],
     }),
     rateArticle: build.mutation<void, RateArticleArgs>({
       query: (body) => ({

@@ -32,7 +32,6 @@ export const getSideBarItems = createSelector(getUserAuthData, (userData): SideB
         path: AppRoute.Profile(id),
         key: 'profile',
         icon: ProfileIcon,
-
       },
       {
         path: AppRoute.Articles(),

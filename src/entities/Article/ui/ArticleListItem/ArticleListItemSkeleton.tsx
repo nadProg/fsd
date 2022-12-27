@@ -35,11 +35,7 @@ export const ArticleListItemSkeleton = (props: ArticleListItemSkeletonProps) => 
         <Skeleton height={150} />
 
         <div className={styles.footer}>
-          <Skeleton
-            width={150}
-            height={38}
-            className={styles.button}
-          />
+          <Skeleton width={150} height={38} className={styles.button} />
           <Skeleton width={100} height={16} className={styles.views} />
         </div>
       </Card>
@@ -47,12 +43,7 @@ export const ArticleListItemSkeleton = (props: ArticleListItemSkeletonProps) => 
   }
 
   return (
-    <Card
-      className={classNames(
-        className,
-        styles.grid,
-      )}
-    >
+    <Card className={classNames(className, styles.grid)}>
       <div className={styles.imageWrapper}>
         <Skeleton className={styles.image} />
       </div>

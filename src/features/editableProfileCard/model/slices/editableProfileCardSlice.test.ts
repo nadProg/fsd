@@ -40,11 +40,10 @@ describe('ProfileSlice', () => {
 
     const action = editableProfileSliceActions.setReadonly(true);
 
-    expect(editableProfileSliceReducer(state as EditableProfileCardSchema, action))
-      .toEqual({
-        ...state,
-        readonly: true,
-      });
+    expect(editableProfileSliceReducer(state as EditableProfileCardSchema, action)).toEqual({
+      ...state,
+      readonly: true,
+    });
   });
 
   test('should set readonly false', () => {
@@ -54,11 +53,10 @@ describe('ProfileSlice', () => {
 
     const action = editableProfileSliceActions.setReadonly(false);
 
-    expect(editableProfileSliceReducer(state as EditableProfileCardSchema, action))
-      .toEqual({
-        ...state,
-        readonly: false,
-      });
+    expect(editableProfileSliceReducer(state as EditableProfileCardSchema, action)).toEqual({
+      ...state,
+      readonly: false,
+    });
   });
 
   test('should update form', () => {
@@ -73,13 +71,12 @@ describe('ProfileSlice', () => {
 
     const action = editableProfileSliceActions.updateForm(updatedForm);
 
-    expect(editableProfileSliceReducer(state as EditableProfileCardSchema, action))
-      .toEqual({
-        form: {
-          ...state.form,
-          ...updatedForm,
-        },
-      });
+    expect(editableProfileSliceReducer(state as EditableProfileCardSchema, action)).toEqual({
+      form: {
+        ...state.form,
+        ...updatedForm,
+      },
+    });
   });
 
   test('should reset form', () => {
@@ -88,13 +85,14 @@ describe('ProfileSlice', () => {
       form: mockForm,
     };
 
-    expect(editableProfileSliceReducer(state as EditableProfileCardSchema, editableProfileSliceActions.resetForm()))
-      .toEqual({
-        ...state,
-        form: {
-          ...state.data,
-        },
-      });
+    expect(
+      editableProfileSliceReducer(state as EditableProfileCardSchema, editableProfileSliceActions.resetForm()),
+    ).toEqual({
+      ...state,
+      form: {
+        ...state.data,
+      },
+    });
   });
 
   test('should handle fetch profile data service pending', () => {
@@ -103,10 +101,9 @@ describe('ProfileSlice', () => {
       isLoading: false,
     };
 
-    expect(editableProfileSliceReducer(state as EditableProfileCardSchema, fetchProfileData.pending))
-      .toEqual({
-        isLoading: true,
-      });
+    expect(editableProfileSliceReducer(state as EditableProfileCardSchema, fetchProfileData.pending)).toEqual({
+      isLoading: true,
+    });
   });
 
   test('should handle fetch profile data service fulfilled', () => {
@@ -116,12 +113,11 @@ describe('ProfileSlice', () => {
 
     const action = fetchProfileData.fulfilled(mockData, '', mockId);
 
-    expect(editableProfileSliceReducer(state as EditableProfileCardSchema, action))
-      .toEqual({
-        data: mockData,
-        form: mockData,
-        isLoading: false,
-      });
+    expect(editableProfileSliceReducer(state as EditableProfileCardSchema, action)).toEqual({
+      data: mockData,
+      form: mockData,
+      isLoading: false,
+    });
   });
 
   test('should handle fetch profile data service rejected', () => {
@@ -131,11 +127,10 @@ describe('ProfileSlice', () => {
 
     const action = fetchProfileData.rejected(null, '', mockId, 'error');
 
-    expect(editableProfileSliceReducer(state as EditableProfileCardSchema, action))
-      .toEqual({
-        error: 'error',
-        isLoading: false,
-      });
+    expect(editableProfileSliceReducer(state as EditableProfileCardSchema, action)).toEqual({
+      error: 'error',
+      isLoading: false,
+    });
   });
 
   test('should handle update profile data service pending', () => {
@@ -144,10 +139,9 @@ describe('ProfileSlice', () => {
       isLoading: false,
     };
 
-    expect(editableProfileSliceReducer(state as EditableProfileCardSchema, updateProfileData.pending))
-      .toEqual({
-        isLoading: true,
-      });
+    expect(editableProfileSliceReducer(state as EditableProfileCardSchema, updateProfileData.pending)).toEqual({
+      isLoading: true,
+    });
   });
 
   test('should handle update profile data service fulfilled', () => {
@@ -155,12 +149,13 @@ describe('ProfileSlice', () => {
       isLoading: true,
     };
 
-    expect(editableProfileSliceReducer(state as EditableProfileCardSchema, updateProfileData.fulfilled(mockData, '')))
-      .toEqual({
-        data: mockData,
-        form: mockData,
-        isLoading: false,
-      });
+    expect(
+      editableProfileSliceReducer(state as EditableProfileCardSchema, updateProfileData.fulfilled(mockData, '')),
+    ).toEqual({
+      data: mockData,
+      form: mockData,
+      isLoading: false,
+    });
   });
 
   test('should handle update profile data service rejected', () => {
@@ -170,10 +165,9 @@ describe('ProfileSlice', () => {
 
     const action = updateProfileData.rejected(null, '', undefined, [ValidateProfileError.ServerError]);
 
-    expect(editableProfileSliceReducer(state as EditableProfileCardSchema, action))
-      .toEqual({
-        validateErrors: [ValidateProfileError.ServerError],
-        isLoading: false,
-      });
+    expect(editableProfileSliceReducer(state as EditableProfileCardSchema, action)).toEqual({
+      validateErrors: [ValidateProfileError.ServerError],
+      isLoading: false,
+    });
   });
 });

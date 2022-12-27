@@ -7,7 +7,7 @@ import { createReduxStore } from '../config/store';
 
 type StoreProviderProps = PropsWithChildren & {
   initialState?: StateSchema;
-  asyncReducers?: ReducersMapObject<StateSchema>
+  asyncReducers?: ReducersMapObject<StateSchema>;
 };
 
 export const StoreProvider = ({ children, initialState, asyncReducers }: StoreProviderProps) => {

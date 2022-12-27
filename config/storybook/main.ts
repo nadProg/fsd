@@ -2,9 +2,7 @@
 import type { StorybookConfig } from '@storybook/core-common';
 
 const config: StorybookConfig = {
-  stories: [
-    '../../src/**/*.stories.@(ts|tsx)',
-  ],
+  stories: ['../../src/**/*.stories.@(ts|tsx)'],
   staticDirs: ['../../public'],
   addons: [
     '@storybook/addon-links',

@@ -15,9 +15,7 @@ export const ArticleImageBlockComponent = (props: ArticleImageBlockComponentProp
   const { className, block } = props;
 
   return (
-    <div
-      className={classNames(className, styles.ArticleImageBlockComponent)}
-    >
+    <div className={classNames(className, styles.ArticleImageBlockComponent)}>
       <figure className={styles.figure}>
         <img className={styles.image} src={block.src} alt={block.title} />
         {block.title && (
@@ -26,7 +24,6 @@ export const ArticleImageBlockComponent = (props: ArticleImageBlockComponentProp
           </figcaption>
         )}
       </figure>
-
     </div>
   );
 };

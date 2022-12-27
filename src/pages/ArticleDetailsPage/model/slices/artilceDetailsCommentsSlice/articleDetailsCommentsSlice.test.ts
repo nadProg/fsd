@@ -56,10 +56,9 @@ describe('articleDetailsCommentsSlice', () => {
 
     const action = fetchArticleDetailsComments.pending;
 
-    expect(articleDetailsCommentsReducer(state as ArticleDetailsCommentsSchema, action))
-      .toEqual({
-        isLoading: true,
-      });
+    expect(articleDetailsCommentsReducer(state as ArticleDetailsCommentsSchema, action)).toEqual({
+      isLoading: true,
+    });
   });
 
   test('should handle fetch article details comments data service fulfilled', () => {
@@ -69,12 +68,11 @@ describe('articleDetailsCommentsSlice', () => {
 
     const action = fetchArticleDetailsComments.fulfilled(mockData, '', mockArticleId);
 
-    expect(articleDetailsCommentsReducer(state as ArticleDetailsCommentsSchema, action))
-      .toEqual({
-        ids: mockCommentIds,
-        entities: mockCommentEntities,
-        isLoading: false,
-      });
+    expect(articleDetailsCommentsReducer(state as ArticleDetailsCommentsSchema, action)).toEqual({
+      ids: mockCommentIds,
+      entities: mockCommentEntities,
+      isLoading: false,
+    });
   });
 
   test('should handle fetch article details comments data service rejected', () => {
@@ -84,10 +82,9 @@ describe('articleDetailsCommentsSlice', () => {
 
     const action = fetchArticleDetailsComments.rejected(null, '', mockArticleId, 'error');
 
-    expect(articleDetailsCommentsReducer(state as ArticleDetailsCommentsSchema, action))
-      .toEqual({
-        error: 'error',
-        isLoading: false,
-      });
+    expect(articleDetailsCommentsReducer(state as ArticleDetailsCommentsSchema, action)).toEqual({
+      error: 'error',
+      isLoading: false,
+    });
   });
 });

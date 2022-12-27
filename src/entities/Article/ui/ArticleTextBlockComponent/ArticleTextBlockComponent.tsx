@@ -16,25 +16,15 @@ export const ArticleTextBlockComponent = ({ className, block }: ArticleTextBlock
   const { t } = useTranslation();
 
   return (
-    <VStack
-      gap={8}
-      align="stretch"
-      className={className}
-    >
+    <VStack gap={8} align="stretch" className={className}>
       {block.title && (
-        <Text
-          variant={TextVariant.Title}
-          className={styles.title}
-        >
+        <Text variant={TextVariant.Title} className={styles.title}>
           {block.title}
         </Text>
       )}
 
       {block.paragraphs.map((paragraph) => (
-        <Text
-          key={paragraph}
-          className={styles.paragraph}
-        >
+        <Text key={paragraph} className={styles.paragraph}>
           {paragraph}
         </Text>
       ))}

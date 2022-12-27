@@ -1,7 +1,7 @@
 import { Id } from '@/shared/types';
 
 export type Rating = {
-  id: Id
+  id: Id;
   rate: number;
   feedback: string;
 };

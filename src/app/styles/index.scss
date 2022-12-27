@@ -1,8 +1,8 @@
-@import "normalize";
-@import "./variables/global";
-@import "./themes/light";
-@import "./themes/dark";
-@import "./themes/orange";
+@import 'normalize';
+@import './variables/global';
+@import './themes/light';
+@import './themes/dark';
+@import './themes/orange';
 
 *,
 *::before,
@@ -33,7 +33,7 @@ body {
   background-color: var(--bg-color);
 }
 
-body[data-bg-inverted="true"] {
+body[data-bg-inverted='true'] {
   background-color: var(--inverted-bg-color);
 }
 

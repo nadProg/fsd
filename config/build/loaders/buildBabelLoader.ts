@@ -7,10 +7,7 @@ type BabelLoaderOptions = BuildOptions & {
   isTsx?: boolean;
 };
 
-export const buildBabelLoader = ({
-  isDev,
-  isTsx,
-}: BabelLoaderOptions): RuleSetRule => {
+export const buildBabelLoader = ({ isDev, isTsx }: BabelLoaderOptions): RuleSetRule => {
   const isProd = !isDev;
 
   const babelLoaderItem: RuleSetUseItem = {
@@ -18,26 +15,28 @@ export const buildBabelLoader = ({
     options: {
       cacheDirectory: true,
       plugins: [
-        ['@babel/plugin-transform-typescript',
+        [
+          '@babel/plugin-transform-typescript',
           {
             isTsx,
-          }],
+          },
+        ],
         '@babel/plugin-transform-runtime',
       ],
     },
   };
 
-  if (babelLoaderItem.options
-    && typeof babelLoaderItem.options === 'object'
-    && Array.isArray(babelLoaderItem.options.plugins)) {
+  if (
+    babelLoaderItem.options &&
+    typeof babelLoaderItem.options === 'object' &&
+    Array.isArray(babelLoaderItem.options.plugins)
+  ) {
     if (isDev) {
       babelLoaderItem.options.plugins.push('react-refresh/babel');
     }
 
     if (isProd && isTsx) {
-      babelLoaderItem.options.plugins.push([
-        babelRemovePropsPlugin, { props: ['data-testid'] },
-      ]);
+      babelLoaderItem.options.plugins.push([babelRemovePropsPlugin, { props: ['data-testid'] }]);
     }
   }
 

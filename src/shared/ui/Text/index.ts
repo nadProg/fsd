@@ -1,7 +1,3 @@
-import {
-  Text, TextTheme, TextVariant, TextSize,
-} from './Text';
+import { Text, TextTheme, TextVariant, TextSize } from './Text';
 
-export {
-  Text, TextTheme, TextVariant, TextSize,
-};
+export { Text, TextTheme, TextVariant, TextSize };

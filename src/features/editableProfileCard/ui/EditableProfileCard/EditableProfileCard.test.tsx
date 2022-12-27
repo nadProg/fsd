@@ -16,15 +16,17 @@ const asyncReducers: ReducersList = {
 
 describe('features/EditableProfileCard', () => {
   test('Render in readonly mode', async () => {
-    await act(() => renderComponent(<EditableProfileCard id={mockId} />, {
-      initialState: {
-        editableProfile: {
-          readonly: true,
-          isLoading: false,
+    await act(() =>
+      renderComponent(<EditableProfileCard id={mockId} />, {
+        initialState: {
+          editableProfile: {
+            readonly: true,
+            isLoading: false,
+          },
         },
-      },
-      asyncReducers,
-    }));
+        asyncReducers,
+      }),
+    );
 
     const error = screen.queryByTestId('EditableProfileCard.Error');
     const editButton = screen.getByTestId('EditableProfileCardHeader.EditButton');
@@ -43,15 +45,17 @@ describe('features/EditableProfileCard', () => {
   });
 
   test('Render in editable mode', async () => {
-    await act(() => renderComponent(<EditableProfileCard id={mockId} />, {
-      initialState: {
-        editableProfile: {
-          readonly: false,
-          isLoading: false,
+    await act(() =>
+      renderComponent(<EditableProfileCard id={mockId} />, {
+        initialState: {
+          editableProfile: {
+            readonly: false,
+            isLoading: false,
+          },
         },
-      },
-      asyncReducers,
-    }));
+        asyncReducers,
+      }),
+    );
 
     const error = screen.queryByTestId('EditableProfileCard.Error');
     const editButton = screen.queryByTestId('EditableProfileCardHeader.EditButton');
@@ -70,26 +74,28 @@ describe('features/EditableProfileCard', () => {
   });
 
   test('Should switch to editable mode in editable mode', async () => {
-    await act(() => renderComponent(<EditableProfileCard id={mockId} />, {
-      initialState: {
-        editableProfile: {
-          data: {
-            id: mockId,
+    await act(() =>
+      renderComponent(<EditableProfileCard id={mockId} />, {
+        initialState: {
+          editableProfile: {
+            data: {
+              id: mockId,
+            },
+            form: {
+              id: mockId,
+            },
+            readonly: true,
+            isLoading: false,
           },
-          form: {
-            id: mockId,
+          user: {
+            authData: {
+              id: mockId,
+            },
           },
-          readonly: true,
-          isLoading: false,
         },
-        user: {
-          authData: {
-            id: mockId,
-          },
-        },
-      },
-      asyncReducers,
-    }));
+        asyncReducers,
+      }),
+    );
 
     let error = screen.queryByTestId('EditableProfileCard.Error');
     let editButton = screen.queryByTestId('EditableProfileCardHeader.EditButton');
@@ -123,32 +129,34 @@ describe('features/EditableProfileCard', () => {
   });
 
   test('Should save profile data', async () => {
-    await act(() => renderComponent(<EditableProfileCard id={mockId} />, {
-      initialState: {
-        editableProfile: {
-          data: {
-            id: mockId,
-            firstname: 'first',
-            lastname: 'last',
-            country: Country.Armenia,
+    await act(() =>
+      renderComponent(<EditableProfileCard id={mockId} />, {
+        initialState: {
+          editableProfile: {
+            data: {
+              id: mockId,
+              firstname: 'first',
+              lastname: 'last',
+              country: Country.Armenia,
+            },
+            form: {
+              id: mockId,
+              firstname: 'first',
+              lastname: 'last',
+              country: Country.Armenia,
+            },
+            readonly: false,
+            isLoading: false,
           },
-          form: {
-            id: mockId,
-            firstname: 'first',
-            lastname: 'last',
-            country: Country.Armenia,
+          user: {
+            authData: {
+              id: mockId,
+            },
           },
-          readonly: false,
-          isLoading: false,
         },
-        user: {
-          authData: {
-            id: mockId,
-          },
-        },
-      },
-      asyncReducers,
-    }));
+        asyncReducers,
+      }),
+    );
 
     expect(screen.getByTestId('ProfileCard.FirstNameInput')).toHaveValue('first');
     expect(screen.getByTestId('ProfileCard.LastNameInput')).toHaveValue('last');
@@ -170,32 +178,34 @@ describe('features/EditableProfileCard', () => {
   });
 
   test('Should prevent saving invalid data', async () => {
-    await act(() => renderComponent(<EditableProfileCard id={mockId} />, {
-      initialState: {
-        editableProfile: {
-          data: {
-            id: mockId,
-            firstname: 'first',
-            lastname: 'last',
-            country: Country.Armenia,
+    await act(() =>
+      renderComponent(<EditableProfileCard id={mockId} />, {
+        initialState: {
+          editableProfile: {
+            data: {
+              id: mockId,
+              firstname: 'first',
+              lastname: 'last',
+              country: Country.Armenia,
+            },
+            form: {
+              id: mockId,
+              firstname: 'first',
+              lastname: 'last',
+              country: Country.Armenia,
+            },
+            readonly: false,
+            isLoading: false,
           },
-          form: {
-            id: mockId,
-            firstname: 'first',
-            lastname: 'last',
-            country: Country.Armenia,
+          user: {
+            authData: {
+              id: mockId,
+            },
           },
-          readonly: false,
-          isLoading: false,
         },
-        user: {
-          authData: {
-            id: mockId,
-          },
-        },
-      },
-      asyncReducers,
-    }));
+        asyncReducers,
+      }),
+    );
 
     expect(screen.getByTestId('ProfileCard.FirstNameInput')).toHaveValue('first');
     expect(screen.getByTestId('ProfileCard.LastNameInput')).toHaveValue('last');
@@ -216,32 +226,34 @@ describe('features/EditableProfileCard', () => {
   });
 
   test('Should cancel not saved profile data', async () => {
-    await act(() => renderComponent(<EditableProfileCard id={mockId} />, {
-      initialState: {
-        editableProfile: {
-          data: {
-            id: mockId,
-            firstname: 'first',
-            lastname: 'last',
-            country: Country.Armenia,
+    await act(() =>
+      renderComponent(<EditableProfileCard id={mockId} />, {
+        initialState: {
+          editableProfile: {
+            data: {
+              id: mockId,
+              firstname: 'first',
+              lastname: 'last',
+              country: Country.Armenia,
+            },
+            form: {
+              id: mockId,
+              firstname: 'first',
+              lastname: 'last',
+              country: Country.Armenia,
+            },
+            readonly: false,
+            isLoading: false,
           },
-          form: {
-            id: mockId,
-            firstname: 'first',
-            lastname: 'last',
-            country: Country.Armenia,
+          user: {
+            authData: {
+              id: mockId,
+            },
           },
-          readonly: false,
-          isLoading: false,
         },
-        user: {
-          authData: {
-            id: mockId,
-          },
-        },
-      },
-      asyncReducers,
-    }));
+        asyncReducers,
+      }),
+    );
 
     expect(screen.getByTestId('ProfileCard.FirstNameInput')).toHaveValue('first');
     expect(screen.getByTestId('ProfileCard.LastNameInput')).toHaveValue('last');

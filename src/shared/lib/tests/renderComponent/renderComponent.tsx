@@ -11,24 +11,22 @@ import type { DeepPartial } from '@/shared/types';
 import type { ReducersList } from '@/shared/hooks/useDynamicReducers';
 
 type RenderWithRouterOptions = {
-  route?: string
+  route?: string;
   initialState?: DeepPartial<StateSchema>;
   asyncReducers?: ReducersList;
 };
 
-export const renderComponent = (component: ReactNode, {
-  route = '/',
-  initialState,
-  asyncReducers = {},
-}: RenderWithRouterOptions = {}) => render(
-  <StoreProvider
-    initialState={initialState as StateSchema}
-    asyncReducers={asyncReducers as ReducersMapObject<StateSchema>}
-  >
-    <MemoryRouter initialEntries={[route]}>
-      <I18nextProvider i18n={i18nForTests}>
-        {component}
-      </I18nextProvider>
-    </MemoryRouter>
-  </StoreProvider>,
-);
+export const renderComponent = (
+  component: ReactNode,
+  { route = '/', initialState, asyncReducers = {} }: RenderWithRouterOptions = {},
+) =>
+  render(
+    <StoreProvider
+      initialState={initialState as StateSchema}
+      asyncReducers={asyncReducers as ReducersMapObject<StateSchema>}
+    >
+      <MemoryRouter initialEntries={[route]}>
+        <I18nextProvider i18n={i18nForTests}>{component}</I18nextProvider>
+      </MemoryRouter>
+    </StoreProvider>,
+  );

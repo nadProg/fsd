@@ -30,9 +30,11 @@ describe('updateProfileData', () => {
 
     const { api, dispatch } = thunk;
 
-    api.put.mockReturnValue(Promise.resolve({
-      data: mockData,
-    }));
+    api.put.mockReturnValue(
+      Promise.resolve({
+        data: mockData,
+      }),
+    );
 
     const result = await thunk.callThunk();
 
@@ -57,9 +59,11 @@ describe('updateProfileData', () => {
 
     const { api, dispatch } = thunk;
 
-    api.put.mockReturnValue(Promise.resolve({
-      status: 403,
-    }));
+    api.put.mockReturnValue(
+      Promise.resolve({
+        status: 403,
+      }),
+    );
 
     const result = await thunk.callThunk();
 
@@ -113,11 +117,13 @@ describe('updateProfileData', () => {
 
     expect(result.meta.requestStatus).toBe('rejected');
 
-    expect(result.payload).toEqual(expect.arrayContaining([
-      ValidateProfileError.IncorrectAge,
-      ValidateProfileError.IncorrectCountry,
-      ValidateProfileError.IncorrectUserData,
-    ]));
+    expect(result.payload).toEqual(
+      expect.arrayContaining([
+        ValidateProfileError.IncorrectAge,
+        ValidateProfileError.IncorrectCountry,
+        ValidateProfileError.IncorrectUserData,
+      ]),
+    );
 
     expect(result.payload).toHaveLength(3);
 

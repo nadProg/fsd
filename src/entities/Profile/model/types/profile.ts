@@ -6,7 +6,7 @@ import { ValuesOfCountry } from '@/entities/Country';
 export type Profile = {
   id?: Id;
   firstname?: string;
-  lastname?: string
+  lastname?: string;
   age?: number;
   currency?: ValuesOfCurrency;
   country?: ValuesOfCountry;

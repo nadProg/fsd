@@ -43,11 +43,14 @@ export const LightLoading = Template.bind({});
 LightLoading.args = {
   isLoading: true,
 };
-LightLoading.decorators = [ThemeDecorator(Theme.Light), StoreDecorator({
-  articleDetails: {
-    isLoading: true,
-  },
-})];
+LightLoading.decorators = [
+  ThemeDecorator(Theme.Light),
+  StoreDecorator({
+    articleDetails: {
+      isLoading: true,
+    },
+  }),
+];
 
 export const DarkLoading = Template.bind({});
 DarkLoading.args = {

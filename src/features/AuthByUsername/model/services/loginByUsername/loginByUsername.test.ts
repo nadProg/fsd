@@ -11,13 +11,15 @@ describe('loginByUsername', () => {
 
     Storage.prototype.setItem = jest.fn();
 
-    api.post.mockReturnValue(Promise.resolve({
-      data: {
-        id: 'id',
-        username: 'user',
-        roles: [],
-      },
-    }));
+    api.post.mockReturnValue(
+      Promise.resolve({
+        data: {
+          id: 'id',
+          username: 'user',
+          roles: [],
+        },
+      }),
+    );
 
     const result = await thunk.callThunk({
       username: 'user',
@@ -28,18 +30,23 @@ describe('loginByUsername', () => {
 
     expect(api.post).toHaveBeenCalled();
 
-    expect(dispatch).toHaveBeenCalledWith(userActions.setAuthData({
-      id: 'id',
-      username: 'user',
-      roles: [],
-    }));
+    expect(dispatch).toHaveBeenCalledWith(
+      userActions.setAuthData({
+        id: 'id',
+        username: 'user',
+        roles: [],
+      }),
+    );
 
     expect(Storage.prototype.setItem).toHaveBeenCalledTimes(1);
-    expect(Storage.prototype.setItem).toHaveBeenCalledWith('user', JSON.stringify({
-      id: 'id',
-      username: 'user',
-      roles: [],
-    }));
+    expect(Storage.prototype.setItem).toHaveBeenCalledWith(
+      'user',
+      JSON.stringify({
+        id: 'id',
+        username: 'user',
+        roles: [],
+      }),
+    );
 
     expect(dispatch).toHaveBeenCalledTimes(3);
   });
@@ -51,9 +58,11 @@ describe('loginByUsername', () => {
 
     Storage.prototype.setItem = jest.fn();
 
-    api.post.mockReturnValue(Promise.resolve({
-      status: 403,
-    }));
+    api.post.mockReturnValue(
+      Promise.resolve({
+        status: 403,
+      }),
+    );
 
     const result = await thunk.callThunk({
       username: 'user',

@@ -14,11 +14,7 @@ export function LangSwitcher({ className, short }: LangSwitcherProps) {
   const toggle = () => i18n.changeLanguage(i18n.language === 'ru' ? 'en' : 'ru');
 
   return (
-    <Button
-      theme={ButtonTheme.Background}
-      className={className}
-      onClick={toggle}
-    >
+    <Button theme={ButtonTheme.Background} className={className} onClick={toggle}>
       {t(short ? 'sidebar.short-language' : 'sidebar.language')}
     </Button>
   );

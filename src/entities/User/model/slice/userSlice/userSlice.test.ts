@@ -57,11 +57,13 @@ describe('userSlice', () => {
 
     const action = userActions.initAuthData();
 
-    Storage.prototype.getItem = jest.fn(() => JSON.stringify({
-      username: 'username',
-      id: '1',
-      avatar: 'avatar',
-    }));
+    Storage.prototype.getItem = jest.fn(() =>
+      JSON.stringify({
+        username: 'username',
+        id: '1',
+        avatar: 'avatar',
+      }),
+    );
 
     expect(userReducer(state, action)).toEqual({
       authData: {
@@ -89,7 +91,9 @@ describe('userSlice', () => {
 
     Storage.prototype.removeItem = jest.fn();
 
-    expect(userReducer(state as UserSchema, action)).toEqual({ __initialized__: true });
+    expect(userReducer(state as UserSchema, action)).toEqual({
+      __initialized__: true,
+    });
 
     expect(Storage.prototype.removeItem).toHaveBeenCalledTimes(1);
     expect(Storage.prototype.removeItem).toHaveBeenCalledWith('user');

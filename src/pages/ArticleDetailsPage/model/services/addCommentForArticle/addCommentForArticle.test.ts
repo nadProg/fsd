@@ -33,9 +33,11 @@ describe('addCommentForArticle', () => {
 
     const { api, dispatch } = thunk;
 
-    api.post.mockReturnValue(Promise.resolve({
-      data: mockComment,
-    }));
+    api.post.mockReturnValue(
+      Promise.resolve({
+        data: mockComment,
+      }),
+    );
 
     const result = await thunk.callThunk(mockArticleId);
 
@@ -62,9 +64,11 @@ describe('addCommentForArticle', () => {
 
     const { api, dispatch } = thunk;
 
-    api.post.mockReturnValue(Promise.resolve({
-      status: 403,
-    }));
+    api.post.mockReturnValue(
+      Promise.resolve({
+        status: 403,
+      }),
+    );
 
     const result = await thunk.callThunk(mockArticleId);
 
@@ -89,9 +93,11 @@ describe('addCommentForArticle', () => {
 
     const { api, dispatch } = thunk;
 
-    api.post.mockReturnValue(Promise.resolve({
-      data: undefined,
-    }));
+    api.post.mockReturnValue(
+      Promise.resolve({
+        data: undefined,
+      }),
+    );
 
     const result = await thunk.callThunk(mockArticleId);
 
@@ -114,9 +120,11 @@ describe('addCommentForArticle', () => {
 
     const { api, dispatch } = thunk;
 
-    api.post.mockReturnValue(Promise.resolve({
-      data: mockComment,
-    }));
+    api.post.mockReturnValue(
+      Promise.resolve({
+        data: mockComment,
+      }),
+    );
 
     const result = await thunk.callThunk(mockArticleId);
 
@@ -134,9 +142,11 @@ describe('addCommentForArticle', () => {
 
     const { api, dispatch } = thunk;
 
-    api.post.mockReturnValue(Promise.resolve({
-      data: mockComment,
-    }));
+    api.post.mockReturnValue(
+      Promise.resolve({
+        data: mockComment,
+      }),
+    );
 
     const result = await thunk.callThunk(mockArticleId);
 

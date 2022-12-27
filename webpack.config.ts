@@ -15,11 +15,12 @@ const paths: BuildPaths = {
   buildLocales: path.resolve(__dirname, 'build', 'locales'),
 };
 
-export default (env: BuildEnv): Configuration => buildWebpackConfig({
-  paths,
-  isDev: !env.prod,
-  analyze: !!env.analyze,
-  port: env.port || DEFAULT_PORT,
-  apiUrl: env.apiUrl || DEFAULT_API_URL,
-  project: Project.Frontend,
-});
+export default (env: BuildEnv): Configuration =>
+  buildWebpackConfig({
+    paths,
+    isDev: !env.prod,
+    analyze: !!env.analyze,
+    port: env.port || DEFAULT_PORT,
+    apiUrl: env.apiUrl || DEFAULT_API_URL,
+    project: Project.Frontend,
+  });

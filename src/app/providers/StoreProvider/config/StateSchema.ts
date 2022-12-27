@@ -1,7 +1,5 @@
 import { AxiosInstance } from 'axios';
-import {
-  AnyAction, CombinedState, EnhancedStore, Reducer, ReducersMapObject,
-} from '@reduxjs/toolkit';
+import { AnyAction, CombinedState, EnhancedStore, Reducer, ReducersMapObject } from '@reduxjs/toolkit';
 
 import { rtkApi } from '@/shared/api/rtkApi';
 
@@ -25,9 +23,9 @@ export type StateSchema = {
   articleDetails?: ArticleDetailsSchema;
   addCommentForm?: AddCommentFormSchema;
   articlesPage?: ArticlesPageSchema;
-  articleDetailsPage?: ArticleDetailsPageSchema
+  articleDetailsPage?: ArticleDetailsPageSchema;
   scrollPosition: ScrollPositionSchema;
-  [rtkApi.reducerPath]: ReturnType<typeof rtkApi.reducer>
+  [rtkApi.reducerPath]: ReturnType<typeof rtkApi.reducer>;
 };
 
 export type StateSchemaKey = keyof StateSchema;

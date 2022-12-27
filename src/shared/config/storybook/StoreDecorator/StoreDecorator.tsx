@@ -1,4 +1,4 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
+/* eslint-disable import/no-extraneous-dependencies, react/display-name */
 import { Story } from '@storybook/react';
 
 import { ReducersMapObject } from '@reduxjs/toolkit';
@@ -23,15 +23,14 @@ const defaultAsyncReducers: ReducersList = {
   articleDetailsPage: articleDetailPageReducer,
 };
 
-export const StoreDecorator = (
-  state: DeepPartial<StateSchema> = {},
-  asyncReducers: ReducersList = defaultAsyncReducers,
-  // eslint-disable-next-line react/display-name
-) => (StoryComponent: Story) => (
-  <StoreProvider
-    initialState={state as StateSchema}
-    asyncReducers={asyncReducers as ReducersMapObject<StateSchema>}
-  >
-    <StoryComponent />
-  </StoreProvider>
-);
+export const StoreDecorator =
+  (state: DeepPartial<StateSchema> = {}, asyncReducers: ReducersList = defaultAsyncReducers) =>
+  (StoryComponent: Story) =>
+    (
+      <StoreProvider
+        initialState={state as StateSchema}
+        asyncReducers={asyncReducers as ReducersMapObject<StateSchema>}
+      >
+        <StoryComponent />
+      </StoreProvider>
+    );

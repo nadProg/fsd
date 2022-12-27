@@ -20,5 +20,4 @@ export const Loader = ({ className }: PageLoaderProps) => (
       <div className="loader__item" />
     </div>
   </div>
-
 );

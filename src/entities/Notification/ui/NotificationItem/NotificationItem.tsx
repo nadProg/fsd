@@ -12,7 +12,7 @@ import type { Notification } from '../../model/types/notification';
 import styles from './NotificationItem.module.scss';
 
 type NotificationItemProps = PropsWithClassName & {
-  notification: Notification
+  notification: Notification;
 };
 
 export const NotificationItem = memo(({ className, notification }: NotificationItemProps) => {

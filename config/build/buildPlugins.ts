@@ -10,13 +10,7 @@ import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 
 import { BuildOptions } from './types/config';
 
-export const buildPlugins = ({
-  paths,
-  isDev,
-  analyze,
-  apiUrl,
-  project,
-}: BuildOptions): WebpackPluginInstance[] => {
+export const buildPlugins = ({ paths, isDev, analyze, apiUrl, project }: BuildOptions): WebpackPluginInstance[] => {
   const isProd = !isDev;
 
   const plugins = [
@@ -40,29 +34,35 @@ export const buildPlugins = ({
   }
 
   if (isProd) {
-    plugins.push(new ForkTsCheckerWebpackPlugin({
-      typescript: {
-        diagnosticOptions: {
-          semantic: true,
-          syntactic: true,
+    plugins.push(
+      new ForkTsCheckerWebpackPlugin({
+        typescript: {
+          diagnosticOptions: {
+            semantic: true,
+            syntactic: true,
+          },
+          mode: 'write-references',
         },
-        mode: 'write-references',
-      },
-    }));
+      }),
+    );
 
-    plugins.push(new MiniCssExtractPlugin({
-      filename: 'css/[name].[contenthash:8].css',
-      chunkFilename: 'css/[name].[contenthash:8].css',
-    }));
+    plugins.push(
+      new MiniCssExtractPlugin({
+        filename: 'css/[name].[contenthash:8].css',
+        chunkFilename: 'css/[name].[contenthash:8].css',
+      }),
+    );
 
-    plugins.push(new CopyPlugin({
-      patterns: [
-        {
-          from: paths.locales,
-          to: paths.buildLocales,
-        },
-      ],
-    }));
+    plugins.push(
+      new CopyPlugin({
+        patterns: [
+          {
+            from: paths.locales,
+            to: paths.buildLocales,
+          },
+        ],
+      }),
+    );
   }
 
   if (analyze) {

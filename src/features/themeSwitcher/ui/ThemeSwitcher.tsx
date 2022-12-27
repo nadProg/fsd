@@ -13,11 +13,7 @@ export function ThemeSwitcher({ className }: ThemeSwitcherProps) {
   const { toggleTheme } = useTheme();
 
   return (
-    <Button
-      theme={ButtonTheme.Clear}
-      className={className}
-      onClick={toggleTheme}
-    >
+    <Button theme={ButtonTheme.Clear} className={className} onClick={toggleTheme}>
       <ThemeIcon className={styles.icon} />
     </Button>
   );

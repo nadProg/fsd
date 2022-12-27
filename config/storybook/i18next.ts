@@ -6,7 +6,8 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 import russianLocale from '../../public/locales/ru/translation.json';
 import englishLocale from '../../public/locales/en/translation.json';
 
-i18n.use(initReactI18next)
+i18n
+  .use(initReactI18next)
   .use(LanguageDetector)
   .use(Backend)
   .init({

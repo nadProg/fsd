@@ -1,8 +1,6 @@
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
-import {
-  ExtendableProps, PropsWithClassName, ValuesOf,
-} from '@/shared/types';
+import { ExtendableProps, PropsWithClassName, ValuesOf } from '@/shared/types';
 
 import { ListBox, ListBoxProps } from '@/shared/ui/ListBox';
 import { Currency } from '../../model/types/types';
@@ -33,23 +31,11 @@ const items: CurrencyListBoxProps['items'] = [
   },
 ];
 
-export const CurrencySelect = memo(({
-  className,
-  onChange,
-  ...restProps
-}: CurrencySelectProps): JSX.Element => {
+export const CurrencySelect = memo(({ className, onChange, ...restProps }: CurrencySelectProps): JSX.Element => {
   // todo: add translation to label
   const { t } = useTranslation();
 
-  return (
-    <ListBox
-      className={className}
-      label="Выберите валюту"
-      items={items}
-      onChange={onChange}
-      {...restProps}
-    />
-  );
+  return <ListBox className={className} label="Выберите валюту" items={items} onChange={onChange} {...restProps} />;
 });
 
 CurrencySelect.displayName = 'CurrencySelect';

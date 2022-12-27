@@ -10,10 +10,7 @@ import { Comment } from '@/entities/Comment';
 export const fetchArticleDetailsComments = createAsyncThunk<Comment[], Id | undefined, ThunkConfig<string>>(
   'articleDetailsComments/fetchArticleDetailsComments',
   async (articleId, thunkApi) => {
-    const {
-      rejectWithValue,
-      extra,
-    } = thunkApi;
+    const { rejectWithValue, extra } = thunkApi;
     try {
       if (!articleId) {
         throw new Error('Article id is undefined');

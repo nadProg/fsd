@@ -16,12 +16,8 @@ import { ArticleRecommendationsList } from '@/features/articleRecommendationsLis
 import { Page } from '@/widgets/Page';
 
 import { ArticleDetailsComments } from '../ArticleDetailsComments/ArticleDetailsComments';
-import {
-  ArticleDetailsPageHeader,
-} from '../ArticleDetailsPageHeader/ArticleDetailsPageHeader';
-import {
-  articleDetailPageReducer,
-} from '../../model/slices/articleDetailsPageSlice/articleDetailPageSlice';
+import { ArticleDetailsPageHeader } from '../ArticleDetailsPageHeader/ArticleDetailsPageHeader';
+import { articleDetailPageReducer } from '../../model/slices/articleDetailsPageSlice/articleDetailPageSlice';
 import { fetchRecommendations } from '../../model/services/fetchRecommendations/fetchRecommendations';
 
 const dynamicReducers: ReducersList = {
@@ -42,11 +38,7 @@ export const ArticleDetailsPage = () => {
   }, [dispatch]);
 
   if (!id) {
-    return (
-      <Page>
-        {t('article-details.error.not-found')}
-      </Page>
-    );
+    return <Page>{t('article-details.error.not-found')}</Page>;
   }
 
   return (

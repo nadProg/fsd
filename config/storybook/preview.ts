@@ -6,9 +6,7 @@ import { StyledDecorator } from '../../src/shared/config/storybook/StyledDecorat
 import { ThemeDecorator } from '../../src/shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { RouterDecorator } from '../../src/shared/config/storybook/RouterDecorator/RouterDecorator';
 import { SuspenseDecorator } from '../../src/shared/config/storybook/SuspenseDecorator/SuspenseDecorator';
-import {
-  InvertedBackgroundDecorator,
-} from '../../src/shared/config/storybook/InvertedBackgroundDectorator/InvertedBackgroundColor';
+import { InvertedBackgroundDecorator } from '../../src/shared/config/storybook/InvertedBackgroundDectorator/InvertedBackgroundColor';
 import { Theme } from '../../src/shared/providers/ThemeProvider';
 
 export const parameters = {

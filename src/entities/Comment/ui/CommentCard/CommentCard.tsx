@@ -15,7 +15,7 @@ import type { Comment } from '../../model/types/comment';
 import styles from './CommentCard.module.scss';
 
 type CommentCardProps = PropsWithClassName & {
-  comment?: Comment,
+  comment?: Comment;
   isLoading?: boolean;
 };
 
@@ -25,7 +25,6 @@ export const CommentCard = (props: CommentCardProps) => {
   if (isLoading || !comment) {
     return (
       <VStack gap={12} className={classNames(className, styles.CommentCard)}>
-
         <HStack gap={12} className={styles.header}>
           <Skeleton width={30} height={30} borderRadius="50%" />
           <Skeleton width={100} height={16} />
@@ -37,7 +36,6 @@ export const CommentCard = (props: CommentCardProps) => {
 
   return (
     <VStack gap={12} className={classNames(className, styles.CommentCard)}>
-
       <AppLink to={AppRoute.Profile(comment.user.id)}>
         <HStack gap={12} className={styles.header}>
           <Avatar size={30} src={comment.user.avatar} alt="" />

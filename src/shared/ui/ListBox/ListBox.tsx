@@ -25,19 +25,17 @@ export type ListBoxProps<V extends Key> = PropsWithClassName & {
   disabled?: boolean;
 };
 
-const getTriggerClassName = ({ disabled = false } = {}) => classNames(styles.trigger, {
-  [styles.disabled]: disabled,
-});
+const getTriggerClassName = ({ disabled = false } = {}) =>
+  classNames(styles.trigger, {
+    [styles.disabled]: disabled,
+  });
 
-const getItemClassName = ({
-  active = false,
-  selected = false,
-  disabled = false,
-} = {}) => classNames(styles.item, {
-  [styles.active]: active,
-  [styles.selected]: selected,
-  [styles.disabled]: disabled,
-});
+const getItemClassName = ({ active = false, selected = false, disabled = false } = {}) =>
+  classNames(styles.item, {
+    [styles.active]: active,
+    [styles.selected]: selected,
+    [styles.disabled]: disabled,
+  });
 
 const ListBoxContent = <V extends Key>({
   className,
@@ -50,11 +48,7 @@ const ListBoxContent = <V extends Key>({
 }: ListBoxProps<V>) => {
   const { Popper } = usePopper();
 
-  const {
-    referenceRef,
-    popperRef,
-    getPopperProps,
-  } = Popper.usePopper<HTMLButtonElement, HTMLUListElement>();
+  const { referenceRef, popperRef, getPopperProps } = Popper.usePopper<HTMLButtonElement, HTMLUListElement>();
   const selectedItem = value !== undefined ? items.find((item) => item.value === value) : null;
   const selectedContent = selectedItem?.label ?? placeholder;
 
@@ -66,42 +60,18 @@ const ListBoxContent = <V extends Key>({
           {'>'}
         </Text>
       )}
-      <HeadLessListBox
-        as="div"
-        value={value}
-        onChange={onChange}
-        disabled={disabled}
-      >
+      <HeadLessListBox as="div" value={value} onChange={onChange} disabled={disabled}>
         {(listProps) => (
           <>
             <HeadLessListBox.Button as="div">
-              <Button
-                ref={referenceRef}
-                className={getTriggerClassName(listProps)}
-                theme="outlined"
-              >
+              <Button ref={referenceRef} className={getTriggerClassName(listProps)} theme="outlined">
                 {selectedContent}
               </Button>
             </HeadLessListBox.Button>
-            <HeadLessListBox.Options
-              ref={popperRef}
-              className={styles.items}
-              {...getPopperProps()}
-            >
+            <HeadLessListBox.Options ref={popperRef} className={styles.items} {...getPopperProps()}>
               {items.map((item) => (
-                <HeadLessListBox.Option
-                  key={item.value}
-                  as={Fragment}
-                  value={item.value}
-                  disabled={item.disabled}
-                >
-                  {
-                    (itemProps) => (
-                      <li className={getItemClassName(itemProps)}>
-                        {item.label}
-                      </li>
-                    )
-                  }
+                <HeadLessListBox.Option key={item.value} as={Fragment} value={item.value} disabled={item.disabled}>
+                  {(itemProps) => <li className={getItemClassName(itemProps)}>{item.label}</li>}
                 </HeadLessListBox.Option>
               ))}
             </HeadLessListBox.Options>

@@ -15,7 +15,9 @@ export const PageError = ({ className }: PropsWithClassName) => {
     <div className={classNames(className, styles.PageError)}>
       <p>{t('page_error.title')}</p>
 
-      <Button theme={ButtonTheme.Clear} onClick={reloadPage}>{t('page_error.refresh')}</Button>
+      <Button theme={ButtonTheme.Clear} onClick={reloadPage}>
+        {t('page_error.refresh')}
+      </Button>
     </div>
   );
 };

@@ -4,11 +4,8 @@ import { MemoryRouter } from 'react-router-dom';
 import { render } from '@testing-library/react';
 
 type RenderWithRouterOptions = {
-  route?: string
+  route?: string;
 };
 
-export const renderWithRouter = (component: ReactNode, { route = '/' }: RenderWithRouterOptions = {}) => render(
-  <MemoryRouter initialEntries={[route]}>
-    {component}
-  </MemoryRouter>,
-);
+export const renderWithRouter = (component: ReactNode, { route = '/' }: RenderWithRouterOptions = {}) =>
+  render(<MemoryRouter initialEntries={[route]}>{component}</MemoryRouter>);

@@ -20,27 +20,27 @@ const articleDetailsInitialState: ArticleDetailsCommentsSchema = {
 };
 
 export const getArticleComments = commentsAdapter.getSelectors<StateSchema>(
-  (state) => state.articleDetailsPage?.comments
-    || commentsAdapter.getInitialState(articleDetailsInitialState),
+  (state) => state.articleDetailsPage?.comments || commentsAdapter.getInitialState(articleDetailsInitialState),
 );
 
 const articleDetailsCommentsSlice = createSlice({
   name: 'articleDetailsCommentsSlice',
   initialState: commentsAdapter.getInitialState(articleDetailsInitialState),
   reducers: {},
-  extraReducers: (builder) => builder
-    .addCase(fetchArticleDetailsComments.pending, (state) => {
-      state.error = undefined;
-      state.isLoading = true;
-    })
-    .addCase(fetchArticleDetailsComments.fulfilled, (state, action) => {
-      commentsAdapter.setAll(state, action.payload);
-      state.isLoading = false;
-    })
-    .addCase(fetchArticleDetailsComments.rejected, (state, action) => {
-      state.error = action.payload;
-      state.isLoading = false;
-    }),
+  extraReducers: (builder) =>
+    builder
+      .addCase(fetchArticleDetailsComments.pending, (state) => {
+        state.error = undefined;
+        state.isLoading = true;
+      })
+      .addCase(fetchArticleDetailsComments.fulfilled, (state, action) => {
+        commentsAdapter.setAll(state, action.payload);
+        state.isLoading = false;
+      })
+      .addCase(fetchArticleDetailsComments.rejected, (state, action) => {
+        state.error = action.payload;
+        state.isLoading = false;
+      }),
 });
 
 export const { reducer: articleDetailsCommentsReducer } = articleDetailsCommentsSlice;

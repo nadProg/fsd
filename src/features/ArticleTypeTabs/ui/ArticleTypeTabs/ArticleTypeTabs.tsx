@@ -16,8 +16,8 @@ export const ArticleTypeTabs = memo(({ className, value, onTabClick }: ArticleTy
   const { t } = useTranslation();
 
   // todo: add translations
-  const tabs = useMemo<Tab<ValuesOfArticleTypeTab, string>[]>(() => (
-    [
+  const tabs = useMemo<Tab<ValuesOfArticleTypeTab, string>[]>(
+    () => [
       {
         value: ArticleTypeTab.All,
         label: 'All',
@@ -34,17 +34,11 @@ export const ArticleTypeTabs = memo(({ className, value, onTabClick }: ArticleTy
         value: ArticleTypeTab.Science,
         label: 'Science',
       },
-    ]
-  ), [t]);
-
-  return (
-    <Tabs
-      className={className}
-      tabs={tabs}
-      value={value}
-      onTabClick={onTabClick}
-    />
+    ],
+    [t],
   );
+
+  return <Tabs className={className} tabs={tabs} value={value} onTabClick={onTabClick} />;
 });
 
 ArticleTypeTabs.displayName = 'ArticleTypeTabs';

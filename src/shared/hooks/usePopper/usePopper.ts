@@ -22,24 +22,25 @@ const DEFAULT_MODIFIERS = [
   },
 ];
 
-export const usePopper = <ReferenceElement extends HTMLElement = HTMLButtonElement,
+export const usePopper = <
+  ReferenceElement extends HTMLElement = HTMLButtonElement,
   PopperElement extends HTMLElement = HTMLDivElement,
   Modifiers extends string = string,
->(config: PopperConfig<Modifiers> = {}): UsePopperReturn<ReferenceElement, PopperElement> => {
+>(
+  config: PopperConfig<Modifiers> = {},
+): UsePopperReturn<ReferenceElement, PopperElement> => {
   const [referenceElement, setReferenceElement] = useState<Nullable<ReferenceElement>>(null);
   const [popperElement, setPopperElement] = useState<Nullable<PopperElement>>(null);
 
-  const modifiers = Array.isArray(config.modifiers)
-    ? DEFAULT_MODIFIERS.concat(config.modifiers)
-    : DEFAULT_MODIFIERS;
+  const modifiers = Array.isArray(config.modifiers) ? DEFAULT_MODIFIERS.concat(config.modifiers) : DEFAULT_MODIFIERS;
 
   const boundaryModifier = config.boundary
     ? {
-      name: 'preventOverflow',
-      options: {
-        boundary: config.boundary,
-      },
-    }
+        name: 'preventOverflow',
+        options: {
+          boundary: config.boundary,
+        },
+      }
     : null;
 
   const popper = useOriginalPopper(referenceElement, popperElement, {
@@ -48,16 +49,9 @@ export const usePopper = <ReferenceElement extends HTMLElement = HTMLButtonEleme
     modifiers: boundaryModifier ? [boundaryModifier, ...modifiers] : modifiers,
   });
 
-  const {
-    styles,
-    attributes,
-    state,
-    update,
-  } = popper;
+  const { styles, attributes, state, update } = popper;
 
-  const isReferenceHidden = Boolean(
-    state?.modifiersData.hide?.isReferenceHidden,
-  );
+  const isReferenceHidden = Boolean(state?.modifiersData.hide?.isReferenceHidden);
 
   const updatePopper = useCallback(() => {
     if (isFunction(update)) {
@@ -66,13 +60,16 @@ export const usePopper = <ReferenceElement extends HTMLElement = HTMLButtonEleme
   }, [update]);
 
   // todo: dependecies
-  const getPopperProps = useCallback((): PopperProps<PopperElement> => ({
-    style: {
-      ...styles.popper,
-      zIndex: 10,
-    },
-    ...attributes.popper,
-  }), [styles, attributes]);
+  const getPopperProps = useCallback(
+    (): PopperProps<PopperElement> => ({
+      style: {
+        ...styles.popper,
+        zIndex: 10,
+      },
+      ...attributes.popper,
+    }),
+    [styles, attributes],
+  );
 
   return {
     getPopperProps,

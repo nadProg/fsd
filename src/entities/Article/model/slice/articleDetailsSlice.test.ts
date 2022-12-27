@@ -27,10 +27,9 @@ describe('ArticleDetailsSlice', () => {
 
     const action = fetchArticleDetailsData.pending;
 
-    expect(articleDetailsReducer(state as ArticleDetailsSchema, action))
-      .toEqual({
-        isLoading: true,
-      });
+    expect(articleDetailsReducer(state as ArticleDetailsSchema, action)).toEqual({
+      isLoading: true,
+    });
   });
 
   test('should handle fetch article details data service fulfilled', () => {
@@ -40,11 +39,10 @@ describe('ArticleDetailsSlice', () => {
 
     const action = fetchArticleDetailsData.fulfilled(mockData as Article, '', mockId);
 
-    expect(articleDetailsReducer(state as ArticleDetailsSchema, action))
-      .toEqual({
-        data: mockData,
-        isLoading: false,
-      });
+    expect(articleDetailsReducer(state as ArticleDetailsSchema, action)).toEqual({
+      data: mockData,
+      isLoading: false,
+    });
   });
 
   test('should handle fetch article details data service rejected', () => {
@@ -54,10 +52,9 @@ describe('ArticleDetailsSlice', () => {
 
     const action = fetchArticleDetailsData.rejected(null, '', mockId, 'error');
 
-    expect(articleDetailsReducer(state as ArticleDetailsSchema, action))
-      .toEqual({
-        error: 'error',
-        isLoading: false,
-      });
+    expect(articleDetailsReducer(state as ArticleDetailsSchema, action)).toEqual({
+      error: 'error',
+      isLoading: false,
+    });
   });
 });

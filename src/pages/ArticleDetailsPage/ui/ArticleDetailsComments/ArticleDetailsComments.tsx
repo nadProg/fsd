@@ -13,15 +13,9 @@ import { CommentList } from '@/entities/Comment';
 
 import { AddCommentForm } from '@/features/addCommentForm';
 
-import {
-  fetchArticleDetailsComments,
-} from '../../model/services/fetchArticleDetailsComments/fetchArticleDetailsComments';
-import {
-  getArticleComments,
-} from '../../model/slices/artilceDetailsCommentsSlice/articleDetailsCommentsSlice';
-import {
-  getArticleDetailsCommentsIsLoading,
-} from '../../model/selectors/getArticleDetailsCommentsIsLoading/getArticleDetailsCommentsIsLoading';
+import { fetchArticleDetailsComments } from '../../model/services/fetchArticleDetailsComments/fetchArticleDetailsComments';
+import { getArticleComments } from '../../model/slices/artilceDetailsCommentsSlice/articleDetailsCommentsSlice';
+import { getArticleDetailsCommentsIsLoading } from '../../model/selectors/getArticleDetailsCommentsIsLoading/getArticleDetailsCommentsIsLoading';
 import { addCommentForArticle } from '../../model/services/addCommentForArticle/addCommentForArticle';
 
 type ArticleDetailsCommentsProps = PropsWithClassName & {
@@ -35,9 +29,12 @@ export const ArticleDetailsComments = memo(({ className, id }: ArticleDetailsCom
   const comments = useSelector(getArticleComments.selectAll);
   const commentsIsLoading = useSelector(getArticleDetailsCommentsIsLoading);
 
-  const sendComment = useCallback(async (text: string) => {
-    await dispatch(addCommentForArticle(text));
-  }, [dispatch]);
+  const sendComment = useCallback(
+    async (text: string) => {
+      await dispatch(addCommentForArticle(text));
+    },
+    [dispatch],
+  );
 
   useProjectEffect(() => {
     dispatch(fetchArticleDetailsComments(id));
@@ -45,20 +42,11 @@ export const ArticleDetailsComments = memo(({ className, id }: ArticleDetailsCom
 
   return (
     <VStack gap={16} className={className}>
-      <Text variant={TextVariant.Title}>
-        {t('article-details.comments')}
-      </Text>
+      <Text variant={TextVariant.Title}>{t('article-details.comments')}</Text>
 
-      <AddCommentForm
-        onSendComment={sendComment}
-        className="fullwidth"
-      />
+      <AddCommentForm onSendComment={sendComment} className="fullwidth" />
 
-      <CommentList
-        isLoading={commentsIsLoading}
-        comments={comments}
-        className="fullwidth"
-      />
+      <CommentList isLoading={commentsIsLoading} comments={comments} className="fullwidth" />
     </VStack>
   );
 });

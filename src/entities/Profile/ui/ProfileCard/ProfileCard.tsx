@@ -65,9 +65,7 @@ export const ProfileCard: FC<ProfileCardProps> = (props) => {
   if (error) {
     return (
       <div className={classNames(className, styles.Profile, styles.error)}>
-        <Text theme={TextTheme.Error}>
-          {error}
-        </Text>
+        <Text theme={TextTheme.Error}>{error}</Text>
       </div>
     );
   }
@@ -77,13 +75,11 @@ export const ProfileCard: FC<ProfileCardProps> = (props) => {
   return (
     <VStack
       gap={16}
-      className={classNames(
-        className,
-        styles.Profile,
-        { [styles.editing]: !readonly },
-      )}
+      className={classNames(className, styles.Profile, {
+        [styles.editing]: !readonly,
+      })}
     >
-      { dataSource?.avatar && (
+      {dataSource?.avatar && (
         <div className={styles.avatarWrapper}>
           <Avatar src={dataSource?.avatar} alt="" />
         </div>
@@ -105,31 +101,13 @@ export const ProfileCard: FC<ProfileCardProps> = (props) => {
         data-testid="ProfileCard.LastNameInput"
       />
 
-      <Input
-        value={dataSource?.age || ''}
-        placeholder="Ваш возраст"
-        onChange={onChangeAge}
-        readOnly={readonly}
-      />
+      <Input value={dataSource?.age || ''} placeholder="Ваш возраст" onChange={onChangeAge} readOnly={readonly} />
 
-      <Input
-        value={dataSource?.city || ''}
-        placeholder="Ваш город"
-        onChange={onChangeCity}
-        readOnly={readonly}
-      />
+      <Input value={dataSource?.city || ''} placeholder="Ваш город" onChange={onChangeCity} readOnly={readonly} />
 
-      <CurrencySelect
-        value={dataSource?.currency}
-        onChange={onChangeCurrency}
-        disabled={readonly}
-      />
+      <CurrencySelect value={dataSource?.currency} onChange={onChangeCurrency} disabled={readonly} />
 
-      <CountrySelect
-        value={dataSource?.country}
-        onChange={onChangeCountry}
-        disabled={readonly}
-      />
+      <CountrySelect value={dataSource?.country} onChange={onChangeCountry} disabled={readonly} />
 
       <Input
         value={dataSource?.username || ''}
@@ -138,12 +116,7 @@ export const ProfileCard: FC<ProfileCardProps> = (props) => {
         readOnly={readonly}
       />
 
-      <Input
-        value={dataSource?.avatar || ''}
-        placeholder="Ваш аватар"
-        onChange={onChangeAvatar}
-        readOnly={readonly}
-      />
+      <Input value={dataSource?.avatar || ''} placeholder="Ваш аватар" onChange={onChangeAvatar} readOnly={readonly} />
     </VStack>
   );
 };

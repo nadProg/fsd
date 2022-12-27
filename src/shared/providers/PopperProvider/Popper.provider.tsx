@@ -1,6 +1,4 @@
-import {
-  useEffect, useMemo, useRef, useState,
-} from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import type { ReactNode } from 'react';
 import type { PropsWithChildren } from '@/shared/types';
 import type { Popper, PopperContextValue } from './Popper.types';
@@ -22,10 +20,13 @@ export const PopperProvider = ({ children, fallback = null }: PopperProviderProp
     });
   }, []);
 
-  const value: Partial<PopperContextValue> = useMemo(() => ({
-    Popper: popperRef.current,
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }), [isLoading]);
+  const value: Partial<PopperContextValue> = useMemo(
+    () => ({
+      Popper: popperRef.current,
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }),
+    [isLoading],
+  );
 
   if (isLoading || !popperRef.current) {
     // eslint-disable-next-line react/jsx-no-useless-fragment

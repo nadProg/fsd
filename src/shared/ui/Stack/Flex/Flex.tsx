@@ -1,8 +1,6 @@
 import classNames from 'classnames';
 
-import type {
-  PropsWithChildren, PropsWithClassName, ValuesOf, ValuesOfArray,
-} from '@/shared/types';
+import type { PropsWithChildren, PropsWithClassName, ValuesOf, ValuesOfArray } from '@/shared/types';
 
 import styles from './Flex.module.scss';
 
@@ -51,18 +49,22 @@ const mapDirectionToClassName: Record<ValuesOfFlexDirection, string> = {
   [FlexDirection.Column]: styles.directionColumn,
 };
 
-const mapGapToClassName = FlexGaps.reduce((map, gap) => ({
-  ...map,
-  [gap]: styles[`gap${gap}`],
-}), {} as Record<ValuesOfFlexGap, string>);
+const mapGapToClassName = FlexGaps.reduce(
+  (map, gap) => ({
+    ...map,
+    [gap]: styles[`gap${gap}`],
+  }),
+  {} as Record<ValuesOfFlexGap, string>,
+);
 
-export type FlexProps = PropsWithClassName & PropsWithChildren & {
-  justify?: ValuesOfFlexJustify;
-  align?: ValuesOfFlexAlign;
-  direction?: ValuesOfFlexDirection;
-  gap?: ValuesOfFlexGap;
-  max?: boolean;
-};
+export type FlexProps = PropsWithClassName &
+  PropsWithChildren & {
+    justify?: ValuesOfFlexJustify;
+    align?: ValuesOfFlexAlign;
+    direction?: ValuesOfFlexDirection;
+    gap?: ValuesOfFlexGap;
+    max?: boolean;
+  };
 
 export const Flex = ({
   className,

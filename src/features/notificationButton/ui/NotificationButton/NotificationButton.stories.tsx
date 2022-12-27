@@ -3,9 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { NotificationButton } from './NotificationButton';
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { Theme } from '@/shared/providers/ThemeProvider';
-import {
-  InvertedBackgroundDecorator,
-} from '@/shared/config/storybook/InvertedBackgroundDectorator/InvertedBackgroundColor';
+import { InvertedBackgroundDecorator } from '@/shared/config/storybook/InvertedBackgroundDectorator/InvertedBackgroundColor';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
 import type { Notification } from '@/entities/Notification/testing';
 
@@ -28,14 +26,17 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-  decorators: [InvertedBackgroundDecorator(), StoreDecorator({
-    user: {
-      authData: {
-        id: '1',
-        username: 'Username',
+  decorators: [
+    InvertedBackgroundDecorator(),
+    StoreDecorator({
+      user: {
+        authData: {
+          id: '1',
+          username: 'Username',
+        },
       },
-    },
-  })],
+    }),
+  ],
   parameters: {
     mockData: [
       {

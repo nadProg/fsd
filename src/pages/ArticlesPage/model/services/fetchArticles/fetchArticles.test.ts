@@ -41,9 +41,11 @@ describe('fetchArticles', () => {
 
     const { api, dispatch } = thunk;
 
-    api.get.mockReturnValue(Promise.resolve({
-      data: mockData,
-    }));
+    api.get.mockReturnValue(
+      Promise.resolve({
+        data: mockData,
+      }),
+    );
 
     const result = await thunk.callThunk({
       page: 10,
@@ -63,9 +65,11 @@ describe('fetchArticles', () => {
 
     const { api, dispatch } = thunk;
 
-    api.get.mockReturnValue(Promise.resolve({
-      status: 403,
-    }));
+    api.get.mockReturnValue(
+      Promise.resolve({
+        status: 403,
+      }),
+    );
 
     const result = await thunk.callThunk({
       page: 10,
@@ -83,9 +87,11 @@ describe('fetchArticles', () => {
 
     const { api, dispatch } = thunk;
 
-    api.get.mockReturnValue(Promise.resolve({
-      data: undefined,
-    }));
+    api.get.mockReturnValue(
+      Promise.resolve({
+        data: undefined,
+      }),
+    );
 
     const result = await thunk.callThunk({
       page: 10,

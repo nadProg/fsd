@@ -21,20 +21,13 @@ export const Code = (props: CodeProps) => {
 
   return (
     <div className={classNames(className, styles.Code)}>
-
       {/* todo: add aria-label or hidden description */}
-      <Button
-        theme={ButtonTheme.Clear}
-        className={styles.copyButton}
-        onClick={onCopy}
-      >
+      <Button theme={ButtonTheme.Clear} className={styles.copyButton} onClick={onCopy}>
         <Icon icon={CopyIcon} />
       </Button>
 
       <code>
-        <pre ref={codeRef}>
-          {children}
-        </pre>
+        <pre ref={codeRef}>{children}</pre>
       </code>
     </div>
   );

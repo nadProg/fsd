@@ -1,8 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import {
-  InvertedBackgroundDecorator,
-} from '@/shared/config/storybook/InvertedBackgroundDectorator/InvertedBackgroundColor';
+import { InvertedBackgroundDecorator } from '@/shared/config/storybook/InvertedBackgroundDectorator/InvertedBackgroundColor';
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { Theme } from '@/shared/providers/ThemeProvider';
 

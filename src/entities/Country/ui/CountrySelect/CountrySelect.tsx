@@ -1,9 +1,7 @@
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import {
-  ExtendableProps, PropsWithClassName, ValuesOf,
-} from '@/shared/types';
+import { ExtendableProps, PropsWithClassName, ValuesOf } from '@/shared/types';
 import { ListBox, ListBoxProps } from '@/shared/ui/ListBox';
 
 import { Country } from '../../model/types/types';
@@ -46,23 +44,11 @@ const items: CountryListBoxProps['items'] = [
   },
 ];
 
-export const CountrySelect = memo(({
-  className,
-  onChange,
-  ...restProps
-}: CountrySelectProps): JSX.Element => {
+export const CountrySelect = memo(({ className, onChange, ...restProps }: CountrySelectProps): JSX.Element => {
   // todo: add translation to label
   const { t } = useTranslation();
 
-  return (
-    <ListBox
-      className={className}
-      label="Выберите страну"
-      items={items}
-      onChange={onChange}
-      {...restProps}
-    />
-  );
+  return <ListBox className={className} label="Выберите страну" items={items} onChange={onChange} {...restProps} />;
 });
 
 CountrySelect.displayName = 'CountrySelect';

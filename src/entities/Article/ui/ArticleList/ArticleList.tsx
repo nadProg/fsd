@@ -18,28 +18,20 @@ type ArticleListProps = PropsWithClassName & {
   linksTarget?: AppLinkProps['target'];
 };
 
-const getSkeletons = (count: number, view: ValuesOf<typeof ArticleView>) => new Array(count).fill(null)
-  /* eslint-disable-next-line react/no-array-index-key */
-  .map((_, index) => <ArticleListItemSkeleton key={index} view={view} />);
+const getSkeletons = (count: number, view: ValuesOf<typeof ArticleView>) =>
+  new Array(count)
+    .fill(null)
+    /* eslint-disable-next-line react/no-array-index-key */
+    .map((_, index) => <ArticleListItemSkeleton key={index} view={view} />);
 
 export const ArticleList: FC<ArticleListProps> = (props) => {
   const { t } = useTranslation();
-  const {
-    className,
-    isLoading,
-    articles,
-    view = ArticleView.Grid,
-    linksTarget,
-  } = props;
+  const { className, isLoading, articles, view = ArticleView.Grid, linksTarget } = props;
 
   const isEmpty = !articles?.length;
 
   if (isEmpty && !isLoading) {
-    return (
-      <div className={classNames(className, styles.ArticleList, styles.empty)}>
-        {t('articles.list.empty')}
-      </div>
-    );
+    return <div className={classNames(className, styles.ArticleList, styles.empty)}>{t('articles.list.empty')}</div>;
   }
 
   const skeletonsCount = view === ArticleView.Grid ? 9 : 3;

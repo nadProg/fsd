@@ -5,8 +5,11 @@ import type { ExtendableProps } from '@/shared/types';
 
 import styles from './Icon.module.scss';
 
-type IconProps = ExtendableProps<SVGProps<SVGSVGElement>, {
-  icon: FC<SVGProps<SVGSVGElement>> }
+type IconProps = ExtendableProps<
+  SVGProps<SVGSVGElement>,
+  {
+    icon: FC<SVGProps<SVGSVGElement>>;
+  }
 >;
 
 export const Icon = memo((props: IconProps) => {

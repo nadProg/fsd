@@ -25,48 +25,54 @@ type RatingProps = PropsWithClassName & {
   onRateError?: () => Promise<void> | void;
 };
 
-export const RatingCard = memo(({
-  className, title, rate = null, onRate, onRateSuccess, onRateError,
-}: RatingProps) => {
+export const RatingCard = memo(({ className, title, rate = null, onRate, onRateSuccess, onRateError }: RatingProps) => {
   const [chosenRating, setChosenRating] = useState<Nullable<number>>(rate);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const onSelectRating = useCallback((value: Nullable<number>) => {
-    setChosenRating(value);
-    setIsModalOpen(true);
-  }, [setChosenRating, setIsModalOpen]);
+  const onSelectRating = useCallback(
+    (value: Nullable<number>) => {
+      setChosenRating(value);
+      setIsModalOpen(true);
+    },
+    [setChosenRating, setIsModalOpen],
+  );
 
-  const closeModal = useCallback(({ success = false } = {}) => {
-    setIsModalOpen(false);
+  const closeModal = useCallback(
+    ({ success = false } = {}) => {
+      setIsModalOpen(false);
 
-    if (!success) {
-      setChosenRating(null);
-    }
-  }, [setIsModalOpen]);
+      if (!success) {
+        setChosenRating(null);
+      }
+    },
+    [setIsModalOpen],
+  );
 
-  const onFeedBackFormSubmit = useCallback(async (data: FeedBackFormData) => {
-    if (!chosenRating) {
-      throw new Error('Rate is required');
-    }
+  const onFeedBackFormSubmit = useCallback(
+    async (data: FeedBackFormData) => {
+      if (!chosenRating) {
+        throw new Error('Rate is required');
+      }
 
-    try {
-      const ratingCardData: RatingCardData = {
-        rate: chosenRating,
-        feedback: data.feedBack,
-      };
-      await onRate?.(ratingCardData);
-      closeModal({ success: true });
-      onRateSuccess?.();
-    } catch (error) {
-      onRateError?.();
-    }
-  }, [onRate, onRateSuccess, onRateError, closeModal, chosenRating]);
+      try {
+        const ratingCardData: RatingCardData = {
+          rate: chosenRating,
+          feedback: data.feedBack,
+        };
+        await onRate?.(ratingCardData);
+        closeModal({ success: true });
+        onRateSuccess?.();
+      } catch (error) {
+        onRateError?.();
+      }
+    },
+    [onRate, onRateSuccess, onRateError, closeModal, chosenRating],
+  );
 
   return (
     <Card className={classNames(className, styles.Rating)}>
       <VStack gap={8} align="center">
-        {title
-      && <Text variant={TextVariant.Title}>{title}</Text>}
+        {title && <Text variant={TextVariant.Title}>{title}</Text>}
         <StarRating selectedStar={chosenRating} onSelect={onSelectRating} />
       </VStack>
 

@@ -15,26 +15,22 @@ type OverrideProps<V extends string> = {
 
 type ExtendedProps = SelectHTMLAttributes<HTMLSelectElement>;
 
-export type SelectProps<V extends string = string> =
-  PropsWithClassName
-  & ExtendableProps<ExtendedProps, OverrideProps<V>>;
+export type SelectProps<V extends string = string> = PropsWithClassName &
+  ExtendableProps<ExtendedProps, OverrideProps<V>>;
 
 type SelectComponent = (<V extends string>(props: SelectProps<V>) => JSX.Element) & {
   displayName: string;
 };
 
 export const Select = memo(<V extends string>(props: SelectProps<V>): JSX.Element => {
-  const {
-    className,
-    label,
-    options,
-    onChange,
-    ...restProps
-  } = props;
+  const { className, label, options, onChange, ...restProps } = props;
 
-  const onSelectChange = useCallback((evt: ChangeEvent<HTMLSelectElement>) => {
-    onChange?.(evt.target.value as V);
-  }, [onChange]);
+  const onSelectChange = useCallback(
+    (evt: ChangeEvent<HTMLSelectElement>) => {
+      onChange?.(evt.target.value as V);
+    },
+    [onChange],
+  );
 
   return (
     <div className={classNames(className, styles.Select)}>
@@ -47,11 +43,7 @@ export const Select = memo(<V extends string>(props: SelectProps<V>): JSX.Elemen
 
       <select className={styles.select} onChange={onSelectChange} {...restProps}>
         {options?.map((item) => (
-          <option
-            key={item.value}
-            className={styles.option}
-            value={item.value}
-          >
+          <option key={item.value} className={styles.option} value={item.value}>
             {item.label}
           </option>
         ))}

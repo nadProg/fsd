@@ -1,9 +1,5 @@
-import {
-  memo, useMemo, useState,
-} from 'react';
-import {
-  BrowserView, MobileView, isMobile,
-} from 'react-device-detect';
+import { memo, useMemo, useState } from 'react';
+import { BrowserView, MobileView, isMobile } from 'react-device-detect';
 import classNames from 'classnames';
 
 import type { PropsWithClassName } from '@/shared/types';
@@ -23,24 +19,21 @@ export const NotificationButton = memo(({ className }: NotificationButtonProps) 
 
   const onTriggerClick = useMemo(() => (isMobile ? () => setIsDrawerOpen(true) : undefined), [setIsDrawerOpen]);
 
-  const trigger = useMemo(() => (
-    <Button theme="clear" onClick={onTriggerClick}>
-      <BellIcon className={styles.bellIcon} />
-    </Button>
-  ), [onTriggerClick]);
-
-  const closeDrawer = useMemo(
-    () => (isMobile ? () => setIsDrawerOpen(false) : undefined),
-    [setIsDrawerOpen],
+  const trigger = useMemo(
+    () => (
+      <Button theme="clear" onClick={onTriggerClick}>
+        <BellIcon className={styles.bellIcon} />
+      </Button>
+    ),
+    [onTriggerClick],
   );
+
+  const closeDrawer = useMemo(() => (isMobile ? () => setIsDrawerOpen(false) : undefined), [setIsDrawerOpen]);
 
   return (
     <>
       <BrowserView>
-        <Popover
-          className={classNames(className, styles.NotificationButton)}
-          trigger={trigger}
-        >
+        <Popover className={classNames(className, styles.NotificationButton)} trigger={trigger}>
           <NotificationList className={styles.notifications} />
         </Popover>
       </BrowserView>

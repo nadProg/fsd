@@ -1,11 +1,10 @@
-/* eslint-disable import/no-extraneous-dependencies */
+/* eslint-disable import/no-extraneous-dependencies, react/display-name */
 import { Story } from '@storybook/react';
 
-// eslint-disable-next-line react/display-name
-export const InvertedBackgroundDecorator = (inverted = true) => (StoryComponent: Story) => {
-  document.body.dataset.bgInverted = String(inverted);
+export const InvertedBackgroundDecorator =
+  (inverted = true) =>
+  (StoryComponent: Story) => {
+    document.body.dataset.bgInverted = String(inverted);
 
-  return (
-    <StoryComponent />
-  );
-};
+    return <StoryComponent />;
+  };

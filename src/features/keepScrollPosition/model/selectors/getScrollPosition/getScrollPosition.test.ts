@@ -20,7 +20,7 @@ describe('getScrollPosition', () => {
   test('should handle non-existent route', () => {
     const state: DeepPartial<StateSchema> = {
       scrollPosition: {
-        scroll: { },
+        scroll: {},
       },
     };
     expect(getScrollPosition(state as StateSchema, '/')).toBe(0);
