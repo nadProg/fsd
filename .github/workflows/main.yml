@@ -63,11 +63,12 @@ jobs:
         id: ui
         run: yarn test-ui:ci
       - name: Generate HTML report
-        id: report
+        id: ui_report
         run: yarn test-ui:report-only
         if: always()
       - name: Move ui test report
         run: mv .loki .github-reports
+        if: always()
       - name: Setup Pages
         uses: actions/configure-pages@v2
         if: always()
