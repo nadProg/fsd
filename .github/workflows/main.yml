@@ -1,37 +1,49 @@
 name: linting, testing, building
+
 on:
   push:
     branches: [ main ]
   pull_request:
     branches: [ main ]
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
 jobs:
-  check:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [ 18.x ]
-    steps:
-      - uses: actions/checkout@v2
-      - name: Starting Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node-version }}
-      - name: Install dependencies
-        run: yarn install:ci
-      - name: Checking types
-        run: yarn check-types
-      - name: Linting *.ts/*.tsx files
-        run: yarn lint-ts
-        if: always()
-      - name: Linting *.scss files
-        run: yarn lint-scss
-        if: always()
-      - name: Unit testing
-        run: yarn test-unit
-        if: always()
+#  check:
+#    runs-on: ubuntu-latest
+#    strategy:
+#      matrix:
+#        node-version: [ 18.x ]
+#    steps:
+#      - uses: actions/checkout@v2
+#      - name: Starting Node.js ${{ matrix.node-version }}
+#        uses: actions/setup-node@v1
+#        with:
+#          node-version: ${{ matrix.node-version }}
+#      - name: Install dependencies
+#        id: install
+#        run: yarn install:ci
+#      - name: Checking types
+#        run: yarn check-types
+#        if: steps.install.conclusion == 'success'
+#      - name: Linting *.ts/*.tsx files
+#        run: yarn lint-ts
+#        if: steps.install.conclusion == 'success'
+#      - name: Linting *.scss files
+#        run: yarn lint-scss
+#        if: steps.install.conclusion == 'success'
+#      - name: Unit testing
+#        run: yarn test-unit
+#        if: steps.install.conclusion == 'success'
 
   storybook:
     runs-on: windows-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     strategy:
       matrix:
         node-version: [ 18.x ]
@@ -44,6 +56,24 @@ jobs:
       - name: Install dependencies
         run: yarn install:ci
       - name: Building storybook
+        id: build
         run: yarn storybook:build
       - name: UI testing
+        id: ui
         run: yarn test-ui:ci
+      - name: Generate HTML report
+        id: report
+        run: yarn test-ui:report-only
+        if: always()
+      - name: Setup Pages
+        uses: actions/configure-pages@v2
+        if: always()
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: '.loki'
+        if: always()
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v1
+        if: always()

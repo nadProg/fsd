@@ -22,7 +22,7 @@
     "test-ui": "npx loki test",
     "test-ui:json": "node scripts/generate-visual-json-report.js",
     "test-ui:html": "reg-cli --from .loki/report.json --report .loki/report.html",
-    "test-ui:report-only": "yarn test-ui:json && npm run test-ui:html",
+    "test-ui:report-only": "yarn test-ui:json && yarn test-ui:html",
     "test-ui:confirm": "npx loki approve",
     "test-ui:report": "yarn test-ui || npm run test-ui:report-only",
     "test-ui:ci": "npx loki --requireReference --reactUri file:./storybook-static",
