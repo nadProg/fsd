@@ -1,4 +1,4 @@
-name: linting, testing, building
+name: linting, testing
 
 on:
   push:
@@ -12,7 +12,7 @@ permissions:
   id-token: write
 
 jobs:
-  main-pipeline:
+  linting:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -35,9 +35,37 @@ jobs:
       - name: Linting *.scss files
         run: yarn lint-scss
         if: steps.install.conclusion == 'success'
+
+  unit-tests:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    strategy:
+      matrix:
+        node-version: [ 18.x ]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Starting Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Install dependencies
+        run: yarn install:ci
       - name: Unit testing
         run: yarn test-unit
-        if: steps.install.conclusion == 'success'
+      - name: Setup Pages
+        uses: actions/configure-pages@v2
+        if: always()
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: 'reports'
+        if: always()
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v1
+        if: always()
 
   ui-tests:
     runs-on: ubuntu-latest
